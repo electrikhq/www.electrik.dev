@@ -17,7 +17,7 @@
             <img src="{{ Vite::asset('resources/images/electrik-dashboard.png') }}" alt="Electrik Dashboard" class="w-3/4 h-auto text-center mx-auto" />
         </div>
         <div class="mt-12 flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-            <x-slate::button size="lg" color="black" href="{{ url('docs/slate/master') }}">Documentation</x-slate::button>
+            <x-slate::button size="lg" color="black" href="{{ url('docs/slate/1.x/index') }}">Documentation</x-slate::button>
             <x-slate::button size="lg" color="black" icon="carbon-logo-github" link="https://github.com/electrikhq/electrik">Github</x-slate::button>
         </div>
         <hr/>

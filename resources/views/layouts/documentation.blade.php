@@ -49,7 +49,7 @@
             </div>
             <div class="prose dark:prose-invert !max-w-none text-right mt-12 text-sm text-neutral-600">
                 <span class="inline-flex items-center content-right space-x-2" title="{{ $lastModifiedDate->toIso8601String() }}">
-                    <x-slate::icon icon="carbon-time" size="xs" /> <span>Last updated on {{ $lastModifiedDate->diffForHumans() }}</span>
+                    <x-slate::icon icon="carbon-time" size="xs" /> <span>Last updated on {{ $lastModifiedDate->toIso8601String() }}</span>
                 </span>
             </div>
             <hr class="my-6" />
