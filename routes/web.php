@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
-use League\CommonMark\CommonMarkConverter;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
@@ -95,6 +94,7 @@ Route::get('{slug?}', function ($slug = null) {
     View::addLocation(resource_path('content/www'));
 
     return view($slug);
+
 })->where('slug', '.*')->name('www.show');
 
 

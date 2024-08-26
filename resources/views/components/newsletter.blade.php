@@ -1,4 +1,4 @@
-<section class="dark:bg-black flex flex-col py-12 items-center mt-12">
+<section class="dark:bg-black flex flex-col py-12 items-center">
     <!-- Newsletter Section -->
     <div class="prose dark:prose-invert text-center text-black dark:text-white">
         <h3>Stay in Touch</h3>

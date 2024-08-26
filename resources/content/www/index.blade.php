@@ -17,7 +17,7 @@
             <img src="{{ Vite::asset('resources/images/electrik-dashboard.png') }}" alt="Electrik Dashboard" class="w-3/4 h-auto text-center mx-auto" />
         </div>
         <div class="mt-12 flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-            <x-slate::button size="lg" color="black" href="{{ url('docs/slate/master') }}">Documentation</x-slate::button>
+            <x-slate::button size="lg" color="black" href="{{ url('docs') }}">Documentation</x-slate::button>
             <x-slate::button size="lg" color="black" icon="carbon-logo-github" link="https://github.com/electrikhq/electrik">Github</x-slate::button>
         </div>
         <hr/>
@@ -40,7 +40,7 @@
     <!-- Features Section 1 -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 items-center py-24">
         <div class="p-12 text-black dark:text-white">
-            <h2>Work with Tools You Already Use</h2>
+            <h2 class="font-bold uppercase text-blue-600">Work with Tools You Already Use</h2>
             <p class="mt-4 text-lg">Electrik is built on top of popular tools like Laravel, Livewire, TailwindCSS, Alpine.js, and Slate, accelerating critical development time.</p>
             <ul class="mt-4 list-disc list-inside space-y-1">
                 <li>Laravel</li>
@@ -51,7 +51,7 @@
                 <li>And more...</li>
             </ul>
             <p class="mt-4">Electrik is the perfect, battle-tested SaaS starter kit for your next big idea.</p>
-            <x-slate::button class="mt-4" icon="carbon-arrow-right" icon-position="after" href="https://docs.electrik.dev" target="_blank">Documentation</x-slate::button>
+            <x-slate::button class="mt-4" icon="carbon-arrow-right" icon-position="after" href="{{ url('docs') }}">Documentation</x-slate::button>
         </div>
         <div class="col-span-1">
             <img src="{{ Vite::asset('resources/images/electrik-dashboard.png') }}" alt="Electrik Dashboard" class="w-full h-auto rounded-md shadow-md" />
@@ -66,7 +66,7 @@
             <img src="{{ Vite::asset('resources/images/electrik-onboarding.png') }}" alt="Electrik Onboarding" class="w-full h-auto rounded-md shadow-md" />
         </div>
         <div class="p-12 text-black dark:text-white">
-            <h2>All the Features in One Library</h2>
+            <h2 class="font-bold uppercase text-blue-600">All the Features in One Library</h2>
             <p class="mt-4 text-lg">We believe open-source projects should be truly open-source, with no features locked behind a paywall. Electrik provides all the essential features required to build your next big SaaS.</p>
             <ul class="mt-4 list-disc list-inside space-y-1">
                 <li>Subscription billing management (via Stripe)</li>
@@ -77,12 +77,14 @@
                 <li>Notifications, toasts, alerts, modals, and much more.</li>
             </ul>
             <p class="mt-4">To see the full list of available features, please check out the documentation.</p>
-            <x-slate::button class="mt-4" icon="carbon-arrow-right" icon-position="after" href="https://docs.electrik.dev" target="_blank">Documentation</x-slate::button>
+            <x-slate::button class="mt-4" icon="carbon-arrow-right" icon-position="after" href="{{ url('docs') }}">Documentation</x-slate::button>
         </div>
     </div>
 </section>
 
-<section class="bg-white dark:bg-black flex flex-col">
+
+
+<section class="bg-white dark:bg-black flex flex-col py-24">
     <!-- Pricing Section -->
     <div class="px-4 mx-auto text-center md:max-w-screen-md lg:max-w-screen-lg lg:px-36 prose-lg font-serif text-black dark:text-white py-6">
         <h2>Designed by Developers for Developers Like You!</h2>
@@ -93,7 +95,7 @@
     </div>
 </section>
 
-<section class="bg-gray-100 dark:bg-gray-900 py-8">
+<section class="bg-gray-100 dark:bg-gray-900 py-24">
     <div class="max-w-3xl mx-auto px-4 text-center">
         <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">Frequently Asked Questions</h2>
         <div class="mt-6 space-y-4">

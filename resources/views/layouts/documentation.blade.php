@@ -14,10 +14,6 @@
   "url": "{{ request()->url() }}",
   "datePublished": "{{ $lastModifiedDate }}",  // Replace with actual publication date if available
   "dateModified": "{{ $lastModifiedDate }}",
-  "author": {
-    "@type": "Person",
-    "name": "Neeraj Kumar"
-  },
   "publisher": {
     "@type": "Organization",
     "name": "Electrik"
