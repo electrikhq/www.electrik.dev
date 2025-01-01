@@ -39,6 +39,8 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-N8D7KL4F');</script>
     <!-- End Google Tag Manager -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4533175894495099"
+    crossorigin="anonymous"></script>
 </head>
 
 <body class="min-h-screen h-full font-sans antialiased text-gray-900 dark:text-gray-100 bg-white dark:bg-black">
@@ -49,9 +51,6 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <x-slate::alert color="info" full-width>
-        [Update: 22 Aug, 2024]: I am currently working dilligently on Slate - Laravel Blade UI Kit. Once the development on it is complete, I'll release a production version.
-    </x-slate::alert>
     <div class="flex flex-col h-screen" x-data="{ sidebarOpen: false }">
 
         <!-- Top Navbar -->

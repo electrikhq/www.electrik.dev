@@ -1,0 +1,142 @@
+<?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
+
+class GenerateFundingJson extends Command
+{
+    /**
+     * The console command name.
+     *
+     * @var string
+     */
+    protected $signature = 'generate:funding:json';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Generate the funding.json';
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+        // The funding.json structure
+        $fundingData = [
+            'version' => 'v1.0.0',
+            'entity' => [
+                'type' => 'organisation',
+                'role' => 'owner',
+                'name' => 'Electrik',
+                'email' => 'hello@electrik.dev',
+                'description' => 'Electrik is a Laravel package and a starter kit that takes out the pain of building a SaaS application from scratch. Electrik provides all the core features that are required for any SaaS. For example, it supports recurring billing via cashier, multiple teams, User configurable roles and permissions, and much much more.',
+                'webpageUrl' => [
+                    'url' => 'https://electrik.dev',
+                ],
+            ],
+            'projects' => [
+                [
+                    'guid' => 'slate',
+                    'name' => 'Slate UI Component Library',
+                    'description' => 'Slate is a collection of UI components designed for consistent design principles and accessibility. Our goal is to provide developers with a modular, extensible, and easy-to-use component library for creating responsive, accessible, and visually appealing web applications.',
+                    'webpageUrl' => [
+                        'url' => 'https://electrik.dev/slate',
+                    ],
+                    'repositoryUrl' => [
+                        'url' => 'https://github.com/electrikhq/slate',
+                    ],
+                    'licenses' => ['spdx:MIT'],
+                    'tags' => ['ui-components', 'open-source', 'web-development', 'frontend', 'tailwindcss', 'accessibility'],
+                ],
+                [
+                    'guid' => 'electrik-core',
+                    'name' => 'Electrik Core',
+                    'description' => 'Electrik Core provides foundational tools and utilities for scalable web development, emphasizing modularity, consistency, and ease of use. It integrates seamlessly with the Slate UI component library and offers a cohesive development experience.',
+                    'webpageUrl' => [
+                        'url' => 'https://electrik.dev',
+                    ],
+                    'repositoryUrl' => [
+                        'url' => 'https://github.com/electrikhq/electrik',
+                    ],
+                    'licenses' => ['spdx:MIT'],
+                    'tags' => [
+                        'laravel',
+                        'laravel-framework',
+                        'saas',
+                        'laravel-package',
+                        'laravel-admin',
+                        'tailwindcss',
+                        'saas-boilerplate',
+                        'laravel-nova',
+                        'laravel-starter-kit',
+                        'saas-boilerpate',
+                        'laravel9',
+                    ],
+                ],
+            ],
+            'funding' => [
+                'channels' => [
+                    [
+                        'guid' => 'github-sponsors',
+                        'type' => 'sponsorship-platform',
+                        'address' => 'https://github.com/sponsors/electrikhq',
+                        'description' => 'Support us via GitHub Sponsors to help maintain and grow the Electrik ecosystem.',
+                    ],
+                ],
+                'plans' => [
+                    [
+                        'guid' => 'support-core-infrastructure',
+                        'status' => 'active',
+                        'name' => 'Support Core Infrastructure',
+                        'description' => 'Covers server, hosting, and operational costs to keep Electrik and Slate running smoothly.',
+                        'amount' => 250,
+                        'currency' => 'USD',
+                        'frequency' => 'monthly',
+                        'channels' => ['github-sponsors',],
+                    ],
+                    [
+                        'guid' => 'sponsor-development',
+                        'status' => 'active',
+                        'name' => 'Sponsor Development',
+                        'description' => 'Funds development, testing, and documentation improvements for Slate and Electrik Core.',
+                        'amount' => 500,
+                        'currency' => 'USD',
+                        'frequency' => 'monthly',
+                        'channels' => ['github-sponsors',],
+                    ],
+                    [
+                        'guid' => 'one-time-contribution',
+                        'status' => 'active',
+                        'name' => 'One-Time Contribution',
+                        'description' => 'Contribute any amount to support Electrik\'s ongoing efforts.',
+                        'amount' => 0,
+                        'currency' => 'USD',
+                        'frequency' => 'one-time',
+                        'channels' => ['github-sponsors',],
+                    ],
+                ],
+                'history' => [
+                ],
+            ],
+        ];
+
+        // Convert the PHP array into JSON format
+        $jsonContent = json_encode($fundingData, JSON_PRETTY_PRINT);
+
+        // Define the path where the funding.json will be saved (e.g., public folder)
+        $filePath = public_path('funding.json');
+
+        // Save the file
+        File::put($filePath, $jsonContent);
+
+        // Output success message
+        $this->info('funding.json generated successfully at ' . $filePath);
+    }
+}

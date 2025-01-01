@@ -17,7 +17,7 @@
             <img src="{{ Vite::asset('resources/images/electrik-dashboard.png') }}" alt="Electrik Dashboard" class="w-3/4 h-auto text-center mx-auto" />
         </div>
         <div class="mt-12 flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-            <x-slate::button size="lg" color="black" href="{{ url('docs/slate/1.x/index') }}">Documentation</x-slate::button>
+            <x-slate::button size="lg" color="black" href="{{ url('docs') }}">Documentation</x-slate::button>
             <x-slate::button size="lg" color="black" icon="carbon-logo-github" link="https://github.com/electrikhq/electrik">Github</x-slate::button>
         </div>
         <hr/>
@@ -39,8 +39,8 @@
 <section class="bg-white dark:bg-black flex flex-col">
     <!-- Features Section 1 -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 items-center py-24">
-        <div class="p-12 text-black dark:text-white">
-            <h2>Work with Tools You Already Use</h2>
+        <div class="p-0 md:p-12 text-black dark:text-white">
+            <h2 class="uppercase font-medium">Work with Tools You Already Use</h2>
             <p class="mt-4 text-lg">Electrik is built on top of popular tools like Laravel, Livewire, TailwindCSS, Alpine.js, and Slate, accelerating critical development time.</p>
             <ul class="mt-4 list-disc list-inside space-y-1">
                 <li>Laravel</li>
@@ -66,7 +66,7 @@
             <img src="{{ Vite::asset('resources/images/electrik-onboarding.png') }}" alt="Electrik Onboarding" class="w-full h-auto rounded-md shadow-md" />
         </div>
         <div class="p-12 text-black dark:text-white">
-            <h2>All the Features in One Library</h2>
+            <h2 class="uppercase font-medium">All the Features in One Library</h2>
             <p class="mt-4 text-lg">We believe open-source projects should be truly open-source, with no features locked behind a paywall. Electrik provides all the essential features required to build your next big SaaS.</p>
             <ul class="mt-4 list-disc list-inside space-y-1">
                 <li>Subscription billing management (via Stripe)</li>

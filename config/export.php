@@ -67,6 +67,8 @@ return [
      */
     'after' => [
         'sitemap:generate' => 'php artisan sitemap:generate',
+        'generate:ads:txt' => 'php artisan generate:ads:txt',
+        'generate:funding:json' => 'php artisan generate:funding:json',
     ],
 
 ];
