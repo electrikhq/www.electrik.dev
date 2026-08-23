@@ -66,6 +66,7 @@ return [
      * You can skip these by adding a `--skip-{name}` flag to the command.
      */
     'after' => [
+        'fix-urls' => 'php artisan export:fix-urls',
         'sitemap:generate' => 'php artisan sitemap:generate',
         'generate:ads:txt' => 'php artisan generate:ads:txt',
         'generate:funding:json' => 'php artisan generate:funding:json',

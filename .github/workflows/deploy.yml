@@ -124,7 +124,14 @@ jobs:
       - name: Verify dist output
         run: |
           test -f dist/index.html
+          test -d dist/build/assets
+          if grep -REq 'http://127\.0\.0\.1:8000|/localhost' dist --include='*.html'; then
+            echo "Exported HTML still contains localhost asset URLs"
+            grep -Rn 'http://127\.0\.0\.1:8000\|localhost' dist --include='*.html' | head -20
+            exit 1
+          fi
           ls -la dist | head -30
+          ls -la dist/build/assets | head -20
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
