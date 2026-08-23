@@ -16,22 +16,20 @@ class GenerateSitemap extends Command
     {
         $base = rtrim((string) (env('APP_PRODUCTION_URL') ?: config('app.url')), '/');
 
-        $paths = [
-            '/',
-            '/install',
-            '/license',
-            '/pricing',
-            '/faq',
-            '/contact',
-        ];
+        $paths = require base_path('app/Helpers/get_export_paths.php');
 
         $sitemap = Sitemap::create();
 
         foreach ($paths as $path) {
+            $normalized = '/'.ltrim((string) $path, '/');
+            if (str_ends_with($normalized, '.md')) {
+                continue;
+            }
+
             $sitemap->add(
-                Url::create($base.$path)
+                Url::create($base.($normalized === '/' ? '/' : $normalized))
                     ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
-                    ->setPriority($path === '/' ? 1.0 : 0.8)
+                    ->setPriority($normalized === '/' ? 1.0 : (str_starts_with($normalized, '/docs') ? 0.9 : 0.8))
             );
         }
 
@@ -42,7 +40,7 @@ class GenerateSitemap extends Command
 
         $sitemap->writeToFile($destination);
 
-        $this->info('Sitemap written to dist/sitemap.xml');
+        $this->info('Sitemap written to dist/sitemap.xml ('.count($paths).' paths scanned)');
 
         return self::SUCCESS;
     }

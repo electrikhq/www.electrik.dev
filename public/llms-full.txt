@@ -1,0 +1,969 @@
+# Electrik
+
+> Electrik is a Laravel SaaS starter kit: authentication, teams, and Stripe billing as a Composer package (`electrik/electrik` 5.x). Built on Electrik Slate 3. Docs: https://electrik.dev/docs
+
+## Get started
+
+- [Introduction](https://electrik.dev/docs/getting-started/introduction): What Electrik 5.x is.
+- [Quickstart](https://electrik.dev/docs/getting-started/quickstart): Fastest path to a running app.
+- [Installation](https://electrik.dev/docs/getting-started/installation): `electrik:install` deep dive.
+- [Architecture](https://electrik.dev/docs/getting-started/architecture): Package vs App, teams as tenant.
+- [Install page](https://electrik.dev/install): Marketing quickstart.
+
+## Core concepts
+
+- [Configuration](https://electrik.dev/docs/core-concepts/configuration): config/electrik.php and environment variables.
+- [Auth & security](https://electrik.dev/docs/core-concepts/auth-security): Login, registration, verification, 2FA, and sessions.
+- [Teams & invites](https://electrik.dev/docs/core-concepts/teams-invites): Create and switch teams, invite members, transfer ownership.
+- [Roles & permissions](https://electrik.dev/docs/core-concepts/roles-permissions): Spatie permissions with team context and the Electrik catalog.
+- [Billing](https://electrik.dev/docs/core-concepts/billing): Stripe via Cashier on the team, sync, webhooks, and billing UI.
+- [Plan features & seats](https://electrik.dev/docs/core-concepts/plan-features-seats): Gate features and member limits by Stripe price id.
+- [Onboarding](https://electrik.dev/docs/core-concepts/onboarding): First-run wizard, env toggle, and helper commands.
+- [Customization](https://electrik.dev/docs/core-concepts/customization): Override views carefully and lean on Slate for UI.
+
+## Guides & reference
+
+- [Local sandbox](https://electrik.dev/docs/guides/local-sandbox): Reset and run the Electrik sandbox app from the lab monorepo.
+- [Stripe test mode](https://electrik.dev/docs/guides/stripe-test-mode): Develop billing against Stripe test keys and the Stripe CLI.
+- [Feature gating](https://electrik.dev/docs/guides/feature-gating): Use plan_features to limit seats and capabilities.
+- [Upgrading alphas](https://electrik.dev/docs/guides/upgrading-alphas): How to move between Electrik 5.x alpha releases safely.
+- [Artisan commands](https://electrik.dev/docs/reference/artisan-commands): Electrik console commands reference.
+- [Routes & middleware](https://electrik.dev/docs/reference/routes-middleware): High-level route groups Electrik registers.
+- [Permissions catalog](https://electrik.dev/docs/reference/permissions-catalog): Default permission keys shipped in config/electrik.php.
+- [Changelog](https://electrik.dev/docs/reference/changelog): Where to find Electrik release notes.
+- [BSL Additional Use Grant](https://electrik.dev/docs/license/bsl): What the free BSL grant covers.
+- [Commercial license](https://electrik.dev/docs/license/commercial): When you need a commercial grant and how to buy.
+- [Slate UI](https://electrik.dev/docs/ecosystem/slate-ui): Electrik is built on Slate — UI docs live on slate.electrik.dev.
+- [Teamwork](https://electrik.dev/docs/ecosystem/teamwork): Electrik's teams engine is a Teamwork fork.
+- [Agent / llms.txt](https://electrik.dev/docs/ecosystem/agent-llms): Machine-readable docs for coding agents.
+
+## Related
+
+- [Slate UI docs](https://slate.electrik.dev): Blade components and tokens (do not re-host here).
+- [License](https://electrik.dev/license): BSL Additional Use Grant.
+- [Pricing](https://electrik.dev/pricing): Commercial tiers.
+- [GitHub](https://github.com/electrikhq/electrik)
+
+## Machine-readable
+
+- [llms.txt](https://electrik.dev/llms.txt): This index.
+- [llms-full.txt](https://electrik.dev/llms-full.txt): Index plus concatenated markdown docs.
+- Prefer `.md` URLs under `/docs/...md` when pasting into models.
+
+
+---
+
+# Full documentation dump
+
+Below is concatenated markdown from the docs site. Prefer individual `.md` URLs when possible.
+
+---
+
+Source: https://electrik.dev/docs/core-concepts/auth-security.md
+
+---
+title: "Auth & security"
+description: "Login, registration, verification, 2FA, and sessions."
+sidebar_order: 2
+sidebar_section: "Core Concepts"
+---
+
+# Auth & security
+
+## Flows
+
+- Login / logout
+- Registration (toggle with `ELECTRIK_REGISTRATION`)
+- Email verification (`ELECTRIK_EMAIL_VERIFICATION`)
+- Forgot / reset password
+- Remember me
+
+## Two-factor authentication
+
+Account security settings include TOTP-based 2FA. Users enable, confirm, and manage recovery from settings.
+
+## Sessions
+
+Users can review and revoke other sessions from account security UI.
+
+## API tokens
+
+Sanctum personal access tokens are managed from settings for API access.
+
+## Post-login destination
+
+`ELECTRIK_HOME` (default `/dashboard`) controls where authenticated users land after login (subject to onboarding / subscription gates).
+
+
+---
+
+Source: https://electrik.dev/docs/core-concepts/billing.md
+
+---
+title: "Billing"
+description: "Stripe via Cashier on the team, sync, webhooks, and billing UI."
+sidebar_order: 5
+sidebar_section: "Core Concepts"
+---
+
+# Billing
+
+Electrik bills the **team** with Laravel Cashier.
+
+## Setup
+
+1. Set `STRIPE_KEY`, `STRIPE_SECRET`, `STRIPE_WEBHOOK_SECRET` in `.env`
+2. Create products/prices in Stripe (test mode first)
+3. Sync into Electrik:
+
+```bash
+php artisan electrik:stripe:sync
+```
+
+4. Configure Stripe webhooks to your Cashier endpoint (or Stripe CLI locally)
+
+## App UI
+
+`/billing` covers plans, subscribe/cancel/resume, payment methods, billing address, and invoices (subject to permissions).
+
+## Subscription name
+
+Cashier subscription name defaults to `electrik` (`ELECTRIK_DEFAULT_SUBSCRIPTION_NAME`).
+
+## Require subscription
+
+Set `ELECTRIK_REQUIRE_SUBSCRIPTION=true` to gate the app behind an active subscription (onboarding/billing routes remain reachable as configured).
+
+## Sync subscriptions
+
+```bash
+php artisan electrik:stripe:sync-subscriptions
+php artisan electrik:stripe:sync-subscriptions --team=1
+```
+
+More: [Stripe test mode](/docs/guides/stripe-test-mode).
+
+
+---
+
+Source: https://electrik.dev/docs/core-concepts/configuration.md
+
+---
+title: "Configuration"
+description: "config/electrik.php and environment variables."
+sidebar_order: 1
+sidebar_section: "Core Concepts"
+---
+
+# Configuration
+
+Published file: `config/electrik.php`.
+
+## Auth
+
+```php
+'auth' => [
+    'home' => env('ELECTRIK_HOME', '/dashboard'),
+    'registration' => env('ELECTRIK_REGISTRATION', true),
+    'email_verification' => env('ELECTRIK_EMAIL_VERIFICATION', true),
+],
+```
+
+## Onboarding
+
+```php
+'onboarding' => [
+    'enabled' => filter_var(env('ELECTRIK_ONBOARDING', true), FILTER_VALIDATE_BOOL),
+    'exempt_routes' => [/* onboarding, billing.*, teams.invitations.*, verification.*, logout */],
+],
+```
+
+## Teams
+
+```php
+'teams' => [
+    'roles' => ['owner', 'admin', 'member'],
+    'invite_expires_days' => (int) env('ELECTRIK_INVITE_EXPIRES_DAYS', 7),
+],
+```
+
+## Permissions catalog
+
+`permissions.catalog` defines permission keys, display names, and categories. `permissions.role_permissions` maps owner/admin/member to those keys (`owner` => `*`).
+
+Sync after catalog changes:
+
+```bash
+php artisan electrik:permissions:sync
+```
+
+## Billing
+
+```php
+'billing' => [
+    'subscription_name' => env('ELECTRIK_DEFAULT_SUBSCRIPTION_NAME', 'electrik'),
+    'cc_required_for_free_plan' => env('ELECTRIK_CC_REQUIRED_FOR_FREE_PLAN', false),
+    'require_subscription' => filter_var(env('ELECTRIK_REQUIRE_SUBSCRIPTION', false), FILTER_VALIDATE_BOOL),
+    'plan_features' => [
+        'default' => ['custom_roles' => false, 'max_members' => 5],
+        'by_price_id' => [ /* 'price_xxx' => [...] */ ],
+    ],
+],
+```
+
+See [Plan features & seats](/docs/core-concepts/plan-features-seats) and [Billing](/docs/core-concepts/billing).
+
+
+---
+
+Source: https://electrik.dev/docs/core-concepts/customization.md
+
+---
+title: "Customization"
+description: "Override views carefully and lean on Slate for UI."
+sidebar_order: 8
+sidebar_section: "Core Concepts"
+---
+
+# Customization
+
+## Prefer config first
+
+Most product toggles are in `config/electrik.php` and env vars. Change those before publishing or forking views.
+
+## Views
+
+Publish or override Electrik Blade/Livewire views only when you must. Prefer extending with your own `App\` Livewire components and routes for product-specific screens.
+
+## Slate UI
+
+Visual language comes from Slate. Tokens and components: [slate.electrik.dev](https://slate.electrik.dev). Do not re-implement a parallel component library inside Electrik docs or your app unless you are intentionally forking design.
+
+## CSS
+
+Ensure Slate is imported and `@source` includes package views (install tries to wire this). Rebuild Vite after CSS changes.
+
+
+---
+
+Source: https://electrik.dev/docs/core-concepts/onboarding.md
+
+---
+title: "Onboarding"
+description: "First-run wizard, env toggle, and helper commands."
+sidebar_order: 7
+sidebar_section: "Core Concepts"
+---
+
+# Onboarding
+
+When `ELECTRIK_ONBOARDING=true` (default), users who have not finished onboarding are redirected to `/onboarding`.
+
+Exempt route name patterns live in `config/electrik.php` (`billing.*`, invitations, verification, logout, etc.).
+
+## Disable
+
+```env
+ELECTRIK_ONBOARDING=false
+```
+
+## Artisan helpers
+
+```bash
+php artisan electrik:onboarding:skip-existing
+php artisan electrik:onboarding:reset
+```
+
+Use skip-existing for apps that already have users before enabling the wizard; reset for testing the flow again.
+
+
+---
+
+Source: https://electrik.dev/docs/core-concepts/plan-features-seats.md
+
+---
+title: "Plan features & seats"
+description: "Gate features and member limits by Stripe price id."
+sidebar_order: 6
+sidebar_section: "Core Concepts"
+---
+
+# Plan features & seats
+
+`config/electrik.php` → `billing.plan_features`:
+
+```php
+'plan_features' => [
+    'default' => [
+        'custom_roles' => false,
+        'max_members' => 5,
+    ],
+    'by_price_id' => [
+        // 'price_xxx' => ['custom_roles' => true, 'max_members' => 50],
+    ],
+],
+```
+
+Map each Stripe **price id** to feature flags. Unmapped prices fall back to `default`.
+
+Use these flags in your app (and Electrik screens that already respect them, such as custom roles) to enforce plan limits. See [Feature gating](/docs/guides/feature-gating).
+
+
+---
+
+Source: https://electrik.dev/docs/core-concepts/roles-permissions.md
+
+---
+title: "Roles & permissions"
+description: "Spatie permissions with team context and the Electrik catalog."
+sidebar_order: 4
+sidebar_section: "Core Concepts"
+---
+
+# Roles & permissions
+
+Electrik uses Spatie Laravel Permission in **team** context.
+
+## Catalog keys (default)
+
+| Permission | Category |
+|---|---|
+| `teams.view` | Teams |
+| `teams.manage` | Teams |
+| `teams.invite` | Teams |
+| `teams.members` | Teams |
+| `billing.view` | Billing |
+| `billing.manage` | Billing |
+| `access.roles` | Access |
+
+## Role defaults
+
+- **owner** — `*` (all)
+- **admin** — teams + billing + `access.roles`
+- **member** — `teams.view`, `billing.view`
+
+## Sync
+
+```bash
+php artisan electrik:permissions:sync
+```
+
+Custom roles can be gated behind plan feature `custom_roles` — see [Plan features & seats](/docs/core-concepts/plan-features-seats). Full table: [Permissions catalog](/docs/reference/permissions-catalog).
+
+
+---
+
+Source: https://electrik.dev/docs/core-concepts/teams-invites.md
+
+---
+title: "Teams & invites"
+description: "Create and switch teams, invite members, transfer ownership."
+sidebar_order: 3
+sidebar_section: "Core Concepts"
+---
+
+# Teams & invites
+
+Teams are the workspace unit in Electrik. Billing and many permissions attach to the current team.
+
+## Capabilities
+
+- Create and switch teams
+- Team settings and branding / avatar
+- Invite members by email (expiry: `ELECTRIK_INVITE_EXPIRES_DAYS`, default 7)
+- Accept / deny invitations
+- Manage members, leave team, transfer ownership, delete team
+- Activity log for team events
+
+## Default roles
+
+Configured in `config/electrik.php`: `owner`, `admin`, `member`. See [Roles & permissions](/docs/core-concepts/roles-permissions).
+
+Teams engine is powered by `electrik/teamwork` (Electrik’s Teamwork fork).
+
+
+---
+
+Source: https://electrik.dev/docs/ecosystem/agent-llms.md
+
+---
+title: "Agent / llms.txt"
+description: "Machine-readable docs for coding agents."
+sidebar_order: 3
+sidebar_section: "Ecosystem"
+---
+
+# Agent / llms.txt
+
+Electrik publishes agent-oriented indexes:
+
+- [/llms.txt](/llms.txt) — curated link index
+- [/llms-full.txt](/llms-full.txt) — index plus concatenated markdown
+- Per-page markdown: append `.md` to any docs URL (example: [/docs/getting-started/introduction.md](/docs/getting-started/introduction.md))
+
+Use these when prompting Cursor, Claude, ChatGPT, or other agents to install or customize Electrik. Prefer specific `.md` URLs over pasting the entire full dump when possible.
+
+
+---
+
+Source: https://electrik.dev/docs/ecosystem/slate-ui.md
+
+---
+title: "Slate UI"
+description: "Electrik is built on Slate — UI docs live on slate.electrik.dev."
+sidebar_order: 1
+sidebar_section: "Ecosystem"
+---
+
+# Slate UI
+
+[Electrik Slate](https://slate.electrik.dev) is the Blade UI kit Electrik ships on: anonymous components, Tailwind v4 tokens, Alpine where needed.
+
+- Docs: [https://slate.electrik.dev](https://slate.electrik.dev)
+- Package: `electrik/slate`
+
+This site does **not** re-host Slate component docs. Link out for components, tokens, blocks, and examples.
+
+
+---
+
+Source: https://electrik.dev/docs/ecosystem/teamwork.md
+
+---
+title: "Teamwork"
+description: "Electrik's teams engine is a Teamwork fork."
+sidebar_order: 2
+sidebar_section: "Ecosystem"
+---
+
+# Teamwork
+
+Teams are powered by `electrik/teamwork`, Electrik's maintained fork of the Teamwork package (Laravel-ready).
+
+You normally consume it **through Electrik** — treat it as the teams engine under the hood, not a separate product to market beside Electrik and Slate.
+
+
+---
+
+Source: https://electrik.dev/docs/getting-started/architecture.md
+
+---
+title: "Architecture"
+description: "Package vs App, teams as tenant, middleware, and Slate shell."
+sidebar_order: 5
+sidebar_section: "Getting Started"
+---
+
+# Architecture
+
+## Package vs application
+
+Electrik code lives under `vendor/electrik/electrik` in the `Electrik\` namespace. Your product code stays in `App\`. Prefer config and composition over forking package classes.
+
+## Teams as tenant
+
+Billing, seats, and many permissions are scoped to the **current team**, not only the user. Cashier billable is the team. Switching teams switches workspace context.
+
+## Request stack (mental model)
+
+Typical authenticated flow:
+
+1. Auth middleware
+2. Email verification (if enabled)
+3. Team selected (`EnsureTeamSelected` and related)
+4. Onboarding incomplete → `/onboarding` (unless exempt)
+5. Optional subscription requirement → billing
+
+Exempt onboarding routes are listed in `config/electrik.php` under `onboarding.exempt_routes` (billing, invitations, verification, logout).
+
+## UI shell
+
+Screens use Slate anonymous components (`<x-slate::*>`) and Slate design tokens. Customize carefully; deep UI reference stays on [slate.electrik.dev](https://slate.electrik.dev).
+
+## Related packages
+
+- `electrik/slate` — UI kit
+- `electrik/teamwork` — Electrik fork of Teamwork (teams engine)
+- `spatie/laravel-permission` — roles/permissions with teams
+- `laravel/cashier` — Stripe subscriptions
+
+
+---
+
+Source: https://electrik.dev/docs/getting-started/demo-seed.md
+
+---
+title: "Demo & seed-demo"
+description: "Seed a demo user, team, and sample data for local exploration."
+sidebar_order: 4
+sidebar_section: "Getting Started"
+---
+
+# Demo & seed-demo
+
+```bash
+php artisan electrik:seed-demo
+```
+
+Creates a demo account and team so you can click through auth, teams, and billing without hand-assembling records.
+
+Use this after `electrik:install` (and migrations). For Stripe-backed billing UI, still set test keys and run `electrik:stripe:sync`.
+
+Public hosted demo (when available): [demo.electrik.dev](https://demo.electrik.dev).
+
+
+---
+
+Source: https://electrik.dev/docs/getting-started/installation.md
+
+---
+title: "Installation"
+description: "What electrik:install does, flags, and post-install checklist."
+sidebar_order: 3
+sidebar_section: "Getting Started"
+---
+
+# Installation
+
+## Composer
+
+```bash
+composer require electrik/electrik:^5.0@alpha
+```
+
+## Artisan install
+
+```bash
+php artisan electrik:install
+# or
+php artisan electrik:install --migrate --force
+```
+
+| Flag | Effect |
+|---|---|
+| `--force` | Overwrite published `config/electrik.php` if it exists |
+| `--migrate` | Run migrations, then `electrik:permissions:sync --teams` |
+
+### What install configures
+
+- Publishes `config/electrik.php`
+- Wires Slate CSS import / `@source` in `resources/css/app.css` when possible
+- Ensures Teamwork, Spatie permission teams mode, User model traits
+- Sanctum, Cashier, session driver checks
+- Stripe env placeholders and webhook tip
+- Suggests `storage:link` for avatars
+
+## After install
+
+1. Copy Stripe keys into `.env` (`STRIPE_KEY`, `STRIPE_SECRET`, `STRIPE_WEBHOOK_SECRET`)
+2. `php artisan electrik:stripe:sync` — pull products/prices into Electrik tables
+3. `php artisan storage:link`
+4. Point Cashier webhook at your app (or use Stripe CLI locally)
+
+## Disable features via env
+
+| Env | Default | Purpose |
+|---|---|---|
+| `ELECTRIK_REGISTRATION` | `true` | Allow public registration |
+| `ELECTRIK_EMAIL_VERIFICATION` | `true` | Require verified email |
+| `ELECTRIK_ONBOARDING` | `true` | Force onboarding wizard |
+| `ELECTRIK_REQUIRE_SUBSCRIPTION` | `false` | Gate app behind active subscription |
+| `ELECTRIK_HOME` | `/dashboard` | Post-login home |
+
+Full map: [Configuration](/docs/core-concepts/configuration).
+
+
+---
+
+Source: https://electrik.dev/docs/getting-started/introduction.md
+
+---
+title: "Introduction"
+description: "What Electrik 5.x is and how it fits a Laravel SaaS."
+sidebar_order: 1
+sidebar_section: "Getting Started"
+---
+
+# Introduction
+
+Electrik is a **Laravel SaaS starter kit** shipped as a Composer package: authentication, teams, Stripe billing, onboarding, and account settings — under the `Electrik\` namespace, not copied into `App\`.
+
+> **Alpha.** APIs can change. Current package line: `5.0.0-alpha.14` on Laravel 12, Livewire 4, and [Electrik Slate](https://slate.electrik.dev) 3.
+
+## What you get
+
+- Auth: login, register, verification, password reset, remember me, 2FA, sessions
+- Teams: create/switch, invites, roles, Spatie permissions (team-scoped)
+- Billing: Laravel Cashier on the **team**, plans, invoices, payment methods, webhooks
+- Shell: dashboard, onboarding wizard, profile, API tokens, notifications, activity log
+- UI: anonymous `<x-slate::*>` components and Slate tokens (docs live on slate.electrik.dev)
+
+## Package model
+
+Unlike Jetstream-style scaffolds that dump code into your app, Electrik stays vendor-owned. You require the package, run `php artisan electrik:install`, and customize via config, published views when needed, and your own `App\` code.
+
+## License
+
+Business Source License 1.1 with a free Additional Use Grant for personal, educational, open-source, and pre-revenue indie use. Commercial products and client work need a [commercial license](/license).
+
+## Next steps
+
+1. [Quickstart](/docs/getting-started/quickstart) or the marketing [Install](/install) page
+2. [Architecture](/docs/getting-started/architecture) for the teams-as-tenant mental model
+3. [Configuration](/docs/core-concepts/configuration) for `config/electrik.php` and env knobs
+
+
+---
+
+Source: https://electrik.dev/docs/getting-started/quickstart.md
+
+---
+title: "Quickstart"
+description: "Fastest path from a fresh Laravel app to a running Electrik install."
+sidebar_order: 2
+sidebar_section: "Getting Started"
+---
+
+# Quickstart
+
+Short path for a fresh Laravel 12 app. For a longer walkthrough see [Installation](/docs/getting-started/installation) or the marketing [Install](/install) page.
+
+## Requirements
+
+- PHP 8.3+
+- Laravel 12+
+- Livewire 4, Tailwind CSS v4
+- Stripe test keys (for billing)
+
+## Install
+
+```bash
+composer require electrik/electrik:^5.0@alpha
+php artisan electrik:install --migrate
+```
+
+Then set Stripe keys in `.env` and sync products:
+
+```bash
+php artisan electrik:stripe:sync
+php artisan storage:link
+```
+
+Optional demo data:
+
+```bash
+php artisan electrik:seed-demo
+```
+
+## Smoke-check routes
+
+| Area | Paths |
+|---|---|
+| Auth | `/login`, `/register`, `/forgot-password` |
+| App | `/dashboard`, `/onboarding` |
+| Teams | `/teams` |
+| Billing | `/billing` |
+| Settings | profile, security, API tokens under settings |
+
+## Local sandbox
+
+From the Electrik lab monorepo:
+
+```bash
+./scripts/reset-electrik-sandbox.sh
+cd electrik-sandbox
+php artisan serve
+```
+
+See [Local sandbox](/docs/guides/local-sandbox).
+
+## UI
+
+Electrik uses Slate. Component docs: [slate.electrik.dev](https://slate.electrik.dev) — do not look for a component gallery on this site.
+
+
+---
+
+Source: https://electrik.dev/docs/guides/feature-gating.md
+
+---
+title: "Feature gating"
+description: "Use plan_features to limit seats and capabilities."
+sidebar_order: 3
+sidebar_section: "Guides"
+---
+
+# Feature gating
+
+Define defaults and per-price overrides in `billing.plan_features` ([Plan features & seats](/docs/core-concepts/plan-features-seats)).
+
+Example:
+
+```php
+'by_price_id' => [
+    'price_pro_monthly' => [
+        'custom_roles' => true,
+        'max_members' => 50,
+    ],
+],
+```
+
+In your application code, resolve the current team's subscription price and read the matching feature bag (falling back to `default`). Electrik's roles UI already respects `custom_roles` where implemented.
+
+Keep feature keys boring and stable — treat them as part of your product API.
+
+
+---
+
+Source: https://electrik.dev/docs/guides/local-sandbox.md
+
+---
+title: "Local sandbox"
+description: "Reset and run the Electrik sandbox app from the lab monorepo."
+sidebar_order: 1
+sidebar_section: "Guides"
+---
+
+# Local sandbox
+
+From the Electrik lab workspace root:
+
+```bash
+./scripts/reset-electrik-sandbox.sh
+cd electrik-sandbox
+php artisan serve
+```
+
+The script wipes `electrik-sandbox/`, creates a fresh Laravel app, path-links local `electrik` + `slate`, runs `electrik:install`, and builds assets.
+
+Useful smoke paths: `/login`, `/register`, `/billing` (with Stripe test keys + `electrik:stripe:sync`).
+
+
+---
+
+Source: https://electrik.dev/docs/guides/stripe-test-mode.md
+
+---
+title: "Stripe test mode"
+description: "Develop billing against Stripe test keys and the Stripe CLI."
+sidebar_order: 2
+sidebar_section: "Guides"
+---
+
+# Stripe test mode
+
+1. Create a Stripe test-mode account / use test keys
+2. Put `STRIPE_KEY`, `STRIPE_SECRET`, and `STRIPE_WEBHOOK_SECRET` in `.env`
+3. Create products and recurring prices in the Stripe Dashboard (test mode)
+4. Sync:
+
+```bash
+php artisan electrik:stripe:sync
+```
+
+5. Forward webhooks locally:
+
+```bash
+stripe listen --forward-to localhost:8000/stripe/webhook
+```
+
+(Use the Cashier webhook path your app exposes.)
+
+Never use live keys in local sandboxes. Map price ids to plan features in `config/electrik.php`.
+
+
+---
+
+Source: https://electrik.dev/docs/guides/upgrading-alphas.md
+
+---
+title: "Upgrading alphas"
+description: "How to move between Electrik 5.x alpha releases safely."
+sidebar_order: 4
+sidebar_section: "Guides"
+---
+
+# Upgrading alphas
+
+Electrik 5.x is **alpha**. Expect breaking changes between tags.
+
+## Checklist
+
+1. Read the package [CHANGELOG](https://github.com/electrikhq/electrik/blob/5.x/CHANGELOG.md)
+2. `composer update electrik/electrik electrik/slate`
+3. Re-run migrations if new ones shipped
+4. `php artisan electrik:permissions:sync` if the catalog changed
+5. `php artisan electrik:stripe:sync` if billing models changed
+6. Diff `config/electrik.php` against the published stub (`electrik:install --force` only if you understand the overwrite)
+
+Pin a specific alpha in production experiments (`5.0.0-alpha.14`) rather than floating `@alpha` if you need reproducibility.
+
+## 4.x → 5.x
+
+5.x is a new stack (Laravel 12, Slate 3, Livewire 4, package-first). Treat migration as a **re-install** onto a fresh app rather than an in-place upgrade from Electrik 4, unless you have a dedicated migration plan.
+
+
+---
+
+Source: https://electrik.dev/docs/license/bsl.md
+
+---
+title: "BSL Additional Use Grant"
+description: "What the free BSL grant covers."
+sidebar_order: 1
+sidebar_section: "License & commercial"
+---
+
+# BSL Additional Use Grant
+
+Electrik is licensed under **Business Source License 1.1** with a free Additional Use Grant for:
+
+- Personal projects
+- Educational use
+- Open-source projects
+- Pre-revenue indie products
+
+Companies, client work, and commercial products need a [commercial license](/docs/license/commercial).
+
+All features ship in source for both lanes — we do not strip billing or teams from the free grant.
+
+Marketing summary: [/license](/license). Full legal text: package `LICENSE` on GitHub.
+
+
+---
+
+Source: https://electrik.dev/docs/license/commercial.md
+
+---
+title: "Commercial license"
+description: "When you need a commercial grant and how to buy."
+sidebar_order: 2
+sidebar_section: "License & commercial"
+---
+
+# Commercial license
+
+You need a commercial license when the Additional Use Grant does not cover your use (for example company products, client deliverables, or revenue-bearing SaaS past the grant).
+
+Tiers and contact: [/pricing](/pricing). Questions: see contact email on the pricing/license pages.
+
+The commercial grant does not unlock extra features — source is already complete. It unlocks **rights**.
+
+
+---
+
+Source: https://electrik.dev/docs/reference/artisan-commands.md
+
+---
+title: "Artisan commands"
+description: "Electrik console commands reference."
+sidebar_order: 1
+sidebar_section: "Reference"
+---
+
+# Artisan commands
+
+| Command | Purpose |
+|---|---|
+| `electrik:install` | Publish config and wire dependencies (`--force`, `--migrate`) |
+| `electrik:seed-demo` | Seed demo user/team data |
+| `electrik:permissions:sync` | Sync Spatie permissions/roles from catalog |
+| `electrik:stripe:sync` | Sync Stripe products/prices into Electrik tables |
+| `electrik:stripe:sync-subscriptions` | Sync Cashier subscriptions (`--team=`) |
+| `electrik:onboarding:skip-existing` | Mark existing users as onboarded |
+| `electrik:onboarding:reset` | Reset onboarding state for testing |
+
+Also remember Laravel/Cashier standards: `migrate`, `storage:link`, queue workers for webhooks if you dispatch jobs.
+
+
+---
+
+Source: https://electrik.dev/docs/reference/changelog.md
+
+---
+title: "Changelog"
+description: "Where to find Electrik release notes."
+sidebar_order: 4
+sidebar_section: "Reference"
+---
+
+# Changelog
+
+Package release notes live in the repository:
+
+- [CHANGELOG.md on GitHub](https://github.com/electrikhq/electrik/blob/5.x/CHANGELOG.md)
+- Packagist: [electrik/electrik](https://packagist.org/packages/electrik/electrik)
+
+Site version string: configured as `config('site.version')` on electrik.dev (marketing), matching the current alpha line when possible.
+
+
+---
+
+Source: https://electrik.dev/docs/reference/permissions-catalog.md
+
+---
+title: "Permissions catalog"
+description: "Default permission keys shipped in config/electrik.php."
+sidebar_order: 3
+sidebar_section: "Reference"
+---
+
+# Permissions catalog
+
+Defaults from `config/electrik.php`:
+
+| Key | Display name | Category |
+|---|---|---|
+| `teams.view` | View teams | Teams |
+| `teams.manage` | Manage team settings | Teams |
+| `teams.invite` | Invite members | Teams |
+| `teams.members` | Manage members | Teams |
+| `billing.view` | View billing | Billing |
+| `billing.manage` | Manage billing | Billing |
+| `access.roles` | Manage roles | Access |
+
+### Role map
+
+- `owner` → `*`
+- `admin` → all catalog keys above
+- `member` → `teams.view`, `billing.view`
+
+Extend the catalog in config, then run `electrik:permissions:sync`.
+
+
+---
+
+Source: https://electrik.dev/docs/reference/routes-middleware.md
+
+---
+title: "Routes & middleware"
+description: "High-level route groups Electrik registers."
+sidebar_order: 2
+sidebar_section: "Reference"
+---
+
+# Routes & middleware
+
+Electrik registers route files for auth, app shell, teams, billing, and settings.
+
+## Common paths
+
+| Area | Examples |
+|---|---|
+| Auth | `/login`, `/register`, `/forgot-password`, verification |
+| App | `/dashboard`, `/onboarding` |
+| Teams | `/teams`, invitations accept/deny |
+| Billing | `/billing` and related Livewire screens |
+| Settings | profile, security (password/2FA/sessions), API tokens |
+
+Exact paths can evolve in alpha — use `php artisan route:list --path=...` in your app after install.
+
+## Middleware themes
+
+- Authenticate + verified (when enabled)
+- Team selection / current team context
+- Onboarding gate
+- Optional subscription requirement
+
+Customize by toggling config/env first; add your own middleware in `App\` for product-specific rules.
+

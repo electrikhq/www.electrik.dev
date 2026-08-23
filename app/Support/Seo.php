@@ -2,6 +2,7 @@
 
 namespace App\Support;
 
+use Carbon\CarbonInterface;
 use Illuminate\Support\Str;
 
 class Seo
@@ -276,5 +277,73 @@ class Seo
     public static function plainAnswer(string $text): string
     {
         return Str::limit(strip_tags($text), 5000, '');
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    public static function techArticleGraph(
+        string $headline,
+        string $description,
+        string $url,
+        ?CarbonInterface $dateModified = null,
+        ?string $section = null,
+    ): array {
+        $modified = ($dateModified ?? now())->toIso8601String();
+
+        $article = [
+            '@type' => 'TechArticle',
+            '@id' => $url.'#article',
+            'headline' => $headline,
+            'description' => $description,
+            'url' => $url,
+            'mainEntityOfPage' => [
+                '@type' => 'WebPage',
+                '@id' => $url,
+            ],
+            'datePublished' => $modified,
+            'dateModified' => $modified,
+            'inLanguage' => 'en-US',
+            'isPartOf' => ['@id' => self::baseUrl().'/#website'],
+            'author' => [
+                '@type' => 'Organization',
+                'name' => self::ORG_NAME,
+            ],
+            'publisher' => ['@id' => self::ORG_URL.'/#organization'],
+        ];
+
+        if ($section) {
+            $article['articleSection'] = $section;
+        }
+
+        return [$article];
+    }
+
+    /**
+     * @return list<array{name: string, url: string}>
+     */
+    public static function docsBreadcrumbs(string $section, string $slug, string $title): array
+    {
+        $crumbs = [
+            ['name' => 'Home', 'url' => self::absoluteUrl('/')],
+            ['name' => 'Docs', 'url' => self::absoluteUrl('/docs')],
+        ];
+
+        if ($slug !== 'index' && $slug !== 'getting-started/introduction') {
+            $parts = array_values(array_filter(explode('/', $slug)));
+            $accum = '';
+            foreach ($parts as $i => $part) {
+                $accum .= ($accum === '' ? '' : '/').$part;
+                $isLast = $i === count($parts) - 1;
+                $crumbs[] = [
+                    'name' => $isLast ? $title : Str::of($part)->replace('-', ' ')->title()->toString(),
+                    'url' => self::absoluteUrl('/docs/'.$accum),
+                ];
+            }
+        } elseif ($slug === 'getting-started/introduction') {
+            $crumbs[] = ['name' => $title, 'url' => self::absoluteUrl('/docs/getting-started/introduction')];
+        }
+
+        return $crumbs;
     }
 }

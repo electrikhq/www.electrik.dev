@@ -1,6 +1,7 @@
 <footer class="border-t border-border">
     <div class="mx-auto flex max-w-[1400px] flex-col items-center gap-6 px-4 py-10 text-center text-sm text-muted-foreground sm:px-6">
         <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <a href="{{ route('docs.show') }}" class="hover:text-foreground">Docs</a>
             <a href="{{ route('install') }}" class="hover:text-foreground">Install</a>
             <a href="{{ route('pricing') }}" class="hover:text-foreground">Pricing</a>
             <a href="{{ route('license') }}" class="hover:text-foreground">License</a>

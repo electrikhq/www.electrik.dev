@@ -16,11 +16,15 @@ Last updated: 2026-08-23
 
 ### Under-strip (not cards)
 
-Docs · License · GitHub
+Docs (`/docs`) · License · GitHub
 
 Also: homepage **studio CTA** + `/contact` for client project inquiries (Quick Brown Fox). Product stays the hero; hire-us is secondary.
 
 Config: `config/site.php` → `ecosystem` + `ecosystem_links` + `studio`.
+
+## Docs hub (shipped)
+
+Markdown docs under `resources/content/docs/` with Slate-like chrome (sidebar, TOC, search, `llms.txt`). Marketing `/install` remains the short quickstart; deep guides live under `/docs`.
 
 ## Hierarchy rules
 
@@ -60,8 +64,8 @@ Config: `config/site.php` → `ecosystem` + `ecosystem_links` + `studio`.
 
 ## Suggested future work
 
-- [ ] Keep homepage at 3 cards + under-strip
-- [ ] When docs grow past install, add a real Docs entry (still under-strip or `/docs`, not a card)
+- [x] Keep homepage at 3 cards + under-strip
+- [x] When docs grow past install, add a real Docs entry (still under-strip or `/docs`, not a card)
 - [ ] Add `/ecosystem` page when there are 5+ real pieces (cards + links + later items)
 - [ ] Ship Agent DX only after skill/`llms.txt` are useful for install + Slate
 - [ ] Mention Teamwork as a one-line “teams engine” on install/docs, not homepage hero row

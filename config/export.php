@@ -3,18 +3,14 @@
 return [
 
     /*
-     * If true, the exporter will crawl through your site's pages to determine
-     * the paths that need to be exported.
+     * Explicit path list — broken crawl links must not block deploys.
      */
-    'crawl' => true,
+    'crawl' => false,
 
     /*
-     * Add additional paths to be added to the export here. If you're using the
-     * `crawl` option, you probably don't need to add anything here.
-     *
-     * For example: "about", "posts/featured"
+     * Marketing pages + all markdown docs (see get_export_paths.php).
      */
-    'paths' => [],
+    'paths' => require __DIR__.'/../app/Helpers/get_export_paths.php',
 
     /*
      * Files and folders that should be included in the build. Expects
@@ -56,7 +52,8 @@ return [
      * You can skip these by adding a `--skip-{name}` flag to the command.
      */
     'before' => [
-        // 'assets' => '/usr/local/bin/yarn production',
+        'search' => 'php artisan search:build',
+        'llms' => 'php artisan llms:build',
     ],
 
     /*

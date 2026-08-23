@@ -1,23 +1,51 @@
 # Electrik
 
-> Laravel SaaS starter kit: auth, teams, Stripe billing, Slate 3 UI.
+> Electrik is a Laravel SaaS starter kit: authentication, teams, and Stripe billing as a Composer package (`electrik/electrik` 5.x). Built on Electrik Slate 3. Docs: https://electrik.dev/docs
 
-- Site: https://electrik.dev
-- Install: https://electrik.dev/install
-- License: https://electrik.dev/license
-- Pricing: https://electrik.dev/pricing
-- FAQ: https://electrik.dev/faq
-- GitHub: https://github.com/electrikhq/electrik
-- Packagist: https://packagist.org/packages/electrik/electrik
-- UI kit docs: https://slate.electrik.dev
-- Demo: https://demo.electrik.dev
+## Get started
 
-## Quick install
+- [Introduction](https://electrik.dev/docs/getting-started/introduction): What Electrik 5.x is.
+- [Quickstart](https://electrik.dev/docs/getting-started/quickstart): Fastest path to a running app.
+- [Installation](https://electrik.dev/docs/getting-started/installation): `electrik:install` deep dive.
+- [Architecture](https://electrik.dev/docs/getting-started/architecture): Package vs App, teams as tenant.
+- [Install page](https://electrik.dev/install): Marketing quickstart.
 
-composer require electrik/electrik:^5.0@alpha
-php artisan electrik:install
+## Core concepts
 
-## License summary
+- [Configuration](https://electrik.dev/docs/core-concepts/configuration): config/electrik.php and environment variables.
+- [Auth & security](https://electrik.dev/docs/core-concepts/auth-security): Login, registration, verification, 2FA, and sessions.
+- [Teams & invites](https://electrik.dev/docs/core-concepts/teams-invites): Create and switch teams, invite members, transfer ownership.
+- [Roles & permissions](https://electrik.dev/docs/core-concepts/roles-permissions): Spatie permissions with team context and the Electrik catalog.
+- [Billing](https://electrik.dev/docs/core-concepts/billing): Stripe via Cashier on the team, sync, webhooks, and billing UI.
+- [Plan features & seats](https://electrik.dev/docs/core-concepts/plan-features-seats): Gate features and member limits by Stripe price id.
+- [Onboarding](https://electrik.dev/docs/core-concepts/onboarding): First-run wizard, env toggle, and helper commands.
+- [Customization](https://electrik.dev/docs/core-concepts/customization): Override views carefully and lean on Slate for UI.
 
-BSL 1.1 with a free Additional Use Grant for personal, educational, open-source, and pre-revenue indie use.
-Commercial use by companies requires a separate commercial license. Full features in source for both lanes.
+## Guides & reference
+
+- [Local sandbox](https://electrik.dev/docs/guides/local-sandbox): Reset and run the Electrik sandbox app from the lab monorepo.
+- [Stripe test mode](https://electrik.dev/docs/guides/stripe-test-mode): Develop billing against Stripe test keys and the Stripe CLI.
+- [Feature gating](https://electrik.dev/docs/guides/feature-gating): Use plan_features to limit seats and capabilities.
+- [Upgrading alphas](https://electrik.dev/docs/guides/upgrading-alphas): How to move between Electrik 5.x alpha releases safely.
+- [Artisan commands](https://electrik.dev/docs/reference/artisan-commands): Electrik console commands reference.
+- [Routes & middleware](https://electrik.dev/docs/reference/routes-middleware): High-level route groups Electrik registers.
+- [Permissions catalog](https://electrik.dev/docs/reference/permissions-catalog): Default permission keys shipped in config/electrik.php.
+- [Changelog](https://electrik.dev/docs/reference/changelog): Where to find Electrik release notes.
+- [BSL Additional Use Grant](https://electrik.dev/docs/license/bsl): What the free BSL grant covers.
+- [Commercial license](https://electrik.dev/docs/license/commercial): When you need a commercial grant and how to buy.
+- [Slate UI](https://electrik.dev/docs/ecosystem/slate-ui): Electrik is built on Slate — UI docs live on slate.electrik.dev.
+- [Teamwork](https://electrik.dev/docs/ecosystem/teamwork): Electrik's teams engine is a Teamwork fork.
+- [Agent / llms.txt](https://electrik.dev/docs/ecosystem/agent-llms): Machine-readable docs for coding agents.
+
+## Related
+
+- [Slate UI docs](https://slate.electrik.dev): Blade components and tokens (do not re-host here).
+- [License](https://electrik.dev/license): BSL Additional Use Grant.
+- [Pricing](https://electrik.dev/pricing): Commercial tiers.
+- [GitHub](https://github.com/electrikhq/electrik)
+
+## Machine-readable
+
+- [llms.txt](https://electrik.dev/llms.txt): This index.
+- [llms-full.txt](https://electrik.dev/llms-full.txt): Index plus concatenated markdown docs.
+- Prefer `.md` URLs under `/docs/...md` when pasting into models.

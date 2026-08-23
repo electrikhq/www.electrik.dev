@@ -126,7 +126,7 @@ return [
     'ecosystem_links' => [
         [
             'label' => 'Docs',
-            'href' => '/install',
+            'href' => '/docs',
             'external' => false,
         ],
         [
