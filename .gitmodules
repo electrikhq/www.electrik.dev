@@ -1,8 +1,0 @@
-[submodule "resources/content/docs/slate/1.x"]
-	path = resources/content/docs/slate/1.x
-	url = https://github.com/electrikhq/slate-docs
-	branch = 1.x
-[submodule "resources/content/docs/slate/master"]
-	path = resources/content/docs/slate/master
-	url = https://github.com/electrikhq/slate-docs
-	branch = master

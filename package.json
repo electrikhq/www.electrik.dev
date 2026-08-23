@@ -6,21 +6,12 @@
         "build": "vite build && php artisan export"
     },
     "devDependencies": {
-        "@alpinejs/collapse": "^3.10.3",
-        "@tailwindcss/forms": "^0.5.2",
-        "@tailwindcss/typography": "^0.5.7",
+        "@tailwindcss/typography": "^0.5.16",
+        "@tailwindcss/vite": "^4.0.0",
         "alpinejs": "^3.14.1",
-        "auto-changelog": "^2.4.0",
-        "autoprefixer": "^10.4.2",
-        "axios": "^1.6.4",
-        "laravel-vite-plugin": "^1.0",
-        "postcss": "^8.4.6",
-        "tailwindcss": "^3.1.0",
-        "tippy.js": "^6.3.7",
-        "vite": "^5.0"
-    },
-    "dependencies": {
-        "prismjs": "^1.29.0",
-        "tailwind-safelist-generator": "^1.0.0"
+        "axios": "^1.8.0",
+        "laravel-vite-plugin": "^1.2",
+        "tailwindcss": "^4.0.0",
+        "vite": "^6.0"
     }
 }

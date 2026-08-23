@@ -1,0 +1,30 @@
+# backlink-pilot config for Electrik directory outreach (Track B3)
+# Run from repo root: backlink-pilot --config marketing/backlink-pilot.config.yaml --engine bb
+
+product:
+  name: Electrik
+  tagline: Laravel SaaS starter kit with teams, Stripe billing, and Slate 3 UI
+  url: https://electrik.dev
+  github: https://github.com/electrikhq/electrik
+  license: BSL 1.1 with free Additional Use Grant for indies
+
+copy:
+  short: |
+    Electrik is a Laravel SaaS starter kit as a Composer package: auth, teams,
+    Stripe billing on teams, onboarding, and Slate 3 components. Full features in
+    source with honest BSL dual licensing.
+  bullets:
+    - Auth, teams, roles, Stripe Cashier on teams
+    - Livewire 4 + Slate 3 UI kit
+    - Vendor package model, no copy-on-install
+    - Free grant for personal, OSS, and pre-revenue indie use
+  pricing_line: Free under the BSL grant for indies; commercial license for companies.
+
+assets:
+  logo: https://electrik.dev/images/electrik-mark.svg
+  og: https://electrik.dev/images/og-default.png
+
+limits:
+  submissions_per_day: 10
+  skip_paid: true
+  skip_dead: true

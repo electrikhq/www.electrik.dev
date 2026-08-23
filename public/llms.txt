@@ -1,0 +1,23 @@
+# Electrik
+
+> Laravel SaaS starter kit: auth, teams, Stripe billing, Slate 3 UI.
+
+- Site: https://electrik.dev
+- Install: https://electrik.dev/install
+- License: https://electrik.dev/license
+- Pricing: https://electrik.dev/pricing
+- FAQ: https://electrik.dev/faq
+- GitHub: https://github.com/electrikhq/electrik
+- Packagist: https://packagist.org/packages/electrik/electrik
+- UI kit docs: https://slate.electrik.dev
+- Demo: https://demo.electrik.dev
+
+## Quick install
+
+composer require electrik/electrik:^5.0@alpha
+php artisan electrik:install
+
+## License summary
+
+BSL 1.1 with a free Additional Use Grant for personal, educational, open-source, and pre-revenue indie use.
+Commercial use by companies requires a separate commercial license. Full features in source for both lanes.

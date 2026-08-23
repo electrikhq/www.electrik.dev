@@ -1,0 +1,29 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@import '../../vendor/electrik/slate/resources/css/slate.css';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme inline {
+    --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, monospace;
+}
+
+::selection {
+    background: var(--slate-foreground);
+    color: var(--slate-background);
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+.prose-site {
+    @apply prose prose-neutral dark:prose-invert max-w-none;
+}
+
+.prose-site :where(h2):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+    @apply scroll-mt-20;
+}

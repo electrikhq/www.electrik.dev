@@ -3,43 +3,46 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Spatie\Sitemap\SitemapGenerator;
+use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 
 class GenerateSitemap extends Command
 {
-    /**
-     * The console command name.
-     *
-     * @var string
-     */
     protected $signature = 'sitemap:generate';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Generate the sitemap with live URLs';
+    protected $description = 'Generate sitemap.xml with production URLs';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle() {
-        
-        // Generate the sitemap with localhost URLs and then modify them to point to the live site
-        SitemapGenerator::create(env('APP_LOCAL_URL'))
-            ->hasCrawled(function (Url $url) {
-                // Replace the localhost URL with the live URL
-                $url->setUrl(str_replace(env('APP_LOCAL_URL'), env('APP_PRODUCTION_URL'), $url->url));
+    public function handle(): int
+    {
+        $base = rtrim((string) (env('APP_PRODUCTION_URL') ?: config('app.url')), '/');
 
-                return $url;
-            })
-            ->writeToFile(base_path('dist/sitemap.xml'));
+        $paths = [
+            '/',
+            '/install',
+            '/license',
+            '/pricing',
+            '/faq',
+        ];
 
+        $sitemap = Sitemap::create();
 
-        $this->info('Sitemap generated successfully with live URLs!');
+        foreach ($paths as $path) {
+            $sitemap->add(
+                Url::create($base.$path)
+                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                    ->setPriority($path === '/' ? 1.0 : 0.8)
+            );
+        }
+
+        $destination = base_path('dist/sitemap.xml');
+        if (! is_dir(dirname($destination))) {
+            mkdir(dirname($destination), 0755, true);
+        }
+
+        $sitemap->writeToFile($destination);
+
+        $this->info('Sitemap written to dist/sitemap.xml');
+
+        return self::SUCCESS;
     }
 }

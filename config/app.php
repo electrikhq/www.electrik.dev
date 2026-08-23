@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
-    'tagline' => env('APP_TAGLINE', 'Tagline'),
+    'name' => env('APP_NAME', 'Electrik'),
+    'tagline' => env('APP_TAGLINE', 'Laravel SaaS starter kit'),
 
     /*
     |--------------------------------------------------------------------------

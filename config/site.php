@@ -1,0 +1,132 @@
+<?php
+
+return [
+
+    'name' => env('SITE_NAME', 'Electrik'),
+
+    'tagline' => env('SITE_TAGLINE', 'Laravel SaaS starter kit'),
+
+    'version' => env('ELECTRIK_VERSION', '5.0.0-alpha.14'),
+
+    'demo_url' => env('ELECTRIK_DEMO_URL', 'https://demo.electrik.dev'),
+
+    'github_url' => 'https://github.com/electrikhq/electrik',
+
+    'slate_url' => 'https://slate.electrik.dev',
+
+    'packagist_url' => 'https://packagist.org/packages/electrik/electrik',
+
+    'commercial_email' => env('ELECTRIK_COMMERCIAL_EMAIL', 'hello@neerajkumar.name'),
+
+    'twitter_handle' => '@electrikhq',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Commercial license tiers (BSL commercial lane)
+    |--------------------------------------------------------------------------
+    */
+
+    'commercial_tiers' => [
+        [
+            'name' => 'Solo',
+            'price' => 'Contact',
+            'summary' => 'One developer shipping one commercial product.',
+            'features' => [
+                'Commercial use for a single product',
+                'Full source, all features included',
+                'Email support during onboarding',
+            ],
+        ],
+        [
+            'name' => 'Studio',
+            'price' => 'Contact',
+            'summary' => 'Small teams and agencies with multiple client or internal products.',
+            'features' => [
+                'Unlimited projects for your studio',
+                'Priority support channel',
+                'License certificate for clients',
+            ],
+            'highlight' => true,
+        ],
+        [
+            'name' => 'Agency',
+            'price' => 'Contact',
+            'summary' => 'Agencies standardizing on Electrik for client delivery.',
+            'features' => [
+                'Organization-wide commercial rights',
+                'White-label friendly app shell',
+                'Volume pricing available',
+            ],
+        ],
+    ],
+
+    'features' => [
+        'Auth, email verification, password reset, remember me',
+        'Teams with invites, roles, and Spatie permissions',
+        'Stripe billing on the team (Cashier)',
+        'Onboarding wizard, notifications, activity log',
+        'Two-factor auth, API tokens, profile photos',
+        'Slate 3 UI: vendor package, no copy-on-install',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Ecosystem (marketing strip — Electrik stays the hero)
+    |--------------------------------------------------------------------------
+    */
+
+    'ecosystem' => [
+        [
+            'name' => 'Electrik',
+            'role' => 'SaaS starter kit',
+            'summary' => 'Auth, teams, Stripe billing, and onboarding as a Composer package. The product you install to ship.',
+            'href' => '/install',
+            'cta' => 'Install guide',
+            'external' => false,
+            'primary' => true,
+        ],
+        [
+            'name' => 'Slate',
+            'role' => 'UI kit for Laravel Blade',
+            'summary' => 'The design system Electrik is built on. Components, tokens, blocks, and themes you can reuse outside the kit.',
+            'href' => 'https://slate.electrik.dev',
+            'cta' => 'Slate docs',
+            'external' => true,
+            'primary' => false,
+        ],
+        [
+            'name' => 'Demo',
+            'role' => 'Live proof',
+            'summary' => 'A running Electrik app so you can click through teams, billing, and the Slate shell before you commit.',
+            'href' => 'https://demo.electrik.dev',
+            'cta' => 'Open demo',
+            'external' => true,
+            'primary' => false,
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Ecosystem under-links (not cards — keep homepage to three products)
+    |--------------------------------------------------------------------------
+    */
+
+    'ecosystem_links' => [
+        [
+            'label' => 'Docs',
+            'href' => '/install',
+            'external' => false,
+        ],
+        [
+            'label' => 'License',
+            'href' => '/license',
+            'external' => false,
+        ],
+        [
+            'label' => 'GitHub',
+            'href' => 'https://github.com/electrikhq/electrik',
+            'external' => true,
+        ],
+    ],
+
+];
