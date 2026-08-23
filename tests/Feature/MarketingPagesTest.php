@@ -20,6 +20,7 @@ class MarketingPagesTest extends TestCase
             ['/license'],
             ['/pricing'],
             ['/faq'],
+            ['/contact'],
         ];
     }
 

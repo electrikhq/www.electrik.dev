@@ -22,6 +22,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Studio / client work (Quick Brown Fox)
+    |--------------------------------------------------------------------------
+    */
+
+    'studio' => [
+        'name' => env('STUDIO_NAME', 'Quick Brown Fox'),
+        'url' => env('STUDIO_URL', 'https://quickbrownfox.io'),
+        'email' => env('STUDIO_EMAIL', 'neeraj@quickbrownfox.io'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Commercial license tiers (BSL commercial lane)
     |--------------------------------------------------------------------------
     */

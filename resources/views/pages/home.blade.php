@@ -1,7 +1,11 @@
 @extends('layouts.www')
 
 @section('content')
-<section class="px-4 pt-16 pb-12 sm:px-6 sm:pt-20 sm:pb-16">
+<section class="relative overflow-hidden px-4 pt-16 pb-12 sm:px-6 sm:pt-20 sm:pb-16">
+    <div
+        class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,color-mix(in_oklch,var(--slate-foreground)_8%,transparent),transparent)]"
+        aria-hidden="true"
+    ></div>
     <div class="mx-auto max-w-3xl text-center">
         <div class="mb-6 flex justify-center">
             <x-slate::badge variant="secondary">
@@ -31,6 +35,20 @@
             <x-slate::button as="a" variant="outline" href="{{ config('site.github_url') }}" target="_blank" rel="noopener noreferrer">
                 GitHub
             </x-slate::button>
+        </div>
+    </div>
+
+    <div class="mx-auto mt-12 max-w-5xl">
+        <div class="overflow-hidden rounded-xl border border-border bg-card shadow-xs">
+            <img
+                src="{{ asset('images/electrik-dashboard.png') }}"
+                alt="Electrik dashboard preview with sidebar, metrics, and team context"
+                width="1600"
+                height="900"
+                class="w-full"
+                fetchpriority="high"
+                decoding="async"
+            />
         </div>
     </div>
 </section>
@@ -131,10 +149,10 @@
         </div>
         <div class="overflow-hidden rounded-xl border border-border bg-card shadow-xs">
             <img
-                src="{{ asset('images/electrik-dashboard.png') }}"
-                alt="Electrik dashboard with team switcher and billing navigation"
-                width="1200"
-                height="750"
+                src="{{ asset('images/electrik-onboarding.png') }}"
+                alt="Electrik onboarding wizard to create a team"
+                width="1600"
+                height="900"
                 class="w-full"
                 loading="lazy"
                 decoding="async"
@@ -191,6 +209,24 @@
         </div>
         <div class="mt-8 text-center">
             <x-slate::button as="a" variant="outline" href="{{ route('faq') }}">All FAQs</x-slate::button>
+        </div>
+    </div>
+</section>
+
+<section class="border-t border-border bg-muted/30 px-4 py-16 sm:px-6">
+    <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-2xl font-semibold tracking-tight">Building something? We can help</h2>
+        <p class="mt-3 text-muted-foreground">
+            Electrik is built by {{ config('site.studio.name') }}, a Laravel product studio.
+            If you have a SaaS or Laravel project and want a team that already ships this stack, get in touch.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <x-slate::button as="a" href="{{ route('contact') }}">
+                Get in touch
+            </x-slate::button>
+            <x-slate::button as="a" variant="outline" href="mailto:{{ config('site.studio.email') }}?subject=Project%20inquiry">
+                Email us
+            </x-slate::button>
         </div>
     </div>
 </section>

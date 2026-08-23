@@ -22,6 +22,7 @@ class GenerateSitemap extends Command
             '/license',
             '/pricing',
             '/faq',
+            '/contact',
         ];
 
         $sitemap = Sitemap::create();

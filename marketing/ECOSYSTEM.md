@@ -18,7 +18,9 @@ Last updated: 2026-08-23
 
 Docs · License · GitHub
 
-Config: `config/site.php` → `ecosystem` + `ecosystem_links`.
+Also: homepage **studio CTA** + `/contact` for client project inquiries (Quick Brown Fox). Product stays the hero; hire-us is secondary.
+
+Config: `config/site.php` → `ecosystem` + `ecosystem_links` + `studio`.
 
 ## Hierarchy rules
 

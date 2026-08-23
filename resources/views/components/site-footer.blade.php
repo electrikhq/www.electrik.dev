@@ -5,15 +5,20 @@
             <a href="{{ route('pricing') }}" class="hover:text-foreground">Pricing</a>
             <a href="{{ route('license') }}" class="hover:text-foreground">License</a>
             <a href="{{ route('faq') }}" class="hover:text-foreground">FAQ</a>
+            <a href="{{ route('contact') }}" class="hover:text-foreground">Contact</a>
             <a href="{{ config('site.slate_url') }}" target="_blank" rel="noopener noreferrer" class="hover:text-foreground">Slate UI kit</a>
             <a href="{{ config('site.github_url') }}" target="_blank" rel="noopener noreferrer" class="hover:text-foreground">GitHub</a>
         </div>
 
         <p>
             Built by
-            <a href="https://neerajkumar.name" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:text-foreground">Neeraj Kumar</a>
-            and contributors. UI by
+            <a href="{{ config('site.studio.url') }}" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:text-foreground">{{ config('site.studio.name') }}</a>
+            /
+            <a href="https://neerajkumar.name" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:text-foreground">Neeraj Kumar</a>.
+            UI by
             <a href="{{ config('site.slate_url') }}" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:text-foreground">Slate</a>.
+            Need a team?
+            <a href="{{ route('contact') }}" class="underline underline-offset-4 hover:text-foreground">Get in touch</a>.
         </p>
 
         <div class="flex flex-wrap items-center justify-center gap-4">

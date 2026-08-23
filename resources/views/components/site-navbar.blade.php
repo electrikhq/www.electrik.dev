@@ -31,6 +31,9 @@
             <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('faq') }}" class="{{ $isActive('faq') }}">
                 FAQ
             </x-slate::button>
+            <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('contact') }}" class="{{ $isActive('contact') }}">
+                Contact
+            </x-slate::button>
             <x-slate::button as="a" variant="ghost" size="sm" href="{{ config('site.slate_url') }}" target="_blank" rel="noopener noreferrer">
                 Slate UI
             </x-slate::button>
