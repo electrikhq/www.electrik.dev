@@ -20,7 +20,9 @@ Optional: `APP_URL` (defaults to `https://electrik.dev`).
 1. `composer install` (Packagist Slate; `composer.local.json` removed on CI)
 2. `npm ci` + `vite build`
 3. Start Laravel, `php artisan export` → `dist/`
-4. `wrangler pages deploy dist` via `cloudflare/wrangler-action` (in Actions only)
+4. `wrangler pages deploy dist --branch=master` via `cloudflare/wrangler-action` (in Actions only)
+
+**Important:** Direct uploads from GitHub Actions must pass `--branch=master` to match the Pages production branch. Without it, Cloudflare treats the deploy as a preview (`*.pages.dev` URL only).
 
 ## After first successful run
 
