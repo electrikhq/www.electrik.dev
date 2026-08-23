@@ -1,0 +1,139 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-electrik-www
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, intl
+          coverage: none
+
+      - name: Use Packagist Slate (no path repo)
+        run: rm -f composer.local.json
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-interaction --optimize-autoloader --no-dev
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Create .env
+        env:
+          PRODUCTION_URL: ${{ secrets.APP_URL || 'https://electrik.dev' }}
+        run: |
+          printf '%s\n' \
+            'APP_NAME=Electrik' \
+            'APP_ENV=production' \
+            'APP_KEY=' \
+            'APP_DEBUG=false' \
+            'APP_URL=http://127.0.0.1:8000' \
+            'APP_LOCAL_URL=http://127.0.0.1:8000' \
+            "APP_PRODUCTION_URL=${PRODUCTION_URL}" \
+            'APP_TAGLINE=Laravel SaaS starter kit' \
+            'LOG_CHANNEL=stack' \
+            'LOG_LEVEL=error' \
+            'DB_CONNECTION=sqlite' \
+            'DB_DATABASE=database/database.sqlite' \
+            'CACHE_STORE=file' \
+            'SESSION_DRIVER=file' \
+            'QUEUE_CONNECTION=sync' \
+            > .env
+
+      - name: Generate application key
+        run: php artisan key:generate --force
+
+      - name: Prepare database
+        run: |
+          mkdir -p database
+          touch database/database.sqlite
+          php artisan migrate --force --no-interaction
+
+      - name: Build Vite assets
+        run: npx vite build
+
+      - name: Start Laravel for static export
+        run: |
+          php artisan serve --host=127.0.0.1 --port=8000 > /tmp/laravel-server.log 2>&1 &
+          echo $! > /tmp/laravel-server.pid
+          ready=0
+          for i in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:8000/ > /dev/null; then
+              echo "Server ready"
+              ready=1
+              break
+            fi
+            echo "Waiting for server ($i/20)..."
+            sleep 2
+          done
+          if [ "$ready" -ne 1 ]; then
+            echo "Server failed readiness check"
+            cat /tmp/laravel-server.log || true
+            exit 1
+          fi
+
+      - name: Export static site
+        run: php artisan export
+        env:
+          APP_URL: http://127.0.0.1:8000
+          APP_LOCAL_URL: http://127.0.0.1:8000
+          APP_PRODUCTION_URL: ${{ secrets.APP_URL || 'https://electrik.dev' }}
+
+      - name: Dump server log on failure
+        if: failure()
+        run: cat /tmp/laravel-server.log || true
+
+      - name: Stop Laravel server
+        if: always()
+        run: |
+          if [ -f /tmp/laravel-server.pid ]; then
+            kill "$(cat /tmp/laravel-server.pid)" 2>/dev/null || true
+            rm -f /tmp/laravel-server.pid
+          fi
+
+      - name: Verify dist output
+        run: |
+          test -f dist/index.html
+          ls -la dist | head -30
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME }}
+
+      - name: Summary
+        run: |
+          echo "Deployed dist/ to Cloudflare Pages project ${{ secrets.CLOUDFLARE_PROJECT_NAME }}"
+          echo "Production URL: ${{ secrets.APP_URL || 'https://electrik.dev' }}"

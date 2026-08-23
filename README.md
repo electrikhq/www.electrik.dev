@@ -36,6 +36,12 @@ npm run build
 
 Set `APP_PRODUCTION_URL=https://electrik.dev` before export so canonical URLs, sitemap, and OG tags point at production.
 
+## Deploy
+
+Push to `master` (or **Actions → Deploy to Cloudflare Pages → Run workflow**).
+
+GitHub Actions builds the static site and deploys to Cloudflare Pages. Secrets and details: [`.github/workflows/README.md`](.github/workflows/README.md).
+
 ## Pages
 
 | Path | Purpose |
@@ -45,11 +51,12 @@ Set `APP_PRODUCTION_URL=https://electrik.dev` before export so canonical URLs, s
 | `/license` | BSL dual licensing |
 | `/pricing` | Grant + commercial tiers |
 | `/faq` | FAQ with schema |
+| `/contact` | Studio / project inquiries |
 
 Legacy Slate doc URLs redirect to slate.electrik.dev.
 
 ## Remote
 
-GitHub: [electrikhq/www](https://github.com/electrikhq/www)
+GitHub: [electrikhq/www.electrik.dev](https://github.com/electrikhq/www.electrik.dev)
 
-Launch branch for 5.x rebuild: `launch/5x`.
+Work on **`master` only**.
