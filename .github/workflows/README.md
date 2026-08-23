@@ -10,11 +10,10 @@ Repo → **Settings → Secrets and variables → Actions**:
 |---|---|
 | `CLOUDFLARE_API_TOKEN` | Token with Cloudflare Pages Edit |
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account id |
-| `CLOUDFLARE_PROJECT_NAME` | Exact Pages project name (dashboard → Workers & Pages). Wrong name = `Project not found` (8000007). |
+
+Pages project name is hardcoded as `electrik` in the workflow.
 
 Optional: `APP_URL` (defaults to `https://electrik.dev`).
-
-If secrets are stale from 2024, open Cloudflare → **Workers & Pages**, copy the project name for electrik.dev, and update `CLOUDFLARE_PROJECT_NAME` in GitHub.
 
 ## What the workflow does
 

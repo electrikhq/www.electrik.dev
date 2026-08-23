@@ -131,9 +131,9 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
+          command: pages deploy dist --project-name=electrik --commit-dirty=true
 
       - name: Summary
         run: |
-          echo "Deployed dist/ to Cloudflare Pages project ${{ secrets.CLOUDFLARE_PROJECT_NAME }}"
+          echo "Deployed dist/ to Cloudflare Pages project electrik"
           echo "Production URL: ${{ secrets.APP_URL || 'https://electrik.dev' }}"
