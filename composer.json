@@ -27,6 +27,7 @@
         "files": [
             "app/Helpers/site.php",
             "app/Helpers/docs_page.php",
+            "app/Helpers/legal_page.php",
             "app/Helpers/generate_sidebar.php",
             "app/Helpers/generate_table_of_contents.php"
         ],

@@ -9,8 +9,12 @@ $paths = [
     'pricing',
     'faq',
     'contact',
-    'docs',
+    'legal',
 ];
+
+foreach (['privacy', 'terms', 'cookies', 'trademark', 'dmca'] as $legalSlug) {
+    $paths[] = 'legal/'.$legalSlug;
+}
 
 $docsPath = __DIR__.'/../../resources/content/docs';
 

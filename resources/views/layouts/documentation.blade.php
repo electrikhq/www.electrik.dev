@@ -120,6 +120,8 @@
                 @if(isset($lastModifiedDate))
                     Last updated <time datetime="{{ $lastModifiedDate->toAtomString() }}">{{ $lastModifiedDate->format('F j, Y') }}</time>.
                 @endif
+                <span class="mx-2">·</span>
+                <a href="{{ route('legal.index') }}" class="underline underline-offset-4 hover:text-foreground">Legal</a>
             </footer>
         </main>
 

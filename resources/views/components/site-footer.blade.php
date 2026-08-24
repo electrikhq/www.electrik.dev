@@ -7,6 +7,7 @@
             <a href="{{ route('license') }}" class="hover:text-foreground">License</a>
             <a href="{{ route('faq') }}" class="hover:text-foreground">FAQ</a>
             <a href="{{ route('contact') }}" class="hover:text-foreground">Contact</a>
+            <a href="{{ route('legal.index') }}" class="hover:text-foreground">Legal</a>
             <a href="{{ config('site.slate_url') }}" target="_blank" rel="noopener noreferrer" class="hover:text-foreground">Slate UI kit</a>
             <a href="{{ config('site.github_url') }}" target="_blank" rel="noopener noreferrer" class="hover:text-foreground">GitHub</a>
         </div>

@@ -113,6 +113,19 @@ Route::get('/pricing', fn () => view('pages.pricing'))->name('pricing');
 Route::get('/faq', fn () => view('pages.faq'))->name('faq');
 Route::get('/contact', fn () => view('pages.contact'))->name('contact');
 
+Route::get('/legal', fn () => view('pages.legal.index'))->name('legal.index');
+Route::get('/legal/{slug}', function (string $slug) {
+    if (! in_array($slug, legalDocumentSlugs(), true)) {
+        abort(404);
+    }
+
+    return view('pages.legal.show', [
+        'slug' => $slug,
+        'document' => parseLegalDocument($slug),
+        'siblings' => legalSiblingDocuments($slug),
+    ]);
+})->where('slug', '[a-z0-9-]+')->name('legal.show');
+
 Route::get('docs/{slug}.md', function (string $slug) {
     $filePath = resource_path("content/docs/{$slug}.md");
 
