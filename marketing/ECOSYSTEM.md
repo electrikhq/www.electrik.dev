@@ -2,7 +2,7 @@
 
 Working notes for www.electrik.dev marketing. Homepage keeps **three cards**; everything else is either an under-link or a later page.
 
-Last updated: 2026-08-23
+Last updated: 2026-08-24
 
 ## Live on homepage (now)
 
@@ -71,8 +71,9 @@ Markdown docs under `resources/content/docs/` with Slate-like chrome (sidebar, T
 - [ ] Mention Teamwork as a one-line “teams engine” on install/docs, not homepage hero row
 - [ ] Revisit fourth card only after commercial pricing is public and demo is reliable
 
-## Related
+## Directory outreach (B3 — ready to run)
 
-- Master plan Track B: marketing site, SEO, directories
-- Site config: `www.electrik.dev/config/site.php`
-- Directory outreach: `www.electrik.dev/marketing/backlink-pilot.config.yaml`
+Runbook: [`marketing/BACKLINK_RUNBOOK.md`](BACKLINK_RUNBOOK.md)  
+Config: [`marketing/backlink-pilot.config.yaml`](backlink-pilot.config.yaml) (mirrored to `~/lab/backlink-pilot/config.electrik.yaml`)
+
+Open a **new agent** on the backlink-pilot repo and point it at the runbook. Do not mix Slate (`config.slate.yaml`) with Electrik in the same session.

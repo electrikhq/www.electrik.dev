@@ -1,30 +1,67 @@
-# backlink-pilot config for Electrik directory outreach (Track B3)
-# Run from repo root: backlink-pilot --config marketing/backlink-pilot.config.yaml --engine bb
+# Canonical Electrik product config for backlink-pilot.
+# The runnable copy lives at:
+#   /Users/neerajsohal/lab/backlink-pilot/config.electrik.yaml
+#
+# New agent: follow marketing/BACKLINK_RUNBOOK.md
+#
+#   cd /Users/neerajsohal/lab/backlink-pilot
+#   node src/cli.js submit <url> --config config.electrik.yaml --engine bb
 
 product:
-  name: Electrik
-  tagline: Laravel SaaS starter kit with teams, Stripe billing, and Slate 3 UI
-  url: https://electrik.dev
-  github: https://github.com/electrikhq/electrik
-  license: BSL 1.1 with free Additional Use Grant for indies
+  name: "Electrik"
+  url: "https://electrik.dev"
+  description: "Laravel SaaS starter kit: auth, teams, and Stripe billing as a Composer package"
+  long_description: |
+    Electrik is a Laravel SaaS starter kit shipped as a Composer package (not
+    copy-on-install). It includes authentication, teams with invites and Spatie
+    permissions, Stripe billing via Cashier on the team, onboarding, 2FA, and a
+    Slate 3 UI shell. Full features ship in source under Business Source License
+    1.1 with a free Additional Use Grant for personal, educational, open-source,
+    and pre-revenue indie use. Commercial products need a commercial license.
+  email: "hello@neerajkumar.name"
+  categories:
+    - developer-tools
+    - saas
+  pricing: freemium
 
-copy:
-  short: |
-    Electrik is a Laravel SaaS starter kit as a Composer package: auth, teams,
-    Stripe billing on teams, onboarding, and Slate 3 components. Full features in
-    source with honest BSL dual licensing.
-  bullets:
-    - Auth, teams, roles, Stripe Cashier on teams
-    - Livewire 4 + Slate 3 UI kit
-    - Vendor package model, no copy-on-install
-    - Free grant for personal, OSS, and pre-revenue indie use
-  pricing_line: Free under the BSL grant for indies; commercial license for companies.
+  logo_url: "https://electrik.dev/images/electrik-mark.png"
+  github_url: "https://github.com/electrikhq/electrik"
+  twitter: "electrikhq"
+  features:
+    - "Auth, teams, roles, and Stripe Cashier on teams"
+    - "Livewire 4 + Electrik Slate 3 UI"
+    - "Vendor package model — code stays in the Electrik namespace"
+    - "BSL free grant for indies; commercial license for companies"
+    - "Docs + llms.txt for AI agents"
 
-assets:
-  logo: https://electrik.dev/images/electrik-mark.svg
-  og: https://electrik.dev/images/og-default.png
+credentials:
+  saashub:
+    email: ""
+    password: ""
+  uneed:
+    email: ""
+    password: ""
 
-limits:
-  submissions_per_day: 10
-  skip_paid: true
-  skip_dead: true
+utm:
+  enabled: true
+  base_url: "https://electrik.dev"
+  medium: "directory"
+  campaign: "backlink-electrik"
+
+indexnow:
+  key: ""
+
+browser:
+  engine: bb
+  headless: true
+  slow_mo: 100
+  timeout: 30000
+  screenshot_dir: "./screenshots/electrik"
+
+bb_browser:
+  auto_update: true
+  update_interval_hours: 24
+
+pacing:
+  min_interval_ms: 60000
+  same_site_interval_ms: 3600000
