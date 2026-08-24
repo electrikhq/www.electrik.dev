@@ -38,6 +38,7 @@ marketing/ops/browser.sh open about:blank
 | LinkedIn | https://www.linkedin.com/login | Optional — see BROWSER.md; company page not required for v1 |
 | Google (Gmail / GA / GSC) | https://accounts.google.com |
 | Search Console | https://search.google.com/search-console |
+| Mailchimp | https://login.mailchimp.com — legacy Electrik list (~200–300) |
 
 3. Verify sessions stick:
 
@@ -85,5 +86,6 @@ node src/cli.js submit ... --config config.electrik.yaml --engine bb
 | Problem | Fix |
 |---|---|
 | “Chrome not running” | `marketing/ops/browser.sh daemon start && marketing/ops/browser.sh open about:blank` |
+| “Chrome CDP reachable, daemon failed” | Keep using the Chrome already on port **9222**. Drive tabs via CDP (`http://127.0.0.1:9222/json`) until `bb-browser daemon` starts cleanly. Live logins may be in default `~/.bb-browser`, not the dedicated marketing profile. |
 | Logged out | Re-login in the marketing Chrome window only |
 | Wrong profile used | Check `echo $BB_BROWSER_HOME` points at `lab/electrik/.browser/electrik-marketing` |

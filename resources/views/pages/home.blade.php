@@ -202,6 +202,8 @@
 
 <x-product-hunt-review />
 
+<x-newsletter-subscribe />
+
 <section class="px-4 py-16 sm:px-6">
     <div class="mx-auto max-w-3xl">
         <h2 class="text-center text-2xl font-semibold tracking-tight">Common questions</h2>

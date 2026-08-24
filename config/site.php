@@ -141,4 +141,24 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Newsletter (Mailchimp embedded form — public IDs only, no API key)
+    |--------------------------------------------------------------------------
+    */
+
+    'newsletter' => [
+        'enabled' => env('MAILCHIMP_NEWSLETTER_ENABLED', true),
+        'action' => env(
+            'MAILCHIMP_SUBSCRIBE_ACTION',
+            'https://dev.us18.list-manage.com/subscribe/post'
+        ),
+        'user' => env('MAILCHIMP_FORM_USER', '064d5bcdb0689bfbb9cb29316'),
+        'list' => env('MAILCHIMP_LIST_ID', 'f8de632e28'),
+        'honeypot' => env(
+            'MAILCHIMP_FORM_HONEYPOT',
+            'b_064d5bcdb0689bfbb9cb29316_f8de632e28'
+        ),
+    ],
+
 ];

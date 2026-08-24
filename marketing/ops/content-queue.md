@@ -4,40 +4,15 @@ Ship one per week. Move done items to “Shipped”.
 
 ## Ready / next
 
-1. ~~**Composer package vs copy-on-install**~~ → drafted 2026-08-24 (see Drafts)
-2. **Teams + Stripe on the team** — docs deep-link + screenshot  
-3. **Install Loom (5–8 min)** — fresh Laravel → Electrik → login  
-4. **BSL grant vs commercial** — honest dual lane (links `/license` `/pricing`)  
-5. **Slate → Electrik** — UI kit fans into SaaS shell  
+1. **Teams + Stripe on the team** — docs deep-link + screenshot  
+2. **Install Loom (5–8 min)** — fresh Laravel → Electrik → login  
+3. **BSL grant vs commercial** — honest dual lane (links `/license` `/pricing`)  
+4. **Slate → Electrik** — UI kit fans into SaaS shell  
+5. **Laracasts / r/laravel** — Composer-package post (draft below; week 2)
 
 ## Drafts
 
-### X / Twitter (approve to post)
-
-```
-Electrik 5.x is a Laravel SaaS starter as a Composer package — not a copy-paste kit.
-
-Teams, Stripe billing on the team, Spatie permissions, Slate 3 UI. Full source.
-Free for indies under BSL; commercial license for agencies.
-
-Demo: https://demo.electrik.dev (demo@electrik.dev / password)
-Docs: https://electrik.dev/docs
-```
-
-### Product Hunt — listing fields (paste in PH admin)
-
-**Tagline:** Laravel SaaS starter kit with teams, Stripe billing, and Slate 3
-
-**Description:**
-```
-Electrik is a full-featured SaaS starter as a Composer package for Laravel 12. Auth, team workspaces, Stripe subscriptions (Cashier), Spatie permissions, onboarding, and a Slate 3 UI shell — without copy-on-install kits that drift from upstream.
-
-Docs → https://electrik.dev/docs · Demo → https://demo.electrik.dev · GitHub → https://github.com/electrikhq/electrik · UI kit → https://slate.electrik.dev
-```
-
-Current live title still shows **“Your Next Big SaaS starts here!”** — update needed.
-
-### Laracasts / r/laravel (longer — week 2 or approve now)
+### Laracasts / r/laravel (week 2)
 
 **Title:** Why we ship Electrik as a Composer package (Laravel 12 SaaS starter)
 
@@ -58,4 +33,7 @@ Happy to answer install questions.
 
 ## Shipped
 
-_(date — title — URL)_
+- 2026-08-24 — Mailchimp re-engagement (API) — campaign `0fb6a8a24a` → Electrik audience (207) — subject: Electrik is back — Laravel 12, Composer package
+- 2026-08-24 — Product Hunt listing fields (tagline + description + website) — https://www.producthunt.com/products/electrik
+- 2026-08-24 — X post (Composer package / 5.x) — https://x.com/electrikhq
+- 2026-08-24 — Future Tools directory submit — https://futuretools.io/submit-a-tool (pending review)

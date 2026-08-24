@@ -2,6 +2,43 @@
 
 Newest first. One short block per run.
 
+## 2026-08-24 — Mailchimp API + re-engagement sent
+
+- API key stored in local `www.electrik.dev/.env` (`MAILCHIMP_API_KEY`, gitignored). Helper: `marketing/ops/mailchimp.cjs`
+- Audience **Electrik** — 207 subscribers (`f8de632e28`)
+- Campaign **0fb6a8a24a** created + send triggered (subject: Electrik is back — Laravel 12, Composer package)
+- Prefer API over browser builder for future list mail
+
+## 2026-08-24 — Mailchimp list decision
+
+**Decision:** Re-engage the ~200–300 legacy Mailchimp subscribers. Highest-leverage warm channel we own.
+
+- One “we're back” email (copy in `content-queue.md`), then ≤1/month
+- Stay on Mailchimp; soft CTA; sunset non-openers after #1–2
+- Blocked only on Mailchimp login in marketing Chrome (or Neeraj paste-sends from queue)
+
+## 2026-08-24 — approve-all execution
+
+User: **approve all** (PH, X, directories day-1, GitHub cleanup).
+
+**Shipped live:**
+
+| Item | Result |
+|---|---|
+| Product Hunt | Tagline + description + website live — https://www.producthunt.com/products/electrik (SEO `<title>` still old) |
+| X `@electrikhq` | 5.x Composer-package post live (~08:48 UTC) |
+| Future Tools | Submitted — “Matt will review…” |
+| AI Valley | Form filled; CF7 server error — **not** accepted; retry next run |
+| GitHub | Default branch → `5.x`; description updated; closed #27, #26; commented #37 |
+
+**Left for user / next run:**
+
+- Delete two garbled same-day X posts (~08:07 / 08:11 UTC) if you want a clean timeline
+- Optional: pin the new 5.x tweet
+- Laracasts / r/laravel draft held for week 2 (not posted)
+- AI Valley retry
+- SES/Resend for outbound email
+
 ## 2026-08-24 — weekly run #1 (draft-first)
 
 **Browser:** daemon up, 7 tabs (GA, GSC, GitHub, PH, X, LinkedIn). PH opened — still shows 2022 tagline.
@@ -17,7 +54,7 @@ Newest first. One short block per run.
 | Directory submissions | 0 recorded (`submissions.electrik.yaml`) |
 | GA / GSC | logged in; numeric pull deferred to next run via browser |
 
-**Shipped this run:** nothing live (draft-first policy).
+**Shipped this run:** drafts only — execution in approve-all block above.
 
 **Drafts ready for approval:** PH listing fields, X post, Laracasts/r/laravel post — see `content-queue.md`.
 

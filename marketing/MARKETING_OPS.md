@@ -48,7 +48,24 @@ Make Electrik easy to discover and try for Laravel SaaS builders, then convert a
 | **Now → ~3 weeks** | `draft_first` — agent writes drafts in `ops/content-queue.md` or chat; user approves; then agent publishes via marketing browser |
 | **Later** | Flip `state.yaml` → `publish_policy: autopilot` when drafts consistently need zero edits |
 
-## Outbound email (when ready)
+## Outbound email
+
+### Mailchimp (legacy list — primary)
+
+~200–300 Electrik subscribers from prior years live on **Mailchimp**. Warmest owned channel.
+
+**Policy (locked 2026-08-24):**
+- Use the list: one re-engagement, then ≤1 email/month.
+- Stay on Mailchimp for broadcasts (do not migrate newsletters to SES).
+- Soft CTA only; no commercial hard sell on re-entry.
+- Sunset chronic non-openers after 1–2 sends.
+
+**API (preferred over browser):**
+- Key in local `www.electrik.dev/.env` → `MAILCHIMP_API_KEY` + `MAILCHIMP_SERVER_PREFIX` (never commit)
+- Helper: `node marketing/ops/mailchimp.cjs ping|lists|send-reengagement`
+- Audience id (Electrik): `f8de632e28` (us18)
+
+### Transactional (contact / app)
 
 Cloudflare routing **receives** at `hello@electrik.dev`; **sending** needs SMTP/API credentials in `.env` (never commit).
 
@@ -57,7 +74,7 @@ Cloudflare routing **receives** at `hello@electrik.dev`; **sending** needs SMTP/
 | **AWS SES** | Fine if you already have AWS; verify electrik.dev domain, IAM user with `ses:SendEmail` only |
 | **Resend** | Simpler Laravel setup; good default if no AWS preference |
 
-Agent will wire `MAIL_MAILER` once you paste keys into `.env` locally. Warm outreach stays draft-first until send is configured.
+Wire `MAIL_MAILER` once keys are in local `.env`. Separate from Mailchimp. Warm 1:1 outreach stays draft-first until send is configured.
 
 ## Browser (locked profile)
 

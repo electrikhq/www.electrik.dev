@@ -8,7 +8,9 @@ Last updated: 2026-08-24
 
 - [x] **GSC cleanup** — sitemaps resubmitted; redirect / `.md` rows validated in Search Console (2026-08-24)
 - [x] **Product Hunt** — Electrik + Slate listings live with founder reviews; site embeds + JSON-LD shipped
-- [x] **Demo reliability** — `demo.electrik.dev` on Electrik `5.0.0-alpha.14`; login via `demo@electrik.dev` / `password` (Stripe test keys still optional for billing UI)
+- [x] **Demo reliability** — `demo.electrik.dev` on Electrik 5.x; login `demo@electrik.dev` / `password`; Carbon icons + billing wired (Stripe test)
+- [x] **B3 directory outreach** — runbook/config ready; execution owned outside this chat (do not re-open here)
+- [x] **Content queue** — drafting/posting owned outside this chat (do not re-open here)
 
 ## Live on homepage (now)
 
@@ -40,29 +42,52 @@ Markdown docs under `resources/content/docs/` with Slate-like chrome (sidebar, T
 4. Do not grow the homepage card grid past three until there is a clear fourth that converts.
 5. Stack dependencies (Spatie, Cashier, Livewire) are “built on,” not ecosystem products.
 
-## Next candidates (ship later)
+## Active ops (this week)
 
-### Earn a fourth homepage card only if ready
-
-| Candidate | When | Notes |
+| Item | Status | Notes |
 |---|---|---|
-| **Docs hub** | Install + concepts pages exist beyond `/install` | Strengthens conversion; until then `/install` is enough |
-| **Agent DX** | Real Cursor skill + `llms.txt` story (MCP optional, post-v1) | Matches T3 agent-native bet; do not advertise half-baked |
-| **Commercial lane** | Pricing tiers finalized | Prefer pricing/license section, not a peer product card |
+| **Release `5.0.0-alpha.15`** | Done | Tagged + on Packagist; demo redeployed |
+| **Demo SSH secrets** | Done | `DEMO_SSH_*` on `demo.electrik.dev` |
+| **Demo dispatch token** | Still needed | `DEMO_DISPATCH_TOKEN` on `electrik` so tag pushes auto-dispatch |
+| **Demo SES email** | Blocked on valid AWS keys | Last keypair returned `InvalidClientTokenId` |
 
-### Better as `/ecosystem` or footer later
+## Next candidates (ship later) — plan
 
-- Changelog / roadmap (commercial buyer trust)
+Do these **after** release + secrets + (optional) SES. Order by leverage:
+
+### 1. Agent DX (convert “agent-native” talk into proof)
+
+- Ship a real Cursor skill for Electrik install + Slate component pick.
+- Keep `llms.txt` accurate on electrik.dev / slate.electrik.dev.
+- MCP optional; only after skill is useful.
+- Homepage: under-strip or docs callout first — **not** a fourth card until the skill works end-to-end.
+
+### 2. Commercial lane
+
+- Finalize indie BSL grant vs agency/commercial pricing on `/pricing` + `/license`.
+- Prefer pricing/license section over a peer product card.
+- Only then revisit a fourth homepage card.
+
+### 3. `/ecosystem` page
+
+- Add when there are 5+ real pieces (cards + links + later items).
+- Changelog / roadmap for commercial buyer trust.
+- Teamwork as one-line “teams engine,” not a hero peer.
+
+### 4. Package polish (post-alpha stability)
+
+- `electrik:make` generators, passkeys, GDPR exports — after API surface settles.
+- Starter templates only after alpha is stable.
+
+### Better as footer / later, not homepage cards
+
 - Theme / white-label pack (agency angle)
 - Integrations as they land (Socialite, Stripe Tax, Paddle, etc.)
 - Hosted demo tenants (“try billing without your Stripe keys”)
 - Case studies / “built with”
-- Electrik Teamwork fork — footnote as “teams engine,” not a peer of Electrik/Slate
-- Starter templates (blank SaaS, marketplace) — only after alpha is stable
 
 ### Explicit non-goals for ecosystem marketing
 
-- backlink-pilot / directory tooling
 - Ads, sponsor widgets, badges as “products”
 - Charge and unrelated lab apps
 - SubmitMap
@@ -83,10 +108,3 @@ Playbook: [`marketing/MARKETING_OPS.md`](MARKETING_OPS.md)
 State / log: `marketing/ops/`
 
 Cadence: **daily pulse** + **Wednesday weekly deep**. Invoke with “run marketing daily/weekly”.
-
-## Directory outreach (B3 — ready to run)
-
-Runbook: [`marketing/BACKLINK_RUNBOOK.md`](BACKLINK_RUNBOOK.md)  
-Config: [`marketing/backlink-pilot.config.yaml`](backlink-pilot.config.yaml) (mirrored to `~/lab/backlink-pilot/config.electrik.yaml`)
-
-Open a **new agent** on the backlink-pilot repo and point it at the runbook. Do not mix Slate (`config.slate.yaml`) with Electrik in the same session.

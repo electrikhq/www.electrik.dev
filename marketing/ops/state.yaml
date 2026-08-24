@@ -9,26 +9,29 @@ cadence:
 publish_policy: draft_first  # draft_first | autopilot
 
 focus:
-  this_week: "Approve + publish PH listing + X post; run directory day-1 (2 sites)"
-  next_artifact: "Publish approved X post; optional Laracasts thread"
+  this_week: "Mailchimp re-engagement sent via API (207). Next: Laracasts week 2 / Teams+Stripe content"
+  next_artifact: "Laracasts / r/laravel Composer-package post"
 
 blockers:
-  - "GitHub default branch still 4.x — confuses visitors"
-  - "Directory submits need user approval to run backlink-pilot live"
+  - "AI Valley CF7 submit failed server-side — retry next run"
+  - "Two garbled X posts from 2026-08-24 (~08:07/08:11 UTC) — delete manually if desired"
+  - "Transactional outbound still receive-only until SES/Resend; list mail stays on Mailchimp"
+  - "electrik.dev domain still needs Mailchimp authentication (sending from hello@ works; authenticate for better deliverability)"
 
 browser:
   profile_path: "/Users/neerajsohal/lab/electrik/.browser/electrik-marketing"
   wrapper: "www.electrik.dev/marketing/ops/browser.sh"
   env: "BB_BROWSER_HOME"
   logged_in: true
-  notes: "User logged in 2026-08-24 (GitHub, PH, X, Google/Gmail/GA/GSC). LinkedIn account yes, company page not created yet."
+  notes: "Live sessions are default ~/.bb-browser on CDP 9222 until dedicated-profile daemon works. User logged in 2026-08-24 (GitHub, PH, X, Google/Gmail/GA/GSC). LinkedIn company page deferred. Mailchimp via API key in local .env."
 
 access:
   github: ready
   product_hunt: ready
   twitter: ready
   linkedin: deferred_no_company_page
-  email_send: receive_only
+  email_send: receive_only   # transactional (contact forms) — SES/Resend later
+  mailchimp: ready           # API key in www.electrik.dev/.env (gitignored); helper marketing/ops/mailchimp.cjs
   analytics: ready
   search_console: ready
   backlink_pilot: ready
@@ -48,11 +51,8 @@ metrics_snapshot:
   slate_packagist_monthly: 31
   electrik_stars: 293
   electrik_forks: 22
-  directory_submissions: 0
-  notes: "Slate outpaces Electrik on Packagist. PH tagline still 2022. No outreach sent yet."
+  directory_submissions: 1
+  mailchimp_subscribers: 207
+  notes: "PH tagline live. X 5.x post live. Future Tools submitted. Default branch 5.x. Mailchimp re-engagement sending."
 
-pending_approval:
-  - product_hunt_listing_fields
-  - x_post_composer_package
-  - optional_laracasts_post
-  - directory_day1_futuretools_aivalley
+pending_approval: []

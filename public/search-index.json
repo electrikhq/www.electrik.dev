@@ -1,5 +1,5 @@
 {
-    "generatedAt": "2026-08-23T15:02:15+00:00",
+    "generatedAt": "2026-08-24T10:10:05+00:00",
     "documents": [
         {
             "id": "docs:core-concepts/auth-security",
@@ -103,7 +103,7 @@
             "description": "Seed a demo user, team, and sample data for local exploration.",
             "section": "Getting Started",
             "url": "/docs/getting-started/demo-seed",
-            "body": "Demo & seed demo Creates a demo account and team so you can click through auth, teams, and billing without hand assembling records. Use this after electrik:install and migrations . For Stripe backed billing UI, still set test keys and run electrik:stripe:sync . Public hosted demo when available : demo.electrik.dev https://demo.electrik.dev ."
+            "body": "Demo & seed demo Creates a demo account and team so you can click through auth, teams, and billing without hand assembling records. Use this after electrik:install and migrations . For Stripe backed billing UI, still set test keys and run electrik:stripe:sync . Public hosted demo: demo.electrik.dev https://demo.electrik.dev — demo@electrik.dev / password ."
         },
         {
             "id": "docs:getting-started/installation",
