@@ -35,7 +35,9 @@ Happy to answer install questions.
 
 ## Shipped
 
-- 2026-08-24 — Mailchimp re-engagement (API) — campaign `0fb6a8a24a` → Electrik audience (207) — subject: Electrik is back — Laravel 12, Composer package
+- 2026-08-24 — Slate→Electrik bridge (slate homepage CTA, docs, `/install` callout, READMEs) — pushed all repos
+- 2026-08-24 — GitHub Release `v5.0.0-alpha.15` + demoted ancient `0.0.13` — https://github.com/electrikhq/electrik/releases/tag/v5.0.0-alpha.15
+- 2026-08-24 — Mailchimp re-engagement (API) — campaign `0fb6a8a24a` → then **Mailchimp account blocked**; await Brevo
 - 2026-08-24 — Product Hunt listing fields (tagline + description + website) — https://www.producthunt.com/products/electrik
 - 2026-08-24 — X post (Composer package / 5.x) — https://x.com/electrikhq
 - 2026-08-24 — Future Tools directory submit — https://futuretools.io/submit-a-tool (pending review)
