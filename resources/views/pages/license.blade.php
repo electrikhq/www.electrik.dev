@@ -30,6 +30,9 @@
             <li>Open-source projects</li>
             <li>Independent, pre-revenue experimentation by individuals or small informal teams</li>
         </ul>
+        <p>
+            Install at <a href="{{ route('install') }}">electrik.dev/install</a>. Full feature surface — auth, teams, Stripe billing, Slate UI.
+        </p>
 
         <h2>Commercial license required</h2>
         <p>The grant does <strong>not</strong> cover:</p>
@@ -40,9 +43,17 @@
             <li>Any use as part of paid employment or professional services</li>
         </ul>
         <p>
-            For those cases, contact
+            Commercial tiers (Solo, Studio, Agency) are listed on
+            <a href="{{ route('pricing') }}">Pricing</a>.
+            Contact
             <a href="mailto:{{ config('site.commercial_email') }}">{{ config('site.commercial_email') }}</a>
-            for a commercial license.
+            for an invoice or Agency quote.
+        </p>
+
+        <h2>What this license does <em>not</em> cover</h2>
+        <p>
+            <strong>Electrik Slate</strong> (<code>electrik/slate</code>) and <strong>Slate Blocks</strong> (<code>electrik/slate-blocks</code>)
+            are MIT packages. You can use them outside Electrik under their own licenses. This BSL applies to the Electrik SaaS kit.
         </p>
 
         <h2>Change date</h2>

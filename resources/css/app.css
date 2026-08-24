@@ -2,6 +2,7 @@
 @plugin '@tailwindcss/typography';
 @import '../../vendor/electrik/slate/resources/css/slate.css';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/electrik/slate-blocks/resources/views/**/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';

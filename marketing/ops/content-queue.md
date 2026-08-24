@@ -4,10 +4,10 @@ Ship one per week. Move done items to “Shipped”.
 
 ## Ready / next
 
-1. **Teams + Stripe on the team** — docs deep-link + screenshot  
-2. **Install Loom (5–8 min)** — fresh Laravel → Electrik → login  
-3. **BSL grant vs commercial** — honest dual lane (links `/license` `/pricing`)  
-4. **Slate → Electrik** — UI kit fans into SaaS shell  
+1. **BSL grant vs commercial** — post Solo $249 / Studio $599 / Agency (links `/license` `/pricing`)  
+2. **Teams + Stripe on the team** — docs deep-link + screenshot  
+3. **Install Loom (5–8 min)** — fresh Laravel → Electrik → login  
+4. **Slate → Electrik** — UI kit + slate-blocks into SaaS shell  
 5. **Laracasts / r/laravel** — Composer-package post (draft below; week 2)
 
 ## Drafts
@@ -22,11 +22,13 @@ Most Laravel SaaS kits copy auth, billing, and teams into your `app/` folder. Yo
 
 Electrik 5.x stays in the `Electrik\` namespace: `composer require electrik/electrik`, `php artisan electrik:install`, customize via config and published views. Teams + Stripe Cashier on the team + Spatie permissions + Slate 3 UI.
 
-Still alpha (5.0.0-alpha.14) — APIs can move. But the model is intentional: package-first, not scaffold-and-fork.
+Still alpha (5.0.0-alpha.15) — APIs can move. But the model is intentional: package-first, not scaffold-and-fork.
 
 - Demo: https://demo.electrik.dev
 - Install: https://electrik.dev/install
+- Pricing: Grant $0 · Solo $249 · Studio $599 · Agency custom
 - License: BSL with a free indie grant; commercial for companies/agencies
+- UI: https://slate.electrik.dev (Slate + slate-blocks)
 
 Happy to answer install questions.
 ```

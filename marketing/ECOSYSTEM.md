@@ -50,6 +50,9 @@ Markdown docs under `resources/content/docs/` with Slate-like chrome (sidebar, T
 | **Demo SSH secrets** | Done | `DEMO_SSH_*` on `demo.electrik.dev` |
 | **Demo dispatch token** | Still needed | `DEMO_DISPATCH_TOKEN` on `electrik` so tag pushes auto-dispatch |
 | **Demo SES email** | Blocked on valid AWS keys | Last keypair returned `InvalidClientTokenId` |
+| **slate-blocks** | Shipped | GitHub `electrikhq/slate-blocks` · gallery + www FAQ/CTA/newsletter · deploys wired |
+| **Agent DX skill** | Shipped | `.cursor/skills/electrik-install` in electrik + www; Slate skill updated for blocks |
+| **Commercial prices** | Public | Solo $249 · Studio $599 · Agency custom on `/pricing` |
 
 ## Next candidates (ship later) — plan
 
@@ -57,16 +60,18 @@ Do these **after** release + secrets + (optional) SES. Order by leverage:
 
 ### 1. Agent DX (convert “agent-native” talk into proof)
 
-- Ship a real Cursor skill for Electrik install + Slate component pick.
+- [x] Ship a real Cursor skill for Electrik install + Slate component pick.
 - Keep `llms.txt` accurate on electrik.dev / slate.electrik.dev.
 - MCP optional; only after skill is useful.
 - Homepage: under-strip or docs callout first — **not** a fourth card until the skill works end-to-end.
+- Optional: publish Packagist for `electrik/slate-blocks` (sites already use GitHub VCS / path CI).
 
 ### 2. Commercial lane
 
-- Finalize indie BSL grant vs agency/commercial pricing on `/pricing` + `/license`.
+- [x] Finalize indie BSL grant vs agency/commercial pricing on `/pricing` + `/license`.
 - Prefer pricing/license section over a peer product card.
 - Only then revisit a fourth homepage card.
+- Next: Stripe Checkout or manual invoice flow for Solo/Studio.
 
 ### 3. `/ecosystem` page
 
@@ -98,7 +103,7 @@ Do these **after** release + secrets + (optional) SES. Order by leverage:
 - [x] Keep homepage at 3 cards + under-strip
 - [x] When docs grow past install, add a real Docs entry (still under-strip or `/docs`, not a card)
 - [ ] Add `/ecosystem` page when there are 5+ real pieces (cards + links + later items)
-- [ ] Ship Agent DX only after skill/`llms.txt` are useful for install + Slate
+- [x] Ship Agent DX only after skill/`llms.txt` are useful for install + Slate
 - [ ] Mention Teamwork as a one-line “teams engine” on install/docs, not homepage hero row
 - [ ] Revisit fourth card only after commercial pricing is public
 

@@ -41,7 +41,8 @@ return [
     'commercial_tiers' => [
         [
             'name' => 'Solo',
-            'price' => 'Contact',
+            'price' => '$249',
+            'period' => 'one-time',
             'summary' => 'One developer shipping one commercial product.',
             'features' => [
                 'Commercial use for a single product',
@@ -51,7 +52,8 @@ return [
         ],
         [
             'name' => 'Studio',
-            'price' => 'Contact',
+            'price' => '$599',
+            'period' => 'one-time',
             'summary' => 'Small teams and agencies with multiple client or internal products.',
             'features' => [
                 'Unlimited projects for your studio',
@@ -62,7 +64,8 @@ return [
         ],
         [
             'name' => 'Agency',
-            'price' => 'Contact',
+            'price' => 'Custom',
+            'period' => null,
             'summary' => 'Agencies standardizing on Electrik for client delivery.',
             'features' => [
                 'Organization-wide commercial rights',

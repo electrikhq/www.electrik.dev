@@ -190,7 +190,7 @@
                 </x-slate::card-header>
                 <x-slate::card-content>
                     <p class="text-3xl font-bold tracking-tight">Paid</p>
-                    <p class="mt-2 text-sm text-muted-foreground">Solo, studio, and agency tiers</p>
+                    <p class="mt-2 text-sm text-muted-foreground">Solo $249 · Studio $599 · Agency custom</p>
                 </x-slate::card-content>
             </x-slate::card>
         </div>
@@ -204,38 +204,19 @@
 
 <x-newsletter-subscribe />
 
-<section class="px-4 py-16 sm:px-6">
-    <div class="mx-auto max-w-3xl">
-        <h2 class="text-center text-2xl font-semibold tracking-tight">Common questions</h2>
-        <div class="mt-8 space-y-6">
-            @foreach (\App\Support\Seo::homepageFaqs() as $faq)
-                <div>
-                    <h3 class="text-base font-medium text-foreground">{{ $faq['question'] }}</h3>
-                    <p class="mt-2 text-sm leading-relaxed text-muted-foreground">{{ $faq['answer'] }}</p>
-                </div>
-            @endforeach
-        </div>
-        <div class="mt-8 text-center">
-            <x-slate::button as="a" variant="outline" href="{{ route('faq') }}">All FAQs</x-slate::button>
-        </div>
-    </div>
-</section>
+<x-slate-block::faq
+    title="Common questions"
+    :items="\App\Support\Seo::homepageFaqs()"
+    :footer-href="route('faq')"
+    footer-label="All FAQs"
+/>
 
-<section class="border-t border-border bg-muted/30 px-4 py-16 sm:px-6">
-    <div class="mx-auto max-w-2xl text-center">
-        <h2 class="text-2xl font-semibold tracking-tight">Building something? We can help</h2>
-        <p class="mt-3 text-muted-foreground">
-            Electrik is built by {{ config('site.studio.name') }}, a Laravel product studio.
-            If you have a SaaS or Laravel project and want a team that already ships this stack, get in touch.
-        </p>
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <x-slate::button as="a" href="{{ route('contact') }}">
-                Get in touch
-            </x-slate::button>
-            <x-slate::button as="a" variant="outline" href="mailto:{{ config('site.studio.email') }}?subject=Project%20inquiry">
-                Email us
-            </x-slate::button>
-        </div>
-    </div>
-</section>
+<x-slate-block::cta
+    title="Building something? We can help"
+    description="Electrik is built by {{ config('site.studio.name') }}, a Laravel product studio. If you have a SaaS or Laravel project and want a team that already ships this stack, get in touch."
+    :primary-href="route('contact')"
+    primary-label="Get in touch"
+    :secondary-href="'mailto:'.config('site.studio.email').'?subject=Project%20inquiry'"
+    secondary-label="Email us"
+/>
 @endsection

@@ -53,3 +53,17 @@ php artisan electrik:install --migrate --force
 | `ELECTRIK_HOME` | `/dashboard` | Post-login home |
 
 Full map: [Configuration](/docs/core-concepts/configuration).
+
+## Optional: Slate Blocks
+
+Curated marketing/app sections (`<x-slate-block::*>`):
+
+```bash
+composer require electrik/slate-blocks:^0.1@alpha
+```
+
+Add a Tailwind `@source` for `vendor/electrik/slate-blocks/resources/views/**/*.blade.php`. Gallery: [slate.electrik.dev/blocks](https://slate.electrik.dev/blocks).
+
+## Agents (Cursor)
+
+If you use Cursor, copy the **electrik-install** skill from the Electrik repo (`.cursor/skills/electrik-install`) into your project so agents install Composer packages and Blade components instead of inventing React/shadcn.

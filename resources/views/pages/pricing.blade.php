@@ -23,6 +23,25 @@
         </p>
     </div>
 
+    <div class="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
+        <div class="rounded-xl border border-border bg-muted/20 p-5">
+            <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Choose the Grant if</p>
+            <ul class="mt-3 space-y-2 text-sm text-foreground">
+                <li>Personal learning or side projects</li>
+                <li>Open-source</li>
+                <li>Pre-revenue indie experiments</li>
+            </ul>
+        </div>
+        <div class="rounded-xl border border-border bg-muted/20 p-5">
+            <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Need commercial if</p>
+            <ul class="mt-3 space-y-2 text-sm text-foreground">
+                <li>Company or legal entity shipping a product</li>
+                <li>Client, agency, or freelance delivery</li>
+                <li>Internal business tools or paid employment use</li>
+            </ul>
+        </div>
+    </div>
+
     <div class="mt-12 grid gap-6 lg:grid-cols-4">
         <x-slate::card class="lg:col-span-1 border-border/80">
             <x-slate::card-header>
@@ -55,7 +74,12 @@
                     <x-slate::card-description>{{ $tier['summary'] }}</x-slate::card-description>
                 </x-slate::card-header>
                 <x-slate::card-content class="space-y-4">
-                    <p class="text-4xl font-bold tracking-tight">{{ $tier['price'] }}</p>
+                    <p class="text-4xl font-bold tracking-tight">
+                        {{ $tier['price'] }}
+                        @if (! empty($tier['period']))
+                            <span class="text-sm font-normal text-muted-foreground">{{ $tier['period'] }}</span>
+                        @endif
+                    </p>
                     <ul class="space-y-2 text-sm text-muted-foreground">
                         @foreach ($tier['features'] as $feature)
                             <li>{{ $feature }}</li>
@@ -63,8 +87,13 @@
                     </ul>
                 </x-slate::card-content>
                 <x-slate::card-footer>
-                    <x-slate::button as="a" variant="{{ ! empty($tier['highlight']) ? 'default' : 'outline' }}" class="w-full" href="mailto:{{ config('site.commercial_email') }}?subject=Electrik%20{{ $tier['name'] }}%20license">
-                        Contact sales
+                    <x-slate::button
+                        as="a"
+                        variant="{{ ! empty($tier['highlight']) ? 'default' : 'outline' }}"
+                        class="w-full"
+                        href="mailto:{{ config('site.commercial_email') }}?subject=Electrik%20{{ $tier['name'] }}%20license"
+                    >
+                        {{ $tier['price'] === 'Custom' ? 'Contact sales' : 'Buy / invoice' }}
                     </x-slate::button>
                 </x-slate::card-footer>
             </x-slate::card>
@@ -72,6 +101,19 @@
     </div>
 
     <div class="prose-site mx-auto mt-16 max-w-3xl">
+        <h2>Which lane am I on?</h2>
+        <p>
+            Same codebase either way. The Additional Use Grant covers personal, educational, open-source, and pre-revenue indie use.
+            Companies, client work, and paid employment need a commercial license.
+            Read the full rules on the <a href="{{ route('license') }}">license page</a>.
+        </p>
+
+        <h2>Slate and blocks</h2>
+        <p>
+            <a href="{{ config('site.slate_url') }}" target="_blank" rel="noopener noreferrer">Electrik Slate</a>
+            and <code>electrik/slate-blocks</code> are separate <strong>MIT</strong> packages. This page prices Electrik (the SaaS kit), not the UI kit.
+        </p>
+
         <h2>How this compares</h2>
         <p>
             Spark charges per project for billing alone. SaaSykit and Larafast charge $199 to $299 once for the whole kit, with no free commercial lane.

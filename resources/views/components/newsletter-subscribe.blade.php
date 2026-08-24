@@ -57,26 +57,20 @@
             <p class="mt-2 min-h-5 text-left text-xs text-muted-foreground" x-cloak x-show="message" x-text="message"></p>
         </div>
     @else
-        <section id="newsletter" class="border-t border-border px-4 py-16 sm:px-6">
+        <x-slate-block::newsletter
+            id="newsletter"
+            title="Ship notes, not noise"
+            description="Occasional updates on Electrik releases, install tips, and Laravel SaaS shipping. Double opt-in — confirm from your inbox when you subscribe."
+        >
             <div
-                class="mx-auto max-w-2xl text-center"
                 x-data="electrikNewsletter({
                     action: @js($jsonAction),
                     user: @js($user),
                     list: @js($list),
                 })"
             >
-                <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Newsletter</p>
-                <h2 class="mt-3 text-2xl font-semibold tracking-tight text-foreground">
-                    Ship notes, not noise
-                </h2>
-                <p class="mx-auto mt-3 max-w-lg text-muted-foreground">
-                    Occasional updates on Electrik releases, install tips, and Laravel SaaS shipping.
-                    Double opt-in — confirm from your inbox when you subscribe.
-                </p>
-
                 <form
-                    class="mx-auto mt-8 flex w-full max-w-lg flex-col gap-3 sm:flex-row sm:items-stretch"
+                    class="flex w-full flex-col gap-3 sm:flex-row sm:items-stretch"
                     @submit.prevent="submit"
                 >
                     <label class="sr-only" for="newsletter-email">Email</label>
@@ -117,6 +111,6 @@
                     <a href="{{ route('legal.show', 'privacy') }}" class="underline underline-offset-4 hover:text-foreground">privacy</a>.
                 </p>
             </div>
-        </section>
+        </x-slate-block::newsletter>
     @endif
 @endif
