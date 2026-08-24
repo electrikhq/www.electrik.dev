@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
+Disallow: /*.md$
+
 Sitemap: https://electrik.dev/sitemap.xml

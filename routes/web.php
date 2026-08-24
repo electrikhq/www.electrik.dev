@@ -122,6 +122,7 @@ Route::get('docs/{slug}.md', function (string $slug) {
 
     return response(File::get($filePath), 200, [
         'Content-Type' => 'text/markdown; charset=utf-8',
+        'X-Robots-Tag' => 'noindex, follow',
     ]);
 })->where('slug', '.*')->name('docs.markdown');
 
