@@ -16,7 +16,7 @@ return [
 
     'packagist_url' => 'https://packagist.org/packages/electrik/electrik',
 
-    'commercial_email' => env('ELECTRIK_COMMERCIAL_EMAIL', 'hello@neerajkumar.name'),
+    'commercial_email' => env('ELECTRIK_COMMERCIAL_EMAIL', 'hello@electrik.dev'),
 
     'twitter_handle' => '@electrikhq',
 
@@ -29,7 +29,7 @@ return [
     'studio' => [
         'name' => env('STUDIO_NAME', 'Quick Brown Fox'),
         'url' => env('STUDIO_URL', 'https://quickbrownfox.io'),
-        'email' => env('STUDIO_EMAIL', 'neeraj@quickbrownfox.io'),
+        'email' => env('STUDIO_EMAIL', 'hello@electrik.dev'),
     ],
 
     /*

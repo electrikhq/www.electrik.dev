@@ -24,11 +24,17 @@ Ready-to-run brief for a **new agent window**. Product: **Electrik** (not Slate)
 
 ## First session (copy-paste)
 
+Uses the **Electrik marketing browser profile** (`BB_BROWSER_HOME`). See `www.electrik.dev/marketing/ops/BROWSER.md`.
+
 ```bash
+export BB_BROWSER_HOME="/Users/neerajsohal/lab/electrik/.browser/electrik-marketing"
 cd /Users/neerajsohal/lab/backlink-pilot
 npm install          # if needed
 npm install -g bb-browser   # if needed
-bb-browser open about:blank
+
+# Same profile as all marketing runs
+/Users/neerajsohal/lab/electrik/www.electrik.dev/marketing/ops/browser.sh daemon start
+/Users/neerajsohal/lab/electrik/www.electrik.dev/marketing/ops/browser.sh open about:blank
 
 # Verify config
 node src/cli.js status --config config.electrik.yaml
@@ -62,6 +68,6 @@ Drafts land under `drafts/` — open Issues manually; do not spam.
 - URL: https://electrik.dev  
 - GitHub: https://github.com/electrikhq/electrik  
 - Logo: https://electrik.dev/images/electrik-mark.png  
-- Email: hello@neerajkumar.name  
+- Email: hello@electrik.dev  
 - License: BSL 1.1 + free indie grant; commercial for companies  
 - Stack: Laravel 12, Livewire 4, Slate 3, Stripe Cashier on teams  

@@ -1,0 +1,49 @@
+# Mutable session state for the marketing agent. Update every run.
+
+cadence:
+  weekly_day: wednesday
+  mode: manual # manual | autopilot
+  last_daily: null
+  last_weekly: null
+
+publish_policy: draft_first  # draft_first | autopilot
+
+focus:
+  this_week: "Product Hunt listing refresh + backlink day-1 start + install trust"
+  next_artifact: "Loom or written post: Composer package vs Jetstream dump"
+
+blockers: []
+  # e.g. - "Marketing browser not logged in yet"
+
+browser:
+  profile_path: "/Users/neerajsohal/lab/electrik/.browser/electrik-marketing"
+  wrapper: "www.electrik.dev/marketing/ops/browser.sh"
+  env: "BB_BROWSER_HOME"
+  logged_in: true
+  notes: "User logged in 2026-08-24 (GitHub, PH, X, Google/Gmail/GA/GSC). LinkedIn account yes, company page not created yet."
+
+access:
+  github: ready
+  product_hunt: ready
+  twitter: ready
+  linkedin: deferred_no_company_page  # personal login OK; create company page when first weekly post ships
+  email_send: receive_only  # Cloudflare routing in; SES/Resend keys pending for outbound
+  analytics: ready
+  search_console: ready
+  backlink_pilot: ready
+
+analytics:
+  ga4:
+    account_id: "247243927"
+    property_id: "347307308"
+    home_url: "https://analytics.google.com/analytics/web/#/a247243927p347307308/reports/intelligenthome"
+  gsc:
+    property: "sc-domain:electrik.dev"
+    home_url: "https://search.google.com/search-console?resource_id=sc-domain%3Aelectrik.dev"
+
+metrics_snapshot:
+  as_of: null
+  electrik_packagist_monthly: null
+  slate_packagist_monthly: null
+  electrik_stars: null
+  notes: ""

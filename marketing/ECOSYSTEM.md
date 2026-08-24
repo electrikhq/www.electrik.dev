@@ -77,6 +77,13 @@ Markdown docs under `resources/content/docs/` with Slate-like chrome (sidebar, T
 - [ ] Mention Teamwork as a one-line “teams engine” on install/docs, not homepage hero row
 - [ ] Revisit fourth card only after commercial pricing is public
 
+## Marketing ops (agent-run)
+
+Playbook: [`marketing/MARKETING_OPS.md`](MARKETING_OPS.md)  
+State / log: `marketing/ops/`
+
+Cadence: **daily pulse** + **Wednesday weekly deep**. Invoke with “run marketing daily/weekly”.
+
 ## Directory outreach (B3 — ready to run)
 
 Runbook: [`marketing/BACKLINK_RUNBOOK.md`](BACKLINK_RUNBOOK.md)  
