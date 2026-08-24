@@ -42,17 +42,47 @@ Markdown docs under `resources/content/docs/` with Slate-like chrome (sidebar, T
 4. Do not grow the homepage card grid past three until there is a clear fourth that converts.
 5. Stack dependencies (Spatie, Cashier, Livewire) are “built on,” not ecosystem products.
 
-## Active ops (this week)
+## Locked 30-day plan (agent authority — 2026-08-24)
 
-| Item | Status | Notes |
-|---|---|---|
-| **Release `5.0.0-alpha.15`** | Done | Tagged + on Packagist; demo redeployed |
-| **Demo SSH secrets** | Done | `DEMO_SSH_*` on `demo.electrik.dev` |
-| **Demo dispatch token** | Still needed | `DEMO_DISPATCH_TOKEN` on `electrik` so tag pushes auto-dispatch |
-| **Demo SES email** | Blocked on valid AWS keys | Last keypair returned `InvalidClientTokenId` |
-| **slate-blocks** | Shipped | GitHub `electrikhq/slate-blocks` · gallery + www FAQ/CTA/newsletter · deploys wired |
-| **Agent DX skill** | Shipped | `.cursor/skills/electrik-install` in electrik + www; Slate skill updated for blocks |
-| **Commercial prices** | Public | Solo $249 · Studio $599 · Agency custom on `/pricing` |
+North star: **raise Electrik Packagist installs toward Slate** (today ~4/mo vs ~31/mo) and turn Mailchimp + demo into replies/licenses — not more vanity posts.
+
+### P0 — Convert (this week)
+
+1. [x] **Slate → Electrik bridge** — slate homepage CTA + docs/electrik; Electrik `/install` + docs intro; README one-liners (slate, electrik, slate-blocks)
+2. [x] **GitHub Releases** — `v5.0.0-alpha.15` published; ancient `0.0.13` / `v0.0.1` demoted to pre-release + deprecated notes
+3. [ ] **Pin** the live X 5.x tweet; delete garbled same-day posts — **blocked**: marketing Chrome CDP down (retry when browser up)
+4. [x] **Email list** — Mailchimp **blocked**. Await Brevo; no broadcasts until then.
+
+### P1 — Proof (next 1–2 weeks)
+
+5. **Laracasts + r/laravel** — ship the Composer-package draft (content-queue).
+6. **5–8 min install Loom** — fresh Laravel → Electrik → login; embed on `/install`.
+7. **Directory day-2** — retry AI Valley; 5 more Electrik-only directories via backlink-pilot.
+8. **Wire `DEMO_DISPATCH_TOKEN`** so Electrik tags auto-redeploy demo.
+
+### P2 — Money (when install is boring)
+
+9. **Stripe Checkout** for Solo $249 / Studio $599 (prices already public).
+10. **Valid SES (or Resend)** for demo transactional mail — last AWS keys failed.
+11. **List email #2** (~30 days, on **Brevo** once live) — Teams+Stripe or pricing story; then sunset non-openers.
+
+### Explicit defer
+
+- LinkedIn company page  
+- Fourth homepage card  
+- Ads / sponsor widgets  
+- Cold CTO lists  
+- MCP server (skill first is enough)  
+- `/ecosystem` page until 5+ real pieces feel solid  
+
+### Role split
+
+| Brand | Job |
+|---|---|
+| **Electrik** | Hero SaaS shell — all list mail, PH push, Packagist growth |
+| **Slate** | Top-of-funnel UI kit — feed Electrik, don’t compete with it |
+| **slate-blocks** | Proof of ecosystem depth — gallery + FAQ, not a third brand war |
+| **Demo** | Trust — always works on current alpha |
 
 ## Next candidates (ship later) — plan
 

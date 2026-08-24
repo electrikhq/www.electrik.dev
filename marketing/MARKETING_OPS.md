@@ -50,20 +50,9 @@ Make Electrik easy to discover and try for Laravel SaaS builders, then convert a
 
 ## Outbound email
 
-### Mailchimp (legacy list — primary)
+### Mailchimp (legacy list — DISABLED)
 
-~200–300 Electrik subscribers from prior years live on **Mailchimp**. Warmest owned channel.
-
-**Policy (locked 2026-08-24):**
-- Use the list: one re-engagement, then ≤1 email/month.
-- Stay on Mailchimp for broadcasts (do not migrate newsletters to SES).
-- Soft CTA only; no commercial hard sell on re-entry.
-- Sunset chronic non-openers after 1–2 sends.
-
-**API (preferred over browser):**
-- Key in local `www.electrik.dev/.env` → `MAILCHIMP_API_KEY` + `MAILCHIMP_SERVER_PREFIX` (never commit)
-- Helper: `node marketing/ops/mailchimp.cjs ping|lists|send-reengagement`
-- Audience id (Electrik): `f8de632e28` (us18)
+**2026-08-24:** Mailchimp **blocked the account**. Do **not** use Mailchimp for anything (API key, campaigns, browser). Await **Brevo** (or other) credentials from Neeraj; migrate list there before any further broadcast.
 
 ### Transactional (contact / app)
 

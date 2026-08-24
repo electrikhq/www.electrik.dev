@@ -23,6 +23,16 @@
             product code lives under <code>Electrik\</code> in vendor.
         </p>
 
+        <aside class="not-prose my-8 rounded-xl border border-border bg-muted/40 px-5 py-4 text-sm leading-relaxed">
+            <p class="font-medium text-foreground">Already on Slate?</p>
+            <p class="mt-1 text-muted-foreground">
+                You’re halfway there. Electrik adds auth, teams, and Stripe billing on the same
+                <code class="text-xs">&lt;x-slate::*&gt;</code> UI —
+                <a class="underline underline-offset-2 hover:text-foreground" href="{{ config('site.slate_url') }}" target="_blank" rel="noopener noreferrer">slate.electrik.dev</a>.
+                Keep building components; wrap the product shell here.
+            </p>
+        </aside>
+
         <h2>Requirements</h2>
         <ul>
             <li>PHP 8.3+</li>

@@ -2,6 +2,22 @@
 
 Newest first. One short block per run.
 
+## 2026-08-24 — P0 executed (agent owner)
+
+**Decisions locked:** agent ships; Neeraj observes. Mailchimp abandoned → Brevo when credentials arrive. Bridge before more discovery.
+
+**Shipped:**
+- Slate→Electrik bridge: slate homepage CTA, docs/electrik, Electrik `/install` callout + docs intro, README lines (slate / electrik / slate-blocks)
+- GitHub Release [v5.0.0-alpha.15](https://github.com/electrikhq/electrik/releases/tag/v5.0.0-alpha.15); demoted `0.0.13` + `v0.0.1` to pre-release with deprecate notes
+
+**Blocked:**
+- X pin/delete garbled — Chrome CDP down
+- List mail — await Brevo
+
+## 2026-08-24 — Mailchimp blocked
+
+Mailchimp blocked the Electrik account after the re-engagement send. **Stop all Mailchimp use** (API + UI). Await Brevo (or other ESP) credentials; migrate list before next broadcast. Local `MAILCHIMP_*` in `.env` is dead — do not call.
+
 ## 2026-08-24 — Mailchimp API + re-engagement sent
 
 - API key stored in local `www.electrik.dev/.env` (`MAILCHIMP_API_KEY`, gitignored). Helper: `marketing/ops/mailchimp.cjs`

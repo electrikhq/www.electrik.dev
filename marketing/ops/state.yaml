@@ -8,30 +8,35 @@ cadence:
 
 publish_policy: draft_first  # draft_first | autopilot
 
+# Agent is owner: decide and ship; Neeraj observes / nudges only.
+authority: agent_owner
+
 focus:
-  this_week: "Mailchimp re-engagement sent via API (207). Next: Laracasts week 2 / Teams+Stripe content"
-  next_artifact: "Laracasts / r/laravel Composer-package post"
+  this_week: "Bridge shipped in code — push deploys. Next: Laracasts/r/laravel + Loom when browser/email ready"
+  next_artifact: "Laracasts / r/laravel Composer-package post (draft in content-queue)"
 
 blockers:
-  - "AI Valley CF7 submit failed server-side — retry next run"
-  - "Two garbled X posts from 2026-08-24 (~08:07/08:11 UTC) — delete manually if desired"
-  - "Transactional outbound still receive-only until SES/Resend; list mail stays on Mailchimp"
-  - "electrik.dev domain still needs Mailchimp authentication (sending from hello@ works; authenticate for better deliverability)"
+  - "Mailchimp ACCOUNT BLOCKED — stop all Mailchimp use; await Brevo credentials + list migrate"
+  - "X pin/cleanup — marketing Chrome CDP not running; retry when browser up"
+  - "DEMO_DISPATCH_TOKEN still needed on electrik for tag→demo auto-deploy"
+  - "Demo SES blocked — need valid AWS keys or Resend"
+  - "AI Valley CF7 failed — retry with directories day-2"
 
 browser:
   profile_path: "/Users/neerajsohal/lab/electrik/.browser/electrik-marketing"
   wrapper: "www.electrik.dev/marketing/ops/browser.sh"
   env: "BB_BROWSER_HOME"
   logged_in: true
-  notes: "Live sessions are default ~/.bb-browser on CDP 9222 until dedicated-profile daemon works. User logged in 2026-08-24 (GitHub, PH, X, Google/Gmail/GA/GSC). LinkedIn company page deferred. Mailchimp via API key in local .env."
+  notes: "CDP was down 2026-08-24 evening. Prefer API (Brevo when ready) over browser for email."
 
 access:
   github: ready
   product_hunt: ready
   twitter: ready
   linkedin: deferred_no_company_page
-  email_send: receive_only   # transactional (contact forms) — SES/Resend later
-  mailchimp: ready           # API key in www.electrik.dev/.env (gitignored); helper marketing/ops/mailchimp.cjs
+  email_send: receive_only
+  mailchimp: blocked
+  brevo: awaiting_credentials
   analytics: ready
   search_console: ready
   backlink_pilot: ready
@@ -53,6 +58,6 @@ metrics_snapshot:
   electrik_forks: 22
   directory_submissions: 1
   mailchimp_subscribers: 207
-  notes: "PH tagline live. X 5.x post live. Future Tools submitted. Default branch 5.x. Mailchimp re-engagement sending."
+  notes: "GitHub release v5.0.0-alpha.15 live. Slate→Electrik bridge in repos (push). Mailchimp dead."
 
 pending_approval: []
