@@ -139,38 +139,140 @@ class Seo
     }
 
     /**
+     * @return array<string, mixed>
+     */
+    public static function productHuntConfig(): array
+    {
+        return config('product-hunt', []);
+    }
+
+    /**
+     * @return array<string, mixed>|null
+     */
+    public static function productHuntAggregateRating(): ?array
+    {
+        $ph = self::productHuntConfig();
+        $count = (int) ($ph['review_count'] ?? 0);
+        if ($count < 1) {
+            return null;
+        }
+
+        return [
+            '@type' => 'AggregateRating',
+            'ratingValue' => (string) ($ph['rating'] ?? '5'),
+            'reviewCount' => (string) $count,
+            'bestRating' => '5',
+            'worstRating' => '1',
+        ];
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    public static function productHuntReviewGraph(): array
+    {
+        $ph = self::productHuntConfig();
+        $review = $ph['review'] ?? [];
+        if ($review === []) {
+            return [];
+        }
+
+        $reviewsUrl = $ph['reviews_url'] ?? ($ph['url'] ?? null);
+        $rating = (string) ($ph['rating'] ?? '5');
+        $body = trim((string) ($review['body'] ?? ''));
+        if (! empty($review['improve'])) {
+            $body = trim($body."\n\nWhat needs improvement: ".$review['improve']);
+        }
+
+        $node = [
+            '@type' => 'Review',
+            '@id' => self::baseUrl().'/#product-hunt-review',
+            'itemReviewed' => ['@id' => self::baseUrl().'/#software'],
+            'author' => [
+                '@type' => 'Person',
+                'name' => $review['author'] ?? 'Founder',
+            ],
+            'reviewRating' => [
+                '@type' => 'Rating',
+                'ratingValue' => $rating,
+                'bestRating' => '5',
+                'worstRating' => '1',
+            ],
+            'reviewBody' => $body,
+            'publisher' => [
+                '@type' => 'Organization',
+                'name' => 'Product Hunt',
+                'url' => 'https://www.producthunt.com',
+            ],
+        ];
+
+        if (is_string($reviewsUrl) && $reviewsUrl !== '') {
+            $node['url'] = $reviewsUrl;
+        }
+
+        return [$node];
+    }
+
+    /**
      * @return list<array<string, mixed>>
      */
     public static function softwareApplicationGraph(): array
     {
-        return [
-            [
-                '@type' => 'SoftwareApplication',
-                '@id' => self::baseUrl().'/#software',
-                'name' => self::SITE_NAME,
-                'applicationCategory' => 'DeveloperApplication',
-                'operatingSystem' => 'Cross-platform',
-                'description' => self::DEFAULT_DESCRIPTION,
-                'url' => self::baseUrl().'/',
-                'downloadUrl' => self::PACKAGIST_URL,
-                'installUrl' => self::absoluteUrl('/install'),
-                'softwareVersion' => config('site.version', '5.0.0-alpha.14'),
-                'license' => self::absoluteUrl('/license'),
-                'author' => ['@id' => self::ORG_URL.'/#organization'],
-                'offers' => [
-                    [
-                        '@type' => 'Offer',
-                        'name' => 'Additional Use Grant',
-                        'price' => '0',
-                        'priceCurrency' => 'USD',
-                        'description' => 'Personal, educational, open-source, and pre-revenue indie use.',
-                    ],
-                ],
-                'codeRepository' => self::GITHUB_URL,
-                'programmingLanguage' => ['PHP', 'Blade', 'CSS', 'JavaScript'],
-                'keywords' => 'Laravel, SaaS, Livewire, Stripe, teams, billing, Slate, starter kit',
-            ],
+        $sameAs = [
+            self::GITHUB_URL,
+            self::PACKAGIST_URL,
+            self::SLATE_URL,
         ];
+
+        $productHuntUrl = self::productHuntProductUrl();
+        if ($productHuntUrl !== null) {
+            $sameAs[] = $productHuntUrl;
+        }
+
+        $application = [
+            '@type' => 'SoftwareApplication',
+            '@id' => self::baseUrl().'/#software',
+            'name' => self::SITE_NAME,
+            'applicationCategory' => 'DeveloperApplication',
+            'operatingSystem' => 'Cross-platform',
+            'description' => self::DEFAULT_DESCRIPTION,
+            'url' => self::baseUrl().'/',
+            'downloadUrl' => self::PACKAGIST_URL,
+            'installUrl' => self::absoluteUrl('/install'),
+            'softwareVersion' => config('site.version', '5.0.0-alpha.14'),
+            'license' => self::absoluteUrl('/license'),
+            'author' => ['@id' => self::ORG_URL.'/#organization'],
+            'offers' => [
+                [
+                    '@type' => 'Offer',
+                    'name' => 'Additional Use Grant',
+                    'price' => '0',
+                    'priceCurrency' => 'USD',
+                    'description' => 'Personal, educational, open-source, and pre-revenue indie use.',
+                ],
+            ],
+            'codeRepository' => self::GITHUB_URL,
+            'programmingLanguage' => ['PHP', 'Blade', 'CSS', 'JavaScript'],
+            'keywords' => 'Laravel, SaaS, Livewire, Stripe, teams, billing, Slate, starter kit',
+            'sameAs' => array_values(array_unique($sameAs)),
+        ];
+
+        $aggregateRating = self::productHuntAggregateRating();
+        if ($aggregateRating !== null) {
+            $application['aggregateRating'] = $aggregateRating;
+        }
+
+        return [$application];
+    }
+
+    public static function productHuntProductUrl(): ?string
+    {
+        $url = self::productHuntConfig()['url'] ?? null;
+        if (! is_string($url) || $url === '') {
+            return null;
+        }
+
+        return strtok($url, '?') ?: null;
     }
 
     /**

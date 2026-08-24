@@ -36,6 +36,10 @@
                 GitHub
             </x-slate::button>
         </div>
+
+        <div class="mt-10">
+            <x-product-hunt-badge />
+        </div>
     </div>
 
     <div class="mx-auto mt-12 max-w-5xl">
@@ -195,6 +199,8 @@
         </div>
     </div>
 </section>
+
+<x-product-hunt-review />
 
 <section class="px-4 py-16 sm:px-6">
     <div class="mx-auto max-w-3xl">

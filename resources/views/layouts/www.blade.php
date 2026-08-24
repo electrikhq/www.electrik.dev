@@ -13,6 +13,7 @@
             \App\Support\Seo::organizationGraph(),
             \App\Support\Seo::websiteGraph(),
             \App\Support\Seo::softwareApplicationGraph(),
+            \App\Support\Seo::productHuntReviewGraph(),
             \App\Support\Seo::breadcrumbGraph([
                 ['name' => 'Home', 'url' => siteCanonicalUrl('/')],
             ]),
