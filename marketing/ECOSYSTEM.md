@@ -4,6 +4,12 @@ Working notes for www.electrik.dev marketing. Homepage keeps **three cards**; ev
 
 Last updated: 2026-08-24
 
+## Done (do not re-open)
+
+- [x] **GSC cleanup** — sitemaps resubmitted; redirect / `.md` rows validated in Search Console (2026-08-24)
+- [x] **Product Hunt** — Electrik + Slate listings live with founder reviews; site embeds + JSON-LD shipped
+- [x] **Demo reliability** — `demo.electrik.dev` on Electrik `5.0.0-alpha.14`; login via `demo@electrik.dev` / `password` (Stripe test keys still optional for billing UI)
+
 ## Live on homepage (now)
 
 ### Product cards (max 3)
@@ -69,7 +75,7 @@ Markdown docs under `resources/content/docs/` with Slate-like chrome (sidebar, T
 - [ ] Add `/ecosystem` page when there are 5+ real pieces (cards + links + later items)
 - [ ] Ship Agent DX only after skill/`llms.txt` are useful for install + Slate
 - [ ] Mention Teamwork as a one-line “teams engine” on install/docs, not homepage hero row
-- [ ] Revisit fourth card only after commercial pricing is public and demo is reliable
+- [ ] Revisit fourth card only after commercial pricing is public
 
 ## Directory outreach (B3 — ready to run)
 

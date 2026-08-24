@@ -15,4 +15,4 @@ Creates a demo account and team so you can click through auth, teams, and billin
 
 Use this after `electrik:install` (and migrations). For Stripe-backed billing UI, still set test keys and run `electrik:stripe:sync`.
 
-Public hosted demo (when available): [demo.electrik.dev](https://demo.electrik.dev).
+Public hosted demo: [demo.electrik.dev](https://demo.electrik.dev) — `demo@electrik.dev` / `password`.
