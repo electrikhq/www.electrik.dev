@@ -155,7 +155,8 @@ return [
         'provider' => 'kit',
         'form_id' => env('KIT_FORM_ID'),
         'form_uid' => env('KIT_FORM_UID'),
-        // Live site is static (Cloudflare Pages) — embed uses form_uid only (no API key in browser).
+        // Live: Alpine form → Cloudflare Pages Function /newsletter/subscribe → Kit API.
+        // Kit's public embed JS URL currently 404s for this form; do not rely on embed.
     ],
 
 ];
