@@ -62,8 +62,8 @@ Mailchimp is **blocked** — do not use. Broadcasts + site newsletter use **Kit*
 **API:**
 - Key in local `www.electrik.dev/.env` → `KIT_API_KEY` (never commit)
 - Form: `KIT_FORM_ID=9841384` (“Newsletter site”), uid `5e39730e50`
+- Site signup: Kit **embed** (`KIT_FORM_UID`) on static Cloudflare Pages; optional `POST /newsletter/subscribe` only when Laravel is running locally
 - Helper: `node marketing/ops/kit.cjs ping|forms|tags|count`
-- Site signup: `POST /newsletter/subscribe` (server-side Kit; no key in browser)
 
 ### Transactional (contact / app)
 

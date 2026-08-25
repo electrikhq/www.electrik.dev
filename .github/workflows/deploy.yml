@@ -68,6 +68,9 @@ jobs:
             'CACHE_STORE=file' \
             'SESSION_DRIVER=file' \
             'QUEUE_CONNECTION=sync' \
+            'KIT_NEWSLETTER_ENABLED=true' \
+            'KIT_FORM_ID=9841384' \
+            'KIT_FORM_UID=5e39730e50' \
             > .env
 
       - name: Generate application key

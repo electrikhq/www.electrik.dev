@@ -155,6 +155,7 @@ return [
         'provider' => 'kit',
         'form_id' => env('KIT_FORM_ID'),
         'form_uid' => env('KIT_FORM_UID'),
+        // Live site is static (Cloudflare Pages) — embed uses form_uid only (no API key in browser).
     ],
 
 ];
