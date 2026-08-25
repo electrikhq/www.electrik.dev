@@ -50,9 +50,20 @@ Make Electrik easy to discover and try for Laravel SaaS builders, then convert a
 
 ## Outbound email
 
-### Mailchimp (legacy list — DISABLED)
+### Kit (list mail — primary as of 2026-08-25)
 
-**2026-08-24:** Mailchimp **blocked the account**. Do **not** use Mailchimp for anything (API key, campaigns, browser). Await **Brevo** (or other) credentials from Neeraj; migrate list there before any further broadcast.
+Mailchimp is **blocked** — do not use. Broadcasts + site newsletter use **Kit** (ConvertKit).
+
+**Policy:**
+- ≤1 broadcast / month after list is healthy on Kit
+- Soft CTA; no commercial hard sell on first Kit send
+- Import from Mailchimp if not already done (tags: Electrik, early-subscribers)
+
+**API:**
+- Key in local `www.electrik.dev/.env` → `KIT_API_KEY` (never commit)
+- Form: `KIT_FORM_ID=9841384` (“Newsletter site”), uid `5e39730e50`
+- Helper: `node marketing/ops/kit.cjs ping|forms|tags|count`
+- Site signup: `POST /newsletter/subscribe` (server-side Kit; no key in browser)
 
 ### Transactional (contact / app)
 

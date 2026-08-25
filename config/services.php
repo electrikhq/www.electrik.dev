@@ -39,4 +39,10 @@ return [
         'measurement_id' => env('GOOGLE_ANALYTICS_MEASUREMENT_ID'),
     ],
 
+    'kit' => [
+        'key' => env('KIT_API_KEY'),
+        'form_id' => env('KIT_FORM_ID'),
+        'form_uid' => env('KIT_FORM_UID'),
+    ],
+
 ];

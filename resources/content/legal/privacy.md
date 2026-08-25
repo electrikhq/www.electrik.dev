@@ -13,7 +13,7 @@ This Privacy Policy describes how **Electrik** ("we", "us") collects and uses in
 
 ## What we collect
 
-**Information you provide.** If you email us (for example about a commercial license, support, or studio inquiry), we receive your message, email address, and any details you choose to include. If you subscribe to our newsletter, we collect your email address through Mailchimp (double opt-in) so we can send occasional product updates; you can unsubscribe at any time.
+**Information you provide.** If you email us (for example about a commercial license, support, or studio inquiry), we receive your message, email address, and any details you choose to include. If you subscribe to our newsletter, we collect your email address through Kit (ConvertKit) so we can send occasional product updates; you can unsubscribe at any time.
 
 **Usage data.** We may use analytics (such as Google Analytics) to understand traffic to this site — for example pages viewed, approximate location, browser type, and referral source. See our [Cookie Policy](/legal/cookies/).
 

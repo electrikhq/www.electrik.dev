@@ -2,6 +2,15 @@
 
 Newest first. One short block per run.
 
+## 2026-08-25 — Kit replaces Mailchimp
+
+- API key in local `.env` (`KIT_API_KEY`). Helper: `marketing/ops/kit.cjs`
+- Form **Newsletter site** `9841384` / uid `5e39730e50`
+- Site newsletter → `POST /newsletter/subscribe` (server Kit), Mailchimp form disabled
+- Privacy copy → Kit
+- ~78 subscribers visible via API (import may still be incomplete vs old ~207)
+- Brevo plan cancelled — using Kit
+
 ## 2026-08-24 — P0 executed (agent owner)
 
 **Decisions locked:** agent ships; Neeraj observes. Mailchimp abandoned → Brevo when credentials arrive. Bridge before more discovery.

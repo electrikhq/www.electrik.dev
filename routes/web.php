@@ -1,11 +1,16 @@
 <?php
 
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
+
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'store'])
+    ->middleware('throttle:10,1')
+    ->name('newsletter.subscribe');
 
 function flattenSidebar(array $items, string $baseSlug = ''): array
 {

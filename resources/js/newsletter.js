@@ -1,11 +1,10 @@
 export function registerNewsletter(Alpine) {
     Alpine.data('electrikNewsletter', (config = {}) => ({
         email: '',
+        honeypot: '',
         status: 'idle',
         message: '',
         action: config.action || '',
-        user: config.user || '',
-        list: config.list || '',
 
         async submit() {
             const email = String(this.email || '').trim();
@@ -16,7 +15,7 @@ export function registerNewsletter(Alpine) {
                 return;
             }
 
-            if (! this.action || ! this.user || ! this.list) {
+            if (! this.action) {
                 this.status = 'error';
                 this.message = 'Newsletter is not configured.';
                 return;
@@ -26,69 +25,38 @@ export function registerNewsletter(Alpine) {
             this.message = '';
 
             try {
-                const data = await this.postJson(email);
+                const csrf = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+                const res = await fetch(this.action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Accept: 'application/json',
+                        'X-CSRF-TOKEN': csrf,
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                    body: JSON.stringify({
+                        email,
+                        company_website: this.honeypot,
+                    }),
+                });
 
-                if (data.result === 'success') {
+                const data = await res.json().catch(() => ({}));
+
+                if (res.ok && data.ok) {
                     this.status = 'success';
-                    this.message =
-                        this.stripHtml(data.msg) ||
-                        'Check your inbox to confirm your subscription.';
+                    this.message = data.message || 'You are on the list.';
                     return;
                 }
 
                 this.status = 'error';
                 this.message =
-                    this.stripHtml(data.msg) ||
+                    data.message ||
+                    data.errors?.email?.[0] ||
                     'Something went wrong. Try again in a moment.';
             } catch {
                 this.status = 'error';
-                this.message = 'Could not reach Mailchimp. Try again.';
+                this.message = 'Could not reach the newsletter service. Try again.';
             }
-        },
-
-        postJson(email) {
-            return new Promise((resolve, reject) => {
-                const callback = `mc_${Date.now()}_${Math.floor(Math.random() * 1e6)}`;
-                const params = new URLSearchParams({
-                    u: this.user,
-                    id: this.list,
-                    EMAIL: email,
-                    c: callback,
-                });
-
-                const script = document.createElement('script');
-                const cleanup = () => {
-                    script.remove();
-                    try {
-                        delete window[callback];
-                    } catch {
-                        window[callback] = undefined;
-                    }
-                };
-
-                window[callback] = (data) => {
-                    cleanup();
-                    resolve(data || {});
-                };
-
-                script.src = `${this.action}?${params.toString()}`;
-                script.onerror = () => {
-                    cleanup();
-                    reject(new Error('jsonp failed'));
-                };
-
-                document.body.appendChild(script);
-            });
-        },
-
-        stripHtml(value) {
-            if (! value) {
-                return '';
-            }
-
-            const el = document.createElement('div');
-            el.innerHTML = String(value);
-            return (el.textContent || el.innerText || '').trim();
         },
     }));
 }

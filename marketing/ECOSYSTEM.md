@@ -51,7 +51,7 @@ North star: **raise Electrik Packagist installs toward Slate** (today ~4/mo vs ~
 1. [x] **Slate → Electrik bridge** — slate homepage CTA + docs/electrik; Electrik `/install` + docs intro; README one-liners (slate, electrik, slate-blocks)
 2. [x] **GitHub Releases** — `v5.0.0-alpha.15` published; ancient `0.0.13` / `v0.0.1` demoted to pre-release + deprecated notes
 3. [ ] **Pin** the live X 5.x tweet; delete garbled same-day posts — **blocked**: marketing Chrome CDP down (retry when browser up)
-4. [x] **Email list** — Mailchimp **blocked**. Await Brevo; no broadcasts until then.
+4. [x] **Email list** — Mailchimp **blocked**. **Kit** wired (API + site newsletter). Finish import if count < prior list.
 
 ### P1 — Proof (next 1–2 weeks)
 

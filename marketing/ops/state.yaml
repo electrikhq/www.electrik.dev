@@ -12,11 +12,12 @@ publish_policy: draft_first  # draft_first | autopilot
 authority: agent_owner
 
 focus:
-  this_week: "Bridge shipped in code — push deploys. Next: Laracasts/r/laravel + Loom when browser/email ready"
+  this_week: "Kit wired (newsletter + API). Confirm Mailchimp import finished on Kit; then Laracasts draft"
   next_artifact: "Laracasts / r/laravel Composer-package post (draft in content-queue)"
 
 blockers:
-  - "Mailchimp ACCOUNT BLOCKED — stop all Mailchimp use; await Brevo credentials + list migrate"
+  - "Mailchimp ACCOUNT BLOCKED — do not use; list lives on Kit now"
+  - "Kit import may be incomplete (~78 subs vs ~207 Mailchimp) — finish import in Kit UI if needed"
   - "X pin/cleanup — marketing Chrome CDP not running; retry when browser up"
   - "DEMO_DISPATCH_TOKEN still needed on electrik for tag→demo auto-deploy"
   - "Demo SES blocked — need valid AWS keys or Resend"
@@ -27,7 +28,7 @@ browser:
   wrapper: "www.electrik.dev/marketing/ops/browser.sh"
   env: "BB_BROWSER_HOME"
   logged_in: true
-  notes: "CDP was down 2026-08-24 evening. Prefer API (Brevo when ready) over browser for email."
+  notes: "CDP was down 2026-08-24 evening. List mail via Kit API; site newsletter POST /newsletter/subscribe."
 
 access:
   github: ready
@@ -36,7 +37,8 @@ access:
   linkedin: deferred_no_company_page
   email_send: receive_only
   mailchimp: blocked
-  brevo: awaiting_credentials
+  brevo: skipped_using_kit
+  kit: ready
   analytics: ready
   search_console: ready
   backlink_pilot: ready
@@ -57,7 +59,8 @@ metrics_snapshot:
   electrik_stars: 293
   electrik_forks: 22
   directory_submissions: 1
-  mailchimp_subscribers: 207
-  notes: "GitHub release v5.0.0-alpha.15 live. Slate→Electrik bridge in repos (push). Mailchimp dead."
+  mailchimp_subscribers: 0
+  kit_subscribers: 78
+  notes: "Kit is ESP. Newsletter on Kit form 9841384. Import ~78 so far — check if full Mailchimp migrate done."
 
 pending_approval: []
