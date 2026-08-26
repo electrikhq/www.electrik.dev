@@ -9,16 +9,19 @@
     $electrik = Compare::electrik();
     $features = Compare::featureRows();
     $related = Compare::related($slug);
-    $faqs = $competitor['faqs'] ?? [];
+    $faqs = Compare::faqsFor($competitor);
 
-    $seoTitle = 'Electrik vs '.$name;
-    $seoDescription = 'Electrik vs '.$name.': feature matrix, licensing, billing, UI, and when to choose each Laravel SaaS option.';
+    $seoTitle = 'Electrik vs '.$name.' — '.$name.' alternative';
+    $seoDescription = 'Electrik as a '.$name.' alternative: feature matrix, licensing, billing, UI, and when to choose Electrik vs '.$name.'.';
     $seoUrl = Compare::urlFor($slug);
     $seoKeywords = [
+        strtolower($name).' alternative',
+        $slug.' alternative',
+        'best '.$slug.' alternative',
         'electrik vs '.strtolower($name),
         'electrik vs '.$slug,
+        'laravel saas starter alternative',
         'laravel saas starter comparison',
-        $name.' alternative',
         'electrik '.$slug,
     ];
 
@@ -61,7 +64,10 @@
             Alternatives
         </p>
         <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Electrik vs {{ $name }}</h1>
-        <p class="mt-4 text-lg text-muted-foreground text-pretty">
+        <p class="mt-3 text-base font-medium text-foreground">
+            A {{ $name }} alternative for Laravel SaaS teams that want package-first auth, teams, and Stripe.
+        </p>
+        <p class="mt-3 text-lg text-muted-foreground text-pretty">
             {{ $competitor['summary'] }}
         </p>
         <div class="mt-6 flex flex-wrap gap-3 text-sm text-muted-foreground">

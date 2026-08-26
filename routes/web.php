@@ -134,6 +134,14 @@ Route::get('/compare/electrik-vs-{slug}', function (string $slug) {
     return view('pages.compare.show', ['competitor' => $competitor]);
 })->whereIn('slug', \App\Support\Compare::slugs())->name('compare.show');
 
+foreach (\App\Support\Compare::slugs() as $compareSlug) {
+    Route::redirect(
+        '/compare/'.$compareSlug.'-alternative',
+        '/compare/electrik-vs-'.$compareSlug,
+        301
+    );
+}
+
 Route::get('/legal', fn () => view('pages.legal.index'))->name('legal.index');
 Route::get('/legal/{slug}', function (string $slug) {
     if (! in_array($slug, legalDocumentSlugs(), true)) {

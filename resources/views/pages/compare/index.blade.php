@@ -4,9 +4,16 @@
     use App\Support\Compare;
 
     $seoTitle = 'Electrik vs alternatives';
-    $seoDescription = 'Compare Electrik to Jetstream, Spark, Wave, SaaSykit, Larafast, and Filament — feature matrix, licensing, and when to choose each.';
+    $seoDescription = 'Compare Electrik to Jetstream, Spark, Wave, SaaSykit, Larafast, and Filament — Laravel SaaS starter alternatives with feature matrices and when to choose each.';
     $seoUrl = siteCanonicalUrl('/compare');
     $seoKeywords = [
+        'laravel saas starter alternative',
+        'jetstream alternative',
+        'spark alternative',
+        'saasykit alternative',
+        'larafast alternative',
+        'filament alternative',
+        'wave alternative',
         'electrik vs jetstream',
         'electrik vs spark',
         'laravel saas starter comparison',
@@ -26,7 +33,7 @@
         $itemList[] = [
             '@type' => 'ListItem',
             'position' => $position++,
-            'name' => 'Electrik vs '.$item['name'],
+            'name' => 'Electrik vs '.$item['name'].' ('.$item['name'].' alternative)',
             'url' => Compare::urlFor($slug),
         ];
     }
@@ -62,11 +69,11 @@
         aria-hidden="true"
     ></div>
     <div class="mx-auto max-w-3xl">
-        <p class="font-mono text-xs tracking-[0.18em] text-muted-foreground uppercase">Compare</p>
+        <p class="font-mono text-xs tracking-[0.18em] text-muted-foreground uppercase">Compare · Alternatives</p>
         <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Electrik vs alternatives</h1>
         <p class="mt-4 text-lg text-muted-foreground text-pretty">
-            Honest feature comparisons against Jetstream, Spark, Wave, SaaSykit, Larafast, and Filament —
-            including when you should pick <em>them</em>.
+            Looking for a Laravel SaaS starter alternative to Jetstream, Spark, Wave, SaaSykit, Larafast, or Filament?
+            Honest feature comparisons — including when you should pick <em>them</em>.
         </p>
     </div>
 </section>
@@ -85,13 +92,13 @@
                     href="{{ route('compare.show', $slug) }}"
                     class="group block border-t-2 border-border pt-5 transition hover:border-foreground"
                 >
-                    <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Electrik vs</p>
+                    <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Alternative to</p>
                     <h3 class="mt-2 text-xl font-semibold tracking-tight group-hover:underline group-hover:underline-offset-4">
                         {{ $item['name'] }}
                     </h3>
                     <p class="mt-2 text-sm leading-relaxed text-muted-foreground">{{ $item['summary'] }}</p>
                     <p class="mt-4 text-sm font-medium text-foreground">
-                        Read comparison
+                        Electrik vs {{ $item['name'] }}
                         <span aria-hidden="true" class="ms-1 transition group-hover:translate-x-0.5 inline-block">→</span>
                     </p>
                 </a>

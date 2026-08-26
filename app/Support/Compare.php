@@ -76,9 +76,55 @@ class Compare
         return 'compare/electrik-vs-'.$slug;
     }
 
+    public static function alternativePathFor(string $slug): string
+    {
+        return 'compare/'.$slug.'-alternative';
+    }
+
     public static function urlFor(string $slug): string
     {
         return siteCanonicalUrl('/'.self::pathFor($slug));
+    }
+
+    /**
+     * Cloudflare Pages + Laravel redirects: /compare/{slug}-alternative → canonical vs URL.
+     *
+     * @return list<array{from: string, to: string}>
+     */
+    public static function alternativeRedirects(): array
+    {
+        $redirects = [];
+
+        foreach (self::slugs() as $slug) {
+            $from = '/'.self::alternativePathFor($slug);
+            $to = '/'.self::pathFor($slug);
+            $redirects[] = ['from' => $from, 'to' => $to];
+            $redirects[] = ['from' => $from.'/', 'to' => $to.'/'];
+        }
+
+        return $redirects;
+    }
+
+    /**
+     * FAQ list with a leading “alternative” intent question.
+     *
+     * @param  array<string, mixed>  $competitor
+     * @return list<array{question: string, answer: string}>
+     */
+    public static function faqsFor(array $competitor): array
+    {
+        $name = (string) ($competitor['name'] ?? 'this kit');
+        $leading = [
+            [
+                'question' => 'Is Electrik a good '.$name.' alternative?',
+                'answer' => 'Yes, when you want a Composer-package SaaS shell (auth, teams, Stripe on the team, Slate UI) instead of '.$name.'’s model. Read the “Choose Electrik if / Choose '.$name.' if” sections on this page — '.$name.' is still the better pick for some teams.',
+            ],
+        ];
+
+        /** @var list<array{question: string, answer: string}> $existing */
+        $existing = $competitor['faqs'] ?? [];
+
+        return array_merge($leading, $existing);
     }
 
     /**

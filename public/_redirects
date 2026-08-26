@@ -1,3 +1,17 @@
 # SEO alias matching common “tailwind color scheme generator” search intent
 /tools/tailwindcss-color-scheme-generator /tools/tailwind-color-generator 301
 /tools/tailwindcss-color-scheme-generator/ /tools/tailwind-color-generator/ 301
+
+# Compare: “{kit} alternative” → canonical electrik-vs-{kit} pages
+/compare/jetstream-alternative /compare/electrik-vs-jetstream 301
+/compare/jetstream-alternative/ /compare/electrik-vs-jetstream/ 301
+/compare/spark-alternative /compare/electrik-vs-spark 301
+/compare/spark-alternative/ /compare/electrik-vs-spark/ 301
+/compare/wave-alternative /compare/electrik-vs-wave 301
+/compare/wave-alternative/ /compare/electrik-vs-wave/ 301
+/compare/saasykit-alternative /compare/electrik-vs-saasykit 301
+/compare/saasykit-alternative/ /compare/electrik-vs-saasykit/ 301
+/compare/larafast-alternative /compare/electrik-vs-larafast 301
+/compare/larafast-alternative/ /compare/electrik-vs-larafast/ 301
+/compare/filament-alternative /compare/electrik-vs-filament 301
+/compare/filament-alternative/ /compare/electrik-vs-filament/ 301

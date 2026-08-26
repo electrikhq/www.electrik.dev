@@ -122,7 +122,7 @@
         <p>
             Full feature matrices and “choose them if…” guidance:
             <a href="{{ route('compare.index') }}">Electrik vs alternatives</a>
-            (Jetstream, Spark, Wave, SaaSykit, Larafast, Filament).
+            — Jetstream, Spark, Wave, SaaSykit, Larafast, and Filament alternatives compared side by side.
         </p>
         <p>
             Stripe subscription pricing for <em>your</em> product is separate. Electrik helps you bill your customers; the license above is for using Electrik itself.
