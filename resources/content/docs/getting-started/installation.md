@@ -59,7 +59,7 @@ Full map: [Configuration](/docs/core-concepts/configuration).
 Curated marketing/app sections (`<x-slate-block::*>`):
 
 ```bash
-composer require electrik/slate-blocks:^0.1@alpha
+composer require electrik/slate-blocks:^0.1
 ```
 
 Add a Tailwind `@source` for `vendor/electrik/slate-blocks/resources/views/**/*.blade.php`. Gallery: [slate.electrik.dev/blocks](https://slate.electrik.dev/blocks).
