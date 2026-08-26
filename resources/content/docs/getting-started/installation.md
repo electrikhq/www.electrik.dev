@@ -10,7 +10,7 @@ sidebar_section: "Getting Started"
 ## Composer
 
 ```bash
-composer require electrik/electrik:^5.0@alpha
+composer require electrik/electrik:^5.0
 ```
 
 ## Artisan install

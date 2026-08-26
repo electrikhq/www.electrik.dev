@@ -239,7 +239,7 @@ class Seo
             'url' => self::baseUrl().'/',
             'downloadUrl' => self::PACKAGIST_URL,
             'installUrl' => self::absoluteUrl('/install'),
-            'softwareVersion' => config('site.version', '5.0.0-alpha.14'),
+            'softwareVersion' => config('site.version', '5.0.0'),
             'license' => self::absoluteUrl('/license'),
             'author' => ['@id' => self::ORG_URL.'/#organization'],
             'offers' => [

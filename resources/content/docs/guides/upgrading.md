@@ -1,15 +1,15 @@
 ---
-title: "Upgrading alphas"
-description: "How to move between Electrik 5.x alpha releases safely."
+title: "Upgrading"
+description: "How to upgrade Electrik 5.x and migrate from older lines."
 sidebar_order: 4
 sidebar_section: "Guides"
 ---
 
-# Upgrading alphas
+# Upgrading
 
-Electrik 5.x is **alpha**. Expect breaking changes between tags.
+Electrik `5.0.0` is the first stable release on the 5.x line.
 
-## Checklist
+## Checklist (5.x → newer 5.x)
 
 1. Read the package [CHANGELOG](https://github.com/electrikhq/electrik/blob/5.x/CHANGELOG.md)
 2. `composer update electrik/electrik electrik/slate`
@@ -18,7 +18,18 @@ Electrik 5.x is **alpha**. Expect breaking changes between tags.
 5. `php artisan electrik:stripe:sync` if billing models changed
 6. Diff `config/electrik.php` against the published stub (`electrik:install --force` only if you understand the overwrite)
 
-Pin a specific alpha in production experiments (`5.0.0-alpha.14`) rather than floating `@alpha` if you need reproducibility.
+Prefer a pinned version in production (`5.0.0`) or a caret range (`^5.0`) over historical `@alpha` constraints.
+
+## From 5.0.0-alpha.* → 5.0.0
+
+```bash
+composer require electrik/electrik:^5.0 electrik/slate:^3.0
+php artisan migrate
+php artisan electrik:permissions:sync --teams
+php artisan electrik:stripe:sync
+```
+
+Review the CHANGELOG entries between your alpha pin and `5.0.0` for any config or view overrides you published.
 
 ## 4.x → 5.x
 

@@ -13,8 +13,8 @@ description: >-
 
 | Piece | Package | Docs |
 |---|---|---|
-| SaaS kit | `electrik/electrik` ^5.0@alpha | https://electrik.dev/install · https://electrik.dev/docs |
-| UI kit | `electrik/slate` ^3.0@alpha | https://slate.electrik.dev |
+| SaaS kit | `electrik/electrik` ^5.0 | https://electrik.dev/install · https://electrik.dev/docs |
+| UI kit | `electrik/slate` ^3.0 | https://slate.electrik.dev |
 | Blocks | `electrik/slate-blocks` ^0.1@alpha | https://slate.electrik.dev/blocks |
 | Demo | — | https://demo.electrik.dev (`demo@electrik.dev` / `password`) |
 
@@ -31,26 +31,42 @@ License: Electrik is **BSL 1.1** (free Additional Use Grant for indies; commerci
 ## Install sequence
 
 ```bash
-composer require electrik/electrik:^5.0@alpha
+composer require electrik/electrik:^5.0
 php artisan electrik:install --migrate --force
 ```
 
-Optional blocks:
+Optional blocks (marketing / app sections):
 
 ```bash
 composer require electrik/slate-blocks:^0.1@alpha
 ```
 
+Tailwind (if not already wired by install):
+
+```css
+@import '../../vendor/electrik/slate/resources/css/slate.css';
+@source '../../vendor/electrik/slate/resources/views/**/*.blade.php';
+@source '../../vendor/electrik/slate-blocks/resources/views/**/*.blade.php';
+```
+
+## After install
+
+1. Set Stripe keys in `.env` (`STRIPE_KEY`, `STRIPE_SECRET`, `STRIPE_WEBHOOK_SECRET`).
+2. `php artisan storage:link` for avatars.
+3. Confirm teams + Spatie permission teams mode from `config/electrik.php`.
+4. Customize via config and published views — Electrik stays in `vendor`, not a forked scaffold.
+
 ## Picking UI
 
 | Need | Use |
 |---|---|
-| Button, dialog, form field | `<x-slate::…>` |
-| Hero, FAQ, CTA, login, app shell | `<x-slate-block::…>` |
-| Full page | slate.electrik.dev/examples |
+| Button, dialog, form field | `<x-slate::…>` — docs `/components/{slug}` |
+| Hero, FAQ, CTA, login card, app shell | `<x-slate-block::…>` — gallery `/blocks` |
+| Full page pattern | Examples on slate.electrik.dev/examples (compose blocks) |
 
 ## Don't
 
-- Generate React/shadcn for Blade apps.
-- Confuse license lanes with feature stripping.
-- Invent install CLIs that do not exist.
+- Generate `npx shadcn add` / React components for Electrik or Slate apps.
+- Strip billing/teams “for a free tier” — grant vs commercial is license, not features.
+- Treat slate-blocks as a Shadcnblocks-scale catalog; curated set only.
+- Invent Packagist versions — check https://packagist.org/packages/electrik/electrik and electrik/slate.

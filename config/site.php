@@ -6,7 +6,7 @@ return [
 
     'tagline' => env('SITE_TAGLINE', 'Laravel SaaS starter kit'),
 
-    'version' => env('ELECTRIK_VERSION', '5.0.0-alpha.14'),
+    'version' => env('ELECTRIK_VERSION', '5.0.0'),
 
     'demo_url' => env('ELECTRIK_DEMO_URL', 'https://demo.electrik.dev'),
 

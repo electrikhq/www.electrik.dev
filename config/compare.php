@@ -125,7 +125,7 @@ $competitors = [
             'You need a fully MIT stack with zero BSL considerations',
         ],
         'caveats' => [
-            'Electrik is still 5.x alpha — APIs can move; Jetstream is mature.',
+            'Jetstream is the longer-running official scaffold; Electrik 5.0.0 is newly stable as a package.',
             'Comparisons reflect publicly documented Jetstream features; stacks evolve.',
             '“Free commercial” for Jetstream means the scaffold license — not that billing is free to build.',
         ],
@@ -200,7 +200,7 @@ $competitors = [
         ],
         'caveats' => [
             'Spark editions and pricing change — verify current Spark Stripe terms on spark.laravel.com.',
-            'Electrik billing is Cashier-based and alpha; Spark is the more battle-tested billing UI.',
+            'Electrik billing is Cashier-based on the team; Spark remains Laravel’s dedicated billing product UI.',
             'You can use Cashier without Spark; Electrik and Spark are alternative productizations.',
         ],
         'faqs' => [
@@ -275,7 +275,7 @@ $competitors = [
         'caveats' => [
             'Wave’s feature set and licensing have shifted across versions — confirm current docs.',
             'This page compares product posture, not a line-by-line Wave changelog.',
-            'Electrik is alpha; Wave has a longer public track record as a starter brand.',
+            'Wave has a longer public track record as a starter brand; Electrik 5.0.0 is newly stable.',
         ],
         'faqs' => [
             [
@@ -349,7 +349,7 @@ $competitors = [
         'caveats' => [
             'SaaSykit pricing and features change — confirm on saasykit.com before buying either kit.',
             'This is a competitive comparison written by Electrik; read both demos.',
-            'Electrik is alpha; evaluate maturity against SaaSykit’s release cadence.',
+            'Evaluate Electrik 5.0.0 maturity and support against SaaSykit’s release cadence.',
         ],
         'faqs' => [
             [
@@ -423,7 +423,7 @@ $competitors = [
         'caveats' => [
             'Larafast pricing and modules change — verify on larafast.com.',
             'Competitive page written by Electrik; evaluate both products hands-on.',
-            'Alpha status on Electrik vs Larafast maturity is a real tradeoff.',
+            'Compare Electrik 5.0.0 maturity and support to Larafast’s release cadence.',
         ],
         'faqs' => [
             [

@@ -19,7 +19,7 @@ Short path for a fresh Laravel 12 app. For a longer walkthrough see [Installatio
 ## Install
 
 ```bash
-composer require electrik/electrik:^5.0@alpha
+composer require electrik/electrik:^5.0
 php artisan electrik:install --migrate
 ```
 

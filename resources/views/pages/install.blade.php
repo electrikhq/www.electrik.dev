@@ -39,12 +39,12 @@
             <li>Laravel 12+</li>
             <li>Livewire 4</li>
             <li>Tailwind CSS v4</li>
-            <li><code>electrik/slate</code> ^3.0@alpha</li>
+            <li><code>electrik/slate</code> ^3.0</li>
             <li>Stripe account (test mode is fine for local dev)</li>
         </ul>
 
         <h2>Quickstart</h2>
-        <pre><code class="language-bash">composer require electrik/electrik:^5.0@alpha
+        <pre><code class="language-bash">composer require electrik/electrik:^5.0
 php artisan electrik:install
 php artisan migrate
 npm install && npm run build

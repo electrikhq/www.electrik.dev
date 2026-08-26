@@ -24,11 +24,11 @@
             'items' => [
                 [
                     'question' => 'What are the requirements?',
-                    'answer' => 'PHP 8.3+, Laravel 12+, Livewire 4, Tailwind CSS v4, and electrik/slate ^3.0@alpha. Stripe keys are required for live billing; test keys work locally.',
+                    'answer' => 'PHP 8.3+, Laravel 12+, Livewire 4, Tailwind CSS v4, and electrik/slate ^3.0. Stripe keys are required for live billing; test keys work locally.',
                 ],
                 [
                     'question' => 'How do I install Electrik?',
-                    'answer' => 'Run composer require electrik/electrik:^5.0@alpha on a Laravel app, then php artisan electrik:install. See the install guide on electrik.dev for migrations, assets, and Stripe sync.',
+                    'answer' => 'Run composer require electrik/electrik:^5.0 on a Laravel app, then php artisan electrik:install. See the install guide on electrik.dev for migrations, assets, and Stripe sync.',
                 ],
                 [
                     'question' => 'Where is the UI documented?',

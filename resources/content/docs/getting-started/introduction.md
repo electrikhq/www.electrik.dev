@@ -9,7 +9,7 @@ sidebar_section: "Getting Started"
 
 Electrik is a **Laravel SaaS starter kit** shipped as a Composer package: authentication, teams, Stripe billing, onboarding, and account settings — under the `Electrik\` namespace, not copied into `App\`.
 
-> **Alpha.** APIs can change. Current package line: `5.0.0-alpha.15` on Laravel 12, Livewire 4, and [Electrik Slate](https://slate.electrik.dev) 3.
+> Current package line: `5.0.0` on Laravel 12, Livewire 4, and [Electrik Slate](https://slate.electrik.dev) 3.
 
 **Already on Slate?** Electrik is the SaaS shell around the same UI kit — auth, teams, Stripe on the team. [Install](/install) or try the [demo](https://demo.electrik.dev).
 
