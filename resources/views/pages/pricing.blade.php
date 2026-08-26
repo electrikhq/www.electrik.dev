@@ -120,6 +120,11 @@
             Jetstream is MIT but has no billing. Electrik targets indies at $0 under the grant while still shipping Spark-class billing and team scope in the base package.
         </p>
         <p>
+            Full feature matrices and “choose them if…” guidance:
+            <a href="{{ route('compare.index') }}">Electrik vs alternatives</a>
+            (Jetstream, Spark, Wave, SaaSykit, Larafast, Filament).
+        </p>
+        <p>
             Stripe subscription pricing for <em>your</em> product is separate. Electrik helps you bill your customers; the license above is for using Electrik itself.
         </p>
     </div>

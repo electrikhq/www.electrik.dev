@@ -123,6 +123,17 @@ Route::get('/tools/tailwind-color-generator', fn () => view('pages.tools.tailwin
     ->name('tools.tailwind-color-generator');
 Route::redirect('/tools/tailwindcss-color-scheme-generator', '/tools/tailwind-color-generator');
 
+Route::get('/compare', fn () => view('pages.compare.index'))->name('compare.index');
+Route::get('/compare/electrik-vs-{slug}', function (string $slug) {
+    $competitor = \App\Support\Compare::find($slug);
+
+    if ($competitor === null) {
+        abort(404);
+    }
+
+    return view('pages.compare.show', ['competitor' => $competitor]);
+})->whereIn('slug', \App\Support\Compare::slugs())->name('compare.show');
+
 Route::get('/legal', fn () => view('pages.legal.index'))->name('legal.index');
 Route::get('/legal/{slug}', function (string $slug) {
     if (! in_array($slug, legalDocumentSlugs(), true)) {

@@ -36,6 +36,9 @@
             <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('tools.index') }}" class="{{ $isActive('tools.*') }}">
                 Tools
             </x-slate::button>
+            <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('compare.index') }}" class="{{ $isActive('compare.*') }}">
+                Compare
+            </x-slate::button>
             <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('license') }}" class="{{ $isActive('license') }}">
                 License
             </x-slate::button>

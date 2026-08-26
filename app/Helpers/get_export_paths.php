@@ -12,10 +12,15 @@ $paths = [
     'legal',
     'tools',
     'tools/tailwind-color-generator',
+    'compare',
 ];
 
 foreach (['privacy', 'terms', 'cookies', 'trademark', 'dmca'] as $legalSlug) {
     $paths[] = 'legal/'.$legalSlug;
+}
+
+foreach (['jetstream', 'spark', 'wave', 'saasykit', 'larafast', 'filament'] as $compareSlug) {
+    $paths[] = 'compare/electrik-vs-'.$compareSlug;
 }
 
 $docsPath = __DIR__.'/../../resources/content/docs';
