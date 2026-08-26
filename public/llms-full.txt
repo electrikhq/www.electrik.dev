@@ -572,6 +572,20 @@ php artisan electrik:install --migrate --force
 
 Full map: [Configuration](/docs/core-concepts/configuration).
 
+## Optional: Slate Blocks
+
+Curated marketing/app sections (`<x-slate-block::*>`):
+
+```bash
+composer require electrik/slate-blocks:^0.1@alpha
+```
+
+Add a Tailwind `@source` for `vendor/electrik/slate-blocks/resources/views/**/*.blade.php`. Gallery: [slate.electrik.dev/blocks](https://slate.electrik.dev/blocks).
+
+## Agents (Cursor)
+
+If you use Cursor, copy the **electrik-install** skill from the Electrik repo (`.cursor/skills/electrik-install`) into your project so agents install Composer packages and Blade components instead of inventing React/shadcn.
+
 
 ---
 
@@ -588,7 +602,9 @@ sidebar_section: "Getting Started"
 
 Electrik is a **Laravel SaaS starter kit** shipped as a Composer package: authentication, teams, Stripe billing, onboarding, and account settings — under the `Electrik\` namespace, not copied into `App\`.
 
-> **Alpha.** APIs can change. Current package line: `5.0.0-alpha.14` on Laravel 12, Livewire 4, and [Electrik Slate](https://slate.electrik.dev) 3.
+> **Alpha.** APIs can change. Current package line: `5.0.0-alpha.15` on Laravel 12, Livewire 4, and [Electrik Slate](https://slate.electrik.dev) 3.
+
+**Already on Slate?** Electrik is the SaaS shell around the same UI kit — auth, teams, Stripe on the team. [Install](/install) or try the [demo](https://demo.electrik.dev).
 
 ## What you get
 

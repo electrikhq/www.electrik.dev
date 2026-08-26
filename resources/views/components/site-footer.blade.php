@@ -4,6 +4,7 @@
             <a href="{{ route('docs.show') }}" class="hover:text-foreground">Docs</a>
             <a href="{{ route('install') }}" class="hover:text-foreground">Install</a>
             <a href="{{ route('pricing') }}" class="hover:text-foreground">Pricing</a>
+            <a href="{{ route('tools.index') }}" class="hover:text-foreground">Tools</a>
             <a href="{{ route('license') }}" class="hover:text-foreground">License</a>
             <a href="{{ route('faq') }}" class="hover:text-foreground">FAQ</a>
             <a href="{{ route('contact') }}" class="hover:text-foreground">Contact</a>

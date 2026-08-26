@@ -118,6 +118,11 @@ Route::get('/pricing', fn () => view('pages.pricing'))->name('pricing');
 Route::get('/faq', fn () => view('pages.faq'))->name('faq');
 Route::get('/contact', fn () => view('pages.contact'))->name('contact');
 
+Route::get('/tools', fn () => view('pages.tools.index'))->name('tools.index');
+Route::get('/tools/tailwind-color-generator', fn () => view('pages.tools.tailwind-color-generator'))
+    ->name('tools.tailwind-color-generator');
+Route::redirect('/tools/tailwindcss-color-scheme-generator', '/tools/tailwind-color-generator');
+
 Route::get('/legal', fn () => view('pages.legal.index'))->name('legal.index');
 Route::get('/legal/{slug}', function (string $slug) {
     if (! in_array($slug, legalDocumentSlugs(), true)) {

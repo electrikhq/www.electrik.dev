@@ -10,6 +10,8 @@ $paths = [
     'faq',
     'contact',
     'legal',
+    'tools',
+    'tools/tailwind-color-generator',
 ];
 
 foreach (['privacy', 'terms', 'cookies', 'trademark', 'dmca'] as $legalSlug) {
