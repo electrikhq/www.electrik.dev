@@ -57,15 +57,21 @@
     </div>
 </section>
 
-<section class="border-y border-border bg-muted/30 px-4 py-14 sm:px-6">
-    <div class="mx-auto grid max-w-[1400px] gap-4 lg:grid-cols-3">
-        @foreach (config('site.features') as $feature)
-            <x-slate::card class="border-border/80 shadow-xs">
-                <x-slate::card-content class="pt-6">
-                    <p class="text-sm leading-relaxed text-foreground">{{ $feature }}</p>
-                </x-slate::card-content>
-            </x-slate::card>
-        @endforeach
+<section class="border-y border-border px-4 py-14 sm:px-6">
+    <div class="mx-auto max-w-[1400px]">
+        <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-2xl font-semibold tracking-tight">What’s in the package</h2>
+            <p class="mt-3 text-muted-foreground">
+                Full SaaS shell in Composer — not a feature-gated free tier.
+            </p>
+        </div>
+        <ul class="mx-auto mt-10 grid max-w-4xl gap-x-10 gap-y-0 sm:grid-cols-2">
+            @foreach (config('site.features') as $feature)
+                <li class="border-t border-border py-4 text-sm leading-relaxed text-foreground">
+                    {{ $feature }}
+                </li>
+            @endforeach
+        </ul>
     </div>
 </section>
 
