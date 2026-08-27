@@ -196,7 +196,7 @@
                 </x-slate::card-header>
                 <x-slate::card-content>
                     <p class="text-3xl font-bold tracking-tight">Paid</p>
-                    <p class="mt-2 text-sm text-muted-foreground">Solo $249 · Studio $599 · Agency custom</p>
+                    <p class="mt-2 text-sm text-muted-foreground">Solo $149 · Studio $399 · Agency custom</p>
                 </x-slate::card-content>
             </x-slate::card>
         </div>

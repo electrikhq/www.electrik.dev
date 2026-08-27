@@ -42,7 +42,7 @@ return [
         [
             'id' => 'solo',
             'name' => 'Solo',
-            'price' => '$249',
+            'price' => '$149',
             'period' => 'one-time',
             'summary' => 'One developer shipping one commercial product.',
             'features' => [
@@ -57,7 +57,7 @@ return [
         [
             'id' => 'studio',
             'name' => 'Studio',
-            'price' => '$599',
+            'price' => '$399',
             'period' => 'one-time',
             'summary' => 'Small teams and agencies with multiple client or internal products.',
             'features' => [

@@ -62,7 +62,7 @@ North star: **raise Electrik Packagist installs toward Slate** (today ~4/mo vs ~
 
 ### P2 — Money (when install is boring)
 
-9. [~] **Dodo Payment Links** for Solo $249 / Studio $599 — static link wiring + `/pricing/thanks` shipped; set `DODO_CHECKOUT_SOLO` / `DODO_CHECKOUT_STUDIO` in build secrets (see `marketing/ops/dodo-checkout-and-mail.md`). Stripe Payment Links retired for www (account risk).
+9. [~] **Dodo Payment Links** for Solo $149 / Studio $399 — static link wiring + `/pricing/thanks` shipped; set `DODO_CHECKOUT_SOLO` / `DODO_CHECKOUT_STUDIO` in build secrets (see `marketing/ops/dodo-checkout-and-mail.md`). Stripe Payment Links retired for www (account risk).
 9b. [~] **Commerce ledger** — Pages Functions + D1 webhook pipeline (`/api/commerce/*`); see `marketing/ops/commerce-worker.md` (D1 created; put webhook + SES secrets, point Dodo webhooks).
 10. [~] **SES on demo** — overlay abuse controls + SES env documented; put AWS keys + Turnstile in demo `shared/.env`, then redeploy demo.
 11. **List email #2** (~30 days, on **Brevo** once live) — Teams+Stripe or pricing story; then sunset non-openers.

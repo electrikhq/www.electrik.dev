@@ -5,7 +5,7 @@ Ship one per week. Move done items to “Shipped”.
 ## Ready / next
 
 1. **Electrik vs Jetstream (share)** — https://electrik.dev/compare/electrik-vs-jetstream  
-2. **BSL grant vs commercial** — post Solo $249 / Studio $599 / Agency (links `/license` `/pricing`)  
+2. **BSL grant vs commercial** — post Solo $149 / Studio $399 / Agency (links `/license` `/pricing`)  
 3. **Teams + Stripe on the team** — docs deep-link + screenshot  
 4. **Install Loom (5–8 min)** — fresh Laravel → Electrik → login  
 5. **Slate → Electrik** — UI kit + slate-blocks into SaaS shell  
@@ -40,7 +40,7 @@ Still alpha (5.0.0-alpha.15) — APIs can move. But the model is intentional: pa
 
 - Demo: https://demo.electrik.dev
 - Install: https://electrik.dev/install
-- Pricing: Grant $0 · Solo $249 · Studio $599 · Agency custom
+- Pricing: Grant $0 · Solo $149 · Studio $399 · Agency custom
 - License: BSL with a free indie grant; commercial for companies/agencies
 - UI: https://slate.electrik.dev (Slate + slate-blocks)
 

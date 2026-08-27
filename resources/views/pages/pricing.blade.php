@@ -128,8 +128,8 @@
 
         <h2>How this compares</h2>
         <p>
-            Spark charges per project for billing alone. SaaSykit and Larafast charge $199 to $299 once for the whole kit, with no free commercial lane.
-            Jetstream is MIT but has no billing. Electrik targets indies at $0 under the grant while still shipping Spark-class billing and team scope in the base package.
+            Spark charges per project for billing alone. SaaSykit and Larafast typically charge about $199–$299 once for the whole kit, with no free commercial lane.
+            Jetstream is MIT but has no billing. Electrik undercuts that band at Solo $149 / Studio $399, and keeps indies at $0 under the grant — with Spark-class billing and team scope in the base package.
         </p>
         <p>
             Full feature matrices and “choose them if…” guidance:

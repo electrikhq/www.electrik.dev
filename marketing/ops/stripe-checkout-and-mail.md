@@ -7,8 +7,8 @@ electrik.dev is statically exported, so commercial Checkout uses **Stripe Paymen
 ### Setup
 
 1. Stripe Dashboard → **Product catalog** → create one-time products:
-   - Electrik Solo — $249
-   - Electrik Studio — $599
+   - Electrik Solo — $149
+   - Electrik Studio — $399
 2. **Payment links** → create a link per product.
 3. After payment, set redirect to:
    - Solo: `https://electrik.dev/pricing/thanks?tier=solo`

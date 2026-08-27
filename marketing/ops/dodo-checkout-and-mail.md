@@ -37,8 +37,8 @@ Decline card for negative path: `4000 0000 0000 0002`.
 
 | Tier | Product ID | Price |
 |---|---|---|
-| Solo | `pdt_0NmHrYX3IcvoaxjhR91WX` | $249 |
-| Studio | `pdt_0NmHrYaV3qDKofAXKLivl` | $599 |
+| Solo | `pdt_0NmHrYX3IcvoaxjhR91WX` | $149 |
+| Studio | `pdt_0NmHrYaV3qDKofAXKLivl` | $399 |
 
 Static link form:
 
