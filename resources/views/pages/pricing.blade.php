@@ -102,7 +102,8 @@
                         variant="{{ ! empty($tier['highlight']) ? 'default' : 'outline' }}"
                         class="w-full"
                         href="{{ $ctaHref }}"
-                        @if (filled($checkoutUrl)) target="_blank" rel="noopener noreferrer" @endif
+                        :target="filled($checkoutUrl) ? '_blank' : null"
+                        :rel="filled($checkoutUrl) ? 'noopener noreferrer' : null"
                     >
                         {{ $ctaLabel }}
                     </x-slate::button>
