@@ -206,6 +206,20 @@
     </div>
 </section>
 
+<section class="border-t border-border px-4 py-16 sm:px-6">
+    <div class="mx-auto max-w-3xl text-center">
+        <h2 class="text-2xl font-semibold tracking-tight">Electrik vs Jetstream, Spark, and peers</h2>
+        <p class="mt-3 text-muted-foreground">
+            Honest matrices: package vs scaffold, team billing, UI kit, and when the other product is the better fit.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <x-slate::button as="a" href="{{ route('compare.show', ['slug' => 'jetstream']) }}">vs Jetstream</x-slate::button>
+            <x-slate::button as="a" variant="outline" href="{{ route('compare.show', ['slug' => 'spark']) }}">vs Spark</x-slate::button>
+            <x-slate::button as="a" variant="ghost" href="{{ route('compare.index') }}">All comparisons</x-slate::button>
+        </div>
+    </div>
+</section>
+
 <x-product-hunt-review />
 
 <x-newsletter-subscribe />

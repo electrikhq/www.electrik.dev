@@ -115,6 +115,7 @@ Route::get('/', fn () => view('pages.home'))->name('home');
 Route::get('/install', fn () => view('pages.install'))->name('install');
 Route::get('/license', fn () => view('pages.license'))->name('license');
 Route::get('/pricing', fn () => view('pages.pricing'))->name('pricing');
+Route::get('/pricing/thanks', fn () => view('pages.pricing-thanks'))->name('pricing.thanks');
 Route::get('/faq', fn () => view('pages.faq'))->name('faq');
 Route::get('/contact', fn () => view('pages.contact'))->name('contact');
 

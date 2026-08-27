@@ -12,7 +12,8 @@
     $faqs = Compare::faqsFor($competitor);
 
     $seoTitle = 'Electrik vs '.$name.' — '.$name.' alternative';
-    $seoDescription = 'Electrik as a '.$name.' alternative: feature matrix, licensing, billing, UI, and when to choose Electrik vs '.$name.'.';
+    $seoDescription = $competitor['seo_description']
+        ?? ('Electrik as a '.$name.' alternative: feature matrix, licensing, billing, UI, and when to choose Electrik vs '.$name.'.');
     $seoUrl = Compare::urlFor($slug);
     $seoKeywords = [
         strtolower($name).' alternative',

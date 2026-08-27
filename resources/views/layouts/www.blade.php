@@ -25,6 +25,7 @@
         :description="$pageDescription"
         :url="$pageUrl"
         type="website"
+        :robots="$seoRobots ?? null"
         :keywords="$seoKeywords ?? ['Laravel', 'SaaS', 'Livewire', 'Stripe', 'teams', 'billing', 'Electrik', 'Slate']"
     />
 

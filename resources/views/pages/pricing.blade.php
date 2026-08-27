@@ -87,13 +87,24 @@
                     </ul>
                 </x-slate::card-content>
                 <x-slate::card-footer>
+                    @php
+                        $checkoutUrl = $tier['checkout_url'] ?? null;
+                        $isCustom = ($tier['price'] ?? '') === 'Custom';
+                        $ctaHref = filled($checkoutUrl)
+                            ? $checkoutUrl
+                            : 'mailto:'.config('site.commercial_email').'?subject='.rawurlencode('Electrik '.$tier['name'].' license');
+                        $ctaLabel = $isCustom
+                            ? 'Contact sales'
+                            : (filled($checkoutUrl) ? 'Buy with Stripe' : 'Buy / invoice');
+                    @endphp
                     <x-slate::button
                         as="a"
                         variant="{{ ! empty($tier['highlight']) ? 'default' : 'outline' }}"
                         class="w-full"
-                        href="mailto:{{ config('site.commercial_email') }}?subject=Electrik%20{{ $tier['name'] }}%20license"
+                        href="{{ $ctaHref }}"
+                        @if (filled($checkoutUrl)) target="_blank" rel="noopener noreferrer" @endif
                     >
-                        {{ $tier['price'] === 'Custom' ? 'Contact sales' : 'Buy / invoice' }}
+                        {{ $ctaLabel }}
                     </x-slate::button>
                 </x-slate::card-footer>
             </x-slate::card>
@@ -126,6 +137,11 @@
         </p>
         <p>
             Stripe subscription pricing for <em>your</em> product is separate. Electrik helps you bill your customers; the license above is for using Electrik itself.
+        </p>
+        <p class="text-sm text-muted-foreground">
+            Solo and Studio can check out with Stripe when payment links are configured.
+            Prefer an invoice? Email
+            <a href="mailto:{{ config('site.commercial_email') }}">{{ config('site.commercial_email') }}</a>.
         </p>
     </div>
 </section>

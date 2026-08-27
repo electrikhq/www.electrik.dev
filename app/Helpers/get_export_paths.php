@@ -7,6 +7,7 @@ $paths = [
     'install',
     'license',
     'pricing',
+    'pricing/thanks',
     'faq',
     'contact',
     'legal',

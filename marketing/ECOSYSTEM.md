@@ -62,8 +62,8 @@ North star: **raise Electrik Packagist installs toward Slate** (today ~4/mo vs ~
 
 ### P2 — Money (when install is boring)
 
-9. **Stripe Checkout** for Solo $249 / Studio $599 (prices already public).
-10. **Valid SES (or Resend)** for demo transactional mail — last AWS keys failed.
+9. [~] **Stripe Checkout** for Solo $249 / Studio $599 — Payment Link wiring + `/pricing/thanks` shipped; set `STRIPE_CHECKOUT_SOLO` / `STRIPE_CHECKOUT_STUDIO` in deploy env (see `marketing/ops/stripe-checkout-and-mail.md`).
+10. [ ] **Valid SES (or Resend)** for demo transactional mail — last AWS keys failed; keep demo on `log` until intentional.
 11. **List email #2** (~30 days, on **Brevo** once live) — Teams+Stripe or pricing story; then sunset non-openers.
 
 ### Explicit defer

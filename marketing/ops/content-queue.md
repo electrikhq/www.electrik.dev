@@ -4,13 +4,27 @@ Ship one per week. Move done items to “Shipped”.
 
 ## Ready / next
 
-1. **BSL grant vs commercial** — post Solo $249 / Studio $599 / Agency (links `/license` `/pricing`)  
-2. **Teams + Stripe on the team** — docs deep-link + screenshot  
-3. **Install Loom (5–8 min)** — fresh Laravel → Electrik → login  
-4. **Slate → Electrik** — UI kit + slate-blocks into SaaS shell  
-5. **Laracasts / r/laravel** — Composer-package post (draft below; week 2)
+1. **Electrik vs Jetstream (share)** — https://electrik.dev/compare/electrik-vs-jetstream  
+2. **BSL grant vs commercial** — post Solo $249 / Studio $599 / Agency (links `/license` `/pricing`)  
+3. **Teams + Stripe on the team** — docs deep-link + screenshot  
+4. **Install Loom (5–8 min)** — fresh Laravel → Electrik → login  
+5. **Slate → Electrik** — UI kit + slate-blocks into SaaS shell  
+6. **Laracasts / r/laravel** — Composer-package post (draft below)
 
 ## Drafts
+
+### X / LinkedIn — Jetstream compare (ready)
+
+```
+Electrik vs Jetstream, short version:
+
+Jetstream = official auth/teams scaffold. You own every file. No Stripe billing.
+
+Electrik = Composer package with teams + Stripe on the team + Slate UI. BSL grant for indies; Solo/Studio when you need commercial.
+
+Matrix + “when to pick each”:
+https://electrik.dev/compare/electrik-vs-jetstream
+```
 
 ### Laracasts / r/laravel (week 2)
 

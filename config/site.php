@@ -40,6 +40,7 @@ return [
 
     'commercial_tiers' => [
         [
+            'id' => 'solo',
             'name' => 'Solo',
             'price' => '$249',
             'period' => 'one-time',
@@ -49,8 +50,11 @@ return [
                 'Full source, all features included',
                 'Email support during onboarding',
             ],
+            // Stripe Payment Link (Dashboard → Payment links). Empty = mailto fallback.
+            'checkout_url' => env('STRIPE_CHECKOUT_SOLO'),
         ],
         [
+            'id' => 'studio',
             'name' => 'Studio',
             'price' => '$599',
             'period' => 'one-time',
@@ -61,8 +65,10 @@ return [
                 'License certificate for clients',
             ],
             'highlight' => true,
+            'checkout_url' => env('STRIPE_CHECKOUT_STUDIO'),
         ],
         [
+            'id' => 'agency',
             'name' => 'Agency',
             'price' => 'Custom',
             'period' => null,
@@ -72,6 +78,7 @@ return [
                 'White-label friendly app shell',
                 'Volume pricing available',
             ],
+            'checkout_url' => null,
         ],
     ],
 
