@@ -12,8 +12,8 @@ publish_policy: draft_first  # draft_first | autopilot
 authority: agent_owner
 
 focus:
-  this_week: "Kit wired (newsletter + API). Confirm Mailchimp import finished on Kit; then Laracasts draft"
-  next_artifact: "Laracasts / r/laravel Composer-package post (draft in content-queue)"
+  this_week: "Promote Solo $149 / Studio $399 — X draft ready; home CTA updated; electrik README prices fixed"
+  next_artifact: "Await OK to post X pricing tweet; then Kit soft broadcast if list healthy"
 
 blockers:
   - "Mailchimp ACCOUNT BLOCKED — do not use; list lives on Kit now"
@@ -63,4 +63,8 @@ metrics_snapshot:
   kit_subscribers: 78
   notes: "Kit is ESP. Newsletter on Kit form 9841384. Import ~78 so far — check if full Mailchimp migrate done."
 
-pending_approval: []
+pending_approval:
+  - id: x-pricing-live
+    channel: x
+    artifact: "marketing/ops/content-queue.md → X — commercial pricing live"
+    asked_at: "2026-08-27"

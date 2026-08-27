@@ -31,7 +31,7 @@ Laravel SaaS starter kit with teams, Stripe billing, and Slate 3
 ```
 Electrik is a full-featured, open-source SaaS starter as a Composer package for Laravel 12. Auth, team workspaces, Stripe subscriptions (Cashier), Spatie permissions, onboarding, and a Slate 3 UI shell — without copy-on-install kits that drift from upstream.
 
-Docs → https://electrik.dev/docs · Demo → https://demo.electrik.dev · GitHub → https://github.com/electrikhq/electrik · UI kit → https://slate.electrik.dev
+Docs → https://electrik.dev/docs · Demo → https://demo.electrik.dev · Pricing → https://electrik.dev/pricing (Solo $149 / Studio $399) · GitHub → https://github.com/electrikhq/electrik · UI kit → https://slate.electrik.dev
 ```
 
 ### Founder review (paste into Review Electrik)

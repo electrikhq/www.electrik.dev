@@ -201,7 +201,7 @@
             </x-slate::card>
         </div>
         <div class="mt-8">
-            <x-slate::button as="a" href="{{ route('pricing') }}">See pricing and license details</x-slate::button>
+            <x-slate::button as="a" href="{{ route('pricing') }}">Commercial pricing from $149</x-slate::button>
         </div>
     </div>
 </section>
