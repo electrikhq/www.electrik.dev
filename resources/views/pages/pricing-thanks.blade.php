@@ -70,11 +70,11 @@
                                         return;
                                     }
                                     if (data.has_license || data.fulfilled) {
-                                        this.message = 'License recorded — check your inbox for the key (and spam folder).';
+                                        this.message = 'License recorded — check your inbox for confirmation (and spam folder). No activation key needed.';
                                         return;
                                     }
                                     if (data.status === 'succeeded') {
-                                        this.message = 'Payment recorded. Issuing license key…';
+                                        this.message = 'Payment recorded. Sending license confirmation…';
                                     } else if (data.status === 'failed') {
                                         this.message = 'Payment did not complete. You can retry from Pricing.';
                                         return;
@@ -85,7 +85,7 @@
                                     this.message = 'Waiting for payment webhook…';
                                 }
                             } catch (e) {
-                                this.message = 'Could not reach license status yet — email will still arrive if payment succeeded.';
+                                this.message = 'Could not reach license status yet — confirmation email will still arrive if payment succeeded.';
                             }
                             await new Promise((r) => setTimeout(r, 2500));
                         }

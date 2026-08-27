@@ -16,7 +16,7 @@ D1 electrik-commerce
   customers · purchases · webhook_events · outbound_emails
         │
         ├─ payment.succeeded / entitlement_grant.delivered
-        │     → store license key → SES email
+        │     → store certificate ID → SES “commercial license” email
         ├─ payment.failed / cancelled → ops alert
         └─ refund.succeeded / entitlement_grant.revoked → mark revoked
 ```
@@ -78,7 +78,7 @@ Use a **separate** webhook endpoint for test vs live (or one endpoint and check 
 
 ## Email
 
-Uses **AWS SES** (same verified `electrik.dev` identity / region as the demo — `ap-south-1`). Products already have license keys enabled in Dodo; we also email confirmation when `entitlement_grant.delivered` lands.
+Uses **AWS SES** (same verified `electrik.dev` identity / region as the demo — `ap-south-1`). Dodo still issues a license-key UUID; we email it as a **certificate / receipt ID** only — Electrik does not activate or validate keys in the package. Confirmation also fires on `entitlement_grant.delivered`.
 
 Without SES credentials on Pages, the ledger still updates; outbound mail is skipped (logged).
 

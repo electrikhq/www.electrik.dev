@@ -14,23 +14,25 @@ export async function sendLicenseEmail(env, purchase) {
 
   const tierLabel = TIER_LABELS[purchase.tier] || TIER_LABELS.unknown;
   const subject = purchase.license_key
-    ? `Your ${tierLabel} license`
+    ? `Your ${tierLabel} commercial license`
     : `We received your ${tierLabel} payment`;
 
   const bodyText = [
     `Hi${purchase.name ? ` ${purchase.name}` : ''},`,
     '',
     purchase.license_key
-      ? `Thanks for purchasing ${tierLabel}. Your license key is:`
-      : `Thanks for purchasing ${tierLabel}. Your payment is confirmed; your license key will follow shortly.`,
+      ? `Thanks for purchasing ${tierLabel}. You are licensed for commercial use under this tier.`
+      : `Thanks for purchasing ${tierLabel}. Your payment is confirmed; your license confirmation will follow shortly.`,
     '',
-    purchase.license_key ? purchase.license_key : '',
+    'Electrik does not require a product activation key — Composer install works as usual. Keep this email as your receipt.',
     '',
+    purchase.license_key ? `Certificate ID: ${purchase.license_key}` : '',
     `Payment ID: ${purchase.payment_id}`,
     `Tier: ${purchase.tier}`,
     '',
     'Install: https://electrik.dev/install',
     'Docs: https://electrik.dev/docs',
+    'License terms: https://electrik.dev/license',
     '',
     'Questions? Reply to this email or write hello@electrik.dev.',
     '',
