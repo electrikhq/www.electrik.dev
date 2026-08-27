@@ -32,15 +32,6 @@ Agency stays contact/sales (custom).
 
 ## Resend / SES (demo transactional)
 
-Demo should stay `MAIL_MAILER=log` for throwaway public accounts (see `demo.electrik.dev/shared.env.example`).
+Public demo can use **SES** with abuse controls in `demo.electrik.dev/overlay/` (rate limits, optional Turnstile, daily send cap). Verification stays off.
 
-When you want real mail (invites, password reset) on a private staging app:
-
-```bash
-MAIL_MAILER=resend
-RESEND_KEY=re_...
-MAIL_FROM_ADDRESS=hello@electrik.dev
-MAIL_FROM_NAME=Electrik
-```
-
-Or SES via Laravel’s `ses` mailer + AWS keys. Do **not** enable on the public demo without rate limits and abuse controls.
+See `demo.electrik.dev/shared.env.example` and `DEPLOY.md`. Do **not** put SES keys in the Electrik package repo.
