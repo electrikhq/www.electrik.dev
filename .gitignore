@@ -22,3 +22,4 @@ dist/
 .DS_Store
 safelist.txt
 dist.zip
+.dodo-prod-links.local

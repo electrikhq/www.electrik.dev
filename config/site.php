@@ -50,8 +50,9 @@ return [
                 'Full source, all features included',
                 'Email support during onboarding',
             ],
-            // Stripe Payment Link (Dashboard → Payment links). Empty = mailto fallback.
-            'checkout_url' => env('STRIPE_CHECKOUT_SOLO'),
+            // Dodo (preferred) or legacy Stripe Payment Link. Empty = mailto fallback.
+            // Static site: URLs are baked at export — never put DODO_PAYMENTS_API_KEY in Pages.
+            'checkout_url' => env('DODO_CHECKOUT_SOLO') ?: env('STRIPE_CHECKOUT_SOLO'),
         ],
         [
             'id' => 'studio',
@@ -65,7 +66,7 @@ return [
                 'License certificate for clients',
             ],
             'highlight' => true,
-            'checkout_url' => env('STRIPE_CHECKOUT_STUDIO'),
+            'checkout_url' => env('DODO_CHECKOUT_STUDIO') ?: env('STRIPE_CHECKOUT_STUDIO'),
         ],
         [
             'id' => 'agency',

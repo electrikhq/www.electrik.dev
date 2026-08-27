@@ -95,7 +95,7 @@
                             : 'mailto:'.config('site.commercial_email').'?subject='.rawurlencode('Electrik '.$tier['name'].' license');
                         $ctaLabel = $isCustom
                             ? 'Contact sales'
-                            : (filled($checkoutUrl) ? 'Buy with Stripe' : 'Buy / invoice');
+                            : (filled($checkoutUrl) ? 'Buy now' : 'Buy / invoice');
                     @endphp
                     <x-slate::button
                         as="a"
@@ -140,7 +140,7 @@
             Stripe subscription pricing for <em>your</em> product is separate. Electrik helps you bill your customers; the license above is for using Electrik itself.
         </p>
         <p class="text-sm text-muted-foreground">
-            Solo and Studio can check out with Stripe when payment links are configured.
+            Solo and Studio check out via Dodo Payments when payment links are configured.
             Prefer an invoice? Email
             <a href="mailto:{{ config('site.commercial_email') }}">{{ config('site.commercial_email') }}</a>.
         </p>

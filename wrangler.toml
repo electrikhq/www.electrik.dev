@@ -1,0 +1,23 @@
+# Cloudflare Pages project: electrik (static export + Functions)
+# Deploy: wrangler pages deploy dist --project-name=electrik
+#
+# Create D1 once:
+#   npx wrangler d1 create electrik-commerce
+# Paste database_id below, then:
+#   npx wrangler d1 migrations apply electrik-commerce --remote
+
+name = "electrik"
+compatibility_date = "2026-08-27"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "electrik-commerce"
+database_id = "187f3ac9-3002-406a-9073-8c761a52c6f9"
+migrations_dir = "migrations"
+
+[vars]
+# Non-secret defaults (override live product IDs via Pages env vars)
+COMMERCE_PRODUCT_SOLO = "pdt_0NmHrYX3IcvoaxjhR91WX"
+COMMERCE_PRODUCT_STUDIO = "pdt_0NmHrYaV3qDKofAXKLivl"
