@@ -61,6 +61,17 @@
                 GitHub
             </x-slate::button>
             <x-slate::dark-mode-toggle variant="ghost" />
+            <x-slate::button
+                as="a"
+                variant="outline"
+                size="sm"
+                href="{{ config('site.demo_url') }}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hidden sm:inline-flex"
+            >
+                View demo
+            </x-slate::button>
             <x-slate::button as="a" size="sm" href="{{ route('install') }}" class="hidden sm:inline-flex">
                 Get started
                 <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
