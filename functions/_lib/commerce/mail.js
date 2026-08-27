@@ -1,5 +1,5 @@
 import { AwsClient } from 'aws4fetch';
-import { TIER_LABELS } from './catalog.js';
+import { renderLicenseEmail } from './license-email.js';
 
 /**
  * Outbound mail via AWS SES (same stack as demo.electrik.dev).
@@ -12,39 +12,13 @@ export async function sendLicenseEmail(env, purchase) {
     return { ok: false, error: 'missing email' };
   }
 
-  const tierLabel = TIER_LABELS[purchase.tier] || TIER_LABELS.unknown;
-  const subject = purchase.license_key
-    ? `Your ${tierLabel} commercial license`
-    : `We received your ${tierLabel} payment`;
-
-  const bodyText = [
-    `Hi${purchase.name ? ` ${purchase.name}` : ''},`,
-    '',
-    purchase.license_key
-      ? `Thanks for purchasing ${tierLabel}. You are licensed for commercial use under this tier.`
-      : `Thanks for purchasing ${tierLabel}. Your payment is confirmed; your license confirmation will follow shortly.`,
-    '',
-    'Electrik does not require a product activation key — Composer install works as usual. Keep this email as your receipt.',
-    '',
-    purchase.license_key ? `Certificate ID: ${purchase.license_key}` : '',
-    `Payment ID: ${purchase.payment_id}`,
-    `Tier: ${purchase.tier}`,
-    '',
-    'Install: https://electrik.dev/install',
-    'Docs: https://electrik.dev/docs',
-    'License terms: https://electrik.dev/license',
-    '',
-    'Questions? Reply to this email or write hello@electrik.dev.',
-    '',
-    '— Electrik',
-  ]
-    .filter((line, i, arr) => !(line === '' && arr[i - 1] === ''))
-    .join('\n');
+  const { subject, text, html } = renderLicenseEmail(purchase);
 
   return sendSesEmail(env, {
     to,
     subject,
-    text: bodyText,
+    text,
+    html,
   });
 }
 
@@ -57,7 +31,7 @@ export async function sendOpsAlert(env, subject, text) {
   return result;
 }
 
-async function sendSesEmail(env, { to, subject, text }) {
+async function sendSesEmail(env, { to, subject, text, html }) {
   if (!env.AWS_ACCESS_KEY_ID || !env.AWS_SECRET_ACCESS_KEY) {
     return { ok: false, error: 'AWS SES credentials not configured', skipped: true };
   }
@@ -74,6 +48,13 @@ async function sendSesEmail(env, { to, subject, text }) {
     service: 'ses',
   });
 
+  const body = {
+    Text: { Data: text, Charset: 'UTF-8' },
+  };
+  if (html) {
+    body.Html = { Data: html, Charset: 'UTF-8' };
+  }
+
   // SES API v2 SendEmail
   const res = await aws.fetch(`https://email.${region}.amazonaws.com/v2/email/outbound-emails`, {
     method: 'POST',
@@ -84,7 +65,7 @@ async function sendSesEmail(env, { to, subject, text }) {
       Content: {
         Simple: {
           Subject: { Data: subject, Charset: 'UTF-8' },
-          Body: { Text: { Data: text, Charset: 'UTF-8' } },
+          Body: body,
         },
       },
     }),

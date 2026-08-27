@@ -78,7 +78,7 @@ Use a **separate** webhook endpoint for test vs live (or one endpoint and check 
 
 ## Email
 
-Uses **AWS SES** (same verified `electrik.dev` identity / region as the demo — `ap-south-1`). Dodo still issues a license-key UUID; we email it as a **certificate / receipt ID** only — Electrik does not activate or validate keys in the package. Confirmation also fires on `entitlement_grant.delivered`.
+Uses **AWS SES** (same verified `electrik.dev` identity / region as the demo — `ap-south-1`). Dodo still issues a license-key UUID; we email it as a **certificate / receipt ID** only — Electrik does not activate or validate keys in the package. Confirmation is **HTML + plain-text** (`functions/_lib/commerce/license-email.js`); local previews under `marketing/ops/previews/`. Confirmation also fires on `entitlement_grant.delivered`.
 
 Without SES credentials on Pages, the ledger still updates; outbound mail is skipped (logged).
 
