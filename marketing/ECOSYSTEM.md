@@ -83,7 +83,7 @@ North star: **raise Electrik Packagist installs toward Slate** (today ~4/mo vs ~
 | **Electrik** | Hero SaaS shell — all list mail, PH push, Packagist growth |
 | **Slate** | Top-of-funnel UI kit — feed Electrik, don’t compete with it |
 | **slate-blocks** | Proof of ecosystem depth — gallery + FAQ, not a third brand war |
-| **Demo** | Trust — always works on current alpha |
+| **Demo** | Trust - always works on current stable |
 
 ## Next candidates (ship later) — plan
 
@@ -118,7 +118,7 @@ Do these **after** release + secrets + (optional) SES. Order by leverage:
 ### Better as footer / later, not homepage cards
 
 - Theme / white-label pack (agency angle)
-- Integrations as they land (Socialite, Stripe Tax, Paddle, etc.)
+- Integrations as they land (Socialite, Stripe Tax, etc.)
 - Hosted demo tenants (“try billing without your Stripe keys”)
 - Case studies / “built with”
 

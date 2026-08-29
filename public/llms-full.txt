@@ -13,11 +13,11 @@
 ## Core concepts
 
 - [Configuration](https://electrik.dev/docs/core-concepts/configuration): config/electrik.php and environment variables.
-- [Auth & security](https://electrik.dev/docs/core-concepts/auth-security): Login, registration, verification, 2FA, and sessions.
-- [Teams & invites](https://electrik.dev/docs/core-concepts/teams-invites): Create and switch teams, invite members, transfer ownership.
+- [Auth & security](https://electrik.dev/docs/core-concepts/auth-security): Login, Socialite, magic link, 2FA, passkeys, sessions, and login alerts.
+- [Teams & invites](https://electrik.dev/docs/core-concepts/teams-invites): Create and switch teams, branding, archive, invites, ownership, activity, webhooks.
 - [Roles & permissions](https://electrik.dev/docs/core-concepts/roles-permissions): Spatie permissions with team context and the Electrik catalog.
-- [Billing](https://electrik.dev/docs/core-concepts/billing): Stripe via Cashier on the team, sync, webhooks, and billing UI.
-- [Plan features & seats](https://electrik.dev/docs/core-concepts/plan-features-seats): Gate features and member limits by Stripe price id.
+- [Billing](https://electrik.dev/docs/core-concepts/billing): Stripe via Cashier on the team: plans, add-ons, usage, tax IDs, webhooks.
+- [Plan features & seats](https://electrik.dev/docs/core-concepts/plan-features-seats): Gate features and member limits by Stripe price; ops editor for flags and add-ons.
 - [Onboarding](https://electrik.dev/docs/core-concepts/onboarding): First-run wizard, env toggle, and helper commands.
 - [Customization](https://electrik.dev/docs/core-concepts/customization): Override views carefully and lean on Slate for UI.
 
@@ -26,11 +26,19 @@
 - [Local sandbox](https://electrik.dev/docs/guides/local-sandbox): Reset and run the Electrik sandbox app from the lab monorepo.
 - [Stripe test mode](https://electrik.dev/docs/guides/stripe-test-mode): Develop billing against Stripe test keys and the Stripe CLI.
 - [Feature gating](https://electrik.dev/docs/guides/feature-gating): Use plan_features to limit seats and capabilities.
-- [Upgrading alphas](https://electrik.dev/docs/guides/upgrading-alphas): How to move between Electrik 5.x alpha releases safely.
+- [Upgrading](https://electrik.dev/docs/guides/upgrading): How to upgrade Electrik 5.x and migrate from older lines.
+- [Generators](https://electrik.dev/docs/guides/generators): Scaffold Livewire, models, and resources with electrik:make.
+- [API tokens](https://electrik.dev/docs/guides/api-tokens): Personal vs team-scoped Sanctum tokens, abilities, and Electrik API routes.
+- [Operator console](https://electrik.dev/docs/guides/operators-ops): ELECTRIK_OPERATOR_EMAILS and the /ops Slate console.
+- [Billing providers](https://electrik.dev/docs/guides/billing-providers): Stripe Cashier is the supported billing processor.
+- [Social login & magic link](https://electrik.dev/docs/guides/social-login): Google, GitHub, Apple, Microsoft Socialite and magic-link email sign-in.
+- [Outbound webhooks](https://electrik.dev/docs/guides/outbound-webhooks): Team HTTPS endpoints Electrik calls on workspace events.
+- [Internationalization](https://electrik.dev/docs/guides/i18n): Locales en/es/fr/ar/hi, Profile language, and RTL.
 - [Artisan commands](https://electrik.dev/docs/reference/artisan-commands): Electrik console commands reference.
-- [Routes & middleware](https://electrik.dev/docs/reference/routes-middleware): High-level route groups Electrik registers.
+- [Routes & middleware](https://electrik.dev/docs/reference/routes-middleware): Route groups and middleware aliases Electrik registers.
 - [Permissions catalog](https://electrik.dev/docs/reference/permissions-catalog): Default permission keys shipped in config/electrik.php.
-- [Changelog](https://electrik.dev/docs/reference/changelog): Where to find Electrik release notes.
+- [Changelog](https://electrik.dev/docs/reference/changelog): Electrik release notes and where to find full history.
+- [Roadmap](https://electrik.dev/docs/reference/roadmap): What Electrik is building next, and what we are not chasing.
 - [BSL Additional Use Grant](https://electrik.dev/docs/license/bsl): What the free BSL grant covers.
 - [Commercial license](https://electrik.dev/docs/license/commercial): When you need a commercial grant and how to buy.
 - [Slate UI](https://electrik.dev/docs/ecosystem/slate-ui): Electrik is built on Slate — UI docs live on slate.electrik.dev.
@@ -63,36 +71,65 @@ Source: https://electrik.dev/docs/core-concepts/auth-security.md
 
 ---
 title: "Auth & security"
-description: "Login, registration, verification, 2FA, and sessions."
+description: "Login, Socialite, magic link, 2FA, passkeys, sessions, and login alerts."
 sidebar_order: 2
 sidebar_section: "Core Concepts"
 ---
 
 # Auth & security
 
+![Login](/images/docs/docs-login.png)
+
 ## Flows
 
 - Login / logout
-- Registration (toggle with `ELECTRIK_REGISTRATION`)
+- Registration (`ELECTRIK_REGISTRATION`)
 - Email verification (`ELECTRIK_EMAIL_VERIFICATION`)
 - Forgot / reset password
 - Remember me
+- Magic link email sign-in (`ELECTRIK_MAGIC_LINK`)
+- Socialite providers (`ELECTRIK_SOCIALITE_PROVIDERS`)
+- Passkeys (laravel/passkeys) when installed
+
+Details for social + magic link: [Social login & magic link](/docs/guides/social-login).
 
 ## Two-factor authentication
 
-Account security settings include TOTP-based 2FA. Users enable, confirm, and manage recovery from settings.
+Account **Security** settings include TOTP 2FA (enable, confirm, recovery codes) via `pragmarx/google2fa-laravel`.
 
-## Sessions
+## Passkeys
 
-Users can review and revoke other sessions from account security UI.
+When `laravel/passkeys` is present, users manage passkeys under Security and can sign in with a passkey button on login. Ensure `APP_URL` matches the origin browsers use (localhost vs 127.0.0.1).
+
+## Sessions & devices
+
+![Sessions](/images/docs/docs-sessions.png)
+
+**Settings → Sessions** lists database sessions (`SESSION_DRIVER=database`):
+
+- Rename a device (`session_labels`)
+- Revoke other sessions (password confirm)
+- Authentication log (rappasoft) with success / failed / suspicious filters
+
+## Login alerts
+
+When `ELECTRIK_LOGIN_ALERTS=true` (default), a successful sign-in from a new IP sends mail + database notification. Familiar IPs (seen in the auth log) are skipped.
+
+## Team IP allowlist
+
+Owners can set allowed IPs under **Teams → Settings**. When set, `electrik.team-ip` middleware blocks app/billing/team routes if the request IP is not listed. Empty allowlist = allow all.
+
+## Suspended users
+
+Operators can suspend accounts from `/ops/users`. Suspended users cannot complete Socialite or password login.
 
 ## API tokens
 
-Sanctum personal access tokens are managed from settings for API access.
+Sanctum personal + team-scoped tokens live under **Settings → API tokens**. See [API tokens](/docs/guides/api-tokens).
 
 ## Post-login destination
 
-`ELECTRIK_HOME` (default `/dashboard`) controls where authenticated users land after login (subject to onboarding / subscription gates).
+`ELECTRIK_HOME` (default `/dashboard`) — subject to onboarding and subscription gates.
 
 
 ---
@@ -101,14 +138,16 @@ Source: https://electrik.dev/docs/core-concepts/billing.md
 
 ---
 title: "Billing"
-description: "Stripe via Cashier on the team, sync, webhooks, and billing UI."
+description: "Stripe via Cashier on the team: plans, add-ons, usage, tax IDs, webhooks."
 sidebar_order: 5
 sidebar_section: "Core Concepts"
 ---
 
 # Billing
 
-Electrik bills the **team** with Laravel Cashier.
+Electrik bills the **team** with Laravel Cashier. Only the **Stripe** driver is supported.
+
+![Billing overview](/images/docs/docs-billing.png)
 
 ## Setup
 
@@ -120,19 +159,48 @@ Electrik bills the **team** with Laravel Cashier.
 php artisan electrik:stripe:sync
 ```
 
-4. Configure Stripe webhooks to your Cashier endpoint (or Stripe CLI locally)
+4. Point Stripe webhooks at your Cashier endpoint (or Stripe CLI locally)
 
-## App UI
+## App UI (`/billing`)
 
-`/billing` covers plans, subscribe/cancel/resume, payment methods, billing address, and invoices (subject to permissions).
+| Screen | Purpose |
+| --- | --- |
+| Overview | Current subscription summary |
+| Plans | Base plans + add-ons |
+| Subscription | Cancel / resume / manage |
+| Payment methods | Cards via Cashier |
+| Address | Customer address + **tax IDs** |
+| Invoices | Past invoices |
+| Usage | Report metered usage |
 
-## Subscription name
+Checkout supports Stripe promotion codes. Past-due / unpaid subscriptions show a dunning banner and ops notifications.
 
-Cashier subscription name defaults to `electrik` (`ELECTRIK_DEFAULT_SUBSCRIPTION_NAME`).
+## Subscription type
+
+Cashier 15 stores the subscription key in the `type` column (not legacy `name`). Default value: `electrik` (`ELECTRIK_DEFAULT_SUBSCRIPTION_NAME`).
+
+## Add-ons
+
+Mark a synced plan as an add-on in **Ops → Plan features** (`is_addon`). On Plans, add-ons attach to an existing active subscription via Cashier `addPrice`.
+
+## Metered usage
+
+Mark a plan `metered` in Ops. Teams report quantity from **Billing → Usage** or:
+
+```bash
+curl -X POST https://your-app.test/api/electrik/usage \
+  -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" \
+  -d '{"stripe_price_id":"price_xxx","quantity":10}'
+```
+
+## Tax IDs
+
+**Billing → Address** can create/delete Stripe customer tax IDs (EU VAT, US EIN, GB VAT, etc.).
 
 ## Require subscription
 
-Set `ELECTRIK_REQUIRE_SUBSCRIPTION=true` to gate the app behind an active subscription (onboarding/billing routes remain reachable as configured).
+`ELECTRIK_REQUIRE_SUBSCRIPTION=true` gates the app behind an active subscription (onboarding/billing routes remain reachable as configured).
 
 ## Sync subscriptions
 
@@ -141,7 +209,7 @@ php artisan electrik:stripe:sync-subscriptions
 php artisan electrik:stripe:sync-subscriptions --team=1
 ```
 
-More: [Stripe test mode](/docs/guides/stripe-test-mode).
+More: [Stripe test mode](/docs/guides/stripe-test-mode), [Billing providers](/docs/guides/billing-providers), [Plan features & seats](/docs/core-concepts/plan-features-seats).
 
 
 ---
@@ -159,6 +227,21 @@ sidebar_section: "Core Concepts"
 
 Published file: `config/electrik.php`.
 
+## Branding (app-level white-label)
+
+```php
+'name' => env('ELECTRIK_NAME', 'Electrik'),
+
+'branding' => [
+    'logo_url' => env('ELECTRIK_LOGO_URL'),
+    'logo_dark_url' => env('ELECTRIK_LOGO_DARK_URL'),
+    'primary' => env('ELECTRIK_BRAND_PRIMARY'), // CSS color for --slate-primary
+    'show_powered_by' => filter_var(env('ELECTRIK_SHOW_POWERED_BY', true), FILTER_VALIDATE_BOOL),
+],
+```
+
+Per-team branding (logo + primary color) is set in **Teams → Settings** and overrides the app primary for that team's shell.
+
 ## Auth
 
 ```php
@@ -166,17 +249,36 @@ Published file: `config/electrik.php`.
     'home' => env('ELECTRIK_HOME', '/dashboard'),
     'registration' => env('ELECTRIK_REGISTRATION', true),
     'email_verification' => env('ELECTRIK_EMAIL_VERIFICATION', true),
+    'socialite' => [
+        'providers' => /* ELECTRIK_SOCIALITE_PROVIDERS, default google,github */,
+    ],
+    'magic_link' => [
+        'enabled' => env('ELECTRIK_MAGIC_LINK', true),
+        'expire_minutes' => env('ELECTRIK_MAGIC_LINK_EXPIRE', 15),
+    ],
+    'login_alerts' => env('ELECTRIK_LOGIN_ALERTS', true),
 ],
 ```
 
-## Onboarding
+Supported Socialite keys: `google`, `github`, `apple`, `microsoft`. Apple/Microsoft need optional Composer packages — see [Social login & magic link](/docs/guides/social-login).
+
+## Operators
 
 ```php
-'onboarding' => [
-    'enabled' => filter_var(env('ELECTRIK_ONBOARDING', true), FILTER_VALIDATE_BOOL),
-    'exempt_routes' => [/* onboarding, billing.*, teams.invitations.*, verification.*, logout */],
+'operators' => [
+    'emails' => /* ELECTRIK_OPERATOR_EMAILS comma list */,
 ],
 ```
+
+Only listed emails can open `/ops`. See [Operator console](/docs/guides/operators-ops).
+
+## Locales
+
+```php
+'locales' => ['en', 'es', 'fr', 'ar', 'hi'],
+```
+
+User Profile language wins; guests use `APP_LOCALE`. See [Internationalization](/docs/guides/i18n).
 
 ## Teams
 
@@ -189,18 +291,26 @@ Published file: `config/electrik.php`.
 
 ## Permissions catalog
 
-`permissions.catalog` defines permission keys, display names, and categories. `permissions.role_permissions` maps owner/admin/member to those keys (`owner` => `*`).
-
-Sync after catalog changes:
+`permissions.catalog` and `permissions.role_permissions` define Spatie team-scoped permissions. Sync after changes:
 
 ```bash
 php artisan electrik:permissions:sync
+```
+
+## API tokens
+
+```php
+'api_tokens' => [
+    'default_expiration_days' => env('ELECTRIK_API_TOKEN_EXPIRATION_DAYS', '90'),
+    'abilities' => [ '*' => 'Full access', 'read' => 'Read', /* ... */ ],
+],
 ```
 
 ## Billing
 
 ```php
 'billing' => [
+    'driver' => env('ELECTRIK_BILLING_DRIVER', 'stripe'), // stripe only
     'subscription_name' => env('ELECTRIK_DEFAULT_SUBSCRIPTION_NAME', 'electrik'),
     'cc_required_for_free_plan' => env('ELECTRIK_CC_REQUIRED_FOR_FREE_PLAN', false),
     'require_subscription' => filter_var(env('ELECTRIK_REQUIRE_SUBSCRIPTION', false), FILTER_VALIDATE_BOOL),
@@ -211,7 +321,7 @@ php artisan electrik:permissions:sync
 ],
 ```
 
-See [Plan features & seats](/docs/core-concepts/plan-features-seats) and [Billing](/docs/core-concepts/billing).
+Cashier stores the subscription type in the `type` column (value defaults to `electrik`). See [Billing](/docs/core-concepts/billing) and [Plan features & seats](/docs/core-concepts/plan-features-seats).
 
 
 ---
@@ -283,7 +393,7 @@ Source: https://electrik.dev/docs/core-concepts/plan-features-seats.md
 
 ---
 title: "Plan features & seats"
-description: "Gate features and member limits by Stripe price id."
+description: "Gate features and member limits by Stripe price; ops editor for flags and add-ons."
 sidebar_order: 6
 sidebar_section: "Core Concepts"
 ---
@@ -304,9 +414,15 @@ sidebar_section: "Core Concepts"
 ],
 ```
 
-Map each Stripe **price id** to feature flags. Unmapped prices fall back to `default`.
+Runtime merge order: **defaults → by_price_id → plan `features` JSON**.
 
-Use these flags in your app (and Electrik screens that already respect them, such as custom roles) to enforce plan limits. See [Feature gating](/docs/guides/feature-gating).
+Seat-billed plans with `max_seats` also feed `max_members` when features omit it (`PlanFeatures`).
+
+## Ops editor
+
+Operators can edit each synced plan's features JSON plus **Add-on** and **Metered** flags at `/ops/plans` without hand-editing the database.
+
+Use `electrik.plan:custom_roles` (and your own feature keys) with the `EnsurePlanFeature` middleware. See [Feature gating](/docs/guides/feature-gating).
 
 
 ---
@@ -357,29 +473,61 @@ Source: https://electrik.dev/docs/core-concepts/teams-invites.md
 
 ---
 title: "Teams & invites"
-description: "Create and switch teams, invite members, transfer ownership."
+description: "Create and switch teams, branding, archive, invites, ownership, activity, webhooks."
 sidebar_order: 3
 sidebar_section: "Core Concepts"
 ---
 
 # Teams & invites
 
-Teams are the workspace unit in Electrik. Billing and many permissions attach to the current team.
+Teams are the workspace unit in Electrik. Billing and many permissions attach to the **current team**.
+
+![Teams](/images/docs/docs-teams.png)
 
 ## Capabilities
 
 - Create and switch teams
-- Team settings and branding / avatar
-- Invite members by email (expiry: `ELECTRIK_INVITE_EXPIRES_DAYS`, default 7)
+- Team settings: name, avatar, branding, IP allowlist, archive/restore, delete
+- Invite members by email (`ELECTRIK_INVITE_EXPIRES_DAYS`, default 7)
 - Accept / deny invitations
-- Manage members, leave team, transfer ownership, delete team
-- Activity log for team events
+- Manage members, roles, leave team, transfer ownership
+- Impersonate members (`users.impersonate` via lab404/laravel-impersonate)
+- Activity log (filterable, paginated)
+- Outbound webhooks (signed HTTP deliveries)
+
+![Members](/images/docs/docs-members.png)
+
+## Branding
+
+![Team settings](/images/docs/docs-team-settings.png)
+
+Under **Teams → Settings → Branding**:
+
+- Brand logo (public disk)
+- Primary color (native color picker + hex)
+
+Saved colors update `--slate-primary` / `--color-primary` (and contrast-aware foreground) for that team's shell without a full reload.
+
+## Archive vs delete
+
+- **Archive** — hides the team from the switcher; restore later
+- **Delete** — cancels billing, removes members/roles (owner only)
+
+## Activity
+
+![Activity](/images/docs/docs-activity.png)
+
+Team events (invites, joins, branding, ownership, webhooks, archive, etc.) are stored via Spatie activitylog with `team_id`.
+
+## Outbound webhooks
+
+**Teams → Webhooks** registers HTTPS endpoints. Electrik POSTs signed JSON (`X-Electrik-Signature`) for events such as `team.archived`, `team.deleted`. See [Outbound webhooks](/docs/guides/outbound-webhooks).
 
 ## Default roles
 
 Configured in `config/electrik.php`: `owner`, `admin`, `member`. See [Roles & permissions](/docs/core-concepts/roles-permissions).
 
-Teams engine is powered by `electrik/teamwork` (Electrik’s Teamwork fork).
+Teams engine: `electrik/teamwork` (Electrik’s Teamwork fork).
 
 
 ---
@@ -494,7 +642,7 @@ Source: https://electrik.dev/docs/getting-started/demo-seed.md
 
 ---
 title: "Demo & seed-demo"
-description: "Seed a demo user, team, and sample data for local exploration."
+description: "Seed demo personas, teams, and sample activity for local exploration."
 sidebar_order: 4
 sidebar_section: "Getting Started"
 ---
@@ -505,11 +653,17 @@ sidebar_section: "Getting Started"
 php artisan electrik:seed-demo
 ```
 
-Creates a demo account and team so you can click through auth, teams, and billing without hand-assembling records.
+Creates demo accounts and teams so you can click through auth, teams, roles, and billing without hand-assembling records.
 
-Use this after `electrik:install` (and migrations). For Stripe-backed billing UI, still set test keys and run `electrik:stripe:sync`.
+| Email | Password | Role | Teams |
+| --- | --- | --- | --- |
+| `demo@electrik.dev` | `password` | owner | Demo Team, Acme Team |
+| `admin@electrik.dev` | `password` | admin | Demo Team |
+| `member@electrik.dev` | `password` | member | Demo Team |
 
-Public hosted demo: [demo.electrik.dev](https://demo.electrik.dev) — `demo@electrik.dev` / `password`.
+Use `--force` to reset passwords if the users already exist. After `electrik:install` (and migrations). For Stripe-backed billing UI, still set test keys and run `electrik:stripe:sync`.
+
+Public hosted demo: [demo.electrik.dev](https://demo.electrik.dev) with the same personas.
 
 
 ---
@@ -528,7 +682,7 @@ sidebar_section: "Getting Started"
 ## Composer
 
 ```bash
-composer require electrik/electrik:^5.0@alpha
+composer require electrik/electrik:^5.4
 ```
 
 ## Artisan install
@@ -556,9 +710,18 @@ php artisan electrik:install --migrate --force
 ## After install
 
 1. Copy Stripe keys into `.env` (`STRIPE_KEY`, `STRIPE_SECRET`, `STRIPE_WEBHOOK_SECRET`)
-2. `php artisan electrik:stripe:sync` — pull products/prices into Electrik tables
-3. `php artisan storage:link`
-4. Point Cashier webhook at your app (or use Stripe CLI locally)
+2. Set `ELECTRIK_OPERATOR_EMAILS` if you want `/ops`
+3. Optional Socialite: `ELECTRIK_SOCIALITE_PROVIDERS=google,github` (+ `config/services.php`)
+4. `php artisan electrik:stripe:sync` — pull products/prices into Electrik tables
+5. `php artisan storage:link`
+6. Point Cashier webhook at your app (or use Stripe CLI locally)
+7. Optional: `php artisan electrik:seed-demo`
+
+Screenshots of the shell after install:
+
+![Dashboard](/images/docs/docs-dashboard.png)
+
+![Billing](/images/docs/docs-billing.png)
 
 ## Disable features via env
 
@@ -569,6 +732,9 @@ php artisan electrik:install --migrate --force
 | `ELECTRIK_ONBOARDING` | `true` | Force onboarding wizard |
 | `ELECTRIK_REQUIRE_SUBSCRIPTION` | `false` | Gate app behind active subscription |
 | `ELECTRIK_HOME` | `/dashboard` | Post-login home |
+| `ELECTRIK_MAGIC_LINK` | `true` | Email magic-link sign-in |
+| `ELECTRIK_LOGIN_ALERTS` | `true` | New-IP login notifications |
+| `ELECTRIK_OPERATOR_EMAILS` | _(empty)_ | Comma list for `/ops` |
 
 Full map: [Configuration](/docs/core-concepts/configuration).
 
@@ -577,7 +743,7 @@ Full map: [Configuration](/docs/core-concepts/configuration).
 Curated marketing/app sections (`<x-slate-block::*>`):
 
 ```bash
-composer require electrik/slate-blocks:^0.1@alpha
+composer require electrik/slate-blocks:^0.1
 ```
 
 Add a Tailwind `@source` for `vendor/electrik/slate-blocks/resources/views/**/*.blade.php`. Gallery: [slate.electrik.dev/blocks](https://slate.electrik.dev/blocks).
@@ -602,21 +768,31 @@ sidebar_section: "Getting Started"
 
 Electrik is a **Laravel SaaS starter kit** shipped as a Composer package: authentication, teams, Stripe billing, onboarding, and account settings — under the `Electrik\` namespace, not copied into `App\`.
 
-> **Alpha.** APIs can change. Current package line: `5.0.0-alpha.15` on Laravel 12, Livewire 4, and [Electrik Slate](https://slate.electrik.dev) 3.
+> Current package line: **5.4.0** on Laravel 12/13, Livewire 4, and [Electrik Slate](https://slate.electrik.dev) 3.
 
-**Already on Slate?** Electrik is the SaaS shell around the same UI kit — auth, teams, Stripe on the team. [Install](/install) or try the [demo](https://demo.electrik.dev).
+**Already on Slate?** Electrik is the SaaS shell around the same UI kit — auth, teams, Stripe on the team. [Install](/install) or try the [demo](https://demo.electrik.dev) (`demo@electrik.dev` / `password`).
+
+![Dashboard](/images/docs/docs-dashboard.png)
 
 ## What you get
 
-- Auth: login, register, verification, password reset, remember me, 2FA, sessions
-- Teams: create/switch, invites, roles, Spatie permissions (team-scoped)
-- Billing: Laravel Cashier on the **team**, plans, invoices, payment methods, webhooks
-- Shell: dashboard, onboarding wizard, profile, API tokens, notifications, activity log
-- UI: anonymous `<x-slate::*>` components and Slate tokens (docs live on slate.electrik.dev)
+- **Auth** — login, register, verification, password reset, 2FA, passkeys, sessions, magic link, Socialite (Google / GitHub / Apple / Microsoft)
+- **Teams** — create/switch, invites, roles, Spatie permissions, activity log, branding, archive, outbound webhooks, IP allowlist
+- **Billing** — Laravel Cashier on the **team**, plans, add-ons, metered usage, invoices, tax IDs, payment methods, Stripe webhooks
+- **Shell** — dashboard, onboarding, profile (locale + timezone), API tokens, notifications
+- **Ops** — `/ops` operator console (allowlisted emails): users, teams, metrics, plan features, announcements, email preview
+- **UI** — anonymous `<x-slate::*>` components and Slate tokens
+- **i18n** — `en`, `es`, `fr`, `ar` (RTL), `hi`
 
 ## Package model
 
 Unlike Jetstream-style scaffolds that dump code into your app, Electrik stays vendor-owned. You require the package, run `php artisan electrik:install`, and customize via config, published views when needed, and your own `App\` code.
+
+## Not included (on purpose)
+
+- Multi-database tenancy
+- Subdomain / custom-domain mapping (separate product line)
+- Paddle or multi-processor billing — **Stripe only**
 
 ## License
 
@@ -627,6 +803,7 @@ Business Source License 1.1 with a free Additional Use Grant for personal, educa
 1. [Quickstart](/docs/getting-started/quickstart) or the marketing [Install](/install) page
 2. [Architecture](/docs/getting-started/architecture) for the teams-as-tenant mental model
 3. [Configuration](/docs/core-concepts/configuration) for `config/electrik.php` and env knobs
+4. [Changelog](/docs/reference/changelog) and [Roadmap](/docs/reference/roadmap)
 
 
 ---
@@ -642,19 +819,21 @@ sidebar_section: "Getting Started"
 
 # Quickstart
 
-Short path for a fresh Laravel 12 app. For a longer walkthrough see [Installation](/docs/getting-started/installation) or the marketing [Install](/install) page.
+Short path for a fresh Laravel 12/13 app. For a longer walkthrough see [Installation](/docs/getting-started/installation) or the marketing [Install](/install) page.
+
+![Login](/images/docs/docs-login.png)
 
 ## Requirements
 
 - PHP 8.3+
-- Laravel 12+
+- Laravel 12+ or 13+
 - Livewire 4, Tailwind CSS v4
 - Stripe test keys (for billing)
 
 ## Install
 
 ```bash
-composer require electrik/electrik:^5.0@alpha
+composer require electrik/electrik:^5.4
 php artisan electrik:install --migrate
 ```
 
@@ -671,15 +850,24 @@ Optional demo data:
 php artisan electrik:seed-demo
 ```
 
+For the operator console, set:
+
+```env
+ELECTRIK_OPERATOR_EMAILS=demo@electrik.dev
+```
+
 ## Smoke-check routes
 
 | Area | Paths |
 |---|---|
 | Auth | `/login`, `/register`, `/forgot-password` |
 | App | `/dashboard`, `/onboarding` |
-| Teams | `/teams` |
-| Billing | `/billing` |
-| Settings | profile, security, API tokens under settings |
+| Teams | `/teams`, settings, members, activity, webhooks |
+| Billing | `/billing`, plans, address, usage |
+| Settings | profile, security, sessions, API tokens |
+| Ops | `/ops` (operator emails only) |
+
+![Dashboard](/images/docs/docs-dashboard.png)
 
 ## Local sandbox
 
@@ -688,14 +876,133 @@ From the Electrik lab monorepo:
 ```bash
 ./scripts/reset-electrik-sandbox.sh
 cd electrik-sandbox
-php artisan serve
+composer dev
 ```
 
 See [Local sandbox](/docs/guides/local-sandbox).
 
 ## UI
 
-Electrik uses Slate. Component docs: [slate.electrik.dev](https://slate.electrik.dev) — do not look for a component gallery on this site.
+Electrik uses Slate. Component docs: [slate.electrik.dev](https://slate.electrik.dev).
+
+
+---
+
+Source: https://electrik.dev/docs/guides/ai-mcp.md
+
+
+
+---
+
+Source: https://electrik.dev/docs/guides/api-tokens.md
+
+---
+title: "API tokens"
+description: "Personal vs team-scoped Sanctum tokens, abilities, and Electrik API routes."
+sidebar_order: 6
+sidebar_section: "Guides"
+---
+
+# API tokens
+
+Electrik uses [Laravel Sanctum](https://laravel.com/docs/sanctum) personal access tokens. Users create and revoke tokens from **Settings → API tokens**.
+
+## Personal vs team tokens
+
+A token is either:
+
+- **Personal** — scoped to the user only, no `team_id`.
+- **Team** — carries a `team_id`. Requests run through `electrik.token-team`, which switches current team + Spatie context before your route runs.
+
+Creating a team token requires `tokens.manage` (or ownership). Tokens support expiry presets (`never|7|30|90|365`) and show `last_used_at` when present.
+
+## Abilities
+
+Abilities come from `config('electrik.api_tokens.abilities')`. Guard routes with:
+
+```php
+Route::get('/reports', ReportsController::class)
+    ->middleware('electrik.ability:read,*');
+```
+
+A token with `*` always passes. Session/web auth (no token) also passes, so the same route works for browser and API clients.
+
+## Built-in API routes
+
+Registered under `api` + prefix `api`:
+
+| Method | Path | Ability |
+| --- | --- | --- |
+| `GET` | `/api/electrik/me` | `read` or `*` |
+| `GET` | `/api/electrik/team` | `read` or `*` |
+| `GET` | `/api/electrik/members` | `read` or `*` |
+| `POST` | `/api/electrik/usage` | `write`, `billing:write`, or `*` |
+
+### `/me`
+
+Returns id, email, name, token meta (abilities, last_used_at, expires_at), and current team.
+
+```bash
+curl -H "Authorization: Bearer <token>" https://your-app.test/api/electrik/me
+```
+
+### `/usage`
+
+Reports metered Stripe usage for the current team:
+
+```bash
+curl -X POST https://your-app.test/api/electrik/usage \
+  -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" \
+  -d '{"stripe_price_id":"price_xxx","quantity":5}'
+```
+
+## Throttling
+
+Electrik ensures `throttle:api` on the `api` group and registers a default 60/min limiter named `api` if the host app never defined one.
+
+## OpenAPI (optional)
+
+```bash
+composer require dedoc/scramble
+```
+
+Suggested in Electrik’s `composer.json`; not required.
+
+
+---
+
+Source: https://electrik.dev/docs/guides/billing-providers.md
+
+---
+title: "Billing providers"
+description: "Stripe Cashier is the supported billing processor."
+sidebar_order: 8
+sidebar_section: "Guides"
+---
+
+# Billing providers
+
+Electrik bills on the **Team** model via **Stripe** and `laravel/cashier`.
+
+```env
+ELECTRIK_BILLING_DRIVER=stripe
+```
+
+Only `stripe` is supported. Other values throw at runtime.
+
+```php
+use Electrik\Support\Billing\Billing;
+
+$driver = Billing::driver(); // StripeBillingDriver
+```
+
+Paddle is not supported. Stripe remains the only commercial path.
+
+## Related
+
+- [Billing](/docs/core-concepts/billing)
+- [Stripe test mode](/docs/guides/stripe-test-mode)
 
 
 ---
@@ -711,7 +1018,7 @@ sidebar_section: "Guides"
 
 # Feature gating
 
-Define defaults and per-price overrides in `billing.plan_features` ([Plan features & seats](/docs/core-concepts/plan-features-seats)).
+Define defaults and per-price overrides in `billing.plan_features` ([Plan features & seats](/docs/core-concepts/plan-features-seats)). Operators can also edit per-plan JSON + add-on/metered flags at `/ops/plans`.
 
 Example:
 
@@ -724,9 +1031,124 @@ Example:
 ],
 ```
 
-In your application code, resolve the current team's subscription price and read the matching feature bag (falling back to `default`). Electrik's roles UI already respects `custom_roles` where implemented.
+## Helpers
 
-Keep feature keys boring and stable — treat them as part of your product API.
+```php
+use Electrik\Support\PlanFeatures;
+
+PlanFeatures::has($team, 'custom_roles');
+PlanFeatures::limit($team, 'max_members');
+PlanFeatures::canAddMember($team);
+```
+
+## Middleware
+
+```php
+Route::middleware('electrik.plan:custom_roles')->group(function () {
+    // …
+});
+```
+
+Electrik's custom roles create screen already uses this gate. Keep feature keys boring and stable — treat them as part of your product API.
+
+
+---
+
+Source: https://electrik.dev/docs/guides/filament-bridge.md
+
+
+
+---
+
+Source: https://electrik.dev/docs/guides/generators.md
+
+---
+title: "Generators"
+description: "Scaffold Livewire, models, and resources with electrik:make."
+sidebar_order: 5
+sidebar_section: "Guides"
+---
+
+# Generators
+
+Electrik stays in `vendor`. Product code still lives in your app. Use `electrik:make:*` to scaffold Livewire + Slate views, models, and policies without dumping the whole SaaS shell.
+
+## Livewire
+
+```bash
+php artisan electrik:make:livewire Posts/Index
+```
+
+Creates:
+
+- `app/Livewire/Posts/Index.php` (uses `electrik::components.layouts.app`)
+- `resources/views/livewire/posts/index.blade.php` (Slate card scaffold)
+
+## Model
+
+```bash
+php artisan electrik:make:model Post --team
+```
+
+Creates a model with `team_id` + `team()` relation and a migration. Omit `--team` for a plain model. Pass `--no-migration` to skip the migration file.
+
+## Resource (convenience)
+
+```bash
+php artisan electrik:make:resource Post --team
+```
+
+Runs model + migration, Livewire `Post/Index` and `Post/Show`, and `app/Policies/PostPolicy.php` with permissive stubs you should tighten.
+
+## Notes
+
+- Generated files go in the **host app**, not under `Electrik\`.
+- Use `--force` to overwrite.
+- Register routes and Livewire components as you normally would in Laravel.
+- Full command list: [Artisan commands](/docs/reference/artisan-commands).
+
+
+---
+
+Source: https://electrik.dev/docs/guides/i18n.md
+
+---
+title: "Internationalization"
+description: "Locales en/es/fr/ar/hi, Profile language, and RTL."
+sidebar_order: 10
+sidebar_section: "Guides"
+---
+
+# Internationalization
+
+Electrik ships JSON translations for:
+
+| Locale | Notes |
+| --- | --- |
+| `en` | Default |
+| `es` | Spanish |
+| `fr` | French |
+| `ar` | Arabic — `dir="rtl"` on layouts |
+| `hi` | Hindi |
+
+## Resolution
+
+1. Authenticated user Profile locale (if set and allowed)
+2. Else `APP_LOCALE`
+
+Guests always use `APP_LOCALE` (no cookie locale picker). There is **no** team default locale.
+
+## Config
+
+```php
+'locales' => ['en', 'es', 'fr', 'ar', 'hi'],
+```
+
+Middleware `electrik.locale` (`SetLocale`) is pushed onto the `web` group.
+
+## RTL
+
+Arabic sets document `dir="rtl"`. Prefer logical Tailwind classes (`text-start`, `border-e`, `ps-*`) in custom views so layouts stay mirrored.
 
 
 ---
@@ -753,6 +1175,164 @@ php artisan serve
 The script wipes `electrik-sandbox/`, creates a fresh Laravel app, path-links local `electrik` + `slate`, runs `electrik:install`, and builds assets.
 
 Useful smoke paths: `/login`, `/register`, `/billing` (with Stripe test keys + `electrik:stripe:sync`).
+
+
+---
+
+Source: https://electrik.dev/docs/guides/operators-ops.md
+
+---
+title: "Operator console"
+description: "ELECTRIK_OPERATOR_EMAILS and the /ops Slate console."
+sidebar_order: 7
+sidebar_section: "Guides"
+---
+
+# Operator console
+
+Electrik ships a platform ops UI at `/ops` for allowlisted emails — not Filament.
+
+![Operations](/images/docs/docs-ops.png)
+
+## Access
+
+```env
+ELECTRIK_OPERATOR_EMAILS=you@example.com,ops@example.com
+```
+
+Middleware: `electrik.operator` (`EnsureOperator`). Non-operators get 403.
+
+## Screens
+
+| Path | Purpose |
+| --- | --- |
+| `/ops` | Metrics: users, teams, past due, failed jobs, signups 7d/30d, active subs, est. MRR stub |
+| `/ops/users` | Search, suspend, impersonate |
+| `/ops/teams` | Team list |
+| `/ops/webhooks` | Inbound Stripe webhook event log |
+| `/ops/plans` | Edit plan features JSON, add-on / metered flags |
+| `/ops/failed-jobs` | Failed queue jobs |
+| `/ops/announcements` | CRUD + publish fan-out |
+| `/ops/mail-preview` | Preview package notification emails |
+
+![Email preview](/images/docs/docs-mail-preview.png)
+
+## Est. MRR
+
+Ops MRR is a **local catalog stub** (plan prices × active subscription items). It is not Stripe Reporting. Cashier uses the `type` column for subscription name filtering.
+
+## Impersonation
+
+Ops (and team members UI) can impersonate via `lab404/laravel-impersonate`. A banner + leave route stop impersonation; activity is logged.
+
+
+---
+
+Source: https://electrik.dev/docs/guides/outbound-webhooks.md
+
+---
+title: "Outbound webhooks"
+description: "Team HTTPS endpoints Electrik calls on workspace events."
+sidebar_order: 9
+sidebar_section: "Guides"
+---
+
+# Outbound webhooks
+
+Teams can register HTTPS endpoints under **Teams → Webhooks**. When events fire, Electrik queues a signed POST.
+
+## Payload
+
+```json
+{
+  "event": "team.archived",
+  "team_id": 1,
+  "payload": { "team_id": 1, "name": "Demo Team" },
+  "sent_at": "2026-08-29T09:30:00+00:00"
+}
+```
+
+Headers:
+
+- `Content-Type: application/json`
+- `X-Electrik-Event: team.archived`
+- `X-Electrik-Signature: <hmac-sha256 of body using endpoint secret>`
+
+Verify with HMAC-SHA256 of the raw body using the secret shown once at create time.
+
+## Events
+
+Use `*` (default) or a comma-separated list. Built-in dispatches include:
+
+- `team.archived`
+- `team.restored`
+- `team.deleted`
+
+Extend by calling `Electrik\Support\TeamWebhookDispatcher::dispatch($team, $event, $payload)`.
+
+## Deliveries
+
+Each attempt stores status code / success flag on `team_webhook_deliveries`. Failure count increments on the endpoint; successful delivery resets it.
+
+## Inbound Stripe webhooks
+
+Separate from team outbound webhooks. Stripe → Cashier events are logged for ops at `/ops/webhooks` (`stripe_webhook_events`).
+
+
+---
+
+Source: https://electrik.dev/docs/guides/privacy-gdpr.md
+
+
+
+---
+
+Source: https://electrik.dev/docs/guides/social-login.md
+
+---
+title: "Social login & magic link"
+description: "Google, GitHub, Apple, Microsoft Socialite and magic-link email sign-in."
+sidebar_order: 8
+sidebar_section: "Guides"
+---
+
+# Social login & magic link
+
+## Magic link
+
+Enabled by default (`ELECTRIK_MAGIC_LINK=true`). Login page offers “Email me a link”; tokens expire after `ELECTRIK_MAGIC_LINK_EXPIRE` minutes (default 15).
+
+## Socialite providers
+
+```env
+ELECTRIK_SOCIALITE_PROVIDERS=google,github
+# optional:
+# ELECTRIK_SOCIALITE_PROVIDERS=google,github,apple,microsoft
+```
+
+Configure each provider’s client id/secret in `config/services.php` as usual for Laravel Socialite.
+
+### Google & GitHub
+
+Built into `laravel/socialite` — no extra packages.
+
+### Apple & Microsoft
+
+Optional packages (suggested in Electrik’s `composer.json`):
+
+```bash
+composer require socialiteproviders/apple socialiteproviders/microsoft
+```
+
+Electrik registers `SocialiteWasCalled` extenders when those classes exist. Without the packages, enabling `apple` / `microsoft` in env returns 503 with a clear message.
+
+## User columns
+
+Install migrations add `provider` / `provider_id` on users when present. Existing email accounts link on first social login if columns are empty.
+
+## Registration off
+
+If `ELECTRIK_REGISTRATION=false`, social login only works for existing users (same as password login for unknown emails).
 
 
 ---
@@ -790,33 +1370,55 @@ Never use live keys in local sandboxes. Map price ids to plan features in `confi
 
 ---
 
-Source: https://electrik.dev/docs/guides/upgrading-alphas.md
+Source: https://electrik.dev/docs/guides/upgrading.md
 
 ---
-title: "Upgrading alphas"
-description: "How to move between Electrik 5.x alpha releases safely."
+title: "Upgrading"
+description: "How to upgrade Electrik 5.x and migrate from older lines."
 sidebar_order: 4
 sidebar_section: "Guides"
 ---
 
-# Upgrading alphas
+# Upgrading
 
-Electrik 5.x is **alpha**. Expect breaking changes between tags.
+Electrik `5.4.0` is the current stable on the 5.x line.
 
-## Checklist
+## Checklist (5.x → newer 5.x)
 
 1. Read the package [CHANGELOG](https://github.com/electrikhq/electrik/blob/5.x/CHANGELOG.md)
 2. `composer update electrik/electrik electrik/slate`
-3. Re-run migrations if new ones shipped
+3. Re-run migrations if new ones shipped (`php artisan migrate`)
 4. `php artisan electrik:permissions:sync` if the catalog changed
 5. `php artisan electrik:stripe:sync` if billing models changed
 6. Diff `config/electrik.php` against the published stub (`electrik:install --force` only if you understand the overwrite)
 
-Pin a specific alpha in production experiments (`5.0.0-alpha.14`) rather than floating `@alpha` if you need reproducibility.
+Prefer a caret range (`^5.4`) or an exact pin in production.
+
+## 5.3 → 5.4
+
+Notable new migrations:
+
+- `archived_at` / `allowed_ips` on teams
+- `session_labels`
+- `team_webhooks` + `team_webhook_deliveries`
+- `is_addon` / `metered` on `stripe_plans`
+
+New config knobs: `auth.login_alerts`, Socialite may include `apple,microsoft`, ops routes for plans + mail preview.
+
+Cashier subscription type column is `type` (not legacy `name`). Ops metrics already handle both.
+
+## 5.0.0-alpha.* → 5.x
+
+```bash
+composer require electrik/electrik:^5.4 electrik/slate:^3.0
+php artisan migrate
+php artisan electrik:permissions:sync --teams
+php artisan electrik:stripe:sync
+```
 
 ## 4.x → 5.x
 
-5.x is a new stack (Laravel 12, Slate 3, Livewire 4, package-first). Treat migration as a **re-install** onto a fresh app rather than an in-place upgrade from Electrik 4, unless you have a dedicated migration plan.
+5.x is a new stack (Laravel 12+, Slate 3, Livewire 4, package-first). Treat migration as a **re-install** onto a fresh app rather than an in-place upgrade from Electrik 4.
 
 
 ---
@@ -883,6 +1485,9 @@ sidebar_section: "Reference"
 |---|---|
 | `electrik:install` | Publish config and wire dependencies (`--force`, `--migrate`) |
 | `electrik:seed-demo` | Seed demo user/team data |
+| `electrik:make:livewire {Name}` | Livewire class + Slate Blade view (`--force`) |
+| `electrik:make:model {Name}` | Model + migration (`--team`, `--no-migration`, `--force`) |
+| `electrik:make:resource {Name}` | Model, migration, Livewire Index/Show, policy stub (`--team`, `--force`) |
 | `electrik:permissions:sync` | Sync Spatie permissions/roles from catalog |
 | `electrik:stripe:sync` | Sync Stripe products/prices into Electrik tables |
 | `electrik:stripe:sync-subscriptions` | Sync Cashier subscriptions (`--team=`) |
@@ -891,6 +1496,8 @@ sidebar_section: "Reference"
 
 Also remember Laravel/Cashier standards: `migrate`, `storage:link`, queue workers for webhooks if you dispatch jobs.
 
+See [Generators](/docs/guides/generators) for `electrik:make:*` examples.
+
 
 ---
 
@@ -898,19 +1505,61 @@ Source: https://electrik.dev/docs/reference/changelog.md
 
 ---
 title: "Changelog"
-description: "Where to find Electrik release notes."
+description: "Electrik release notes and where to find full history."
 sidebar_order: 4
 sidebar_section: "Reference"
 ---
 
 # Changelog
 
-Package release notes live in the repository:
+Electrik **5.4.0** is the current stable release. Install with:
 
-- [CHANGELOG.md on GitHub](https://github.com/electrikhq/electrik/blob/5.x/CHANGELOG.md)
+```bash
+composer require electrik/electrik:^5.4
+```
+
+## 5.4.0 (2026-08-29)
+
+- Team brand color picker + live CSS var apply; contrast-aware primary foreground.
+- Team archive/restore; optional login IP allowlist (`electrik.team-ip`).
+- Session device rename; new-login email/database alerts (`ELECTRIK_LOGIN_ALERTS`).
+- Apple / Microsoft Socialite (optional `socialiteproviders/*` packages).
+- Stripe tax IDs; metered usage UI + `POST /api/electrik/usage`; plan add-ons (`is_addon` / `metered`).
+- Outbound team webhooks (signed POST + deliveries).
+- Ops: signup/MRR stubs, plan-features editor, email preview.
+- API: `GET /api/electrik/team`, `GET /api/electrik/members`; token expiry / last_used on `/me`.
+- Paddle remains unsupported; docs treat Stripe as the only billing path.
+
+## 5.3.0 (2026-08-29)
+
+- Sanctum ability catalog; `tokens.manage`; `electrik.ability` middleware.
+- Auth-log filters/pagination; Checkout promotion codes; past_due dunning; Stripe webhook event log.
+- Socialite Google/GitHub + magic link; operator `/ops`; announcements; team branding; `GET /api/electrik/me`.
+
+## 5.2.0 (2026-08-27)
+
+- MCP docs server (`@electrik/electrik-mcp`).
+- GDPR personal data export + account deletion.
+- Passkeys (laravel/passkeys).
+- Stripe billing via `laravel/cashier` (Team); unfinished Paddle stub removed.
+
+## 5.1.0 (2026-08-27)
+
+- Generators: `electrik:make:livewire`, `electrik:make:model`, `electrik:make:resource`.
+- Multi-persona demo seed; white-label branding env knobs.
+- Member impersonation + activity filters.
+
+## 5.0.0 (2026-08-26)
+
+- First stable release as a Composer package on Slate 3.
+
+Full notes: [CHANGELOG.md on GitHub](https://github.com/electrikhq/electrik/blob/5.x/CHANGELOG.md).
+
+## Also see
+
+- [Upgrading](/docs/guides/upgrading)
+- [Roadmap](/docs/reference/roadmap)
 - Packagist: [electrik/electrik](https://packagist.org/packages/electrik/electrik)
-
-Site version string: configured as `config('site.version')` on electrik.dev (marketing), matching the current alpha line when possible.
 
 
 ---
@@ -937,14 +1586,55 @@ Defaults from `config/electrik.php`:
 | `billing.view` | View billing | Billing |
 | `billing.manage` | Manage billing | Billing |
 | `access.roles` | Manage roles | Access |
+| `users.impersonate` | Impersonate members | Access |
 
 ### Role map
 
 - `owner` → `*`
-- `admin` → all catalog keys above
+- `admin` → all catalog keys above (including `users.impersonate`)
 - `member` → `teams.view`, `billing.view`
 
 Extend the catalog in config, then run `electrik:permissions:sync`.
+
+
+---
+
+Source: https://electrik.dev/docs/reference/roadmap.md
+
+---
+title: "Roadmap"
+description: "What Electrik is building next, and what we are not chasing."
+sidebar_order: 5
+sidebar_section: "Reference"
+---
+
+# Roadmap
+
+Electrik **5.4.0** ships operators metrics, outbound webhooks, metered usage, add-ons, tax IDs, Apple/Microsoft Socialite hooks, and richer team settings. This page lists what is next. Dates are directional, not promises.
+
+## Shipped recently
+
+- **5.4** — branding picker, archive/IP allowlist, session rename, login alerts, usage/add-ons/tax IDs, outbound webhooks, ops plans + mail preview, API expansion
+- **5.3** — Sanctum abilities, Socialite Google/GitHub, magic link, `/ops`, announcements, team branding, `/api/electrik/me`
+- **5.2** — MCP docs, GDPR export/delete, passkeys, Stripe-only billing
+- **5.1** — generators, seed-demo, impersonation, branding env knobs
+
+## Next
+
+1. **Hosted demo tenants** (follow-up) - Short-lived or picker-based tenants on demo.electrik.dev without requiring visitor Stripe keys. Design note: `demo.electrik.dev/HOSTED_TENANTS.md`.
+2. **Install Loom** (optional marketing) - Founder-recorded walkthrough when ready.
+
+## Explicit non-goals (for now)
+
+- Becoming a Filament admin competitor or a hosted "Electrik Cloud" SaaS.
+- Paddle or multi-processor billing — Stripe (`laravel/cashier`) only.
+- Multi-database tenancy and subdomain / custom-domain mapping (separate product line if demand appears).
+
+## How we ship
+
+Package changes land on the `5.x` branch with [CHANGELOG](/docs/reference/changelog) entries and GitHub Releases. Marketing and docs stay on electrik.dev.
+
+Questions or priorities: [hello@electrik.dev](mailto:hello@electrik.dev).
 
 
 ---
@@ -953,33 +1643,41 @@ Source: https://electrik.dev/docs/reference/routes-middleware.md
 
 ---
 title: "Routes & middleware"
-description: "High-level route groups Electrik registers."
+description: "Route groups and middleware aliases Electrik registers."
 sidebar_order: 2
 sidebar_section: "Reference"
 ---
 
 # Routes & middleware
 
-Electrik registers route files for auth, app shell, teams, billing, and settings.
+Electrik registers route files for auth, app shell, teams, billing, settings, ops, and API.
 
 ## Common paths
 
 | Area | Examples |
 |---|---|
-| Auth | `/login`, `/register`, `/forgot-password`, verification |
-| App | `/dashboard`, `/onboarding` |
-| Teams | `/teams`, invitations accept/deny |
-| Billing | `/billing` and related Livewire screens |
-| Settings | profile, security (password/2FA/sessions), API tokens |
+| Auth | `/login`, `/register`, magic link, Socialite callbacks |
+| App | `/dashboard`, `/onboarding`, `/pricing` |
+| Teams | `/teams`, `/teams/{team}/settings`, members, roles, activity, webhooks |
+| Billing | `/billing`, plans, subscription, address, invoices, **usage** |
+| Settings | profile, security, sessions, API tokens |
+| API | `/api/electrik/me`, `/team`, `/members`, `POST /usage` |
+| Ops | `/ops`, users, teams, webhooks, plans, failed jobs, announcements, mail-preview |
 
-Exact paths can evolve in alpha — use `php artisan route:list --path=...` in your app after install.
+Exact paths can evolve between minors. Use `php artisan route:list` after install.
 
-## Middleware themes
+## Middleware aliases
 
-- Authenticate + verified (when enabled)
-- Team selection / current team context
-- Onboarding gate
-- Optional subscription requirement
+| Alias | Role |
+|---|---|
+| `electrik.locale` | Set locale from user / `APP_LOCALE` |
+| `electrik.plan` | Require plan feature (`electrik.plan:custom_roles`) |
+| `electrik.token-team` | Bind team from Sanctum token |
+| `electrik.ability` | Require Sanctum ability |
+| `electrik.operator` | Restrict to `ELECTRIK_OPERATOR_EMAILS` |
+| `electrik.team-ip` | Enforce team IP allowlist |
 
-Customize by toggling config/env first; add your own middleware in `App\` for product-specific rules.
+Also used on route groups: team selected, onboarding complete, subscription active (when required).
+
+Customize by toggling config/env first; add product middleware in `App\`.
 

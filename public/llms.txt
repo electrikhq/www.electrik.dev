@@ -13,11 +13,11 @@
 ## Core concepts
 
 - [Configuration](https://electrik.dev/docs/core-concepts/configuration): config/electrik.php and environment variables.
-- [Auth & security](https://electrik.dev/docs/core-concepts/auth-security): Login, registration, verification, 2FA, and sessions.
-- [Teams & invites](https://electrik.dev/docs/core-concepts/teams-invites): Create and switch teams, invite members, transfer ownership.
+- [Auth & security](https://electrik.dev/docs/core-concepts/auth-security): Login, Socialite, magic link, 2FA, passkeys, sessions, and login alerts.
+- [Teams & invites](https://electrik.dev/docs/core-concepts/teams-invites): Create and switch teams, branding, archive, invites, ownership, activity, webhooks.
 - [Roles & permissions](https://electrik.dev/docs/core-concepts/roles-permissions): Spatie permissions with team context and the Electrik catalog.
-- [Billing](https://electrik.dev/docs/core-concepts/billing): Stripe via Cashier on the team, sync, webhooks, and billing UI.
-- [Plan features & seats](https://electrik.dev/docs/core-concepts/plan-features-seats): Gate features and member limits by Stripe price id.
+- [Billing](https://electrik.dev/docs/core-concepts/billing): Stripe via Cashier on the team: plans, add-ons, usage, tax IDs, webhooks.
+- [Plan features & seats](https://electrik.dev/docs/core-concepts/plan-features-seats): Gate features and member limits by Stripe price; ops editor for flags and add-ons.
 - [Onboarding](https://electrik.dev/docs/core-concepts/onboarding): First-run wizard, env toggle, and helper commands.
 - [Customization](https://electrik.dev/docs/core-concepts/customization): Override views carefully and lean on Slate for UI.
 
@@ -26,11 +26,19 @@
 - [Local sandbox](https://electrik.dev/docs/guides/local-sandbox): Reset and run the Electrik sandbox app from the lab monorepo.
 - [Stripe test mode](https://electrik.dev/docs/guides/stripe-test-mode): Develop billing against Stripe test keys and the Stripe CLI.
 - [Feature gating](https://electrik.dev/docs/guides/feature-gating): Use plan_features to limit seats and capabilities.
-- [Upgrading alphas](https://electrik.dev/docs/guides/upgrading-alphas): How to move between Electrik 5.x alpha releases safely.
+- [Upgrading](https://electrik.dev/docs/guides/upgrading): How to upgrade Electrik 5.x and migrate from older lines.
+- [Generators](https://electrik.dev/docs/guides/generators): Scaffold Livewire, models, and resources with electrik:make.
+- [API tokens](https://electrik.dev/docs/guides/api-tokens): Personal vs team-scoped Sanctum tokens, abilities, and Electrik API routes.
+- [Operator console](https://electrik.dev/docs/guides/operators-ops): ELECTRIK_OPERATOR_EMAILS and the /ops Slate console.
+- [Billing providers](https://electrik.dev/docs/guides/billing-providers): Stripe Cashier is the supported billing processor.
+- [Social login & magic link](https://electrik.dev/docs/guides/social-login): Google, GitHub, Apple, Microsoft Socialite and magic-link email sign-in.
+- [Outbound webhooks](https://electrik.dev/docs/guides/outbound-webhooks): Team HTTPS endpoints Electrik calls on workspace events.
+- [Internationalization](https://electrik.dev/docs/guides/i18n): Locales en/es/fr/ar/hi, Profile language, and RTL.
 - [Artisan commands](https://electrik.dev/docs/reference/artisan-commands): Electrik console commands reference.
-- [Routes & middleware](https://electrik.dev/docs/reference/routes-middleware): High-level route groups Electrik registers.
+- [Routes & middleware](https://electrik.dev/docs/reference/routes-middleware): Route groups and middleware aliases Electrik registers.
 - [Permissions catalog](https://electrik.dev/docs/reference/permissions-catalog): Default permission keys shipped in config/electrik.php.
-- [Changelog](https://electrik.dev/docs/reference/changelog): Where to find Electrik release notes.
+- [Changelog](https://electrik.dev/docs/reference/changelog): Electrik release notes and where to find full history.
+- [Roadmap](https://electrik.dev/docs/reference/roadmap): What Electrik is building next, and what we are not chasing.
 - [BSL Additional Use Grant](https://electrik.dev/docs/license/bsl): What the free BSL grant covers.
 - [Commercial license](https://electrik.dev/docs/license/commercial): When you need a commercial grant and how to buy.
 - [Slate UI](https://electrik.dev/docs/ecosystem/slate-ui): Electrik is built on Slate — UI docs live on slate.electrik.dev.

@@ -1,6 +1,6 @@
 ---
 title: "Plan features & seats"
-description: "Gate features and member limits by Stripe price id."
+description: "Gate features and member limits by Stripe price; ops editor for flags and add-ons."
 sidebar_order: 6
 sidebar_section: "Core Concepts"
 ---
@@ -21,6 +21,12 @@ sidebar_section: "Core Concepts"
 ],
 ```
 
-Map each Stripe **price id** to feature flags. Unmapped prices fall back to `default`.
+Runtime merge order: **defaults → by_price_id → plan `features` JSON**.
 
-Use these flags in your app (and Electrik screens that already respect them, such as custom roles) to enforce plan limits. See [Feature gating](/docs/guides/feature-gating).
+Seat-billed plans with `max_seats` also feed `max_members` when features omit it (`PlanFeatures`).
+
+## Ops editor
+
+Operators can edit each synced plan's features JSON plus **Add-on** and **Metered** flags at `/ops/plans` without hand-editing the database.
+
+Use `electrik.plan:custom_roles` (and your own feature keys) with the `EnsurePlanFeature` middleware. See [Feature gating](/docs/guides/feature-gating).

@@ -6,7 +6,7 @@ return [
 
     'tagline' => env('SITE_TAGLINE', 'Laravel SaaS starter kit'),
 
-    'version' => env('ELECTRIK_VERSION', '5.0.0'),
+    'version' => env('ELECTRIK_VERSION', '5.2.0'),
 
     'demo_url' => env('ELECTRIK_DEMO_URL', 'https://demo.electrik.dev'),
 
@@ -76,7 +76,7 @@ return [
             'summary' => 'Agencies standardizing on Electrik for client delivery.',
             'features' => [
                 'Organization-wide commercial rights',
-                'White-label friendly app shell',
+                'White-label branding (name, logo, primary color, powered-by)',
                 'Volume pricing available',
             ],
             'checkout_url' => null,
@@ -154,17 +154,16 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Newsletter (Kit — form id is public-ish; API key stays server-side)
+    | Newsletter (Listmonk + SES — electrik.dev identity)
     |--------------------------------------------------------------------------
     */
 
     'newsletter' => [
-        'enabled' => env('KIT_NEWSLETTER_ENABLED', true),
-        'provider' => 'kit',
-        'form_id' => env('KIT_FORM_ID'),
-        'form_uid' => env('KIT_FORM_UID'),
-        // Live: Alpine form → Cloudflare Pages Function /newsletter/subscribe → Kit API.
-        // Kit's public embed JS URL currently 404s for this form; do not rely on embed.
+        'enabled' => env('LISTMONK_NEWSLETTER_ENABLED', env('KIT_NEWSLETTER_ENABLED', true)),
+        'provider' => 'listmonk',
+        'list_id' => env('LISTMONK_LIST_ID'),
+        // Live: Alpine form → Cloudflare Pages Function /newsletter/subscribe → Listmonk.
+        // Kit kept in .env only as legacy; do not enable for new signups.
     ],
 
 ];

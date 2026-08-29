@@ -5,7 +5,7 @@
 @php
     $newsletter = config('site.newsletter', []);
     $enabled = (bool) ($newsletter['enabled'] ?? false);
-    // Static Pages Function handles POST /newsletter/subscribe (Kit API server-side).
+    // Static Pages Function handles POST /newsletter/subscribe (Listmonk API server-side).
     $subscribeUrl = '/newsletter/subscribe';
 @endphp
 
@@ -88,7 +88,7 @@
                 ></p>
 
                 <p class="mt-4 text-xs text-muted-foreground">
-                    Unsubscribe anytime. We use Kit —
+                    Unsubscribe anytime. We use Listmonk (self-hosted) + SES —
                     <a href="{{ route('legal.show', 'privacy') }}" class="underline underline-offset-4 hover:text-foreground">privacy</a>.
                 </p>
             </div>

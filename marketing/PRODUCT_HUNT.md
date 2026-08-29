@@ -53,7 +53,7 @@ Electrik is the SaaS starter we wanted as a Laravel package: auth, teams, billin
 **What needs improvement**
 
 ```
-Still alpha — APIs can move. Next: tighter demo tenants, more install polish, and electrik:make scaffolding when the surface is stable.
+Still shipping on 5.0 stable. Next: tighter demo tenants, more install polish, and electrik:make scaffolding.
 ```
 
 **vs Alternatives**
@@ -62,4 +62,4 @@ Still alpha — APIs can move. Next: tighter demo tenants, more install polish, 
 Jetstream, Spark, Wave, and Filament-based kits. Chose Electrik for package-first delivery plus teams/billing/Slate in one path.
 ```
 
-Ratings: Ease of use / Reliability / Value / Customization — score honestly for alpha (typically 4–5).
+Ratings: Ease of use / Reliability / Value / Customization. Score honestly for a young 5.0 (typically 4-5).

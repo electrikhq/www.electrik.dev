@@ -10,7 +10,7 @@ sidebar_section: "Getting Started"
 ## Composer
 
 ```bash
-composer require electrik/electrik:^5.0
+composer require electrik/electrik:^5.4
 ```
 
 ## Artisan install
@@ -38,9 +38,18 @@ php artisan electrik:install --migrate --force
 ## After install
 
 1. Copy Stripe keys into `.env` (`STRIPE_KEY`, `STRIPE_SECRET`, `STRIPE_WEBHOOK_SECRET`)
-2. `php artisan electrik:stripe:sync` — pull products/prices into Electrik tables
-3. `php artisan storage:link`
-4. Point Cashier webhook at your app (or use Stripe CLI locally)
+2. Set `ELECTRIK_OPERATOR_EMAILS` if you want `/ops`
+3. Optional Socialite: `ELECTRIK_SOCIALITE_PROVIDERS=google,github` (+ `config/services.php`)
+4. `php artisan electrik:stripe:sync` — pull products/prices into Electrik tables
+5. `php artisan storage:link`
+6. Point Cashier webhook at your app (or use Stripe CLI locally)
+7. Optional: `php artisan electrik:seed-demo`
+
+Screenshots of the shell after install:
+
+![Dashboard](/images/docs/docs-dashboard.png)
+
+![Billing](/images/docs/docs-billing.png)
 
 ## Disable features via env
 
@@ -51,6 +60,9 @@ php artisan electrik:install --migrate --force
 | `ELECTRIK_ONBOARDING` | `true` | Force onboarding wizard |
 | `ELECTRIK_REQUIRE_SUBSCRIPTION` | `false` | Gate app behind active subscription |
 | `ELECTRIK_HOME` | `/dashboard` | Post-login home |
+| `ELECTRIK_MAGIC_LINK` | `true` | Email magic-link sign-in |
+| `ELECTRIK_LOGIN_ALERTS` | `true` | New-IP login notifications |
+| `ELECTRIK_OPERATOR_EMAILS` | _(empty)_ | Comma list for `/ops` |
 
 Full map: [Configuration](/docs/core-concepts/configuration).
 

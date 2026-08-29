@@ -2,7 +2,7 @@ import { TIER_LABELS } from './catalog.js';
 
 /**
  * Commercial license confirmation (HTML + text).
- * Electrik does not use activation keys — certificate ID is a receipt reference.
+ * Electrik does not use activation keys. Certificate ID is a receipt reference.
  */
 export function renderLicenseEmail(purchase) {
   const tierLabel = TIER_LABELS[purchase.tier] || TIER_LABELS.unknown;
@@ -25,7 +25,7 @@ export function renderLicenseEmail(purchase) {
       ? `Thanks for purchasing ${tierLabel}. You are licensed for commercial use under this tier.`
       : `Thanks for purchasing ${tierLabel}. Your payment is confirmed; your license confirmation will follow shortly.`,
     '',
-    'Electrik does not require a product activation key — Composer install works as usual. Keep this email as your receipt.',
+    'Electrik does not require a product activation key. Composer install works as usual. Keep this email as your receipt.',
     '',
     hasCert ? `Certificate ID: ${cert}` : '',
     `Payment ID: ${paymentId}`,
@@ -37,7 +37,7 @@ export function renderLicenseEmail(purchase) {
     '',
     'Questions? Reply to this email or write hello@electrik.dev.',
     '',
-    '— Electrik',
+    '- Electrik',
   ]
     .filter((line, i, arr) => !(line === '' && arr[i - 1] === ''))
     .join('\n');
@@ -90,7 +90,7 @@ function buildHtml({ greeting, tierLabel, hasCert, cert, paymentId, tier }) {
 </head>
 <body style="margin:0;padding:0;background-color:#f5f5f4;-webkit-text-size-adjust:100%;">
   <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">
-    ${hasCert ? `Your ${tierLabel} commercial license — keep this email as your receipt.` : `We received your ${tierLabel} payment.`}
+    ${hasCert ? `Your ${tierLabel} commercial license. Keep this email as your receipt.` : `We received your ${tierLabel} payment.`}
   </div>
   <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f5f4;">
     <tr>
@@ -129,7 +129,7 @@ function buildHtml({ greeting, tierLabel, hasCert, cert, paymentId, tier }) {
               <p style="margin:0 0 16px 0;">${greeting}</p>
               <p style="margin:0 0 16px 0;">${lead}</p>
               <p style="margin:0;color:#a8a29e;font-size:14px;">
-                No product activation key is required — Composer install works as usual. Keep this email as your receipt.
+                No product activation key is required. Composer install works as usual. Keep this email as your receipt.
               </p>
             </td>
           </tr>
@@ -155,7 +155,7 @@ function buildHtml({ greeting, tierLabel, hasCert, cert, paymentId, tier }) {
                 <tr>
                   <td style="padding:0 0 28px 0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;font-weight:600;color:#1c1917;">
                     ${tierLabel}
-                    <span style="font-weight:400;color:#a8a29e;"> · ${tier}</span>
+                    <span style="font-weight:400;color:#a8a29e;"> / ${tier}</span>
                   </td>
                 </tr>
               </table>
@@ -191,7 +191,7 @@ function buildHtml({ greeting, tierLabel, hasCert, cert, paymentId, tier }) {
               Questions? Reply to this email or write
               <a href="mailto:hello@electrik.dev" style="color:#1c1917;text-decoration:underline;">hello@electrik.dev</a>.
               <br>
-              <span style="color:#a8a29e;">— Electrik · electrik.dev</span>
+              <span style="color:#a8a29e;">- Electrik | electrik.dev</span>
             </td>
           </tr>
         </table>

@@ -18,11 +18,12 @@ Defaults from `config/electrik.php`:
 | `billing.view` | View billing | Billing |
 | `billing.manage` | Manage billing | Billing |
 | `access.roles` | Manage roles | Access |
+| `users.impersonate` | Impersonate members | Access |
 
 ### Role map
 
 - `owner` → `*`
-- `admin` → all catalog keys above
+- `admin` → all catalog keys above (including `users.impersonate`)
 - `member` → `teams.view`, `billing.view`
 
 Extend the catalog in config, then run `electrik:permissions:sync`.

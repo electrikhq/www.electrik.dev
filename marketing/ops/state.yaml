@@ -12,33 +12,32 @@ publish_policy: draft_first  # draft_first | autopilot
 authority: agent_owner
 
 focus:
-  this_week: "Promote Solo $149 / Studio $399 — X draft ready; home CTA updated; electrik README prices fixed"
-  next_artifact: "Await OK to post X pricing tweet; then Kit soft broadcast if list healthy"
+  this_week: "Wait for Kit sending-address verify/approval; X paste optional; commercial checkout live"
+  next_artifact: "After Kit from-address verified → send broadcast 25631260"
 
 blockers:
+  - "Kit sending addresses unverified — hello@electrik.com (default, pending) and neeraj@electrik.dev (pending). Broadcast 25631260 draft cannot send until a from-address is verified."
+  - "Marketing bb-browser profile empty + daemon fails — cannot auto-post X"
   - "Mailchimp ACCOUNT BLOCKED — do not use; list lives on Kit now"
-  - "Kit import may be incomplete (~78 subs vs ~207 Mailchimp) — finish import in Kit UI if needed"
-  - "X pin/cleanup — marketing Chrome CDP not running; retry when browser up"
+  - "Kit import may be incomplete (~79 subs vs ~207 Mailchimp) — finish import in Kit UI if needed"
   - "DEMO_DISPATCH_TOKEN still needed on electrik for tag→demo auto-deploy"
-  - "Demo SES blocked — need valid AWS keys or Resend"
-  - "AI Valley CF7 failed — retry with directories day-2"
 
 browser:
   profile_path: "/Users/neerajsohal/lab/electrik/.browser/electrik-marketing"
   wrapper: "www.electrik.dev/marketing/ops/browser.sh"
   env: "BB_BROWSER_HOME"
-  logged_in: true
-  notes: "CDP was down 2026-08-24 evening. List mail via Kit API; site newsletter POST /newsletter/subscribe."
+  logged_in: false
+  notes: "Profile dir empty 2026-08-27; daemon fails CDP init. User posts X manually until profile is set up."
 
 access:
   github: ready
   product_hunt: ready
-  twitter: ready
+  twitter: manual_paste_only
   linkedin: deferred_no_company_page
   email_send: receive_only
   mailchimp: blocked
   brevo: skipped_using_kit
-  kit: ready
+  kit: blocked_unverified_sending_address
   analytics: ready
   search_console: ready
   backlink_pilot: ready
@@ -63,8 +62,4 @@ metrics_snapshot:
   kit_subscribers: 78
   notes: "Kit is ESP. Newsletter on Kit form 9841384. Import ~78 so far — check if full Mailchimp migrate done."
 
-pending_approval:
-  - id: x-pricing-live
-    channel: x
-    artifact: "marketing/ops/content-queue.md → X — commercial pricing live"
-    asked_at: "2026-08-27"
+pending_approval: []

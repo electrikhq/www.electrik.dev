@@ -7,19 +7,21 @@ sidebar_section: "Getting Started"
 
 # Quickstart
 
-Short path for a fresh Laravel 12 app. For a longer walkthrough see [Installation](/docs/getting-started/installation) or the marketing [Install](/install) page.
+Short path for a fresh Laravel 12/13 app. For a longer walkthrough see [Installation](/docs/getting-started/installation) or the marketing [Install](/install) page.
+
+![Login](/images/docs/docs-login.png)
 
 ## Requirements
 
 - PHP 8.3+
-- Laravel 12+
+- Laravel 12+ or 13+
 - Livewire 4, Tailwind CSS v4
 - Stripe test keys (for billing)
 
 ## Install
 
 ```bash
-composer require electrik/electrik:^5.0
+composer require electrik/electrik:^5.4
 php artisan electrik:install --migrate
 ```
 
@@ -36,15 +38,24 @@ Optional demo data:
 php artisan electrik:seed-demo
 ```
 
+For the operator console, set:
+
+```env
+ELECTRIK_OPERATOR_EMAILS=demo@electrik.dev
+```
+
 ## Smoke-check routes
 
 | Area | Paths |
 |---|---|
 | Auth | `/login`, `/register`, `/forgot-password` |
 | App | `/dashboard`, `/onboarding` |
-| Teams | `/teams` |
-| Billing | `/billing` |
-| Settings | profile, security, API tokens under settings |
+| Teams | `/teams`, settings, members, activity, webhooks |
+| Billing | `/billing`, plans, address, usage |
+| Settings | profile, security, sessions, API tokens |
+| Ops | `/ops` (operator emails only) |
+
+![Dashboard](/images/docs/docs-dashboard.png)
 
 ## Local sandbox
 
@@ -53,11 +64,11 @@ From the Electrik lab monorepo:
 ```bash
 ./scripts/reset-electrik-sandbox.sh
 cd electrik-sandbox
-php artisan serve
+composer dev
 ```
 
 See [Local sandbox](/docs/guides/local-sandbox).
 
 ## UI
 
-Electrik uses Slate. Component docs: [slate.electrik.dev](https://slate.electrik.dev) — do not look for a component gallery on this site.
+Electrik uses Slate. Component docs: [slate.electrik.dev](https://slate.electrik.dev).

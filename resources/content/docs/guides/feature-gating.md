@@ -7,7 +7,7 @@ sidebar_section: "Guides"
 
 # Feature gating
 
-Define defaults and per-price overrides in `billing.plan_features` ([Plan features & seats](/docs/core-concepts/plan-features-seats)).
+Define defaults and per-price overrides in `billing.plan_features` ([Plan features & seats](/docs/core-concepts/plan-features-seats)). Operators can also edit per-plan JSON + add-on/metered flags at `/ops/plans`.
 
 Example:
 
@@ -20,6 +20,22 @@ Example:
 ],
 ```
 
-In your application code, resolve the current team's subscription price and read the matching feature bag (falling back to `default`). Electrik's roles UI already respects `custom_roles` where implemented.
+## Helpers
 
-Keep feature keys boring and stable — treat them as part of your product API.
+```php
+use Electrik\Support\PlanFeatures;
+
+PlanFeatures::has($team, 'custom_roles');
+PlanFeatures::limit($team, 'max_members');
+PlanFeatures::canAddMember($team);
+```
+
+## Middleware
+
+```php
+Route::middleware('electrik.plan:custom_roles')->group(function () {
+    // …
+});
+```
+
+Electrik's custom roles create screen already uses this gate. Keep feature keys boring and stable — treat them as part of your product API.

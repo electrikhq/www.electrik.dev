@@ -18,14 +18,16 @@ class NewsletterController extends Controller
         if (filled($request->input('company_website'))) {
             return response()->json([
                 'ok' => true,
-                'message' => 'Check your inbox to confirm your subscription.',
+                'message' => 'You are on the list. Watch for Electrik updates.',
             ]);
         }
 
-        $apiKey = config('services.kit.key');
-        $formId = config('services.kit.form_id');
+        $base = rtrim((string) config('services.listmonk.url'), '/');
+        $user = config('services.listmonk.username');
+        $token = config('services.listmonk.token');
+        $listId = (int) config('services.listmonk.list_id');
 
-        if (! filled($apiKey) || ! filled($formId)) {
+        if ($base === '' || ! filled($user) || ! filled($token) || $listId < 1) {
             return response()->json([
                 'ok' => false,
                 'message' => 'Newsletter is not configured.',
@@ -33,18 +35,31 @@ class NewsletterController extends Controller
         }
 
         $email = strtolower(trim($validated['email']));
-        $referrer = $request->headers->get('referer') ?: config('app.url');
+        $name = strstr($email, '@', true) ?: 'Subscriber';
 
-        $create = Http::withHeaders([
-            'X-Kit-Api-Key' => $apiKey,
-            'Accept' => 'application/json',
-        ])->post('https://api.kit.com/v4/subscribers', [
-            'email_address' => $email,
+        $http = Http::withBasicAuth($user, $token)->acceptJson();
+
+        $create = $http->post("{$base}/api/subscribers", [
+            'email' => $email,
+            'name' => $name,
+            'status' => 'enabled',
+            'lists' => [$listId],
+            'preconfirm_subscriptions' => true,
+            'attribs' => ['source' => 'electrik.dev'],
         ]);
 
-        // Created, or already exists — still add to form.
-        if ($create->failed() && ! in_array($create->status(), [409, 422], true)) {
-            report('Kit create subscriber failed: '.$create->body());
+        if ($create->successful()) {
+            return response()->json([
+                'ok' => true,
+                'message' => 'You are on the list. Watch for Electrik updates.',
+            ]);
+        }
+
+        $alreadyExists = $create->status() === 409
+            || preg_match('/already exists|duplicate|unique/i', $create->body());
+
+        if (! $alreadyExists) {
+            report('Listmonk create subscriber failed: '.$create->body());
 
             return response()->json([
                 'ok' => false,
@@ -52,21 +67,53 @@ class NewsletterController extends Controller
             ], 502);
         }
 
-        $add = Http::withHeaders([
-            'X-Kit-Api-Key' => $apiKey,
-            'Accept' => 'application/json',
-        ])->post("https://api.kit.com/v4/forms/{$formId}/subscribers", [
-            'email_address' => $email,
-            'referrer' => $referrer,
+        $query = "subscribers.email = '".str_replace("'", "''", $email)."'";
+        $find = $http->get("{$base}/api/subscribers", [
+            'query' => $query,
+            'page' => 1,
+            'per_page' => 1,
         ]);
 
-        if ($add->failed() && $add->status() !== 200) {
-            report('Kit add to form failed: '.$add->body());
-
+        $sub = $find->json('data.results.0');
+        if (! is_array($sub)) {
             return response()->json([
-                'ok' => false,
-                'message' => 'Could not subscribe right now. Try again in a moment.',
-            ], 502);
+                'ok' => true,
+                'message' => 'You are on the list. Watch for Electrik updates.',
+            ]);
+        }
+
+        $existingIds = collect($sub['lists'] ?? [])->pluck('id')->map(fn ($id) => (int) $id)->all();
+        if (in_array($listId, $existingIds, true)) {
+            return response()->json([
+                'ok' => true,
+                'message' => 'You are on the list. Watch for Electrik updates.',
+            ]);
+        }
+
+        $attach = $http->put("{$base}/api/subscribers/{$sub['id']}", [
+            'email' => $sub['email'] ?? $email,
+            'name' => $sub['name'] ?? $name,
+            'status' => $sub['status'] ?? 'enabled',
+            'lists' => [...$existingIds, $listId],
+            'preconfirm_subscriptions' => true,
+        ]);
+
+        if ($attach->failed()) {
+            $bulk = $http->put("{$base}/api/subscribers/lists", [
+                'ids' => [(int) $sub['id']],
+                'action' => 'add',
+                'target_list_ids' => [$listId],
+                'status' => 'confirmed',
+            ]);
+
+            if ($bulk->failed()) {
+                report('Listmonk attach list failed: '.$bulk->body());
+
+                return response()->json([
+                    'ok' => false,
+                    'message' => 'Could not subscribe right now. Try again in a moment.',
+                ], 502);
+            }
         }
 
         return response()->json([

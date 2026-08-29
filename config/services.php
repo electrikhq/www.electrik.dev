@@ -45,4 +45,12 @@ return [
         'form_uid' => env('KIT_FORM_UID'),
     ],
 
+    'listmonk' => [
+        'url' => env('LISTMONK_URL'),
+        'username' => env('LISTMONK_API_USER'),
+        'token' => env('LISTMONK_API_TOKEN'),
+        'list_id' => env('LISTMONK_LIST_ID'),
+        'template_id' => env('LISTMONK_TEMPLATE_ID'),
+    ],
+
 ];

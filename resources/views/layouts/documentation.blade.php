@@ -50,7 +50,7 @@
         }
     }"
 >
-    <x-site-navbar :docs="true" />
+    <x-site-navbar :docs="true" :sections="$sidebar ?? []" />
 
     <div
         x-show="sidebarOpen"

@@ -42,11 +42,15 @@ Honest dual lane:
 Checkout: https://electrik.dev/pricing
 ```
 
-### Kit broadcast (soft — draft only, do not send until OK)
+### Kit broadcast (DRAFT — do not send until from-address verified)
+
+**Kit draft ID:** `25631260` · status: `draft` · [open in Kit](https://app.kit.com/broadcasts/25631260)
+
+**Blocked on:** verify a sending address in Kit (prefer `hello@electrik.dev` or `neeraj@electrik.dev`). Current default `hello@electrik.com` is pending/unverified — do not send until approved.
 
 **Subject:** Electrik commercial licenses are live
 
-**Body:**
+**Body (already in draft):**
 ```
 Hey —
 
@@ -61,6 +65,7 @@ Same package either way. Demo: demo.electrik.dev · Install: electrik.dev/instal
 — Neeraj
 ```
 
+When verified: say **send kit** (or Send in Kit UI).
 ### X / LinkedIn — Jetstream compare (ready)
 
 ```
@@ -84,7 +89,7 @@ Most Laravel SaaS kits copy auth, billing, and teams into your `app/` folder. Yo
 
 Electrik 5.x stays in the `Electrik\` namespace: `composer require electrik/electrik`, `php artisan electrik:install`, customize via config and published views. Teams + Stripe Cashier on the team + Spatie permissions + Slate 3 UI.
 
-Still alpha (5.0.0-alpha.15) — APIs can move. But the model is intentional: package-first, not scaffold-and-fork.
+Still 5.0.0 stable. APIs can still evolve in minors. But the model is intentional: package-first, not scaffold-and-fork.
 
 - Demo: https://demo.electrik.dev
 - Install: https://electrik.dev/install
