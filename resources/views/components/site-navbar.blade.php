@@ -7,11 +7,15 @@
     $navLink = 'text-sm text-muted-foreground transition-colors hover:text-foreground';
     $isActive = fn (string $name): string => request()->routeIs($name) ? $navActive : $navLink;
     $docsActive = request()->routeIs('docs.*') ? $navActive : $navLink;
+    $mobileLink = 'w-full justify-start';
+    $mobileActive = 'w-full justify-start bg-accent text-accent-foreground';
+    $mobileClass = fn (string $name): string => request()->routeIs($name) ? $mobileActive : $mobileLink;
+    $mobileDocsClass = request()->routeIs('docs.*') ? $mobileActive : $mobileLink;
 @endphp
 
 <header class="sticky top-0 z-50 h-14 border-b border-border/80 bg-background/80 backdrop-blur-xl">
     <div class="mx-auto flex h-full w-full max-w-full items-center gap-4 px-4 sm:px-6">
-        <a href="{{ route('home') }}" class="flex items-center gap-2 text-foreground">
+        <a href="{{ route('home') }}" class="flex shrink-0 items-center gap-2 text-foreground">
             <img
                 src="{{ asset('images/electrik-mark.svg') }}"
                 alt=""
@@ -23,7 +27,8 @@
             <span class="text-sm font-medium tracking-tight">{{ config('site.name') }}</span>
         </a>
 
-        <nav class="hidden items-center gap-1 md:flex">
+        {{-- Full link row only at lg+ — too many items for md --}}
+        <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
             <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('docs.show') }}" class="{{ $docsActive }}">
                 Docs
             </x-slate::button>
@@ -78,6 +83,81 @@
                     <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
                 </svg>
             </x-slate::button>
+
+            <x-slate::sheet class="lg:hidden">
+                <x-slate::sheet-trigger>
+                    <x-slate::button variant="ghost" size="icon-sm" aria-label="Open menu">
+                        <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M4 6h16" stroke-linecap="round" />
+                            <path d="M4 12h16" stroke-linecap="round" />
+                            <path d="M4 18h16" stroke-linecap="round" />
+                        </svg>
+                    </x-slate::button>
+                </x-slate::sheet-trigger>
+                <x-slate::sheet-content side="end" title="Menu" description="Navigate {{ config('site.name') }}">
+                    <nav class="flex flex-col gap-1" aria-label="Mobile">
+                        <x-slate::sheet-close class="w-full">
+                            <x-slate::button as="a" variant="ghost" class="{{ $mobileDocsClass }}" href="{{ route('docs.show') }}">
+                                Docs
+                            </x-slate::button>
+                        </x-slate::sheet-close>
+                        <x-slate::sheet-close class="w-full">
+                            <x-slate::button as="a" variant="ghost" class="{{ $mobileClass('install') }}" href="{{ route('install') }}">
+                                Install
+                            </x-slate::button>
+                        </x-slate::sheet-close>
+                        <x-slate::sheet-close class="w-full">
+                            <x-slate::button as="a" variant="ghost" class="{{ $mobileClass('pricing') }}" href="{{ route('pricing') }}">
+                                Pricing
+                            </x-slate::button>
+                        </x-slate::sheet-close>
+                        <x-slate::sheet-close class="w-full">
+                            <x-slate::button as="a" variant="ghost" class="{{ $mobileClass('tools.*') }}" href="{{ route('tools.index') }}">
+                                Tools
+                            </x-slate::button>
+                        </x-slate::sheet-close>
+                        <x-slate::sheet-close class="w-full">
+                            <x-slate::button as="a" variant="ghost" class="{{ $mobileClass('compare.*') }}" href="{{ route('compare.index') }}">
+                                Compare
+                            </x-slate::button>
+                        </x-slate::sheet-close>
+                        <x-slate::sheet-close class="w-full">
+                            <x-slate::button as="a" variant="ghost" class="{{ $mobileClass('license') }}" href="{{ route('license') }}">
+                                License
+                            </x-slate::button>
+                        </x-slate::sheet-close>
+                        <x-slate::sheet-close class="w-full">
+                            <x-slate::button as="a" variant="ghost" class="{{ $mobileClass('faq') }}" href="{{ route('faq') }}">
+                                FAQ
+                            </x-slate::button>
+                        </x-slate::sheet-close>
+                        <x-slate::sheet-close class="w-full">
+                            <x-slate::button as="a" variant="ghost" class="{{ $mobileLink }}" href="{{ config('site.slate_url') }}" target="_blank" rel="noopener noreferrer">
+                                Slate UI
+                            </x-slate::button>
+                        </x-slate::sheet-close>
+                    </nav>
+                    <x-slot:footer>
+                        <div class="flex w-full flex-col gap-2">
+                            <x-slate::sheet-close class="w-full">
+                                <x-slate::button as="a" variant="outline" class="w-full" href="{{ config('site.github_url') }}" target="_blank" rel="noopener noreferrer">
+                                    GitHub
+                                </x-slate::button>
+                            </x-slate::sheet-close>
+                            <x-slate::sheet-close class="w-full">
+                                <x-slate::button as="a" variant="outline" class="w-full" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer">
+                                    View demo
+                                </x-slate::button>
+                            </x-slate::sheet-close>
+                            <x-slate::sheet-close class="w-full">
+                                <x-slate::button as="a" class="w-full" href="{{ route('install') }}">
+                                    Get started
+                                </x-slate::button>
+                            </x-slate::sheet-close>
+                        </div>
+                    </x-slot:footer>
+                </x-slate::sheet-content>
+            </x-slate::sheet>
         </div>
     </div>
 </header>
