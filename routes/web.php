@@ -171,7 +171,7 @@ Route::get('docs/{slug}.md', function (string $slug) {
 
 Route::get('docs/{slug?}', function ($slug = null) {
     if (! $slug) {
-        $slug = 'getting-started/introduction';
+        return redirect('/docs/getting-started/introduction', 301);
     }
 
     $sidebar = generateSidebar();

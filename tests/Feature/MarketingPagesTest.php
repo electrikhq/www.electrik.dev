@@ -24,9 +24,9 @@ class MarketingPagesTest extends TestCase
         ];
     }
 
-    public function test_legacy_docs_redirects_to_install(): void
+    public function test_docs_hub_redirects_to_introduction(): void
     {
-        $this->get('/docs')->assertRedirect('/install');
+        $this->get('/docs')->assertRedirect('/docs/getting-started/introduction');
     }
 
     public function test_slate_docs_redirect_to_slate_site(): void

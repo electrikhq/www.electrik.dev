@@ -1,3 +1,7 @@
+# Docs hub — static export has no docs/index.html; send /docs to the intro page
+/docs /docs/getting-started/introduction/ 301
+/docs/ /docs/getting-started/introduction/ 301
+
 # SEO alias matching common “tailwind color scheme generator” search intent
 /tools/tailwindcss-color-scheme-generator /tools/tailwind-color-generator 301
 /tools/tailwindcss-color-scheme-generator/ /tools/tailwind-color-generator/ 301

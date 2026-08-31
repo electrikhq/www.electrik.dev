@@ -137,6 +137,8 @@ jobs:
           test -f dist/index.html
           test -d dist/build/assets
           test -f dist/docs/getting-started/introduction/index.html
+          test -f dist/_redirects
+          grep -q '^/docs /docs/getting-started/introduction/ 301$' dist/_redirects
           grep -q 'googletagmanager.com/gtag/js' dist/index.html
           grep -q 'G-ZWCWJY4FWD' dist/index.html
           grep -q 'googletagmanager.com/gtag/js' dist/docs/getting-started/introduction/index.html
