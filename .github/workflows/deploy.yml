@@ -54,6 +54,8 @@ jobs:
           DODO_CHECKOUT_SOLO: ${{ secrets.DODO_CHECKOUT_SOLO }}
           DODO_CHECKOUT_STUDIO: ${{ secrets.DODO_CHECKOUT_STUDIO }}
           GA_MEASUREMENT_ID: ${{ secrets.GOOGLE_ANALYTICS_MEASUREMENT_ID || 'G-ZWCWJY4FWD' }}
+          ADSENSE_CLIENT_ID: ${{ secrets.ADSENSE_CLIENT_ID || 'ca-pub-4533175894495099' }}
+          ADSENSE_DOCS_SLOT: ${{ secrets.ADSENSE_DOCS_SLOT || '9851042810' }}
         run: |
           printf '%s\n' \
             'APP_NAME=Electrik' \
@@ -75,6 +77,8 @@ jobs:
             "DODO_CHECKOUT_SOLO=${DODO_CHECKOUT_SOLO}" \
             "DODO_CHECKOUT_STUDIO=${DODO_CHECKOUT_STUDIO}" \
             "GOOGLE_ANALYTICS_MEASUREMENT_ID=${GA_MEASUREMENT_ID}" \
+            "ADSENSE_CLIENT_ID=${ADSENSE_CLIENT_ID}" \
+            "ADSENSE_DOCS_SLOT=${ADSENSE_DOCS_SLOT}" \
             > .env
 
       - name: Generate application key
@@ -136,6 +140,8 @@ jobs:
           grep -q 'googletagmanager.com/gtag/js' dist/index.html
           grep -q 'G-ZWCWJY4FWD' dist/index.html
           grep -q 'googletagmanager.com/gtag/js' dist/docs/getting-started/introduction/index.html
+          grep -q 'pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' dist/docs/getting-started/introduction/index.html
+          grep -q 'ca-pub-4533175894495099' dist/docs/getting-started/introduction/index.html
           test -f dist/search-index.json
           test -f dist/llms.txt
           if grep -REq 'http://127\.0\.0\.1:8000|/localhost' dist --include='*.html'; then

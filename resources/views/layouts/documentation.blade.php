@@ -21,6 +21,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <x-seo.json-ld :graph="$seoGraph ?? []" />
     <x-analytics.gtag />
+    <x-adsense.script />
     @stack('head')
 </head>
 
@@ -163,6 +164,9 @@
                         Scroll to top
                     </button>
                 </div>
+
+                {{-- Right-rail ad (Carbon-style placement). xl+ only via parent aside. --}}
+                <x-adsense.unit class="mt-8" />
             </div>
         </aside>
     </div>

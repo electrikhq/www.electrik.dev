@@ -39,6 +39,11 @@ return [
         'measurement_id' => env('GOOGLE_ANALYTICS_MEASUREMENT_ID'),
     ],
 
+    'adsense' => [
+        'client' => env('ADSENSE_CLIENT_ID', 'ca-pub-4533175894495099'),
+        'docs_slot' => env('ADSENSE_DOCS_SLOT', '9851042810'),
+    ],
+
     'kit' => [
         'key' => env('KIT_API_KEY'),
         'form_id' => env('KIT_FORM_ID'),
