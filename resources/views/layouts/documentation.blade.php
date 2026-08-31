@@ -20,6 +20,7 @@
     <x-theme-init />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <x-seo.json-ld :graph="$seoGraph ?? []" />
+    <x-analytics.gtag />
     @stack('head')
 </head>
 

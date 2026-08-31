@@ -53,6 +53,7 @@ jobs:
           PRODUCTION_URL: ${{ secrets.APP_URL || 'https://electrik.dev' }}
           DODO_CHECKOUT_SOLO: ${{ secrets.DODO_CHECKOUT_SOLO }}
           DODO_CHECKOUT_STUDIO: ${{ secrets.DODO_CHECKOUT_STUDIO }}
+          GA_MEASUREMENT_ID: ${{ secrets.GOOGLE_ANALYTICS_MEASUREMENT_ID || 'G-ZWCWJY4FWD' }}
         run: |
           printf '%s\n' \
             'APP_NAME=Electrik' \
@@ -73,6 +74,7 @@ jobs:
             'LISTMONK_NEWSLETTER_ENABLED=true' \
             "DODO_CHECKOUT_SOLO=${DODO_CHECKOUT_SOLO}" \
             "DODO_CHECKOUT_STUDIO=${DODO_CHECKOUT_STUDIO}" \
+            "GOOGLE_ANALYTICS_MEASUREMENT_ID=${GA_MEASUREMENT_ID}" \
             > .env
 
       - name: Generate application key
@@ -131,6 +133,9 @@ jobs:
           test -f dist/index.html
           test -d dist/build/assets
           test -f dist/docs/getting-started/introduction/index.html
+          grep -q 'googletagmanager.com/gtag/js' dist/index.html
+          grep -q 'G-ZWCWJY4FWD' dist/index.html
+          grep -q 'googletagmanager.com/gtag/js' dist/docs/getting-started/introduction/index.html
           test -f dist/search-index.json
           test -f dist/llms.txt
           if grep -REq 'http://127\.0\.0\.1:8000|/localhost' dist --include='*.html'; then
