@@ -40,6 +40,8 @@
             <a href="{{ route('pricing') }}" class="underline underline-offset-4 hover:text-foreground">Pricing</a>
             <span class="text-muted-foreground/80"> — from $0 grant, commercial from $149</span>
             <span class="mx-2 text-border" aria-hidden="true">·</span>
+            <a href="https://clipy.online/video/5rpdlm7ajzs5" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:text-foreground">2‑min video</a>
+            <span class="mx-2 text-border" aria-hidden="true">·</span>
             <a href="{{ config('site.github_url') }}" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:text-foreground">GitHub</a>
         </p>
 

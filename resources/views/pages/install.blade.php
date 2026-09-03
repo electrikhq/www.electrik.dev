@@ -23,6 +23,28 @@
             product code lives under <code>Electrik\</code> in vendor.
         </p>
 
+        <div class="not-prose my-8 space-y-4">
+            <p class="text-base font-medium text-foreground">Watch it (about 2 minutes)</p>
+            <div class="overflow-hidden rounded-xl border border-border bg-card shadow-xs">
+                <div class="aspect-video w-full">
+                    <iframe
+                        class="h-full w-full"
+                        src="https://clipy.online/embed/5rpdlm7ajzs5"
+                        title="Electrik install and Studio walkthrough"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        loading="lazy"
+                    ></iframe>
+                </div>
+            </div>
+            <p class="text-sm text-muted-foreground">
+                Prefer terminal only?
+                <a class="underline underline-offset-4 hover:text-foreground" href="https://clipy.online/video/oak9rgmez5yf" target="_blank" rel="noopener noreferrer">47s Composer install clip</a>
+                ·
+                <a class="underline underline-offset-4 hover:text-foreground" href="https://clipy.online/video/5rpdlm7ajzs5" target="_blank" rel="noopener noreferrer">Full walkthrough</a>
+            </p>
+        </div>
+
         <aside class="not-prose my-8 rounded-xl border border-border bg-muted/40 px-5 py-4 text-sm leading-relaxed">
             <p class="font-medium text-foreground">Already on Slate?</p>
             <p class="mt-1 text-muted-foreground">
