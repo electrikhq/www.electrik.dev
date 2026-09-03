@@ -84,12 +84,14 @@ return [
     ],
 
     'features' => [
-        'Auth, email verification, password reset, remember me',
-        'Teams with invites, roles, and Spatie permissions',
-        'Stripe billing on the team (Cashier)',
-        'Onboarding wizard, notifications, activity log',
-        'Two-factor auth, API tokens, profile photos',
-        'Slate 3 UI: vendor package, no copy-on-install',
+        'Email auth, verification, password reset, and profile',
+        'Teams: create, switch, invite, and roles',
+        'Stripe: team billing, plans, webhooks, customer portal',
+        'Onboarding wizard',
+        'Slate 3 UI kit (forms, shell, dark mode)',
+        'Notifications and activity log',
+        'Two-factor authentication',
+        'Install stays in vendor — update via Composer',
     ],
 
     /*

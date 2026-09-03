@@ -43,7 +43,7 @@
     </div>
 
     <div class="mt-12 grid gap-6 lg:grid-cols-4">
-        <x-slate::card class="lg:col-span-1 border-border/80">
+        <x-slate::card id="grant" class="lg:col-span-1 border-border/80 scroll-mt-24">
             <x-slate::card-header>
                 <x-slate::card-title>Grant</x-slate::card-title>
                 <x-slate::card-description>Personal, OSS, pre-revenue indie</x-slate::card-description>
@@ -62,10 +62,13 @@
         </x-slate::card>
 
         @foreach (config('site.commercial_tiers') as $tier)
-            <x-slate::card @class([
-                'border-border/80',
-                'ring-2 ring-foreground/10' => ! empty($tier['highlight']),
-            ])>
+            <x-slate::card
+                id="{{ $tier['id'] }}"
+                @class([
+                    'border-border/80 scroll-mt-24',
+                    'ring-2 ring-foreground/10' => ! empty($tier['highlight']),
+                ])
+            >
                 <x-slate::card-header>
                     @if (! empty($tier['highlight']))
                         <x-slate::badge class="mb-2 w-fit">Popular</x-slate::badge>
