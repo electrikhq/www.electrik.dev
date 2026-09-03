@@ -143,12 +143,12 @@
                     <span class="h-4 w-px bg-border" aria-hidden="true"></span>
                     <x-slate::dark-mode-toggle variant="ghost" size="icon-sm" />
                     <span class="h-4 w-px bg-border" aria-hidden="true"></span>
-                    <x-slate::button as="a" size="sm" href="{{ route('install') }}" class="rounded-full px-4">
-                        Get started
+                    <x-slate::button as="a" size="sm" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer" class="rounded-full px-4">
+                        Try demo
                     </x-slate::button>
                 </div>
 
-                {{-- Desktop right actions (unchanged) --}}
+                {{-- Desktop right actions --}}
                 <div class="hidden items-center gap-2 lg:flex">
                     <x-slate::button as="a" variant="ghost" size="sm" href="{{ $githubUrl }}" target="_blank" rel="noopener noreferrer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" class="size-4" aria-hidden="true">
@@ -157,11 +157,11 @@
                         GitHub
                     </x-slate::button>
                     <x-slate::dark-mode-toggle variant="ghost" />
-                    <x-slate::button as="a" variant="outline" size="sm" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer">
-                        View demo
+                    <x-slate::button as="a" variant="outline" size="sm" href="{{ route('install') }}">
+                        Install
                     </x-slate::button>
-                    <x-slate::button as="a" size="sm" href="{{ route('install') }}">
-                        Get started
+                    <x-slate::button as="a" size="sm" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer">
+                        Try the demo
                         <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
                         </svg>

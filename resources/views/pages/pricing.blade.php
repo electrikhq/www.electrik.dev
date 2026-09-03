@@ -139,8 +139,14 @@
         <p>
             Stripe subscription pricing for <em>your</em> product is separate. Electrik helps you bill your customers; the license above is for using Electrik itself.
         </p>
+        <h2>What happens after you buy?</h2>
+        <p>
+            Checkout is handled by Dodo Payments. You land on a thanks page, then we email your commercial license details to the address used at checkout.
+            Nothing in the package unlocks later — you already have full source. The license is permission for commercial use.
+            Next step is the same as the grant lane:
+            <a href="{{ route('install') }}">install Electrik</a>.
+        </p>
         <p class="text-sm text-muted-foreground">
-            Solo and Studio check out via Dodo Payments when payment links are configured.
             Prefer an invoice? Email
             <a href="mailto:{{ config('site.commercial_email') }}">{{ config('site.commercial_email') }}</a>.
         </p>

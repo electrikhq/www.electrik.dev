@@ -23,21 +23,27 @@
         </p>
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <x-slate::button as="a" href="{{ route('install') }}">
-                Install guide
+            <x-slate::button as="a" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer">
+                Try the demo
                 <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
                 </svg>
             </x-slate::button>
-            <x-slate::button as="a" variant="outline" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer">
-                Live demo
-            </x-slate::button>
-            <x-slate::button as="a" variant="outline" href="{{ config('site.github_url') }}" target="_blank" rel="noopener noreferrer">
-                GitHub
+            <x-slate::button as="a" variant="outline" href="{{ route('install') }}">
+                Install guide
             </x-slate::button>
         </div>
 
-        <div class="mt-10">
+        <p class="mt-5 text-sm text-muted-foreground">
+            <code class="rounded bg-muted px-1.5 py-0.5 text-xs sm:text-sm">composer require electrik/electrik</code>
+            <span class="mx-2 text-border" aria-hidden="true">·</span>
+            <a href="{{ route('pricing') }}" class="underline underline-offset-4 hover:text-foreground">Pricing</a>
+            <span class="text-muted-foreground/80"> — from $0 grant, commercial from $149</span>
+            <span class="mx-2 text-border" aria-hidden="true">·</span>
+            <a href="{{ config('site.github_url') }}" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:text-foreground">GitHub</a>
+        </p>
+
+        <div class="mt-8">
             <x-product-hunt-badge />
         </div>
     </div>
@@ -54,6 +60,51 @@
                 decoding="async"
             />
         </div>
+    </div>
+</section>
+
+<section class="border-t border-border px-4 py-12 sm:px-6">
+    <div class="mx-auto max-w-4xl">
+        <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-xl font-semibold tracking-tight sm:text-2xl">Who is this for?</h2>
+            <p class="mt-2 text-sm text-muted-foreground sm:text-base">
+                Same kit either way. Pick the next step that matches how you ship.
+            </p>
+        </div>
+        <div class="mt-8 grid gap-6 sm:grid-cols-3">
+            <div class="border-t-2 border-border pt-5">
+                <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Learning or side project</p>
+                <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Personal, OSS, or pre-revenue indie. Covered by the $0 grant.
+                </p>
+                <a href="{{ route('install') }}" class="mt-4 inline-flex text-sm font-medium text-foreground underline underline-offset-4 hover:no-underline">
+                    Install free →
+                </a>
+            </div>
+            <div class="border-t-2 border-foreground pt-5">
+                <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Shipping one product</p>
+                <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Company or commercial product. Solo license, one-time.
+                </p>
+                <a href="{{ route('pricing') }}" class="mt-4 inline-flex text-sm font-medium text-foreground underline underline-offset-4 hover:no-underline">
+                    See Solo pricing →
+                </a>
+            </div>
+            <div class="border-t-2 border-border pt-5">
+                <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Studio or agency</p>
+                <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    Multiple client or internal products. Studio or Agency.
+                </p>
+                <a href="{{ route('pricing') }}" class="mt-4 inline-flex text-sm font-medium text-foreground underline underline-offset-4 hover:no-underline">
+                    See Studio pricing →
+                </a>
+            </div>
+        </div>
+        <p class="mt-8 text-center text-sm text-muted-foreground">
+            Not sure yet?
+            <a href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:text-foreground">Click through the live demo</a>
+            first.
+        </p>
     </div>
 </section>
 
