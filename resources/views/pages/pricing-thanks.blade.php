@@ -29,7 +29,12 @@
         @endif
     </h1>
     <p class="mt-4 text-muted-foreground text-pretty">
-        Payment confirmed by Dodo. We’ll email your commercial license details to the address used at checkout.
+        @if ($paymentId)
+            Payment confirmed by Dodo. We’ll email your commercial license details to the address used at checkout.
+        @else
+            If you just completed checkout, Dodo will email your receipt. We will follow up with commercial license details.
+            Opening this page without a payment id does not record a purchase.
+        @endif
         Questions?
         <a class="text-foreground underline underline-offset-4" href="mailto:{{ config('site.commercial_email') }}">{{ config('site.commercial_email') }}</a>
     </p>
@@ -57,6 +62,7 @@
                     paymentId,
                     message: 'Confirming with our license ledger…',
                     attempts: 0,
+                    tracked: false,
                     async poll() {
                         const max = 12;
                         while (this.attempts < max) {
@@ -68,6 +74,11 @@
                                     if (data.revoked) {
                                         this.message = 'This purchase was refunded or revoked. Contact hello@electrik.dev if that looks wrong.';
                                         return;
+                                    }
+                                    // Client purchase only after ledger confirms success (server MP is primary).
+                                    if (!this.tracked && data.status === 'succeeded' && window.electrikAnalytics) {
+                                        window.electrikAnalytics.purchaseFromLedger(data);
+                                        this.tracked = true;
                                     }
                                     if (data.has_license || data.fulfilled) {
                                         this.message = 'License recorded — check your inbox for confirmation (and spam folder). No activation key needed.';

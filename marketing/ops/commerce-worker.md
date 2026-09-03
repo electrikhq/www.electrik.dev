@@ -48,15 +48,24 @@ npx wrangler pages secret put MAIL_FROM_ADDRESS --project-name=electrik   # hell
 # optional:
 npx wrangler pages secret put MAIL_FROM_NAME --project-name=electrik
 npx wrangler pages secret put COMMERCE_OPS_EMAIL --project-name=electrik
+# Gold-standard purchase analytics (server-side; not in HTML):
+npx wrangler pages secret put GA4_API_SECRET --project-name=electrik
 ```
 
 Also set Pages **vars** (or wrangler `[vars]`) for live product IDs:
 
-- `COMMERCE_PRODUCT_SOLO`
-- `COMMERCE_PRODUCT_STUDIO`
+- `COMMERCE_PRODUCT_SOLO` = `pdt_0NmmtqGIkMmykxblitCCT`
+- `COMMERCE_PRODUCT_STUDIO` = `pdt_0NmmtqDtvSO8YszvwEmXl`
+- `GOOGLE_ANALYTICS_MEASUREMENT_ID` = `G-ZWCWJY4FWD` (already in `wrangler.toml`)
+
+Apply D1 migrations (includes `ga_purchase_sent_at` for idempotent GA tracking):
+
+```bash
+npx wrangler d1 migrations apply electrik-commerce --remote
+```
 
 Bake checkout URLs at build time via GitHub secrets `DODO_CHECKOUT_SOLO` / `DODO_CHECKOUT_STUDIO`
-(see `dodo-checkout-and-mail.md`). **Never** put `DODO_PAYMENTS_API_KEY` in Pages.
+(see `dodo-checkout-and-mail.md`). **Never** put `DODO_PAYMENTS_API_KEY` or `GA4_API_SECRET` in Pages **HTML** / static export.
 
 ## Dodo Dashboard webhook
 

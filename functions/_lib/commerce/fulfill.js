@@ -1,5 +1,6 @@
 import { tierForProductId } from './catalog.js';
 import { sendLicenseEmail, sendOpsAlert } from './mail.js';
+import { trackPurchaseInGa4 } from './ga4.js';
 
 export async function processCommerceEvent(db, env, eventType, data, webhookId) {
   switch (eventType) {
@@ -27,6 +28,15 @@ export async function processCommerceEvent(db, env, eventType, data, webhookId) 
 
 async function handlePaymentSucceeded(db, env, data) {
   const purchase = await upsertPayment(db, env, data, 'succeeded');
+  // Gold standard: attribute purchase from verified webhook, not the thanks page alone.
+  const ga = await trackPurchaseInGa4(db, env, purchase);
+  if (!ga.ok && !ga.skipped) {
+    await sendOpsAlert(
+      env,
+      `[Electrik] GA4 purchase track failed`,
+      `payment_id=${purchase.payment_id}\nerror=${ga.error || 'unknown'}`,
+    );
+  }
   // License key often arrives via entitlement_grant.*; if already present, email now.
   if (purchase?.license_key) {
     await fulfillEmail(db, env, purchase);
@@ -34,10 +44,10 @@ async function handlePaymentSucceeded(db, env, data) {
     await sendOpsAlert(
       env,
       `[Electrik] Payment succeeded — awaiting license key`,
-      `payment_id=${purchase.payment_id}\nemail=${purchase.email}\ntier=${purchase.tier}\nproduct_id=${purchase.product_id}`,
+      `payment_id=${purchase.payment_id}\nemail=${purchase.email}\ntier=${purchase.tier}\nproduct_id=${purchase.product_id}\nga=${ga.skipped ? ga.reason : ga.ok ? 'sent' : 'error'}`,
     );
   }
-  return { handled: true, purchase };
+  return { handled: true, purchase, ga };
 }
 
 async function handlePaymentFailed(db, env, data) {

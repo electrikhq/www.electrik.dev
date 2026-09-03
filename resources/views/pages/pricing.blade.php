@@ -104,6 +104,12 @@
                         href="{{ $ctaHref }}"
                         :target="filled($checkoutUrl) ? '_blank' : null"
                         :rel="filled($checkoutUrl) ? 'noopener noreferrer' : null"
+                        @if (filled($checkoutUrl) && ! $isCustom)
+                            data-electrik-checkout="{{ $tier['id'] }}"
+                            data-electrik-value="{{ (int) preg_replace('/\D/', '', $tier['price'] ?? '0') }}"
+                            data-electrik-currency="USD"
+                            onclick="window.electrikAnalytics && window.electrikAnalytics.beginCheckout(this.dataset.electrikCheckout, this.dataset.electrikValue, this.dataset.electrikCurrency)"
+                        @endif
                     >
                         {{ $ctaLabel }}
                     </x-slate::button>

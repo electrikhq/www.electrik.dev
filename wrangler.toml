@@ -18,6 +18,7 @@ database_id = "187f3ac9-3002-406a-9073-8c761a52c6f9"
 migrations_dir = "migrations"
 
 [vars]
-# Non-secret defaults (override live product IDs via Pages env vars)
-COMMERCE_PRODUCT_SOLO = "pdt_0NmHrYX3IcvoaxjhR91WX"
-COMMERCE_PRODUCT_STUDIO = "pdt_0NmHrYaV3qDKofAXKLivl"
+# Live Dodo product IDs (override in Pages dashboard if needed)
+COMMERCE_PRODUCT_SOLO = "pdt_0NmmtqGIkMmykxblitCCT"
+COMMERCE_PRODUCT_STUDIO = "pdt_0NmmtqDtvSO8YszvwEmXl"
+GOOGLE_ANALYTICS_MEASUREMENT_ID = "G-ZWCWJY4FWD"
