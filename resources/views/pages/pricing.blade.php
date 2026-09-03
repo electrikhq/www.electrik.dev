@@ -99,23 +99,33 @@
                         $ctaLabel = $isCustom
                             ? 'Contact sales'
                             : (filled($checkoutUrl) ? 'Buy now' : 'Buy / invoice');
+                        $trackCheckout = filled($checkoutUrl) && ! $isCustom;
                     @endphp
-                    <x-slate::button
-                        as="a"
-                        variant="{{ ! empty($tier['highlight']) ? 'default' : 'outline' }}"
-                        class="w-full"
-                        href="{{ $ctaHref }}"
-                        :target="filled($checkoutUrl) ? '_blank' : null"
-                        :rel="filled($checkoutUrl) ? 'noopener noreferrer' : null"
-                        @if (filled($checkoutUrl) && ! $isCustom)
+                    @if ($trackCheckout)
+                        <x-slate::button
+                            as="a"
+                            variant="{{ ! empty($tier['highlight']) ? 'default' : 'outline' }}"
+                            class="w-full"
+                            href="{{ $ctaHref }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             data-electrik-checkout="{{ $tier['id'] }}"
                             data-electrik-value="{{ (int) preg_replace('/\D/', '', $tier['price'] ?? '0') }}"
                             data-electrik-currency="USD"
                             onclick="window.electrikAnalytics && window.electrikAnalytics.beginCheckout(this.dataset.electrikCheckout, this.dataset.electrikValue, this.dataset.electrikCurrency)"
-                        @endif
-                    >
-                        {{ $ctaLabel }}
-                    </x-slate::button>
+                        >
+                            {{ $ctaLabel }}
+                        </x-slate::button>
+                    @else
+                        <x-slate::button
+                            as="a"
+                            variant="{{ ! empty($tier['highlight']) ? 'default' : 'outline' }}"
+                            class="w-full"
+                            href="{{ $ctaHref }}"
+                        >
+                            {{ $ctaLabel }}
+                        </x-slate::button>
+                    @endif
                 </x-slate::card-footer>
             </x-slate::card>
         @endforeach
