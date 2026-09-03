@@ -17,7 +17,7 @@
             Ship your SaaS with teams, billing, and a real UI kit
         </h1>
 
-        <p class="mx-auto mt-5 max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
+        <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             Electrik is a Composer package for Laravel: auth, team workspaces, Stripe subscriptions, onboarding, and Slate 3 components.
             Full features in source. Honest BSL dual licensing for indie and commercial use.
         </p>
@@ -34,8 +34,8 @@
             </x-slate::button>
         </div>
 
-        <p class="mt-5 text-sm text-muted-foreground">
-            <code class="rounded bg-muted px-1.5 py-0.5 text-xs sm:text-sm">composer require electrik/electrik</code>
+        <p class="mt-5 text-base text-muted-foreground">
+            <code class="rounded bg-muted px-1.5 py-0.5 text-sm">composer require electrik/electrik</code>
             <span class="mx-2 text-border" aria-hidden="true">·</span>
             <a href="{{ route('pricing') }}" class="underline underline-offset-4 hover:text-foreground">Pricing</a>
             <span class="text-muted-foreground/80"> — from $0 grant, commercial from $149</span>
@@ -67,40 +67,40 @@
     <div class="mx-auto max-w-4xl">
         <div class="mx-auto max-w-2xl text-center">
             <h2 class="text-xl font-semibold tracking-tight sm:text-2xl">Who is this for?</h2>
-            <p class="mt-2 text-sm text-muted-foreground sm:text-base">
+            <p class="mt-2 text-base text-muted-foreground">
                 Same kit either way. Pick the next step that matches how you ship.
             </p>
         </div>
         <div class="mt-8 grid gap-6 sm:grid-cols-3">
             <div class="border-t-2 border-border pt-5">
                 <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Learning or side project</p>
-                <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p class="mt-2 text-base leading-relaxed text-muted-foreground">
                     Personal, OSS, or pre-revenue indie. Covered by the $0 grant.
                 </p>
-                <a href="{{ route('install') }}" class="mt-4 inline-flex text-sm font-medium text-foreground underline underline-offset-4 hover:no-underline">
+                <a href="{{ route('install') }}" class="mt-4 inline-flex text-base font-medium text-foreground underline underline-offset-4 hover:no-underline">
                     Install free →
                 </a>
             </div>
             <div class="border-t-2 border-foreground pt-5">
                 <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Shipping one product</p>
-                <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p class="mt-2 text-base leading-relaxed text-muted-foreground">
                     Company or commercial product. Solo license, one-time.
                 </p>
-                <a href="{{ route('pricing') }}" class="mt-4 inline-flex text-sm font-medium text-foreground underline underline-offset-4 hover:no-underline">
+                <a href="{{ route('pricing') }}" class="mt-4 inline-flex text-base font-medium text-foreground underline underline-offset-4 hover:no-underline">
                     See Solo pricing →
                 </a>
             </div>
             <div class="border-t-2 border-border pt-5">
                 <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Studio or agency</p>
-                <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <p class="mt-2 text-base leading-relaxed text-muted-foreground">
                     Multiple client or internal products. Studio or Agency.
                 </p>
-                <a href="{{ route('pricing') }}" class="mt-4 inline-flex text-sm font-medium text-foreground underline underline-offset-4 hover:no-underline">
+                <a href="{{ route('pricing') }}" class="mt-4 inline-flex text-base font-medium text-foreground underline underline-offset-4 hover:no-underline">
                     See Studio pricing →
                 </a>
             </div>
         </div>
-        <p class="mt-8 text-center text-sm text-muted-foreground">
+        <p class="mt-8 text-center text-base text-muted-foreground">
             Not sure yet?
             <a href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:text-foreground">Click through the live demo</a>
             first.
@@ -118,7 +118,7 @@
         </div>
         <ul class="mx-auto mt-10 grid max-w-4xl gap-x-10 gap-y-0 sm:grid-cols-2">
             @foreach (config('site.features') as $feature)
-                <li class="border-t border-border py-4 text-sm leading-relaxed text-foreground">
+                <li class="border-t border-border py-4 text-base leading-relaxed text-foreground">
                     {{ $feature }}
                 </li>
             @endforeach
@@ -144,7 +144,7 @@
                 ])>
                     <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">{{ $item['role'] }}</p>
                     <h3 class="mt-2 text-lg font-semibold tracking-tight text-foreground">{{ $item['name'] }}</h3>
-                    <p class="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{{ $item['summary'] }}</p>
+                    <p class="mt-2 flex-1 text-base leading-relaxed text-muted-foreground">{{ $item['summary'] }}</p>
                     <div class="mt-5">
                         @if (! empty($item['external']))
                             <x-slate::button
@@ -197,7 +197,7 @@
                 Laravel 12, Livewire 4, Tailwind CSS v4, Cashier, Spatie Permission, and Electrik Slate 3.
                 Code stays in <code class="rounded bg-muted px-1.5 py-0.5 text-sm">vendor/Electrik</code>, not copied into your app on install.
             </p>
-            <ul class="mt-6 space-y-2 text-sm text-foreground">
+            <ul class="mt-6 space-y-2 text-base text-foreground">
                 <li class="flex items-start gap-2"><span class="text-muted-foreground">•</span> Team-scoped roles and Stripe customer on the team</li>
                 <li class="flex items-start gap-2"><span class="text-muted-foreground">•</span> Working subscribe flow, webhooks, and plan sync</li>
                 <li class="flex items-start gap-2"><span class="text-muted-foreground">•</span> Onboarding wizard, notifications, activity log, 2FA</li>
@@ -237,7 +237,7 @@
                 </x-slate::card-header>
                 <x-slate::card-content>
                     <p class="text-3xl font-bold tracking-tight">$0</p>
-                    <p class="mt-2 text-sm text-muted-foreground">Full source and features</p>
+                    <p class="mt-2 text-base text-muted-foreground">Full source and features</p>
                 </x-slate::card-content>
             </x-slate::card>
             <x-slate::card>
@@ -247,7 +247,7 @@
                 </x-slate::card-header>
                 <x-slate::card-content>
                     <p class="text-3xl font-bold tracking-tight">Paid</p>
-                    <p class="mt-2 text-sm text-muted-foreground">Solo $149 · Studio $399 · Agency custom</p>
+                    <p class="mt-2 text-base text-muted-foreground">Solo $149 · Studio $399 · Agency custom</p>
                 </x-slate::card-content>
             </x-slate::card>
         </div>
