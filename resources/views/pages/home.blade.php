@@ -38,7 +38,7 @@
             <code class="rounded bg-muted px-1.5 py-0.5 text-sm">composer require electrik/electrik</code>
             <span class="mx-2 text-border" aria-hidden="true">·</span>
             <a href="{{ route('pricing') }}" class="underline underline-offset-4 hover:text-foreground">Pricing</a>
-            <span class="text-muted-foreground/80"> — from $0 grant, commercial from $149</span>
+            <span class="text-muted-foreground/80"> — from $0 grant, commercial from $99</span>
             <span class="mx-2 text-border" aria-hidden="true">·</span>
             <a href="https://clipy.online/video/5rpdlm7ajzs5" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4 hover:text-foreground">2‑min video</a>
             <span class="mx-2 text-border" aria-hidden="true">·</span>
@@ -249,12 +249,12 @@
                 </x-slate::card-header>
                 <x-slate::card-content>
                     <p class="text-3xl font-bold tracking-tight">Paid</p>
-                    <p class="mt-2 text-base text-muted-foreground">Solo $149 · Studio $399 · Agency custom</p>
+                    <p class="mt-2 text-base text-muted-foreground">Solo $99 · Studio $149 · Agency custom</p>
                 </x-slate::card-content>
             </x-slate::card>
         </div>
         <div class="mt-8">
-            <x-slate::button as="a" href="{{ route('pricing') }}">Commercial pricing from $149</x-slate::button>
+            <x-slate::button as="a" href="{{ route('pricing') }}">Commercial pricing from $99</x-slate::button>
         </div>
     </div>
 </section>

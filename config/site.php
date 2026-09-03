@@ -42,7 +42,7 @@ return [
         [
             'id' => 'solo',
             'name' => 'Solo',
-            'price' => '$149',
+            'price' => '$99',
             'period' => 'one-time',
             'summary' => 'One developer shipping one commercial product.',
             'features' => [
@@ -57,11 +57,11 @@ return [
         [
             'id' => 'studio',
             'name' => 'Studio',
-            'price' => '$399',
+            'price' => '$149',
             'period' => 'one-time',
-            'summary' => 'Small teams and agencies with multiple client or internal products.',
+            'summary' => 'Unlimited projects for your studio or small team.',
             'features' => [
-                'Unlimited projects for your studio',
+                'Unlimited commercial projects',
                 'Priority support channel',
                 'License certificate for clients',
             ],

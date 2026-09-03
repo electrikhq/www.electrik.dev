@@ -33,19 +33,24 @@ php artisan serve --host=127.0.0.1 --port=8000
 
 Decline card for negative path: `4000 0000 0000 0002`.
 
-### Test product IDs (current test catalog)
+### Live product IDs (production catalog)
 
 | Tier | Product ID | Price |
 |---|---|---|
-| Solo | `pdt_0NmHrYX3IcvoaxjhR91WX` | $149 |
-| Studio | `pdt_0NmHrYaV3qDKofAXKLivl` | $399 |
+| Solo | `pdt_0NmmtqGIkMmykxblitCCT` | $99 |
+| Studio | `pdt_0NmmtqDtvSO8YszvwEmXl` | $149 |
 
 Static link form:
 
 - Test: `https://test.checkout.dodopayments.com/buy/{product_id}?redirect_url=…`
 - Live: `https://checkout.dodopayments.com/buy/{product_id}?redirect_url=…`
 
-Live product IDs are **different** — recreate Solo/Studio in live mode before setting GitHub secrets.
+### Test product IDs (local / MCP test mode)
+
+| Tier | Product ID | Price |
+|---|---|---|
+| Solo | `pdt_0NmHrYX3IcvoaxjhR91WX` | was $149 |
+| Studio | `pdt_0NmHrYaV3qDKofAXKLivl` | was $399 |
 
 ## Robust fulfillment (webhooks + ledger)
 

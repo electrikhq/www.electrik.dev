@@ -67,7 +67,7 @@ $electrik = [
     'url' => 'https://electrik.dev',
     'summary' => 'Laravel SaaS starter as a Composer package: auth, teams, Stripe on the team, Slate UI.',
     'stack_notes' => 'Laravel 12+, Livewire 4, Tailwind v4, electrik/slate.',
-    'pricing_blurb' => 'BSL 1.1 — $0 Additional Use Grant for personal/OSS/pre-revenue indie; Solo $149, Studio $399, Agency custom.',
+    'pricing_blurb' => 'BSL 1.1 — $0 Additional Use Grant for personal/OSS/pre-revenue indie; Solo $99, Studio $149 (unlimited projects), Agency custom.',
     'cells' => [
         'distribution' => ['value' => 'yes', 'note' => 'composer require electrik/electrik'],
         'auth' => ['value' => 'yes', 'note' => '2FA, sessions, verification'],
@@ -327,7 +327,7 @@ $competitors = [
             ],
             [
                 'title' => 'Money',
-                'body' => 'SaaSykit’s list price is a one-time kit purchase for commercial use. Electrik lists Solo $149 / Studio $399 for commercial company use, and keeps a free Additional Use Grant for personal, educational, open-source, and pre-revenue indie work. Feature unlock is not paywalled either way on Electrik — license is about permission to use commercially.',
+                'body' => 'SaaSykit’s list price is a one-time kit purchase for commercial use. Electrik lists Solo $99 / Studio $149 (unlimited projects) for commercial company use, and keeps a free Additional Use Grant for personal, educational, open-source, and pre-revenue indie work. Feature unlock is not paywalled either way on Electrik — license is about permission to use commercially.',
             ],
             [
                 'title' => 'Teams and billing',
