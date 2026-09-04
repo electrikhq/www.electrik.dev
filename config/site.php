@@ -47,6 +47,7 @@ return [
             'summary' => 'One developer shipping one commercial product.',
             'features' => [
                 'Commercial use for a single product',
+                'Covers current major (5.x) + minors/patches',
                 'Full source, all features included',
                 'Email support during onboarding',
             ],
@@ -62,6 +63,7 @@ return [
             'summary' => 'Unlimited projects for your studio or small team.',
             'features' => [
                 'Unlimited commercial projects',
+                'Covers current major (5.x) + minors/patches',
                 'Priority support channel',
                 'License certificate for clients',
             ],
@@ -76,6 +78,7 @@ return [
             'summary' => 'Agencies standardizing on Electrik for client delivery.',
             'features' => [
                 'Organization-wide commercial rights',
+                'Major-line scope negotiated per deal',
                 'White-label branding (name, logo, primary color, powered-by)',
                 'Volume pricing available',
             ],

@@ -50,6 +50,22 @@
             for an invoice or Agency quote.
         </p>
 
+        <h2>Major versions (Solo / Studio)</h2>
+        <p>
+            A Solo or Studio purchase covers commercial use of the <strong>major version current at purchase</strong>
+            (today: <strong>Electrik 5.x</strong>), including minor and patch releases on that line
+            (5.1, 5.2, …).
+        </p>
+        <p>
+            The <strong>next major</strong> (for example 6.x) is a new commercial grant.
+            Existing customers get a published upgrade path when that major ships — not silent “lifetime all futures” for $99.
+            Agency deals can negotiate major-line scope explicitly.
+        </p>
+        <p>
+            This is a <em>permission</em> rule, not DRM. Composer stays public under BSL; we do not ship activation keys that block installs.
+            Companies still need a matching commercial license for commercial use of a new major.
+        </p>
+
         <h2>What this license does <em>not</em> cover</h2>
         <p>
             <strong>Electrik Slate</strong> (<code>electrik/slate</code>) and <strong>Slate Blocks</strong> (<code>electrik/slate-blocks</code>)

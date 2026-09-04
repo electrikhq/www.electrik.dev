@@ -3,44 +3,57 @@
 cadence:
   weekly_day: wednesday
   mode: manual # manual | autopilot
-  last_daily: null
+  last_daily: "2026-09-04"
   last_weekly: "2026-08-24"
 
-publish_policy: draft_first  # draft_first | autopilot
+publish_policy: agent_ships  # agent_ships | draft_first | autopilot
+# UNBREAKABLE: agent decides and ships; human only via ORDER when blocked (see .cursor/rules/agent-owner-human-for-hire.mdc)
+# agent_ships: never ask “want me to send?” — Listmonk / X / dirs / deploy when tools allow
 
-# Agent is owner: decide and ship; Neeraj observes / nudges only.
+# Agent is owner: decide and ship. Neeraj is human-for-hire (see .cursor/rules/agent-owner-human-for-hire.mdc).
 authority: agent_owner
+human_role: for_hire
 
 focus:
-  this_week: "Wait for Kit sending-address verify/approval; X paste optional; commercial checkout live"
-  next_artifact: "After Kit from-address verified → send broadcast 25631260"
+  this_week: "A4 done. Portfolio: Clipy thread + start agency outreach + content outline (see growth-strategy-memo)"
+  next_artifact: "install video thread on X; begin outreach.csv"
+  plan: "ops/path-to-2k.md"
+  channels: "ops/distribution-channels.md"
+  strategy: "ops/growth-strategy-memo.md"
 
 blockers:
-  - "Kit sending addresses unverified — hello@electrik.com (default, pending) and neeraj@electrik.dev (pending). Broadcast 25631260 draft cannot send until a from-address is verified."
-  - "Marketing bb-browser profile empty + daemon fails — cannot auto-post X"
-  - "Mailchimp ACCOUNT BLOCKED — do not use; list lives on Kit now"
-  - "Kit import may be incomplete (~79 subs vs ~207 Mailchimp) — finish import in Kit UI if needed"
+  - "Mailchimp ACCOUNT BLOCKED — do not use"
   - "DEMO_DISPATCH_TOKEN still needed on electrik for tag→demo auto-deploy"
 
 browser:
   profile_path: "/Users/neerajsohal/lab/electrik/.browser/electrik-marketing"
   wrapper: "www.electrik.dev/marketing/ops/browser.sh"
   env: "BB_BROWSER_HOME"
-  logged_in: false
-  notes: "Profile dir empty 2026-08-27; daemon fails CDP init. User posts X manually until profile is set up."
+  logged_in: true
+  notes: "X @electrikhq logged in via Cursor browser 2026-09-04."
 
 access:
   github: ready
   product_hunt: ready
-  twitter: manual_paste_only
+  twitter: ready_logged_in
   linkedin: deferred_no_company_page
-  email_send: receive_only
+  email_send: listmonk_ready
   mailchimp: blocked
-  brevo: skipped_using_kit
-  kit: blocked_unverified_sending_address
+  brevo: skipped
+  kit: legacy_do_not_use
+  listmonk: ready
+  listmonk_url: "https://campaigns.quickbrownfox.io"
+  listmonk_list_id: 11
+  listmonk_campaign_licenses_live: 18
   analytics: ready
   search_console: ready
   backlink_pilot: ready
+  dodo_mcp: live_ok_for_payments
+  dodo_site_checkout: live
+  dodo_live_webhook: configured
+  dodo_license_entitlement: ent_0NmrP6gqSB2Njz4xnBvrn
+  laravel_daily_package: submitted_for_review
+  made_with_laravel: submitted_2026-09-04
 
 analytics:
   ga4:
@@ -52,14 +65,24 @@ analytics:
     home_url: "https://search.google.com/search-console?resource_id=sc-domain%3Aelectrik.dev"
 
 metrics_snapshot:
-  as_of: "2026-08-24"
-  electrik_packagist_monthly: 4
-  slate_packagist_monthly: 31
+  as_of: "2026-09-04"
+  electrik_packagist_monthly: 13
+  slate_packagist_monthly: 90
   electrik_stars: 293
   electrik_forks: 22
-  directory_submissions: 1
-  mailchimp_subscribers: 0
-  kit_subscribers: 78
-  notes: "Kit is ESP. Newsletter on Kit form 9841384. Import ~78 so far — check if full Mailchimp migrate done."
+  d1_purchases_succeeded: 4
+  d1_ga_purchase_sent: 1
+  d1_notes: "Live Solo pay_0NmrG6Q91Dpnqsy7iFC2w $0 (100% disc) — ledger + SES + GA green. 3 older INR test rows remain."
+  live_buy_buttons: true
+  demo_status: green
+  demo_notes: "login demo@electrik.dev → /dashboard Studio shell OK (clients/projects/tasks)"
+  a1_money_path: green
+  directory_submissions: 3
+  listmonk_subscribers_confirmed: 77
+  listmonk_list_id: 11
+  listmonk_campaign_18: finished_79_sent_2026-09-04
+  notes: "A4 green: X + Listmonk #18 (79). LD/MwL submitted. Pricing $99/$149. Next: install Clipy thread. Boss: NO Electrik mail to purchased list #4 (~10k)."
+
+pending_orders: []
 
 pending_approval: []

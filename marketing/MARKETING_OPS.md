@@ -6,15 +6,19 @@ Last updated: 2026-08-24
 
 ## Goal (90 days)
 
-Make Electrik easy to discover and try for Laravel SaaS builders, then convert agencies/studios via commercial license + studio contact.
+**Primary:** ~**$2k/mo** commercial license sales. Full plan: [`ops/path-to-2k.md`](ops/path-to-2k.md).
+
+Secondary: make Electrik easy to discover and try for Laravel SaaS builders, then convert agencies/studios via commercial license + studio contact.
 
 **North-star signals (track weekly):**
 
 | Signal | Where | Target trend |
 |---|---|---|
+| Paid licenses (Solo/Studio/Agency) | Dodo + commerce ledger | Path to ~$2k/mo |
 | Packagist installs (Electrik + Slate) | packagist.org | Up month over month |
 | GitHub stars / unique cloners | GitHub | Steady climb |
 | Demo visits + successful logins | Analytics + demo | Demo used, not just bounced |
+| `/pricing` → Buy + purchase events | GA4 | Rising; purchases only on real pay |
 | Docs `/install` + `/docs` engagement | Analytics / GSC | Install path completes |
 | Warm replies / license inquiries | `hello@electrik.dev` | Any reply > vanity metrics |
 | Directory / awesome listings live | tracker files | Completions, not spray |
@@ -45,25 +49,32 @@ Make Electrik easy to discover and try for Laravel SaaS builders, then convert a
 
 | Phase | Policy |
 |---|---|
-| **Now → ~3 weeks** | `draft_first` — agent writes drafts in `ops/content-queue.md` or chat; user approves; then agent publishes via marketing browser |
-| **Later** | Flip `state.yaml` → `publish_policy: autopilot` when drafts consistently need zero edits |
+| **Now (path-to-2k)** | `agent_ships` — agent decides and publishes when CLI/MCP/browser allow; **ORDER** human only for login/2FA/secrets the agent cannot complete |
+| **Fallback** | `draft_first` only if a channel is broken (e.g. X profile empty) — paste ORDER, then agent continues elsewhere |
 
 ## Outbound email
 
-### Kit (list mail — primary as of 2026-08-25)
+### Listmonk (list mail — primary)
 
-Mailchimp is **blocked** — do not use. Broadcasts + site newsletter use **Kit** (ConvertKit).
+Mailchimp is **blocked**. **Kit is legacy** — do not use for Electrik. Site signup + broadcasts use **Listmonk** at `campaigns.quickbrownfox.io` (SES behind it).
 
 **Policy:**
-- ≤1 broadcast / month after list is healthy on Kit
-- Soft CTA; no commercial hard sell on first Kit send
-- Import from Mailchimp if not already done (tags: Electrik, early-subscribers)
+- ≤1 broadcast / month
+- Soft CTA; honest BSL; frozen prices Solo $99 / Studio $149
+- List **Electrik** `#11` only (never purchased/QBF lists)
 
-**API:**
-- Key in local `www.electrik.dev/.env` → `KIT_API_KEY` (never commit)
-- Form: `KIT_FORM_ID=9841384` (“Newsletter site”), uid `5e39730e50`
-- Site signup: Kit **embed** (`KIT_FORM_UID`) on static Cloudflare Pages; optional `POST /newsletter/subscribe` only when Laravel is running locally
-- Helper: `node marketing/ops/kit.cjs ping|forms|tags|count`
+**API / env:** `LISTMONK_URL`, `LISTMONK_API_USER`, `LISTMONK_API_TOKEN`, `LISTMONK_LIST_ID`, `LISTMONK_TEMPLATE_ID`  
+**Site signup:** `POST /newsletter/subscribe` (Pages Function → Listmonk)  
+**Helper:** `node marketing/ops/listmonk.cjs ping|count|draft-pricing|sync-pricing <id>|start <id>`
+
+**List rules (boss — do not re-litigate):**
+| List | ID | Size | Electrik commercial mail? |
+| --- | --- | --- | --- |
+| Electrik | 11 | ~79 | **Yes** — only list for `hello@electrik.dev` product blasts |
+| QBF Warm — Insights | 7 | ~350 | **Maybe once** — soft founder note from QBF address, not Electrik product blast |
+| US – Tech Companies – Purchased Leads | 4 | ~10.4k | **Never** — purchased; ownership ≠ Electrik consent; burns SES + brand |
+
+Owning the list as QBF does **not** authorize Electrik commercial spray to purchased CTOs. Electrik-under-QBF is fine for warm/relationship; it is not a loophole for list #4.
 
 ### Transactional (contact / app)
 

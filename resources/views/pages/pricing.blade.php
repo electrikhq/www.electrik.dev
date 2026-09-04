@@ -139,6 +139,14 @@
             Read the full rules on the <a href="{{ route('license') }}">license page</a>.
         </p>
 
+        <h2>Which major version am I licensed for?</h2>
+        <p>
+            Solo and Studio cover commercial use of the <strong>major line current at purchase</strong> (today: <strong>5.x</strong>),
+            including minors and patches on that line. The next major (for example 6.x) needs a new commercial grant or a published upgrade —
+            not silent lifetime rights to every future major. Details on the
+            <a href="{{ route('license') }}">license page</a>.
+        </p>
+
         <h2>Slate and blocks</h2>
         <p>
             <a href="{{ config('site.slate_url') }}" target="_blank" rel="noopener noreferrer">Electrik Slate</a>

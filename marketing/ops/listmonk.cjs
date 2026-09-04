@@ -7,8 +7,9 @@
  *   node marketing/ops/listmonk.cjs ping
  *   node marketing/ops/listmonk.cjs lists
  *   node marketing/ops/listmonk.cjs count
- *   node marketing/ops/listmonk.cjs draft-pricing   # create/update pricing launch draft
- *   node marketing/ops/listmonk.cjs start <id>      # start a draft campaign (send)
+ *   node marketing/ops/listmonk.cjs draft-pricing     # create pricing launch draft
+ *   node marketing/ops/listmonk.cjs sync-pricing <id> # update draft body to frozen $99/$149
+ *   node marketing/ops/listmonk.cjs start <id>        # start a draft campaign (send)
  */
 const fs = require('fs');
 const path = require('path');
@@ -125,7 +126,7 @@ function pricingBodies() {
 </p>
 <ul style="margin:0 0 20px;padding-left:20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#44403c;">
   <li>Grant stays $0 for personal / OSS / pre-revenue indie</li>
-  <li>Solo $149 / Studio $399 (one-time)</li>
+  <li>Solo $99 / Studio $149 (one-time)</li>
   <li>Checkout emails a receipt / certificate ID. No product activation key.</li>
 </ul>
 <p style="margin:0 0 8px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;line-height:1.4;letter-spacing:0.06em;text-transform:uppercase;color:#a8a29e;">
@@ -150,7 +151,7 @@ function pricingBodies() {
 Quick update: Solo and Studio commercial licenses are available at https://electrik.dev/pricing
 
 - Grant stays $0 for personal / OSS / pre-revenue indie
-- Solo $149 / Studio $399 (one-time)
+- Solo $99 / Studio $149 (one-time)
 - Checkout emails a receipt / certificate ID. No product activation key.
 
 A note from Neeraj
@@ -195,6 +196,44 @@ async function draftPricing() {
   );
 }
 
+async function syncPricing(id) {
+  if (!id) throw new Error('Usage: listmonk.cjs sync-pricing <campaign_id>');
+  const { listId, templateId } = loadEnv();
+  const existing = await api('GET', `/api/campaigns/${id}`);
+  const c = existing.data;
+  if (!c) throw new Error('Campaign not found: ' + id);
+  if (c.status !== 'draft') throw new Error(`Refuse sync: status is ${c.status}, need draft`);
+  const { body, altbody } = pricingBodies();
+  const updated = await api('PUT', `/api/campaigns/${id}`, {
+    name: c.name,
+    subject: 'Electrik commercial licenses are live',
+    lists: (c.lists || []).map((l) => l.id).filter(Boolean).length
+      ? (c.lists || []).map((l) => l.id).filter(Boolean)
+      : [listId],
+    from_email: c.from_email || 'Electrik <hello@electrik.dev>',
+    type: c.type || 'regular',
+    content_type: c.content_type || 'html',
+    body,
+    altbody,
+    messenger: c.messenger || 'email',
+    template_id: c.template_id || templateId,
+    tags: c.tags || ['electrik', 'pricing'],
+  });
+  console.log(
+    JSON.stringify(
+      {
+        id: Number(id),
+        status: updated.data?.status || c.status,
+        subject: 'Electrik commercial licenses are live',
+        prices: 'Solo $99 / Studio $149',
+        admin: `https://campaigns.quickbrownfox.io/admin/campaigns/${id}`,
+      },
+      null,
+      2,
+    ),
+  );
+}
+
 async function start(id) {
   if (!id) throw new Error('Usage: listmonk.cjs start <campaign_id>');
   const r = await api('PUT', `/api/campaigns/${id}/status`, { status: 'running' });
@@ -207,6 +246,7 @@ async function main() {
   else if (cmd === 'lists') await lists();
   else if (cmd === 'count') await count();
   else if (cmd === 'draft-pricing') await draftPricing();
+  else if (cmd === 'sync-pricing') await syncPricing(process.argv[3]);
   else if (cmd === 'start') await start(process.argv[3]);
   else {
     console.error('Unknown command:', cmd);

@@ -5,27 +5,47 @@ Ship one per week. Move done items to “Shipped”.
 ## Ready / next
 
 1. **Electrik vs Jetstream (share)** — https://electrik.dev/compare/electrik-vs-jetstream  
-2. **[~] BSL grant vs commercial** — drafts below (Solo $149 / Studio $399); await publish OK  
+2. **Install video thread** — Clipy already live; amplify week 2  
 3. **Teams + Stripe on the team** — docs deep-link + screenshot  
-4. **Install Loom (5–8 min)** — fresh Laravel → Electrik → login  
-5. **Slate → Electrik** — UI kit + slate-blocks into SaaS shell  
-6. **Laracasts / r/laravel** — Composer-package post (draft below)
+4. **Laracasts / r/laravel** — Composer-package post (draft below; update prices)  
+5. **[~] Install Loom (60s)** — superseded by Clipy; keep file as backup  
 
-## Drafts
+### X — licenses live (SHIPPED)
 
-### X — commercial pricing live (approve to post)
+https://x.com/electrikhq/status/2095807473953505626
 
 ```
 Commercial licenses for Electrik are live.
 
-$0 Additional Use Grant for personal / OSS / pre-revenue indie
-Solo $149 · Studio $399 · Agency custom
+$0 Additional Use Grant — personal / OSS / pre-revenue indie
+Solo $99 · Studio $149 · Agency custom (one-time)
 
 Same full kit either way — auth, teams, Stripe on the team, Slate UI.
-No activation key. Checkout → license email.
+Composer package, not a scaffold dump. Checkout → license email.
 
-https://electrik.dev/pricing
+Demo: https://demo.electrik.dev
+Pricing: https://electrik.dev/pricing
+Install: https://electrik.dev/install
 ```
+
+### X — 60s / 2‑min install (Clipy)
+
+```
+Electrik in ~2 minutes:
+
+composer require electrik/electrik
+→ Livewire dashboard
+→ teams
+→ Stripe on the team
+
+Laravel SaaS as a package, not a scaffold dump.
+
+Walkthrough: https://clipy.online/video/5rpdlm7ajzs5
+Install: https://electrik.dev/install
+Demo: https://demo.electrik.dev
+```
+
+## Drafts
 
 ### LinkedIn — commercial pricing (when company page exists)
 
@@ -36,36 +56,18 @@ Laravel SaaS starter as a Composer package (not a scaffold dump): teams + Stripe
 
 Honest dual lane:
 • $0 grant — personal, OSS, pre-revenue indie
-• Solo $149 / Studio $399 — companies and client work
+• Solo $99 / Studio $149 — companies and client work
 • Agency — custom
 
 Checkout: https://electrik.dev/pricing
 ```
 
-### Kit broadcast (DRAFT — do not send until from-address verified)
+### Listmonk broadcast (SHIPPED 2026-09-04)
 
-**Kit draft ID:** `25631260` · status: `draft` · [open in Kit](https://app.kit.com/broadcasts/25631260)
+**Campaign ID:** `18` · status **finished** · **79 sent** · list Electrik `#11`  
+**Admin:** https://campaigns.quickbrownfox.io/admin/campaigns/18  
+**From:** `Electrik <hello@electrik.dev>` · prices Solo $99 / Studio $149
 
-**Blocked on:** verify a sending address in Kit (prefer `hello@electrik.dev` or `neeraj@electrik.dev`). Current default `hello@electrik.com` is pending/unverified — do not send until approved.
-
-**Subject:** Electrik commercial licenses are live
-
-**Body (already in draft):**
-```
-Hey —
-
-Quick update: Solo and Studio commercial licenses are available at electrik.dev/pricing.
-
-• Grant stays $0 for personal / OSS / pre-revenue indie
-• Solo $149 · Studio $399 (one-time)
-• Checkout emails a receipt / certificate ID — no product activation key
-
-Same package either way. Demo: demo.electrik.dev · Install: electrik.dev/install
-
-— Neeraj
-```
-
-When verified: say **send kit** (or Send in Kit UI).
 ### X / LinkedIn — Jetstream compare (ready)
 
 ```
@@ -79,7 +81,7 @@ Matrix + “when to pick each”:
 https://electrik.dev/compare/electrik-vs-jetstream
 ```
 
-### Laracasts / r/laravel (week 2)
+### Laracasts / r/laravel (week 4)
 
 **Title:** Why we ship Electrik as a Composer package (Laravel 12 SaaS starter)
 
@@ -89,11 +91,11 @@ Most Laravel SaaS kits copy auth, billing, and teams into your `app/` folder. Yo
 
 Electrik 5.x stays in the `Electrik\` namespace: `composer require electrik/electrik`, `php artisan electrik:install`, customize via config and published views. Teams + Stripe Cashier on the team + Spatie permissions + Slate 3 UI.
 
-Still 5.0.0 stable. APIs can still evolve in minors. But the model is intentional: package-first, not scaffold-and-fork.
+Still early. APIs can still evolve in minors. But the model is intentional: package-first, not scaffold-and-fork.
 
 - Demo: https://demo.electrik.dev
 - Install: https://electrik.dev/install
-- Pricing: Grant $0 · Solo $149 · Studio $399 · Agency custom
+- Pricing: Grant $0 · Solo $99 · Studio $149 · Agency custom
 - License: BSL with a free indie grant; commercial for companies/agencies
 - UI: https://slate.electrik.dev (Slate + slate-blocks)
 
@@ -102,6 +104,8 @@ Happy to answer install questions.
 
 ## Shipped
 
+- 2026-09-04 — Licenses-live X @electrikhq — https://x.com/electrikhq/status/2095807473953505626
+- 2026-09-04 — Homepage conversion reorder live; content queue prices corrected to $99/$149
 - 2026-08-24 — Slate→Electrik bridge (slate homepage CTA, docs, `/install` callout, READMEs) — pushed all repos
 - 2026-08-24 — GitHub Release `v5.0.0-alpha.15` + demoted ancient `0.0.13` — https://github.com/electrikhq/electrik/releases/tag/v5.0.0-alpha.15
 - 2026-08-24 — Mailchimp re-engagement (API) — campaign `0fb6a8a24a` → then **Mailchimp account blocked**; await Brevo

@@ -27,6 +27,8 @@ export function renderLicenseEmail(purchase) {
     '',
     'Electrik does not require a product activation key. Composer install works as usual. Keep this email as your receipt.',
     '',
+    'Scope: this purchase covers commercial use of the Electrik major line current at purchase (5.x), including minors and patches. The next major requires a new commercial grant or published upgrade — see https://electrik.dev/license',
+    '',
     hasCert ? `Certificate ID: ${cert}` : '',
     `Payment ID: ${paymentId}`,
     `Tier: ${tier}`,
@@ -128,6 +130,11 @@ function buildHtml({ greeting, tierLabel, hasCert, cert, paymentId, tier }) {
             <td style="padding:0 28px 24px 28px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.65;color:#57534e;">
               <p style="margin:0 0 16px 0;">${greeting}</p>
               <p style="margin:0 0 16px 0;">${lead}</p>
+              <p style="margin:0 0 16px 0;color:#57534e;font-size:14px;line-height:1.65;">
+                Scope: commercial use of the Electrik major line current at purchase (5.x), including minors and patches.
+                The next major needs a new grant or published upgrade —
+                <a href="https://electrik.dev/license" style="color:#1c1917;">electrik.dev/license</a>.
+              </p>
               <p style="margin:0;color:#a8a29e;font-size:14px;">
                 No product activation key is required. Composer install works as usual. Keep this email as your receipt.
               </p>
