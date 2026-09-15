@@ -15,13 +15,14 @@ authority: agent_owner
 human_role: for_hire
 
 focus:
-  this_week: "Money path: Electrik Launch $6900 live. Soft Launch follow-ups only (no reblast license emails <14d). Portal = next MRR. Licenses = side door."
-  next_artifact: "Wed: Laracasts/r/laravel Composer-package post. Watch Launch replies. Portal MVP spike plan when first deposit or inbound Launch lead lands."
+  this_week: "BLAST MODE: same offers, 10x force. Buy Solo in chrome. Launch list+X+community today. Outreach 30–40/wk. Licenses=side door; Launch=$ cash; Portal next."
+  next_artifact: "Approve outbound blast (Listmonk Launch + 10 Resend + X + r/laravel). Then Portal MVP spike."
   plan: "ops/money-path-launch-and-vertical.md"
   plan_licenses_side: "ops/path-to-2k.md"
   channels: "ops/distribution-channels.md"
   strategy: "ops/growth-strategy-memo.md"
-  agency_outreach: half_launch_half_license_no_reblast_14d
+  agency_outreach: blast_30_40_wk_half_launch_half_license_no_reblast_14d
+  mode: blast_10x_2026-09-15
 
 
 blockers:
@@ -123,12 +124,14 @@ metrics_snapshot:
   remote_mcp_pr_merged: "2026-09-11T04:42:58Z"
   buy_click_gate_2026_09_10: "red — GA28d sessions~230 users~194 begin_checkout1 purchase2($0 verifies) generic_click12; do not unlock Search spend yet; calendar unlock ~2026-09-18"
   x_pin: "https://x.com/electrikhq/status/2095807473953505626"
-  outreach_total: 30
+  outreach_total: 40
   outreach_week_2026_09_14: "~10 unique (+1 accidental Agiledrop duplicate)"
-  outreach_week_2026_09_15: "3 Launch-shaped (DevSquad, BinarCode, Codevate)"
+  outreach_week_2026_09_15: "3 Launch AM + 10 blast (5 Launch / 5 license)"
   launch_page: "https://electrik.dev/launch live_2026-09-15"
+  listmonk_campaign_26: "launch_running_2026-09-15_list_11"
+  blast_mode: "on_2026-09-15 — Buy Solo in chrome; Launch list #26; outreach +10; X pending human Post click if blocked"
   slate_pro_decision: "no_this_quarter_2026-09-07"
-  ten_x_call: "same_offer_more_force_2026-09-10 — no product pivot; Agent DX not AI-chat product"
+  ten_x_call: "blast_same_offer_2026-09-15 — licenses side door; Launch cash; Portal next; no AppSumo yet"
   apollo_full_tam_blast: "rejected_2026-09-14 — no quarterly Apollo TAM spray; keep 10–20/wk partner notes + owned list + gated Search"
 
 pending_orders: []

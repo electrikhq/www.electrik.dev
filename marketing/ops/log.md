@@ -2,6 +2,19 @@
 
 Newest first. One short block per run.
 
+## 2026-09-15 — BLAST 10× (same offers, more force)
+
+**Diagnosis:** drip (~10 notes/wk + 79 list) cannot buy $2k at $99 ACV with ~0 Buy clicks. Force up; no AppSumo yet; no purchased list.
+
+**Shipped:**
+- Site: Buy Solo primary in nav/hero; Launch in nav/footer/hero (deploy `9449c64`)
+- Listmonk **#26 running** → Electrik list #11 — Launch $6,900 announce (duplicate draft #25 left — delete in admin)
+- Resend **+10** agencies (5 Launch / 5 license): Amyla, MBC, Xevon, Vulpo, Dotbite, JustBetter, Digital Natives, APARTNER, Code World Tech, Winkely
+- Earlier today: /launch live, Solo-first pricing, +3 Launch notes, GH triage
+
+**Pending (X compose filled — needs Post click if agent blocked):** Launch amplify @electrikhq  
+**Next:** r/laravel + Laracasts Composer post · Portal MVP spike · Search unlock ~Sep 18 if Buy clicks appear
+
 ## 2026-09-15 — Daily: Launch live + 3 agency notes
 
 - Shipped https://electrik.dev/launch ($6,900 / 14d) + Solo-first pricing (home/contact/pricing)
