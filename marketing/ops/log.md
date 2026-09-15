@@ -2,6 +2,12 @@
 
 Newest first. One short block per run.
 
+## 2026-09-15 — r/laravel Composer post (auto-removed)
+
+- Posted: https://www.reddit.com/r/laravel/comments/1wgsugw/why_we_ship_electrik_as_a_composer_package/
+- AutoModerator removed: account needs **+2 karma from comments in r/laravel** before first post
+- Next: leave 2+ helpful non-promo comments in r/laravel → modmail or repost; also Laracasts discuss
+
 ## 2026-09-15 — BLAST 10× (same offers, more force)
 
 **Diagnosis:** drip (~10 notes/wk + 79 list) cannot buy $2k at $99 ACV with ~0 Buy clicks. Force up; no AppSumo yet; no purchased list.

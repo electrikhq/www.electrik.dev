@@ -16,7 +16,7 @@ human_role: for_hire
 
 focus:
   this_week: "BLAST MODE: same offers, 10x force. Buy Solo in chrome. Launch list+X+community today. Outreach 30–40/wk. Licenses=side door; Launch=$ cash; Portal next."
-  next_artifact: "r/laravel + Laracasts Composer post (Reddit 2FA blocked). Then Portal MVP spike."
+  next_artifact: "Unblock r/laravel (+2 comment karma) then ask mods to approve 1wgsugw OR repost. Laracasts discuss next. Portal MVP spike."
   plan: "ops/money-path-launch-and-vertical.md"
   plan_licenses_side: "ops/path-to-2k.md"
   channels: "ops/distribution-channels.md"
@@ -115,7 +115,7 @@ metrics_snapshot:
   phase_b_week2: install_clipy_x_shipped_2026-09-07
   phase_b_week3: jetstream_compare_x_shipped_2026-09-09
   phase_b_week4_agent_dx: "AGENTS.md electrikhq/electrik@7af482a; docs https://electrik.dev/docs/getting-started/ai/; X amplify shipped_2026-09-10 (see agent_dx_x)"
-  phase_b_week4_community: draft_ready_ship_wed_2026-09-16
+  phase_b_week4_community: "reddit_posted_auto_removed_2026-09-15 — need +2 r/laravel comment karma; url https://www.reddit.com/r/laravel/comments/1wgsugw/why_we_ship_electrik_as_a_composer_package/"
   ln_slate_amplify_x: "https://x.com/electrikhq/status/2096911312165146696"
   jetstream_compare_x: "https://x.com/electrikhq/status/2097578996955574767"
   agent_dx_x: "https://x.com/electrikhq/status/2097947975674990668"
