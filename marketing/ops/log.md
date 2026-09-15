@@ -8,6 +8,7 @@ Newest first. One short block per run.
 - Fix: `get_export_paths.php` missing `launch` → first CF deploy 404; second deploy green
 - Resend Launch pitch: DevSquad, BinarCode, Codevate
 - Metrics: Packagist slate 121; demo green; Dodo still $0 nonzero; Listmonk #11 = 79
+- **GH triage (after auth refresh):** closed electrik #37 (install→5.x), #11 (stale sponsors), #40 (billing superseded by 5.x); left #7 dark mode open. Merged slate Dependabot #11–#14 (smoke green).
 - Next: Wed Laracasts/r/laravel; watch Launch replies; Portal spike after first deposit/inbound
 
 ## 2026-08-25 — Kit replaces Mailchimp

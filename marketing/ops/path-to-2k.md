@@ -135,6 +135,7 @@ Cap marketing at ~5 hours/week if product work is primary. Consistency beats her
 - Dodo: still only Solo $0 verify — **$0 nonzero paid**
 - **Shipped:** `/launch` live https://electrik.dev/launch (+ Solo-first `/pricing`); fixed static export path list (first deploy 404’d)
 - **Launch outreach +3 Resend:** DevSquad · BinarCode · Codevate
+- **GH:** closed #37 / #11 / #40; merged slate Dependabot #11–#14; open left: #7 dark mode
 - Listmonk Electrik list still **79** confirmed
 - Search spend still held until ~**2026-09-18** + Buy-click signal
 - Next: **Wed** Phase B week 4 — Laracasts / r/laravel Composer-kit post
