@@ -16,7 +16,7 @@ human_role: for_hire
 
 focus:
   this_week: "BLAST MODE: same offers, 10x force. Buy Solo in chrome. Launch list+X+community today. Outreach 30–40/wk. Licenses=side door; Launch=$ cash; Portal next."
-  next_artifact: "Approve outbound blast (Listmonk Launch + 10 Resend + X + r/laravel). Then Portal MVP spike."
+  next_artifact: "r/laravel + Laracasts Composer post (Reddit 2FA blocked). Then Portal MVP spike."
   plan: "ops/money-path-launch-and-vertical.md"
   plan_licenses_side: "ops/path-to-2k.md"
   channels: "ops/distribution-channels.md"
@@ -107,8 +107,9 @@ metrics_snapshot:
   listmonk_slate_list_id: 15
   listmonk_slate_subscribers: 1
   listmonk_campaign_18: finished_79_sent_2026-09-04
-  notes: "Tue 09-15: /launch live + Solo-first pricing. Launch outreach +3 (DevSquad, BinarCode, Codevate). Packagist slate 121. Still $0 nonzero paid. Wed = Laracasts/r/laravel."
+  notes: "BLAST 09-15: Buy Solo chrome live; Listmonk #26 Launch running; +10 agency; X Launch amplify shipped @electrikhq. Still $0 nonzero paid. Reddit needs login/2FA. Portal spike next coding session."
   listmonk_campaign_24: "composer_package_running_2026-09-14_list_11"
+  listmonk_campaign_26: "launch_running_2026-09-15_list_11"
   laravel_news_slate: "live https://laravel-news.com/link/18766 — ~15 clicks as of evening IST; X amplify https://x.com/electrikhq/status/2096911312165146696"
   laravel_daily_slate: "FB package post live (Slate)"
   phase_b_week2: install_clipy_x_shipped_2026-09-07
