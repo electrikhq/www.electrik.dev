@@ -129,6 +129,16 @@ Cap marketing at ~5 hours/week if product work is primary. Consistency beats her
 
 ## Daily log
 
+### 2026-09-15 (Tue — Launch money path)
+- Demo login green (browser)
+- Packagist electrik monthly **15** · slate **121** (was 119)
+- Dodo: still only Solo $0 verify — **$0 nonzero paid**
+- **Shipped:** `/launch` live https://electrik.dev/launch (+ Solo-first `/pricing`); fixed static export path list (first deploy 404’d)
+- **Launch outreach +3 Resend:** DevSquad · BinarCode · Codevate
+- Listmonk Electrik list still **79** confirmed
+- Search spend still held until ~**2026-09-18** + Buy-click signal
+- Next: **Wed** Phase B week 4 — Laracasts / r/laravel Composer-kit post
+
 ### 2026-09-14 (Mon metrics)
 - Demo `/login` **200**; site home + pricing **200**
 - Packagist electrik monthly **15** (was 13) · slate **119** (was 108)

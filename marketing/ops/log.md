@@ -2,6 +2,14 @@
 
 Newest first. One short block per run.
 
+## 2026-09-15 — Daily: Launch live + 3 agency notes
+
+- Shipped https://electrik.dev/launch ($6,900 / 14d) + Solo-first pricing (home/contact/pricing)
+- Fix: `get_export_paths.php` missing `launch` → first CF deploy 404; second deploy green
+- Resend Launch pitch: DevSquad, BinarCode, Codevate
+- Metrics: Packagist slate 121; demo green; Dodo still $0 nonzero; Listmonk #11 = 79
+- Next: Wed Laracasts/r/laravel; watch Launch replies; Portal spike after first deposit/inbound
+
 ## 2026-08-25 — Kit replaces Mailchimp
 
 - API key in local `.env` (`KIT_API_KEY`). Helper: `marketing/ops/kit.cjs`
