@@ -10,6 +10,7 @@ $paths = [
     'pricing/thanks',
     'faq',
     'contact',
+    'launch',
     'legal',
     'tools',
     'tools/tailwind-color-generator',
