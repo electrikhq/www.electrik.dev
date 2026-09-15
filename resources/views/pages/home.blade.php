@@ -37,15 +37,18 @@ PROMPT;
                 as a Composer package. Your <code class="rounded bg-black/5 px-1.5 py-0.5 font-mono text-[0.9em] text-[var(--home-ink)]">App\</code> stays clean.
             </p>
             <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <x-slate::button as="a" size="lg" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer">
+                <x-slate::button as="a" size="lg" href="{{ route('pricing') }}#solo">
+                    Buy Solo — $99
+                </x-slate::button>
+                <x-slate::button as="a" variant="outline" size="lg" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer">
                     Try the live demo
                 </x-slate::button>
-                <x-slate::button as="a" variant="outline" size="lg" href="{{ route('pricing') }}">
-                    View pricing
+                <x-slate::button as="a" variant="outline" size="lg" href="{{ route('launch') }}">
+                    Electrik Launch
                 </x-slate::button>
             </div>
             <p class="mt-4 text-sm text-[var(--home-muted)]">
-                $0 grant · Solo $99 one-time · Studio $149 unlimited projects
+                $0 grant · Solo $99 · Studio $149 · Launch $6,900 / 14 days
             </p>
             <p class="mt-6" x-data="{ copied: false, text: @js($composerInstall) }">
                 <button

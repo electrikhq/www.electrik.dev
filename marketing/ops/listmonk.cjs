@@ -8,6 +8,7 @@
  *   node marketing/ops/listmonk.cjs lists
  *   node marketing/ops/listmonk.cjs count
  *   node marketing/ops/listmonk.cjs draft-pricing     # create pricing launch draft
+ *   node marketing/ops/listmonk.cjs draft-launch      # create Electrik Launch draft
  *   node marketing/ops/listmonk.cjs sync-pricing <id> # update draft body to frozen $99/$149
  *   node marketing/ops/listmonk.cjs start <id>        # start a draft campaign (send)
  */
@@ -240,12 +241,73 @@ async function start(id) {
   console.log(JSON.stringify({ id, status: r.data?.status || 'running' }, null, 2));
 }
 
+async function draftLaunch() {
+  const { listId, templateId } = loadEnv();
+  if (!listId) throw new Error('LISTMONK_LIST_ID not set');
+  const body = `
+<p style="margin:0 0 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#44403c;">
+  Quick update from Electrik.
+</p>
+<p style="margin:0 0 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#44403c;">
+  Beside Solo/Studio licenses, we now sell <strong>Electrik Launch</strong> — fixed <strong>$6,900 / 14 days</strong>:
+  multi-tenant Laravel SaaS shell (auth, teams, Stripe on the team, Slate UI), branding, one core feature, deploy, handoff.
+  You own the code. Studio license included.
+</p>
+<p style="margin:0 0 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#44403c;">
+  <a href="https://electrik.dev/launch" style="color:#1c1917;">electrik.dev/launch</a>
+  · Demo <a href="https://demo.electrik.dev" style="color:#1c1917;">demo.electrik.dev</a>
+</p>
+<p style="margin:0 0 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#44403c;">
+  Prefer the kit only? Solo $99 · Studio $149 —
+  <a href="https://electrik.dev/pricing" style="color:#1c1917;">pricing</a>
+</p>
+<p style="margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;color:#78716c;">
+  — Neeraj
+</p>
+`.trim();
+  const altbody = `Quick update from Electrik.
+
+Beside Solo/Studio licenses, we now sell Electrik Launch — fixed $6,900 / 14 days: multi-tenant Laravel SaaS shell (auth, teams, Stripe on the team, Slate UI), branding, one core feature, deploy, handoff. You own the code. Studio license included.
+
+https://electrik.dev/launch
+Demo: https://demo.electrik.dev
+Kit only: Solo $99 / Studio $149 — https://electrik.dev/pricing
+
+— Neeraj`;
+  const created = await api('POST', '/api/campaigns', {
+    name: 'Electrik Launch live — $6900 / 14 days',
+    subject: 'Electrik Launch: live SaaS in 14 days ($6,900)',
+    lists: [listId],
+    from_email: 'Electrik <hello@electrik.dev>',
+    type: 'regular',
+    content_type: 'html',
+    body,
+    altbody,
+    messenger: 'email',
+    template_id: templateId,
+    tags: ['electrik', 'launch'],
+  });
+  console.log(
+    JSON.stringify(
+      {
+        id: created.data?.id,
+        status: created.data?.status || 'draft',
+        list_id: listId,
+        admin: `https://campaigns.quickbrownfox.io/admin/campaigns/${created.data?.id}`,
+      },
+      null,
+      2,
+    ),
+  );
+}
+
 async function main() {
   const cmd = process.argv[2] || 'ping';
   if (cmd === 'ping') await ping();
   else if (cmd === 'lists') await lists();
   else if (cmd === 'count') await count();
   else if (cmd === 'draft-pricing') await draftPricing();
+  else if (cmd === 'draft-launch') await draftLaunch();
   else if (cmd === 'sync-pricing') await syncPricing(process.argv[3]);
   else if (cmd === 'start') await start(process.argv[3]);
   else {

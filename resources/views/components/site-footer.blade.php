@@ -7,6 +7,7 @@
             <a href="{{ route('docs.show') }}" class="hover:text-[var(--home-ink)]">Docs</a>
             <a href="{{ route('install') }}" class="hover:text-[var(--home-ink)]">Install</a>
             <a href="{{ route('pricing') }}" class="hover:text-[var(--home-ink)]">Pricing</a>
+            <a href="{{ route('launch') }}" class="hover:text-[var(--home-ink)]">Launch</a>
             <a href="{{ config('site.github_url') }}" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--home-ink)]">GitHub</a>
             <a href="{{ route('contact') }}" class="hover:text-[var(--home-ink)]">Contact</a>
         </div>

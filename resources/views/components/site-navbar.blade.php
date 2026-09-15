@@ -16,6 +16,7 @@
         ['label' => 'Docs', 'href' => route('docs.show')],
         ['label' => 'Install', 'href' => route('install')],
         ['label' => 'Pricing', 'href' => route('pricing')],
+        ['label' => 'Launch', 'href' => route('launch')],
         ['label' => 'Tools', 'href' => route('tools.index')],
         ['label' => 'Compare', 'href' => route('compare.index')],
         ['label' => 'License', 'href' => route('license')],
@@ -112,10 +113,8 @@
                 <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('docs.show') }}" class="{{ $docsActive }}">Docs</x-slate::button>
                 <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('install') }}" class="{{ $isActive('install') }}">Install</x-slate::button>
                 <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('pricing') }}" class="{{ $isActive('pricing') }}">Pricing</x-slate::button>
-                <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('tools.index') }}" class="{{ $isActive('tools.*') }}">Tools</x-slate::button>
+                <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('launch') }}" class="{{ $isActive('launch') }}">Launch</x-slate::button>
                 <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('compare.index') }}" class="{{ $isActive('compare.*') }}">Compare</x-slate::button>
-                <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('license') }}" class="{{ $isActive('license') }}">License</x-slate::button>
-                <x-slate::button as="a" variant="ghost" size="sm" href="{{ route('faq') }}" class="{{ $isActive('faq') }}">FAQ</x-slate::button>
                 <x-slate::button as="a" variant="ghost" size="sm" href="{{ config('site.slate_url') }}" target="_blank" rel="noopener noreferrer">Slate UI</x-slate::button>
             </nav>
 
@@ -141,8 +140,8 @@
                         <span class="min-w-[1.25rem] tabular-nums" x-text="stars != null ? label(stars) : ''"></span>
                     </a>
                     <span class="h-4 w-px bg-border" aria-hidden="true"></span>
-                    <x-slate::button as="a" size="sm" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer" class="rounded-full px-4">
-                        Try demo
+                    <x-slate::button as="a" size="sm" href="{{ route('pricing') }}#solo" class="rounded-full px-4">
+                        Buy Solo
                     </x-slate::button>
                 </div>
 
@@ -154,14 +153,11 @@
                         </svg>
                         GitHub
                     </x-slate::button>
-                    <x-slate::button as="a" variant="outline" size="sm" href="{{ route('install') }}">
-                        Install
+                    <x-slate::button as="a" variant="outline" size="sm" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer">
+                        Demo
                     </x-slate::button>
-                    <x-slate::button as="a" size="sm" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer">
-                        Try the demo
-                        <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-                        </svg>
+                    <x-slate::button as="a" size="sm" href="{{ route('pricing') }}#solo">
+                        Buy Solo — $99
                     </x-slate::button>
                 </div>
             </div>
