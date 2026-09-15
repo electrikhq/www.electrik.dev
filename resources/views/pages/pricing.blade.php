@@ -20,54 +20,36 @@
         <p class="home-eyebrow justify-center">Pricing</p>
         <h1 class="site-page-title mt-5">Pricing</h1>
         <p class="site-page-lead">
-            Pay for permission when your use is commercial. Never pay to unlock billing or teams in source.
+            Companies and client work need a commercial license. Solo $99 · Studio $149. Full source either way — you pay for permission, not features.
         </p>
     </div>
 
     <div class="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
-        <div class="rounded-xl border border-border bg-muted/20 p-5">
-            <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Choose the Grant if</p>
-            <ul class="mt-3 space-y-2 text-sm text-foreground">
-                <li>Personal learning or side projects</li>
-                <li>Open-source</li>
-                <li>Pre-revenue indie experiments</li>
-            </ul>
-        </div>
-        <div class="rounded-xl border border-border bg-muted/20 p-5">
-            <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Need commercial if</p>
+        <div class="rounded-xl border border-foreground/15 bg-card p-5 shadow-sm">
+            <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Buy commercial if</p>
             <ul class="mt-3 space-y-2 text-sm text-foreground">
                 <li>Company or legal entity shipping a product</li>
                 <li>Client, agency, or freelance delivery</li>
                 <li>Internal business tools or paid employment use</li>
             </ul>
         </div>
+        <div class="rounded-xl border border-border bg-muted/20 p-5">
+            <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Grant ($0) only if</p>
+            <ul class="mt-3 space-y-2 text-sm text-foreground">
+                <li>Personal learning or side projects</li>
+                <li>Open-source</li>
+                <li>Pre-revenue indie experiments</li>
+            </ul>
+        </div>
     </div>
 
     <div class="mt-12 grid gap-6 lg:grid-cols-4">
-        <x-slate::card id="grant" class="lg:col-span-1 border-border/80 scroll-mt-24">
-            <x-slate::card-header>
-                <x-slate::card-title>Grant</x-slate::card-title>
-                <x-slate::card-description>Personal, OSS, pre-revenue indie</x-slate::card-description>
-            </x-slate::card-header>
-            <x-slate::card-content class="space-y-4">
-                <p class="text-4xl font-bold tracking-tight">$0</p>
-                <ul class="space-y-2 text-sm text-muted-foreground">
-                    <li>Full source and features</li>
-                    <li>Auth, teams, Stripe billing</li>
-                    <li>Community support via GitHub</li>
-                </ul>
-            </x-slate::card-content>
-            <x-slate::card-footer>
-                <x-slate::button as="a" class="w-full" href="{{ route('install') }}">Install</x-slate::button>
-            </x-slate::card-footer>
-        </x-slate::card>
-
         @foreach (config('site.commercial_tiers') as $tier)
             <x-slate::card
                 id="{{ $tier['id'] }}"
                 @class([
                     'border-border/80 scroll-mt-24',
-                    'ring-2 ring-foreground/10' => ! empty($tier['highlight']),
+                    'ring-2 ring-foreground/15 lg:scale-[1.02]' => ! empty($tier['highlight']),
                 ])
             >
                 <x-slate::card-header>
@@ -130,6 +112,24 @@
                 </x-slate::card-footer>
             </x-slate::card>
         @endforeach
+
+        <x-slate::card id="grant" class="lg:col-span-1 border-border/60 scroll-mt-24 opacity-95">
+            <x-slate::card-header>
+                <x-slate::card-title>Grant</x-slate::card-title>
+                <x-slate::card-description>Personal, OSS, pre-revenue indie</x-slate::card-description>
+            </x-slate::card-header>
+            <x-slate::card-content class="space-y-4">
+                <p class="text-4xl font-bold tracking-tight">$0</p>
+                <ul class="space-y-2 text-sm text-muted-foreground">
+                    <li>Full source and features</li>
+                    <li>Auth, teams, Stripe billing</li>
+                    <li>Community support via GitHub</li>
+                </ul>
+            </x-slate::card-content>
+            <x-slate::card-footer>
+                <x-slate::button as="a" variant="outline" class="w-full" href="{{ route('install') }}">Install</x-slate::button>
+            </x-slate::card-footer>
+        </x-slate::card>
     </div>
 
     <div class="prose-site mx-auto mt-16 max-w-3xl">

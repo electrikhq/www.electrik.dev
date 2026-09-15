@@ -26,8 +26,18 @@
             (with Electrik or on a custom Laravel stack), tell us what you are building.
         </p>
 
+        <h2>Electrik Launch — fixed package</h2>
+        <p>
+            <strong>$6,900 · 14 days.</strong>
+            We ship a multi-tenant Laravel SaaS shell (auth, teams, Stripe on the team, Slate UI),
+            branding, one core product feature, deploy, and handoff. Studio license included.
+            You own the code. Email with subject
+            <a href="mailto:{{ $studio['email'] }}?subject=Electrik%20Launch%20inquiry">Electrik Launch inquiry</a>.
+        </p>
+
         <h2>Good fits</h2>
         <ul>
+            <li>Electrik Launch (fixed-price MVP above)</li>
             <li>New SaaS products that need auth, teams, and billing done right</li>
             <li>Existing Laravel apps that need a modern Livewire / Blade UI pass</li>
             <li>Commercial Electrik licenses plus implementation help</li>
@@ -39,12 +49,16 @@
             Email
             <a href="mailto:{{ $studio['email'] }}?subject=Project%20inquiry">{{ $studio['email'] }}</a>
             with a short note: what you are building, timeline, and whether you already use Laravel.
+            For Launch, say what the one main “thing” users manage (clients, projects, bookings…).
             We will reply if it looks like a mutual fit.
         </p>
     </div>
 
     <div class="mt-10 flex flex-wrap gap-3">
-        <x-slate::button as="a" href="mailto:{{ $studio['email'] }}?subject=Project%20inquiry">
+        <x-slate::button as="a" href="mailto:{{ $studio['email'] }}?subject=Electrik%20Launch%20inquiry">
+            Electrik Launch
+        </x-slate::button>
+        <x-slate::button as="a" variant="outline" href="mailto:{{ $studio['email'] }}?subject=Project%20inquiry">
             Email {{ $studio['name'] }}
         </x-slate::button>
         <x-slate::button as="a" variant="outline" href="{{ $studio['url'] }}" target="_blank" rel="noopener noreferrer">

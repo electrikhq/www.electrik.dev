@@ -459,9 +459,9 @@ composer require → electrik:install → build</pre>
                 <a href="{{ route('pricing') }}#studio" class="mt-4 inline-block text-sm font-medium underline underline-offset-4">Buy Studio</a>
             </div>
             <div class="home-price-lane">
-                <p class="text-sm font-semibold text-[var(--home-ink)]">Agency · Custom</p>
-                <p class="mt-2 text-sm leading-relaxed text-[var(--home-muted)]">Org-wide rights, white-label, volume.</p>
-                <a href="{{ route('contact') }}" class="mt-4 inline-block text-sm font-medium underline underline-offset-4">Contact</a>
+                <p class="text-sm font-semibold text-[var(--home-ink)]">Electrik Launch · $6,900</p>
+                <p class="mt-2 text-sm leading-relaxed text-[var(--home-muted)]">We ship your multi-tenant SaaS shell + one feature in 14 days.</p>
+                <a href="{{ route('launch') }}" class="mt-4 inline-block text-sm font-medium underline underline-offset-4">See Launch</a>
             </div>
         </div>
     </div>

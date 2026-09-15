@@ -129,6 +129,18 @@ Cap marketing at ~5 hours/week if product work is primary. Consistency beats her
 
 ## Daily log
 
+### 2026-09-14 (Mon metrics)
+- Demo `/login` **200**; site home + pricing **200**
+- Packagist electrik monthly **15** (was 13) · slate **119** (was 108)
+- GH electrik **303★** / 22 forks · slate **29★**
+- Dodo: still only Solo $0 verify `pay_0NmrG6Q91Dpnqsy7iFC2w` — **$0 nonzero paid**
+- Remote MCP PR **merged** — https://github.com/punkpeye/awesome-remote-mcp-servers/pull/189
+- **Agency outreach +4 Resend:** Bacancy · Spiral Scout · Goedemiddag · Fruitcake → then raised volume (+Sourcetoad, Agiledrop, Cubet, Coddin, WebReinvent, Square1)
+- **Listmonk campaign 24** started → Electrik list #11 (~79): Composer-package angle + pricing CTA
+- Search spend still held until ~**2026-09-18** + Buy-click signal
+- Next: **Wed** Phase B week 4 — ship Laracasts / r/laravel Composer-kit post (draft ready in `content-queue.md`)
+- Money reality: live Buy ~11 days; GA Buy gate red; Apollo rejected — force = partner notes + owned list + community + gated Search
+
 ### 2026-09-04
 - Live Buy buttons confirmed on `/pricing` (live Dodo product IDs, not test.checkout)
 - Demo login → dashboard green
@@ -142,8 +154,18 @@ Cap marketing at ~5 hours/week if product work is primary. Consistency beats her
 - **Authority:** UNBREAKABLE agent-boss rule locked in `.cursor/rules/agent-owner-human-for-hire.mdc`
 - **License policy:** Solo/Studio = major line at purchase (5.x + minors); next major = new grant / published upgrade (not DRM)
 
+### 2026-09-10 (10× reach + Agent DX)
+- Boss call locked: **same offer, more force** — no product pivot; Agent DX = docs/surface (not AI chat/RAG product)
+- **Agent DX shipped:** `AGENTS.md` on `electrikhq/electrik` `5.x` (`7af482a`) · docs https://electrik.dev/docs/getting-started/ai/ · Cursor skill + `llms.txt` · Slate MCP remote
+- **X amplify Agent DX** @electrikhq — https://x.com/electrikhq/status/2097947975674990668
+- **Agency outreach +4 Resend:** Vehikl · 64 Robots · Curotec · Geeks Ltd — week total **11**
+- **GA Buy-click gate (28d):** sessions ~230 / users ~194 · begin_checkout **1** · purchase **2** ($0 verifies) · generic click 12 → **hold Search spend**; calendar unlock still ~**2026-09-18**
+- Still **$0 nonzero paid**
+- Next: Fri friction; week-4 Laracasts/r/laravel draft; watch remote MCP PR merge
+
 ### 2026-09-10 (line-art doodles)
 - Tried black/white doodles on resources/home/compare — **killed same day** (looked bad). Pages back to type-only.
+- **Directory:** Slate MCP moved to remote list — https://github.com/punkpeye/awesome-remote-mcp-servers/pull/189 (CI check-submission green; closed #12577 on local list)
 
 ### 2026-09-09 (Wed ship)
 - Pulse: demo login 200; Packagist electrik monthly 13 / slate **108**; resources + Jetstream compare still 200

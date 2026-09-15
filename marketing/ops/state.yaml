@@ -3,8 +3,8 @@
 cadence:
   weekly_day: monday
   mode: manual # manual | autopilot
-  last_daily: "2026-09-10"
-  last_weekly: "2026-09-07"
+  last_daily: "2026-09-14"
+  last_weekly: "2026-09-14"
 
 publish_policy: agent_ships  # agent_ships | draft_first | autopilot
 # UNBREAKABLE: agent decides and ships; human only via ORDER when blocked (see .cursor/rules/agent-owner-human-for-hire.mdc)
@@ -15,11 +15,14 @@ authority: agent_owner
 human_role: for_hire
 
 focus:
-  this_week: "Doodles reverted. Next: Buy-click gate → Google Search if unlocked."
-  next_artifact: "Buy-click / GA gate check → Google Search ads setup if green"
-  plan: "ops/path-to-2k.md"
+  this_week: "Money path: Electrik Launch $6900. /launch page built. Soft Launch follow-ups only (no reblast license emails <14d). Portal = next MRR. Licenses = side door."
+  next_artifact: "Deploy /launch + Solo-first pricing; 3 Launch-shaped agency notes to NEW shops; Portal spike after first Launch deposit or page live"
+  plan: "ops/money-path-launch-and-vertical.md"
+  plan_licenses_side: "ops/path-to-2k.md"
   channels: "ops/distribution-channels.md"
   strategy: "ops/growth-strategy-memo.md"
+  agency_outreach: half_launch_half_license_no_reblast_14d
+
 
 blockers:
   - "Mailchimp ACCOUNT BLOCKED — do not use"
@@ -84,18 +87,18 @@ analytics:
     home_url: "https://search.google.com/search-console?resource_id=sc-domain%3Aelectrik.dev"
 
 metrics_snapshot:
-  as_of: "2026-09-10"
-  electrik_packagist_monthly: 13
-  slate_packagist_monthly: 108
-  electrik_stars: 299
+  as_of: "2026-09-14"
+  electrik_packagist_monthly: 15
+  slate_packagist_monthly: 119
+  electrik_stars: 303
   electrik_forks: 22
-  slate_stars: 27
+  slate_stars: 29
   d1_purchases_succeeded: 4
   d1_ga_purchase_sent: 1
   d1_notes: "Dodo still only Solo $0 verify pay_0NmrG6Q91Dpnqsy7iFC2w. 0 nonzero live sales."
   live_buy_buttons: true
   demo_status: green
-  demo_notes: "demo.electrik.dev/login HTTP 200 (2026-09-09)"
+  demo_notes: "demo.electrik.dev/login HTTP 200 (2026-09-14)"
   a1_money_path: green
   directory_submissions: 3
   listmonk_subscribers_confirmed: 79
@@ -103,15 +106,27 @@ metrics_snapshot:
   listmonk_slate_list_id: 15
   listmonk_slate_subscribers: 1
   listmonk_campaign_18: finished_79_sent_2026-09-04
-  notes: "Thu: doodles reverted. Demo green. Still $0 nonzero paid. Next = Buy-click gate → Search ads."
+  notes: "Mon 09-14: Packagist up, demo green, outreach raised, Listmonk #24 Composer package→list #11 running (79). Still $0 nonzero paid. Money path = Buy clicks not Apollo. Wed = Laracasts/r/laravel."
+  listmonk_campaign_24: "composer_package_running_2026-09-14_list_11"
   laravel_news_slate: "live https://laravel-news.com/link/18766 — ~15 clicks as of evening IST; X amplify https://x.com/electrikhq/status/2096911312165146696"
   laravel_daily_slate: "FB package post live (Slate)"
   phase_b_week2: install_clipy_x_shipped_2026-09-07
   phase_b_week3: jetstream_compare_x_shipped_2026-09-09
+  phase_b_week4_agent_dx: "AGENTS.md electrikhq/electrik@7af482a; docs https://electrik.dev/docs/getting-started/ai/; X amplify shipped_2026-09-10 (see agent_dx_x)"
+  phase_b_week4_community: draft_ready_ship_wed_2026-09-16
   ln_slate_amplify_x: "https://x.com/electrikhq/status/2096911312165146696"
   jetstream_compare_x: "https://x.com/electrikhq/status/2097578996955574767"
+  agent_dx_x: "https://x.com/electrikhq/status/2097947975674990668"
+  agent_dx_docs: "https://electrik.dev/docs/getting-started/ai/"
+  agent_dx_agents_md: "https://raw.githubusercontent.com/electrikhq/electrik/5.x/AGENTS.md"
+  remote_mcp_pr: "https://github.com/punkpeye/awesome-remote-mcp-servers/pull/189"
+  remote_mcp_pr_merged: "2026-09-11T04:42:58Z"
+  buy_click_gate_2026_09_10: "red — GA28d sessions~230 users~194 begin_checkout1 purchase2($0 verifies) generic_click12; do not unlock Search spend yet; calendar unlock ~2026-09-18"
   x_pin: "https://x.com/electrikhq/status/2095807473953505626"
-  outreach_week_total: 7
+  outreach_total: 27
+  outreach_week_2026_09_14: "~10 unique (+1 accidental Agiledrop duplicate)"
   slate_pro_decision: "no_this_quarter_2026-09-07"
+  ten_x_call: "same_offer_more_force_2026-09-10 — no product pivot; Agent DX not AI-chat product"
+  apollo_full_tam_blast: "rejected_2026-09-14 — no quarterly Apollo TAM spray; keep 10–20/wk partner notes + owned list + gated Search"
 
 pending_orders: []

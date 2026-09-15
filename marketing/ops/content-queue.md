@@ -75,7 +75,7 @@ Checkout: https://electrik.dev/pricing
 **Admin:** https://campaigns.quickbrownfox.io/admin/campaigns/18  
 **From:** `Electrik <hello@electrik.dev>` · prices Solo $99 / Studio $149
 
-### Laracasts / r/laravel (week 4)
+### Laracasts / r/laravel (week 4) — READY TO SHIP Wed 2026-09-16
 
 **Title:** Why we ship Electrik as a Composer package (Laravel 12 SaaS starter)
 

@@ -118,6 +118,7 @@ Route::get('/pricing', fn () => view('pages.pricing'))->name('pricing');
 Route::get('/pricing/thanks', fn () => view('pages.pricing-thanks'))->name('pricing.thanks');
 Route::get('/faq', fn () => view('pages.faq'))->name('faq');
 Route::get('/contact', fn () => view('pages.contact'))->name('contact');
+Route::get('/launch', fn () => view('pages.launch'))->name('launch');
 
 Route::get('/tools', fn () => view('pages.tools.index'))->name('tools.index');
 Route::get('/tools/tailwind-color-generator', fn () => view('pages.tools.tailwind-color-generator'))
