@@ -16,7 +16,7 @@ human_role: for_hire
 
 focus:
   this_week: "MIT switch shipped in tree: Electrik 5.5 MIT + site MIT/Launch pricing. Cash path = Launch only (Solo/Studio kit licenses retired). Non–official-partner outreach. Portal = SKIP."
-  next_artifact: "Tag/push electrik v5.5.0 → Packagist MIT; deploy www; Launch outreach (no license sell)."
+  next_artifact: "Launch outreach only (no license sell). Announce MIT on X/Listmonk when site Pages deploy lands."
   plan: "ops/money-path-launch-and-vertical.md"
   plan_licenses_side: "ops/path-to-2k.md # licenses side door RETIRED 2026-09-21 — MIT switch"
   license: "MIT_5.5_plus_2026-09-21"
