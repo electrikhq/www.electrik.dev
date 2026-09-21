@@ -41,8 +41,6 @@
 - [Permissions catalog](https://electrik.dev/docs/reference/permissions-catalog): Default permission keys shipped in config/electrik.php.
 - [Changelog](https://electrik.dev/docs/reference/changelog): Electrik release notes and where to find full history.
 - [Roadmap](https://electrik.dev/docs/reference/roadmap): What Electrik is building next, and what we are not chasing.
-- [BSL Additional Use Grant](https://electrik.dev/docs/license/bsl): What the free BSL grant covers.
-- [Commercial license](https://electrik.dev/docs/license/commercial): When you need a commercial grant and how to buy.
 - [Slate UI](https://electrik.dev/docs/ecosystem/slate-ui): Electrik is built on Slate — UI docs live on slate.electrik.dev.
 - [Teamwork](https://electrik.dev/docs/ecosystem/teamwork): Electrik's teams engine is a Teamwork fork.
 - [Agent / llms.txt](https://electrik.dev/docs/ecosystem/agent-llms): Machine-readable docs for coding agents — see AI & agents.
@@ -54,8 +52,8 @@
 - [SaaS boilerplate](https://electrik.dev/resources/saas-boilerplate): Zip dump vs Composer package.
 - [Build a Laravel SaaS](https://electrik.dev/resources/build-laravel-saas): Package-first build path.
 - [Slate UI docs](https://slate.electrik.dev): Blade components and tokens (do not re-host here).
-- [License](https://electrik.dev/license): BSL Additional Use Grant.
-- [Pricing](https://electrik.dev/pricing): Commercial tiers.
+- [License](https://electrik.dev/license): MIT (5.5+); older tags may be BSL.
+- [Pricing](https://electrik.dev/pricing): Free MIT kit + Electrik Launch delivery.
 - [GitHub](https://github.com/electrikhq/electrik)
 
 ## Machine-readable
@@ -900,7 +898,7 @@ That same model is why Electrik works with **Cursor / Claude / coding agents**: 
 
 ## License
 
-Business Source License 1.1 with a free Additional Use Grant for personal, educational, open-source, and pre-revenue indie use. Commercial products and client work need a [commercial license](/license).
+Business Source License is retired for current Electrik. **5.5.0+ is MIT** — personal or commercial use without a kit license. Prefer `composer require electrik/electrik:^5.5`. Older tags may still be BSL. Paid path: [Electrik Launch](/launch).
 
 ## Next steps
 
@@ -1526,26 +1524,31 @@ php artisan electrik:stripe:sync
 Source: https://electrik.dev/docs/license/bsl.md
 
 ---
-title: "BSL Additional Use Grant"
-description: "What the free BSL grant covers."
+title: "MIT license"
+description: "Electrik 5.5+ is MIT. Notes on older BSL tags."
 sidebar_order: 1
-sidebar_section: "License & commercial"
+sidebar_section: "License"
 ---
 
-# BSL Additional Use Grant
+# MIT license
 
-Electrik is licensed under **Business Source License 1.1** with a free Additional Use Grant for:
+Electrik **5.5.0+** (current `5.x` default) is licensed under the **MIT License**. Use it for personal or commercial projects without a paid kit license.
 
-- Personal projects
-- Educational use
-- Open-source projects
-- Pre-revenue indie products
+Prefer:
 
-Companies, client work, and commercial products need a [commercial license](/docs/license/commercial).
+```bash
+composer require electrik/electrik:^5.5
+```
 
-All features ship in source for both lanes — we do not strip billing or teams from the free grant.
+## Older BSL releases
 
-Marketing summary: [/license](/license). Full legal text: package `LICENSE` on GitHub.
+Published tags that shipped under Business Source License 1.1 (for example `v5.0.0`) remain BSL for those specific releases. Upgrade to 5.5+ for MIT.
+
+## Paid path
+
+Money path is [Electrik Launch](/launch) — fixed-price delivery — not kit licenses. Solo/Studio commercial licenses are retired.
+
+Marketing summary: [/license](/license). Full text: package `LICENSE` on GitHub.
 
 
 ---
@@ -1553,19 +1556,25 @@ Marketing summary: [/license](/license). Full legal text: package `LICENSE` on G
 Source: https://electrik.dev/docs/license/commercial.md
 
 ---
-title: "Commercial license"
-description: "When you need a commercial grant and how to buy."
+title: "Commercial / Launch"
+description: "Kit licenses retired. Electrik Launch is paid delivery on the MIT kit."
 sidebar_order: 2
-sidebar_section: "License & commercial"
+sidebar_section: "License"
 ---
 
-# Commercial license
+# Commercial / Launch
 
-You need a commercial license when the Additional Use Grant does not cover your use (for example company products, client deliverables, or revenue-bearing SaaS past the grant).
+Solo and Studio **kit licenses are retired**. Electrik 5.5+ is MIT — no commercial permission purchase required to ship a product on the kit.
 
-Tiers and contact: [/pricing](/pricing). Questions: see contact email on the pricing/license pages.
+## Electrik Launch
 
-The commercial grant does not unlock extra features — source is already complete. It unlocks **rights**.
+If you want us to build and hand off a multi-tenant Laravel SaaS shell in 14 days, see [Electrik Launch](/launch) ($6,900). That is paid **delivery**, not a license unlock.
+
+## Prior purchases
+
+If you previously bought a Solo/Studio commercial license, email [hello@electrik.dev](mailto:hello@electrik.dev) — we will honor it.
+
+Marketing: [/pricing](/pricing) · [/license](/license).
 
 
 ---

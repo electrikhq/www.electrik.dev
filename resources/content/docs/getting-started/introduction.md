@@ -40,7 +40,7 @@ That same model is why Electrik works with **Cursor / Claude / coding agents**: 
 
 ## License
 
-Business Source License 1.1 with a free Additional Use Grant for personal, educational, open-source, and pre-revenue indie use. Commercial products and client work need a [commercial license](/license).
+Business Source License is retired for current Electrik. **5.5.0+ is MIT** — personal or commercial use without a kit license. Prefer `composer require electrik/electrik:^5.5`. Older tags may still be BSL. Paid path: [Electrik Launch](/launch).
 
 ## Next steps
 

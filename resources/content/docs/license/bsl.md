@@ -1,21 +1,26 @@
 ---
-title: "BSL Additional Use Grant"
-description: "What the free BSL grant covers."
+title: "MIT license"
+description: "Electrik 5.5+ is MIT. Notes on older BSL tags."
 sidebar_order: 1
-sidebar_section: "License & commercial"
+sidebar_section: "License"
 ---
 
-# BSL Additional Use Grant
+# MIT license
 
-Electrik is licensed under **Business Source License 1.1** with a free Additional Use Grant for:
+Electrik **5.5.0+** (current `5.x` default) is licensed under the **MIT License**. Use it for personal or commercial projects without a paid kit license.
 
-- Personal projects
-- Educational use
-- Open-source projects
-- Pre-revenue indie products
+Prefer:
 
-Companies, client work, and commercial products need a [commercial license](/docs/license/commercial).
+```bash
+composer require electrik/electrik:^5.5
+```
 
-All features ship in source for both lanes — we do not strip billing or teams from the free grant.
+## Older BSL releases
 
-Marketing summary: [/license](/license). Full legal text: package `LICENSE` on GitHub.
+Published tags that shipped under Business Source License 1.1 (for example `v5.0.0`) remain BSL for those specific releases. Upgrade to 5.5+ for MIT.
+
+## Paid path
+
+Money path is [Electrik Launch](/launch) — fixed-price delivery — not kit licenses. Solo/Studio commercial licenses are retired.
+
+Marketing summary: [/license](/license). Full text: package `LICENSE` on GitHub.

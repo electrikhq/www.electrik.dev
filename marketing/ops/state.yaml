@@ -3,7 +3,7 @@
 cadence:
   weekly_day: monday
   mode: manual # manual | autopilot
-  last_daily: "2026-09-15"
+  last_daily: "2026-09-17"
   last_weekly: "2026-09-14"
 
 publish_policy: agent_ships  # agent_ships | draft_first | autopilot
@@ -15,14 +15,18 @@ authority: agent_owner
 human_role: for_hire
 
 focus:
-  this_week: "BLAST MODE: same offers, 10x force. Buy Solo in chrome. Launch list+X+community today. Outreach 30–40/wk. Licenses=side door; Launch=$ cash; Portal next."
-  next_artifact: "Unblock r/laravel (+2 comment karma) then ask mods to approve 1wgsugw OR repost. Laracasts discuss next. Portal MVP spike."
+  this_week: "MIT switch shipped in tree: Electrik 5.5 MIT + site MIT/Launch pricing. Cash path = Launch only (Solo/Studio kit licenses retired). Non–official-partner outreach. Portal = SKIP."
+  next_artifact: "Tag/push electrik v5.5.0 → Packagist MIT; deploy www; Launch outreach (no license sell)."
   plan: "ops/money-path-launch-and-vertical.md"
-  plan_licenses_side: "ops/path-to-2k.md"
+  plan_licenses_side: "ops/path-to-2k.md # licenses side door RETIRED 2026-09-21 — MIT switch"
+  license: "MIT_5.5_plus_2026-09-21"
   channels: "ops/distribution-channels.md"
   strategy: "ops/growth-strategy-memo.md"
-  agency_outreach: blast_30_40_wk_half_launch_half_license_no_reblast_14d
+  agency_outreach: non_official_partners_only_half_launch_no_license_sell_no_reblast_14d
   mode: blast_10x_2026-09-15
+  skip_official_laravel_partners: "2026-09-17 — Neeraj has separate engagement on official partners; Electrik outreach avoids laravel.com/partners list"
+  portal_vertical: "SKIPPED_2026-09-17 — do not code MVP; spike doc kept as archive only"
+  mit_switch: "2026-09-21 — BSL + Solo/Studio kit licenses retired going forward; money = Launch"
 
 
 blockers:
@@ -88,9 +92,9 @@ analytics:
     home_url: "https://search.google.com/search-console?resource_id=sc-domain%3Aelectrik.dev"
 
 metrics_snapshot:
-  as_of: "2026-09-15"
-  electrik_packagist_monthly: 15
-  slate_packagist_monthly: 121
+  as_of: "2026-09-17"
+  electrik_packagist_monthly: 16
+  slate_packagist_monthly: 122
   electrik_stars: 303
   electrik_forks: 22
   slate_stars: 29
@@ -99,7 +103,7 @@ metrics_snapshot:
   d1_notes: "Dodo still only Solo $0 verify pay_0NmrG6Q91Dpnqsy7iFC2w. 0 nonzero live sales."
   live_buy_buttons: true
   demo_status: green
-  demo_notes: "demo.electrik.dev/login green (browser 2026-09-15)"
+  demo_notes: "demo.electrik.dev/login HTTP 200 (2026-09-17)"
   a1_money_path: green
   directory_submissions: 3
   listmonk_subscribers_confirmed: 79
@@ -107,15 +111,18 @@ metrics_snapshot:
   listmonk_slate_list_id: 15
   listmonk_slate_subscribers: 1
   listmonk_campaign_18: finished_79_sent_2026-09-04
-  notes: "BLAST 09-15: Buy Solo chrome live; Listmonk #26 Launch running; +10 agency; X Launch amplify shipped @electrikhq. Still $0 nonzero paid. Reddit needs login/2FA. Portal spike next coding session."
-  listmonk_campaign_24: "composer_package_running_2026-09-14_list_11"
-  listmonk_campaign_26: "launch_running_2026-09-15_list_11"
+  notes: "Thu 09-17 DONE pulse: metrics green; Portal spike; +10 non-partner outreach; Listmonk #25 deleted; r/laravel 1wios0e live; Discord #starter-kits posted. Still $0 nonzero paid. Buy-click Search unlock calendar ~2026-09-18."
+  listmonk_campaign_24: "composer_package_finished_2026-09-14_list_11"
+  listmonk_campaign_26: "launch_finished_79_sent_2026-09-15_list_11"
+  listmonk_campaign_25: "deleted_draft_duplicate_2026-09-17"
   laravel_news_slate: "live https://laravel-news.com/link/18766 — ~15 clicks as of evening IST; X amplify https://x.com/electrikhq/status/2096911312165146696"
   laravel_daily_slate: "FB package post live (Slate)"
   phase_b_week2: install_clipy_x_shipped_2026-09-07
   phase_b_week3: jetstream_compare_x_shipped_2026-09-09
   phase_b_week4_agent_dx: "AGENTS.md electrikhq/electrik@7af482a; docs https://electrik.dev/docs/getting-started/ai/; X amplify shipped_2026-09-10 (see agent_dx_x)"
-  phase_b_week4_community: "reddit_posted_auto_removed_2026-09-15 — need +2 r/laravel comment karma; url https://www.reddit.com/r/laravel/comments/1wgsugw/why_we_ship_electrik_as_a_composer_package/"
+  phase_b_week4_community: "reddit_1wios0e_live_2026-09-17; discord_starter_kits_2026-09-17; laracasts_paid_skip"
+  discord_starter_kits: "https://discord.com/channels/297040613688475649/1338965402717261894/1550078159406243890"
+  reddit_composer_live: "https://old.reddit.com/r/laravel/comments/1wios0e/why_we_ship_electrik_as_a_composer_package/"
   ln_slate_amplify_x: "https://x.com/electrikhq/status/2096911312165146696"
   jetstream_compare_x: "https://x.com/electrikhq/status/2097578996955574767"
   agent_dx_x: "https://x.com/electrikhq/status/2097947975674990668"
@@ -125,12 +132,13 @@ metrics_snapshot:
   remote_mcp_pr_merged: "2026-09-11T04:42:58Z"
   buy_click_gate_2026_09_10: "red — GA28d sessions~230 users~194 begin_checkout1 purchase2($0 verifies) generic_click12; do not unlock Search spend yet; calendar unlock ~2026-09-18"
   x_pin: "https://x.com/electrikhq/status/2095807473953505626"
-  outreach_total: 40
+  outreach_total: 50
   outreach_week_2026_09_14: "~10 unique (+1 accidental Agiledrop duplicate)"
   outreach_week_2026_09_15: "3 Launch AM + 10 blast (5 Launch / 5 license)"
+  outreach_week_2026_09_17: "10 non-official-partner (5 Launch / 5 license) — official partners skipped"
   launch_page: "https://electrik.dev/launch live_2026-09-15"
-  listmonk_campaign_26: "launch_running_2026-09-15_list_11"
-  blast_mode: "on_2026-09-15 — Buy Solo in chrome; Launch list #26; outreach +10; X pending human Post click if blocked"
+  blast_mode: "on — official Laravel Partners excluded from cold notes 2026-09-17"
+  portal_spike: "ops/portal-mvp-spike.md archive_only — MVP coding SKIPPED_2026-09-17"
   slate_pro_decision: "no_this_quarter_2026-09-07"
   ten_x_call: "blast_same_offer_2026-09-15 — licenses side door; Launch cash; Portal next; no AppSumo yet"
   apollo_full_tam_blast: "rejected_2026-09-14 — no quarterly Apollo TAM spray; keep 10–20/wk partner notes + owned list + gated Search"

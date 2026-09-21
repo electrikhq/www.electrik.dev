@@ -67,7 +67,7 @@ $electrik = [
     'url' => 'https://electrik.dev',
     'summary' => 'Laravel SaaS starter as a Composer package: auth, teams, Stripe on the team, Slate UI.',
     'stack_notes' => 'Laravel 12+, Livewire 4, Tailwind v4, electrik/slate.',
-    'pricing_blurb' => 'BSL 1.1 — $0 Additional Use Grant for personal/OSS/pre-revenue indie; Solo $99, Studio $149 (unlimited projects), Agency custom.',
+    'pricing_blurb' => 'MIT (5.5+) — free for personal or commercial use. Paid option: Electrik Launch delivery ($6,900 / 14 days). Older tags may still be BSL.',
     'cells' => [
         'distribution' => ['value' => 'yes', 'note' => 'composer require electrik/electrik'],
         'auth' => ['value' => 'yes', 'note' => '2FA, sessions, verification'],
@@ -80,8 +80,8 @@ $electrik = [
         'stack' => ['value' => 'yes', 'note' => 'Livewire 4'],
         'admin_panel' => ['value' => 'no', 'note' => 'Product shell, not Filament admin'],
         'vendor_owned' => ['value' => 'yes', 'note' => 'Code stays under Electrik\\'],
-        'free_commercial_lane' => ['value' => 'partial', 'note' => 'Grant for indie/OSS; companies need commercial'],
-        'price_posture' => ['value' => 'partial', 'note' => '$0 grant or one-time commercial tiers'],
+        'free_commercial_lane' => ['value' => 'yes', 'note' => 'MIT 5.5+ — ship commercially at $0'],
+        'price_posture' => ['value' => 'yes', 'note' => 'Kit free; Launch is paid delivery'],
     ],
 ];
 
@@ -110,20 +110,20 @@ $competitors = [
             ],
             [
                 'title' => 'License and money',
-                'body' => 'Jetstream is free and MIT — you can ship commercially at $0 to Laravel. Electrik’s source is BSL 1.1: personal, educational, OSS, and pre-revenue indie use are covered by the Additional Use Grant; companies and client work need Solo/Studio/Agency. You are not paying Electrik to unlock billing features — those ship in the package either way.',
+                'body' => 'Jetstream is free and MIT. Electrik 5.5+ is also MIT — personal or commercial use without a kit license. Electrik’s paid path is Electrik Launch (fixed-price delivery), not permission PDFs. Billing features ship in the package either way.',
             ],
         ],
         'when_electrik' => [
             'You want auth + teams + Stripe on the team in one Composer install',
             'You prefer vendor-owned upgrades over merging published scaffolds',
             'You want Slate Blade UI instead of assembling a theme',
-            'You are fine with BSL for commercial company use',
+            'You want an MIT package with team billing included',
         ],
         'when_them' => [
             'You only need auth/profile/teams and will build billing later (or never)',
             'You want every line of the scaffold in App\\ under your full ownership',
             'You standardize on Inertia + Vue/React instead of Livewire',
-            'You need a fully MIT stack with zero BSL considerations',
+            'You want Laravel’s official first-party auth scaffold specifically',
         ],
         'caveats' => [
             'Jetstream is the longer-running official scaffold; Electrik 5.0.0 is newly stable as a package.',
@@ -168,7 +168,7 @@ $competitors = [
         'stack_notes' => 'Spark Stripe / Paddle editions; Livewire or Inertia depending on generation.',
         'pricing_blurb' => 'Commercial per-project license (historically hundreds of USD per project). Billing product, not a free grant lane.',
         'seo_description' => 'Electrik vs Laravel Spark: full SaaS kit with auth, teams, and team billing in one Composer package, versus Spark’s per-project billing add-on. Matrix and when to buy which.',
-        'verdict' => 'Spark is the right buy when you already have an app shell and need a polished, first-party billing experience. Electrik is the better starting kit when you still need auth, teams, onboarding, and UI — with billing included in the base package under BSL instead of a separate per-project Spark invoice.',
+        'verdict' => 'Spark is the right buy when you already have an app shell and need a polished, first-party billing experience. Electrik is the better starting kit when you still need auth, teams, onboarding, and UI — with billing included in the MIT package instead of a separate per-project Spark invoice.',
         'intro' => 'Spark productizes subscription management for Laravel: plans, invoices, payment methods, and Cashier wiring with an official UI. It assumes you bring (or already have) the rest of the SaaS: authentication patterns, team tenancy, roles, and product screens.',
         'sections' => [
             [
@@ -177,7 +177,7 @@ $competitors = [
             ],
             [
                 'title' => 'Per-project cost',
-                'body' => 'Spark’s commercial model is typically per project. Electrik commercial tiers (Solo/Studio) are one-time licenses for using the Electrik kit itself; the BSL grant covers many indie cases at $0. Neither license replaces your Stripe fees — both help you bill customers.',
+                'body' => 'Spark’s commercial model is typically per project. Electrik’s kit is MIT (5.5+) — free to use commercially. Electrik Launch is optional fixed-price delivery. Neither replaces your Stripe fees — both help you bill customers.',
             ],
             [
                 'title' => 'Team as customer',
@@ -243,7 +243,7 @@ $competitors = [
         'stack_notes' => 'Laravel-based; historically Livewire-oriented with DevDojo’s Wave ecosystem.',
         'pricing_blurb' => 'Open-source Wave core with DevDojo commercial offerings around themes/pro — verify current license on the Wave site.',
         'seo_description' => 'Electrik vs Wave: Composer SaaS kit with team Stripe billing and Slate UI, versus DevDojo’s Wave starter. Feature matrix and fit guidance.',
-        'verdict' => 'Wave fits builders who want a DevDojo-shaped SaaS starter (often with content/blog DNA) and are comfortable in that ecosystem. Electrik fits builders who want a Composer package focused on teams + Stripe billing + Slate Blade UI, with an explicit BSL commercial story.',
+        'verdict' => 'Wave fits builders who want a DevDojo-shaped SaaS starter (often with content/blog DNA) and are comfortable in that ecosystem. Electrik fits builders who want a Composer package focused on teams + Stripe billing + Slate Blade UI under MIT.',
         'intro' => 'Wave popularized “SaaS starter” for Laravel indie hackers: authentication, subscriptions ideas, and a community around DevDojo. It is a different product lineage than Electrik’s package-first, team-billed, Slate-skinned kit.',
         'sections' => [
             [
@@ -260,14 +260,14 @@ $competitors = [
             ],
             [
                 'title' => 'License',
-                'body' => 'Wave’s open core vs paid DevDojo add-ons is a different commercial shape from Electrik’s BSL + Solo/Studio. Read both licenses before you ship a company product.',
+                'body' => 'Wave’s open core vs paid DevDojo add-ons is a different commercial shape from Electrik’s MIT kit + optional Launch delivery. Read both licenses before you ship.',
             ],
         ],
         'when_electrik' => [
             'You want package-first upgrades and Electrik\\ namespaced product code',
             'Team-scoped Stripe + Spatie permissions are non-negotiable',
             'You want Slate UI shared with slate.electrik.dev',
-            'You like an explicit indie grant vs commercial license page',
+            'You want an MIT Composer package with team billing included',
         ],
         'when_them' => [
             'You prefer the DevDojo / Wave ecosystem and tutorials',
@@ -287,7 +287,7 @@ $competitors = [
             ],
             [
                 'question' => 'Which is more “open source”?',
-                'answer' => 'Wave markets an open SaaS starter; Electrik uses BSL 1.1 with a free Additional Use Grant. MIT UI (Slate) sits beside Electrik. Compare licenses for your use case rather than slogans.',
+                'answer' => 'Wave markets an open SaaS starter; Electrik 5.5+ is MIT. MIT UI (Slate) sits beside Electrik. Compare licenses for your use case rather than slogans.',
             ],
             [
                 'question' => 'Can I migrate from Wave to Electrik?',
@@ -317,8 +317,8 @@ $competitors = [
         'summary' => 'Commercial Laravel SaaS starter — all-in-one paid kit competing in the same “buy once, ship SaaS” lane as Electrik’s commercial tiers.',
         'stack_notes' => 'Laravel SaaS boilerplate; check current Livewire/Inertia and admin choices on saasykit.com.',
         'pricing_blurb' => 'Typically one-time commercial purchase in the ~$199–$299 range (verify live pricing) — no Electrik-style free commercial grant.',
-        'seo_description' => 'Electrik vs SaaSykit: BSL grant lane plus team Cashier billing and Slate UI, versus a paid all-in-one starter. Side-by-side matrix.',
-        'verdict' => 'SaaSykit is a strong peer if you want a paid all-in-one starter and prefer their stack and demo. Electrik differentiates on Composer package ownership, Slate UI, team-as-Cashier-customer, and a $0 BSL grant for qualifying indie/OSS use before you buy Solo/Studio.',
+        'seo_description' => 'Electrik vs SaaSykit: MIT Composer package with team Cashier billing and Slate UI, versus a paid all-in-one starter. Side-by-side matrix.',
+        'verdict' => 'SaaSykit is a strong peer if you want a paid all-in-one starter and prefer their stack and demo. Electrik differentiates on Composer package ownership, Slate UI, team-as-Cashier-customer, and MIT (5.5+) with optional Launch delivery instead of a kit license SKU.',
         'intro' => 'SaaSykit sells a complete Laravel SaaS foundation: authentication, billing, and product screens aimed at founders who will pay once for a kit. Electrik plays in that market too — with a different distribution model and license story.',
         'sections' => [
             [
@@ -327,7 +327,7 @@ $competitors = [
             ],
             [
                 'title' => 'Money',
-                'body' => 'SaaSykit’s list price is a one-time kit purchase for commercial use. Electrik lists Solo $99 / Studio $149 (unlimited projects) for commercial company use, and keeps a free Additional Use Grant for personal, educational, open-source, and pre-revenue indie work. Feature unlock is not paywalled either way on Electrik — license is about permission to use commercially.',
+                'body' => 'SaaSykit’s list price is a one-time kit purchase for commercial use. Electrik 5.5+ is MIT — free for commercial use of the kit. Paid path is Electrik Launch (delivery), not Solo/Studio kit licenses (retired). Feature unlock is not paywalled on Electrik.',
             ],
             [
                 'title' => 'Teams and billing',
@@ -340,14 +340,14 @@ $competitors = [
         ],
         'when_electrik' => [
             'You want a Packagist package under Electrik\\ with Slate UI',
-            'You need the BSL indie grant before buying commercial',
+            'You want a free MIT kit before paying for delivery',
             'Team-scoped Cashier + Spatie is your tenancy model',
             'You care about open Slate / slate-blocks MIT alongside the kit',
         ],
         'when_them' => [
             'SaaSykit’s demo and feature checklist map 1:1 to your product',
             'You prefer their UI, docs, and support channel',
-            'You want a straightforward paid boilerplate without BSL nuances',
+            'You want a paid boilerplate with a single commercial SKU',
             'Their stack choices (admin, Inertia, etc.) match your team',
         ],
         'caveats' => [
@@ -394,7 +394,7 @@ $competitors = [
         'pricing_blurb' => 'One-time commercial purchase typically in the ~$199–$299 class (verify live pricing). No Electrik-style free company commercial grant.',
         'seo_description' => 'Electrik vs Larafast: package-first Laravel SaaS kit with team billing and Slate, versus another commercial starter. Honest feature matrix.',
         'verdict' => 'Larafast is a peer commercial kit: buy it if their demo, stack, and support win you over. Electrik competes with package-first delivery, Slate UI, team Cashier tenancy, and a documented $0 grant lane for qualifying non-company use.',
-        'intro' => 'Larafast markets speed-to-SaaS for Laravel developers willing to pay for a curated starter. Electrik targets the same job-to-be-done with a Composer package model and BSL licensing.',
+        'intro' => 'Larafast markets speed-to-SaaS for Laravel developers willing to pay for a curated starter. Electrik targets the same job-to-be-done with a Composer package model and MIT licensing (5.5+).',
         'sections' => [
             [
                 'title' => 'Category peers',
@@ -415,7 +415,7 @@ $competitors = [
         ],
         'when_electrik' => [
             'Composer package + Slate is your preferred architecture',
-            'You want a free grant lane before commercial license',
+            'You want a free MIT kit (and optional paid Launch delivery)',
             'Team-scoped billing is a hard requirement',
             'You already use or plan to use electrik/slate',
         ],
@@ -466,7 +466,7 @@ $competitors = [
         'url' => 'https://filamentphp.com',
         'summary' => 'The leading Laravel admin panel framework — exceptional for operator CRUD; not the same job as a multi-tenant SaaS product shell with team billing.',
         'stack_notes' => 'Livewire-powered admin panels, forms, tables, and resource UIs. Many “Filament starters” wrap Filament + auth/billing.',
-        'pricing_blurb' => 'Filament core is free (TALL stack). Plugins and third-party starters may be paid. Admin framework ≠ Electrik commercial license.',
+        'pricing_blurb' => 'Filament core is free (TALL stack). Plugins and third-party starters may be paid. Admin framework ≠ Electrik Launch.',
         'seo_description' => 'Electrik vs Filament: end-user SaaS shell (auth, teams, Stripe, Slate) versus admin/resource panels. Complementary more often than substitutes.',
         'verdict' => 'Use Filament when your product is an admin/back-office or you need resource CRUD fast. Use Electrik when you are shipping an end-user SaaS (auth, teams, Stripe plans, onboarding) with Slate product UI. Many apps need both: Electrik (or custom) for the customer app, Filament for internal ops — they are complementary more often than substitutes.',
         'intro' => 'Filament dominates Laravel admin UX: resources, forms, tables, notifications, and a plugin ecosystem. Comparing it to Electrik only makes sense because many founders search “Laravel SaaS starter” and land on Filament starters. The jobs differ.',
@@ -485,7 +485,7 @@ $competitors = [
             ],
             [
                 'title' => 'Licensing',
-                'body' => 'Filament’s open core is free for commercial use. Electrik’s BSL applies to the Electrik package. Using Filament does not replace Electrik’s license if you use Electrik, and vice versa.',
+                'body' => 'Filament’s open core is free for commercial use. Electrik 5.5+ is also MIT. Using Filament does not replace Electrik if you need the Electrik SaaS shell, and vice versa.',
             ],
         ],
         'when_electrik' => [

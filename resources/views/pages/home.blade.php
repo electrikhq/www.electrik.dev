@@ -2,7 +2,7 @@
 
 @section('content')
 @php
-    $composerInstall = 'composer require electrik/electrik:^5.0';
+    $composerInstall = 'composer require electrik/electrik:^5.5';
     $agentPrompt = <<<'PROMPT'
 Install Electrik 5.x as a Composer package.
 Read https://electrik.dev/llms.txt and https://electrik.dev/docs/getting-started/ai first.
@@ -37,8 +37,8 @@ PROMPT;
                 as a Composer package. Your <code class="rounded bg-black/5 px-1.5 py-0.5 font-mono text-[0.9em] text-[var(--home-ink)]">App\</code> stays clean.
             </p>
             <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <x-slate::button as="a" size="lg" href="{{ route('pricing') }}#solo">
-                    Buy Solo — $99
+                <x-slate::button as="a" size="lg" href="{{ route('install') }}">
+                    Install free — MIT
                 </x-slate::button>
                 <x-slate::button as="a" variant="outline" size="lg" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer">
                     Try the live demo
@@ -48,7 +48,7 @@ PROMPT;
                 </x-slate::button>
             </div>
             <p class="mt-4 text-sm text-[var(--home-muted)]">
-                $0 grant · Solo $99 · Studio $149 · Launch $6,900 / 14 days
+                MIT open source · Launch $6,900 / 14 days if you want us to ship it
             </p>
             <p class="mt-6" x-data="{ copied: false, text: @js($composerInstall) }">
                 <button
@@ -256,7 +256,7 @@ PROMPT;
                 Screens ship on Electrik Slate 3 so auth, billing, and product UI share one system.
             </p>
             <div class="mt-8 flex flex-wrap gap-3">
-                <x-slate::button as="a" href="{{ route('pricing') }}#solo">Buy Solo — $99</x-slate::button>
+                <x-slate::button as="a" href="{{ route('install') }}">Install free</x-slate::button>
                 <x-slate::button as="a" variant="outline" href="{{ config('site.slate_url') }}" target="_blank" rel="noopener noreferrer">Slate UI</x-slate::button>
             </div>
         </div>
@@ -422,49 +422,49 @@ composer require → electrik:install → build</pre>
         <div class="mx-auto max-w-2xl text-center">
             <p class="home-eyebrow justify-center">Pricing</p>
             <h2 class="home-display mt-5 text-3xl sm:text-4xl lg:text-5xl">
-                One feature surface. Honest licenses.
+                Free kit. Paid delivery.
             </h2>
             <p class="home-lead mt-5">
-                Full features in source either way. Buy commercial rights when a company owns the app —
-                not a secret Pro unlock.
+                Electrik is MIT — install and ship commercially without a kit license.
+                Need it built for you? Electrik Launch is the paid path.
             </p>
         </div>
 
         <div class="home-price-band mx-auto mt-14 max-w-3xl text-center">
-            <p class="text-sm font-semibold text-[var(--home-ink)]">Solo — one commercial product</p>
-            <p class="home-price-num mt-4">$99</p>
-            <p class="home-price-meta">One-time · current major (5.x) + minors</p>
+            <p class="text-sm font-semibold text-[var(--home-ink)]">Electrik Launch — we ship your SaaS shell</p>
+            <p class="home-price-num mt-4">$6,900</p>
+            <p class="home-price-meta">14 days · 50% deposit · you own the code</p>
             <p class="mx-auto mt-5 max-w-md text-sm leading-relaxed text-[var(--home-muted)]">
-                The license most buyers need. Same install as the grant. License email after payment.
+                Auth, teams, Stripe, branding, one core feature, deploy, handoff. Built on Electrik.
             </p>
             <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <x-slate::button as="a" size="lg" href="{{ route('pricing') }}#solo">Buy Solo</x-slate::button>
+                <x-slate::button as="a" size="lg" href="{{ route('launch') }}">See Launch</x-slate::button>
                 <x-slate::button as="a" variant="outline" size="lg" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer">
                     Try demo first
                 </x-slate::button>
             </div>
             <p class="mt-8 border-t border-black/10 pt-6 text-sm text-[var(--home-muted)]">
-                Need unlimited projects?
-                <a href="{{ route('pricing') }}#studio" class="font-medium text-[var(--home-ink)] underline underline-offset-4">Studio $149</a>
-                · Agency custom.
+                Prefer DIY?
+                <a href="{{ route('install') }}" class="font-medium text-[var(--home-ink)] underline underline-offset-4">Install MIT free</a>
+                · details on <a href="{{ route('pricing') }}" class="font-medium text-[var(--home-ink)] underline underline-offset-4">Pricing</a>.
             </p>
         </div>
 
         <div class="home-price-lanes mx-auto max-w-4xl">
             <div class="home-price-lane">
-                <p class="text-sm font-semibold text-[var(--home-ink)]">Grant · $0</p>
-                <p class="mt-2 text-sm leading-relaxed text-[var(--home-muted)]">Personal, OSS, school, pre-revenue. Full features.</p>
-                <a href="{{ route('install') }}" class="mt-4 inline-block text-sm font-medium underline underline-offset-4">Install free</a>
-            </div>
-            <div class="home-price-lane">
-                <p class="text-sm font-semibold text-[var(--home-ink)]">Studio · $149</p>
-                <p class="mt-2 text-sm leading-relaxed text-[var(--home-muted)]">Unlimited commercial projects. Priority support.</p>
-                <a href="{{ route('pricing') }}#studio" class="mt-4 inline-block text-sm font-medium underline underline-offset-4">Buy Studio</a>
+                <p class="text-sm font-semibold text-[var(--home-ink)]">Electrik · MIT · $0</p>
+                <p class="mt-2 text-sm leading-relaxed text-[var(--home-muted)]">Personal or commercial. Full source. Prefer ^5.5.</p>
+                <a href="{{ route('install') }}" class="mt-4 inline-block text-sm font-medium underline underline-offset-4">Install</a>
             </div>
             <div class="home-price-lane">
                 <p class="text-sm font-semibold text-[var(--home-ink)]">Electrik Launch · $6,900</p>
                 <p class="mt-2 text-sm leading-relaxed text-[var(--home-muted)]">We ship your multi-tenant SaaS shell + one feature in 14 days.</p>
                 <a href="{{ route('launch') }}" class="mt-4 inline-block text-sm font-medium underline underline-offset-4">See Launch</a>
+            </div>
+            <div class="home-price-lane">
+                <p class="text-sm font-semibold text-[var(--home-ink)]">License</p>
+                <p class="mt-2 text-sm leading-relaxed text-[var(--home-muted)]">MIT for 5.5+. Older tags may still be BSL.</p>
+                <a href="{{ route('license') }}" class="mt-4 inline-block text-sm font-medium underline underline-offset-4">Read license</a>
             </div>
         </div>
     </div>
@@ -490,7 +490,7 @@ composer require → electrik:install → build</pre>
     <div class="home-wrap max-w-3xl">
         <div class="text-center">
             <h2 class="home-display text-3xl sm:text-4xl">Common questions</h2>
-            <p class="home-lead mt-4">Grant vs commercial, vendor customization, Solo vs Studio.</p>
+            <p class="home-lead mt-4">MIT license, install, vendor customization, Launch.</p>
         </div>
         <div class="mt-12 space-y-0">
             @foreach (\App\Support\Seo::homepageFaqs() as $item)
@@ -514,16 +514,19 @@ composer require → electrik:install → build</pre>
 {{-- Close --}}
 <section class="home-section">
     <div class="home-wrap max-w-2xl text-center">
-        <h2 class="home-display text-3xl sm:text-4xl lg:text-5xl">Try the demo. Buy when you ship.</h2>
+        <h2 class="home-display text-3xl sm:text-4xl lg:text-5xl">Try the demo. Install free. Launch if you want us to ship.</h2>
         <p class="home-lead mt-5">
-            Click through the live product, install on the grant, or buy Solo when a company owns the app.
+            Click through the live product, install MIT with Composer, or book Electrik Launch when you want a shipped shell in 14 days.
         </p>
         <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
             <x-slate::button as="a" size="lg" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer">
                 Open demo
             </x-slate::button>
-            <x-slate::button as="a" variant="outline" size="lg" href="{{ route('pricing') }}#solo">
-                Buy Solo — $99
+            <x-slate::button as="a" variant="outline" size="lg" href="{{ route('install') }}">
+                Install free
+            </x-slate::button>
+            <x-slate::button as="a" variant="outline" size="lg" href="{{ route('launch') }}">
+                Electrik Launch
             </x-slate::button>
         </div>
         <p class="mt-14 text-sm text-[var(--home-muted)]">

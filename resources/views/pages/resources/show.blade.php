@@ -126,7 +126,7 @@
     <div class="mx-auto max-w-3xl">
         <h2 class="text-2xl font-semibold tracking-tight">Try Electrik</h2>
         <p class="mt-3 text-base text-muted-foreground text-pretty">
-            Composer package for Laravel SaaS: teams, Stripe on the team, Slate UI. Grant lane for eligible indies; Solo $99 / Studio $149 when you need commercial.
+            Composer package for Laravel SaaS: teams, Stripe on the team, Slate UI. MIT (5.5+) — free to ship. Paid path: Electrik Launch.
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
             <a

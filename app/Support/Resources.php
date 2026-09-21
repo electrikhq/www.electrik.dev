@@ -91,8 +91,8 @@ class Resources
                 [
                     'heading' => 'Pricing and license (honest)',
                     'body' => [
-                        'BSL 1.1 with a free Additional Use Grant for personal, educational, open-source, and pre-revenue indie use. Solo $99 and Studio $149 are one-time commercial licenses for the major line at purchase. Agency is custom.',
-                        'Billing features are not locked behind a paid tier. The gate is commercial permission, not feature flags.',
+                        'Electrik 5.5+ is MIT — personal or commercial use without a kit license. Prefer composer require electrik/electrik:^5.5. Older tags may still be BSL.',
+                        'Paid path is Electrik Launch (fixed-price delivery), not Solo/Studio kit licenses (retired).',
                     ],
                 ],
                 [
@@ -113,7 +113,7 @@ class Resources
             'faqs' => [
                 [
                     'question' => 'Is Electrik a free Laravel SaaS starter kit?',
-                    'answer' => 'Source is public under BSL with a free grant for eligible indie and educational use. Commercial products and client work need Solo, Studio, or Agency.',
+                    'answer' => 'Yes. Electrik 5.5+ is MIT open source. Prefer ^5.5. Paid option is Electrik Launch delivery if you want us to ship the shell.',
                 ],
                 [
                     'question' => 'Does Electrik replace Jetstream?',
@@ -174,7 +174,7 @@ class Resources
                     'bullets' => [
                         'Who is the Stripe customer — user or team/workspace?',
                         'Can you upgrade the kit without merging auth by hand?',
-                        'Are commercial terms clear (MIT zip vs BSL/commercial)?',
+                        'Is the license clear (MIT 5.5+ vs older BSL tags)?',
                         'Is the UI a real system (tokens/components) or one-off markup?',
                         'Will coding agents extend App\\ safely, or edit dumped scaffold forever?',
                     ],
@@ -256,7 +256,7 @@ class Resources
                 [
                     'heading' => 'Step 5 — License before you sell',
                     'body' => [
-                        'Indie pre-revenue experiments may qualify for the BSL grant. Companies, client work, and commercial products need Solo or Studio. Read /license and /pricing before launch day.',
+                        'Electrik 5.5+ is MIT — ship commercially without a kit license. Prefer ^5.5. Paid path if you want delivery: Electrik Launch. Read /license and /pricing.',
                     ],
                 ],
             ],
@@ -276,7 +276,7 @@ class Resources
                 ],
                 [
                     'question' => 'Can I use Electrik for client projects?',
-                    'answer' => 'Client/commercial work needs a commercial license (Studio is the usual agency fit). The free grant is not for client deliverables.',
+                    'answer' => 'Yes. Electrik 5.5+ is MIT — client and commercial products are fine without a kit license. Prefer ^5.5. Or book Electrik Launch if you want us to ship the shell.',
                 ],
             ],
         ];

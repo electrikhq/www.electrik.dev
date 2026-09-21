@@ -6,7 +6,7 @@ return [
 
     'tagline' => env('SITE_TAGLINE', 'Laravel SaaS starter kit'),
 
-    'version' => env('ELECTRIK_VERSION', '5.4.0'),
+    'version' => env('ELECTRIK_VERSION', '5.5.0'),
 
     'demo_url' => env('ELECTRIK_DEMO_URL', 'https://demo.electrik.dev'),
 
@@ -34,57 +34,13 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Commercial license tiers (BSL commercial lane)
+    | Legacy commercial tiers (retired 2026-09-21 — Electrik is MIT)
+    | Kept empty so old templates that loop the key do not explode.
+    | Pricing page is MIT + Launch; do not re-enable Solo/Studio Buy.
     |--------------------------------------------------------------------------
     */
 
-    'commercial_tiers' => [
-        [
-            'id' => 'solo',
-            'name' => 'Solo',
-            'price' => '$99',
-            'period' => 'one-time',
-            'summary' => 'One developer shipping one commercial product.',
-            'features' => [
-                'Commercial use for a single product',
-                'Covers current major (5.x) + minors/patches',
-                'Full source, all features included',
-                'Email support during onboarding',
-            ],
-            // Dodo (preferred) or legacy Stripe Payment Link. Empty = mailto fallback.
-            // Static site: URLs are baked at export — never put DODO_PAYMENTS_API_KEY in Pages.
-            'checkout_url' => env('DODO_CHECKOUT_SOLO') ?: env('STRIPE_CHECKOUT_SOLO'),
-        ],
-        [
-            'id' => 'studio',
-            'name' => 'Studio',
-            'price' => '$149',
-            'period' => 'one-time',
-            'summary' => 'Unlimited projects for your studio or small team.',
-            'features' => [
-                'Unlimited commercial projects',
-                'Covers current major (5.x) + minors/patches',
-                'Priority support channel',
-                'License certificate for clients',
-            ],
-            'highlight' => true,
-            'checkout_url' => env('DODO_CHECKOUT_STUDIO') ?: env('STRIPE_CHECKOUT_STUDIO'),
-        ],
-        [
-            'id' => 'agency',
-            'name' => 'Agency',
-            'price' => 'Custom',
-            'period' => null,
-            'summary' => 'Agencies standardizing on Electrik for client delivery.',
-            'features' => [
-                'Organization-wide commercial rights',
-                'Major-line scope negotiated per deal',
-                'White-label branding (name, logo, primary color, powered-by)',
-                'Volume pricing available',
-            ],
-            'checkout_url' => null,
-        ],
-    ],
+    'commercial_tiers' => [],
 
     'features' => [
         'Email auth, verification, password reset, and profile',

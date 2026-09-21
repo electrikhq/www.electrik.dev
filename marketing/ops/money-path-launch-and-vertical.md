@@ -2,9 +2,9 @@
 
 **Owner:** agent (boss)  
 **Locked:** 2026-09-14  
-**Premise:** Generic kit licenses are a weak primary business. Electrik is the factory. Cash = productized launches now; MRR = one vertical SaaS next.
+**Premise:** Electrik is **MIT** (5.5+). Kit license sales are retired. Cash = productized launches (Electrik Launch). MRR = one vertical SaaS later (Portal = SKIP).
 
-Related: research canvas `relay-market-research.canvas.tsx` · `path-to-2k.md` (licenses stay as side door)
+Related: research canvas `relay-market-research.canvas.tsx` · `path-to-2k.md` (license side door **RETIRED** 2026-09-21)
 
 ---
 
@@ -14,7 +14,7 @@ Related: research canvas `relay-market-research.canvas.tsx` · `path-to-2k.md` (
 
 **Electrik Launch** — “Live multi-tenant Laravel SaaS in 14 days.”
 
-Sold by **Quick Brown Fox** (studio behind Electrik). Electrik Studio license included.
+Sold by **Quick Brown Fox** (studio behind Electrik). Built on the **MIT** Electrik kit — no Studio license SKU.
 
 ### Who buys
 
@@ -36,14 +36,14 @@ Sold by **Quick Brown Fox** (studio behind Electrik). Electrik Studio license in
 
 ### What is included (Launch $6,900)
 
-1. Fresh Laravel 12/13 + Electrik 5.4 + Slate 3 on your hosting (or Fly/Forge we set up)
+1. Fresh Laravel 12/13 + Electrik 5.5 (MIT) + Slate 3 on your hosting (or Fly/Forge we set up)
 2. Auth, teams, invites, roles, Stripe Cashier on the **team** (test mode wired; you add live keys)
 3. Brand: logo, primary color, app name
 4. **One** core product resource (CRUD + team scope) — e.g. Clients, Projects, or your named entity
 5. Dashboard shell + onboarding pass
 6. Deploy to staging + production checklist
 7. 60-minute handoff call + short Loom
-8. Electrik **Studio** commercial license for that product
+8. You own the code (MIT kit — no separate Studio license line item)
 
 ### Explicitly out of scope
 
@@ -104,7 +104,7 @@ Offer notes: happy to send the one-pager.
 — Neeraj / Quick Brown Fox
 ```
 
-**Cadence:** keep 10–20/week, but **half** can be Launch-shaped (client MVP help), half license. Do not re-blast shops already emailed for licenses in the last 14 days — wait or soft follow-up only.
+**Cadence:** keep 10–20/week, **Launch-shaped only** (client MVP help). Do not sell Solo/Studio kit licenses. Do not re-blast shops already emailed in the last 14 days — wait or soft follow-up only.
 
 ### Site / ops next (when we ship pages)
 
@@ -134,35 +134,25 @@ Avoid = crowded Chatbase-like or needs deep domain we don’t have.
 | 5 | AI support desk (hosted Relay) | $49/mo | 3 | 4 | 2 | Defer — Chatbase war |
 | 6 | Generic project management | $29/mo | 5 | 1 | 5 | Kill — Basecamp/Asana |
 
-### Locked pick: **Portal** (working name)
+### Locked pick: **Portal** — **SKIPPED 2026-09-17**
+
+**Do not build.** Founder veto: same outreach/sales bottleneck as Electrik licenses + crowded client-portal market (HoneyBook / Dubsado / etc.). Spike archive: `ops/portal-mvp-spike.md`.
+
+**Stay primary:** Electrik Launch ($6.9k) + Solo/Studio licenses + non–official-partner outreach. Vertical SaaS = revisit only with a sharper niche later (e.g. document chase), not generic Portal.
+
+<details><summary>Original Portal brief (archive)</summary>
 
 **One sentence:** Branded client portal for freelancers and small agencies — clients log in, see project status, files, and messages; you bill seats/clients on Stripe.
 
-**Why #1**
+**Why it was #1 (superseded):** Electrik shell fit; clear freelancer buyer; not Chatbase war.
 
-- Electrik demo already has Clients → Projects → Tasks (Studio sample)
-- Teams + Stripe on team = natural seat/client limits
-- Slate = “looks professional” without a design detour
-- Clear buyer: freelancers/agencies tired of Google Drive + email
-- Not competing with Chatbase; competing with messy Drive folders
+**MVP / kill criteria:** see `ops/portal-mvp-spike.md` — not executing.
 
-**MVP (4 weeks max)**
+</details>
 
-1. Agency team signs up (Electrik)
-2. Create clients → invite client users (read-limited role)
-3. Projects with status + file uploads + simple message thread
-4. Plans: Solo $49 (10 clients) · Studio $79 (40 clients)
-5. Marketing site + Stripe live checkout
+### Niche #2 backup: Document chase (bookkeepers) — **parked**
 
-**Not in MVP:** contracts/e-sign, Xero, AI, white-label domains (add after 10 paying).
-
-**Kill criteria (day 45 after soft launch)**
-
-- < 5 paying OR < 20 serious waitlist emails → pivot to niche #2 (document chase) using same shell
-
-### Niche #2 backup: Document chase (bookkeepers)
-
-Request list → client uploads → reminders. Same Electrik shell; different primary object (`DocumentRequest`). Only start if Portal misses kill criteria.
+Request list → client uploads → reminders. Only reconsider if we reopen vertical SaaS; not automatic next after Portal skip.
 
 ---
 
@@ -171,10 +161,10 @@ Request list → client uploads → reminders. Same Electrik shell; different pr
 ```
 License $99/$149     → side door + Packagist trust
 Electrik Launch $6.9k → near-term cash (QBF)
-Portal $49–$79/mo     → compounding MRR (new product brand)
+Vertical SaaS MRR    → PARKED (Portal skipped 2026-09-17)
 ```
 
-Do **not** rename Electrik into Portal. Portal gets its own small brand later (TBD). Electrik stays the kit + Launch engine.
+Do **not** rename Electrik. Do **not** start Portal code.
 
 ---
 
@@ -182,12 +172,12 @@ Do **not** rename Electrik into Portal. Portal gets its own small brand later (T
 
 1. Use Launch paste-ready reply on any Contact / hello@ project inbound  
 2. Soft follow-up only to agencies that asked about delivery (not cold re-pitch all of outreach.csv)  
-3. Portal MVP spike plan (models + roles) — next coding session when Launch page or first deposit lands  
-4. Licenses: keep path-to-2k rhythm, demote expectation
+3. ~~Portal MVP spike~~ — **SKIPPED 2026-09-17** (do not code)  
+4. Licenses + Launch: keep path-to-2k / blast rhythm; Buy-click Search check ~2026-09-18
 
 ---
 
 ## 5. Open naming (not blocking)
 
 - Launch offer name: **Electrik Launch** (locked)
-- Vertical product name: TBD (candidates: Portal, Clientbay, Studiogate — decide at MVP start)
+- Vertical product name: **N/A — Portal parked**

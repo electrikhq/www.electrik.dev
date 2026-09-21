@@ -7,7 +7,7 @@
     $paymentId = request()->query('payment_id');
 
     $seoTitle = 'Thanks for your purchase';
-    $seoDescription = 'Electrik commercial license checkout complete. We will follow up with your license details.';
+    $seoDescription = 'Electrik checkout complete. We will follow up by email.';
     $seoUrl = siteCanonicalUrl('/pricing/thanks');
     $seoRobots = 'noindex,follow';
 @endphp

@@ -2,6 +2,43 @@
 
 Newest first. One short block per run.
 
+## 2026-09-21 — MIT switch (BSL + kit licenses retired)
+
+- Electrik package: LICENSE MIT · composer `5.5.0` / `license: MIT` · README + AGENTS
+- Site: home/nav/footer/pricing/license/FAQ/Launch/compare/docs → MIT free + Launch $6.9k money path
+- Solo/Studio kit licenses **retired**; `commercial_tiers` emptied
+- Ops: `state.yaml` + `money-path-launch-and-vertical.md` locked to Launch-only cash
+- Next: tag/push `v5.5.0` on `5.x` → Packagist; deploy www
+
+## 2026-09-17 — Portal SKIP (founder veto)
+
+- Portal MVP coding **not starting** — same sales stuck risk + heavy client-portal competition
+- Stay on Electrik: Launch $6.9k + Solo/Studio licenses + non–official-partner outreach
+- Spike doc kept as archive only (`ops/portal-mvp-spike.md`)
+
+## 2026-09-17 — Thu pulse + non-partner outreach
+
+- **Rule locked:** skip official Laravel Partners (`laravel.com/partners`) — separate Neeraj engagement; Electrik notes go to non-partner shops only
+- Metrics: demo `/login` 200; Packagist electrik **16**/mo · slate **122**/mo; GH 303/29; Dodo still only $0 verify `pay_0NmrG6Q91Dpnqsy7iFC2w`
+- Portal MVP spike: `ops/portal-mvp-spike.md` (models/roles/week map)
+- Resend **+10** non-partner (5 Launch / 5 license): Renav · Chilliapple · MWN Digital · Tonca · Boldally · Pixlogix · Zedrox · Saga Softwares · Pawon · Hutko
+- Listmonk: **#26 finished** (79); draft **#25 deleted**
+- Reddit: helpful comment at **6 points** in r/laravel → Composer post **live** https://old.reddit.com/r/laravel/comments/1wios0e/why_we_ship_electrik_as_a_composer_package/ (not AutoMod-removed on submit)
+- Discord `#starter-kits` Composer note **posted** (qwertymaniac 3:07 PM IST): https://discord.com/channels/297040613688475649/1338965402717261894/1550078159406243890
+- Buy-click Search unlock calendar ~**2026-09-18** — still no nonzero sales; leave gated unless GA shows Buy clicks
+
+## 2026-09-15 — r/laravel karma comments + repost (still AutoMod)
+
+- Reddit login done (`u/Otherwise_Economy576`)
+- Helpful comments ×2 (non-promo):
+  - AWS/BAA thread: https://old.reddit.com/r/laravel/comments/1wg37am/
+  - Background jobs poll: https://old.reddit.com/r/laravel/comments/1wguqhd/
+- Repost: https://www.reddit.com/r/laravel/comments/1wgv7gr/why_we_ship_electrik_as_a_composer_package/ — **AutoMod removed again** (needs *earned* +2 comment karma / upvotes, not just 2 comments)
+- Earlier twin also removed: `1wgsugw`
+- Modmail compose opened to `/r/laravel` (Send may need human if UI disables)
+- **Laracasts = paid → SKIP** (locked 2026-09-15). Free alt: Laravel Discord + Reddit karma wait/modmail
+- Next: Portal MVP spike; Discord Composer note; wait upvotes / mod approve `1wgv7gr`
+
 ## 2026-09-15 — r/laravel Composer post (auto-removed)
 
 - Posted: https://www.reddit.com/r/laravel/comments/1wgsugw/why_we_ship_electrik_as_a_composer_package/

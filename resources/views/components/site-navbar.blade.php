@@ -140,8 +140,8 @@
                         <span class="min-w-[1.25rem] tabular-nums" x-text="stars != null ? label(stars) : ''"></span>
                     </a>
                     <span class="h-4 w-px bg-border" aria-hidden="true"></span>
-                    <x-slate::button as="a" size="sm" href="{{ route('pricing') }}#solo" class="rounded-full px-4">
-                        Buy Solo
+                    <x-slate::button as="a" size="sm" href="{{ route('launch') }}" class="rounded-full px-4">
+                        Launch
                     </x-slate::button>
                 </div>
 
@@ -156,8 +156,8 @@
                     <x-slate::button as="a" variant="outline" size="sm" href="{{ config('site.demo_url') }}" target="_blank" rel="noopener noreferrer">
                         Demo
                     </x-slate::button>
-                    <x-slate::button as="a" size="sm" href="{{ route('pricing') }}#solo">
-                        Buy Solo — $99
+                    <x-slate::button as="a" size="sm" href="{{ route('launch') }}">
+                        Electrik Launch
                     </x-slate::button>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 
 @php
     $seoTitle = 'Pricing';
-    $seoDescription = 'Electrik pricing: $0 under the BSL Additional Use Grant for indies, and commercial license tiers for companies and agencies.';
+    $seoDescription = 'Electrik is MIT and free. Paid option: Electrik Launch — we ship your multi-tenant Laravel SaaS shell in 14 days for $6,900.';
     $seoUrl = siteCanonicalUrl('/pricing');
     $seoGraph = \App\Support\Seo::graph(
         \App\Support\Seo::organizationGraph(),
@@ -18,165 +18,70 @@
 <section class="site-page site-page--wide">
     <div class="mx-auto max-w-2xl text-center">
         <p class="home-eyebrow justify-center">Pricing</p>
-        <h1 class="site-page-title mt-5">Pricing</h1>
+        <h1 class="site-page-title mt-5">Free kit. Paid delivery.</h1>
         <p class="site-page-lead">
-            Companies and client work need a commercial license. Solo $99 · Studio $149. Full source either way — you pay for permission, not features.
+            Electrik is MIT open source — install and ship commercially without a kit license.
+            Need it built for you? Electrik Launch is the paid path.
         </p>
     </div>
 
-    <div class="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
-        <div class="rounded-xl border border-foreground/15 bg-card p-5 shadow-sm">
-            <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Buy commercial if</p>
-            <ul class="mt-3 space-y-2 text-sm text-foreground">
-                <li>Company or legal entity shipping a product</li>
-                <li>Client, agency, or freelance delivery</li>
-                <li>Internal business tools or paid employment use</li>
-            </ul>
-        </div>
-        <div class="rounded-xl border border-border bg-muted/20 p-5">
-            <p class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Grant ($0) only if</p>
-            <ul class="mt-3 space-y-2 text-sm text-foreground">
-                <li>Personal learning or side projects</li>
-                <li>Open-source</li>
-                <li>Pre-revenue indie experiments</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="mt-12 grid gap-6 lg:grid-cols-4">
-        @foreach (config('site.commercial_tiers') as $tier)
-            <x-slate::card
-                id="{{ $tier['id'] }}"
-                @class([
-                    'border-border/80 scroll-mt-24',
-                    'ring-2 ring-foreground/15 lg:scale-[1.02]' => ! empty($tier['highlight']),
-                ])
-            >
-                <x-slate::card-header>
-                    @if (! empty($tier['highlight']))
-                        <x-slate::badge class="mb-2 w-fit">Popular</x-slate::badge>
-                    @endif
-                    <x-slate::card-title>{{ $tier['name'] }}</x-slate::card-title>
-                    <x-slate::card-description>{{ $tier['summary'] }}</x-slate::card-description>
-                </x-slate::card-header>
-                <x-slate::card-content class="space-y-4">
-                    <p class="text-4xl font-bold tracking-tight">
-                        {{ $tier['price'] }}
-                        @if (! empty($tier['period']))
-                            <span class="text-sm font-normal text-muted-foreground">{{ $tier['period'] }}</span>
-                        @endif
-                    </p>
-                    <ul class="space-y-2 text-sm text-muted-foreground">
-                        @foreach ($tier['features'] as $feature)
-                            <li>{{ $feature }}</li>
-                        @endforeach
-                    </ul>
-                </x-slate::card-content>
-                <x-slate::card-footer>
-                    @php
-                        $checkoutUrl = $tier['checkout_url'] ?? null;
-                        $isCustom = ($tier['price'] ?? '') === 'Custom';
-                        $ctaHref = filled($checkoutUrl)
-                            ? $checkoutUrl
-                            : 'mailto:'.config('site.commercial_email').'?subject='.rawurlencode('Electrik '.$tier['name'].' license');
-                        $ctaLabel = $isCustom
-                            ? 'Contact sales'
-                            : (filled($checkoutUrl) ? 'Buy now' : 'Buy / invoice');
-                        $trackCheckout = filled($checkoutUrl) && ! $isCustom;
-                    @endphp
-                    @if ($trackCheckout)
-                        <x-slate::button
-                            as="a"
-                            variant="{{ ! empty($tier['highlight']) ? 'default' : 'outline' }}"
-                            class="w-full"
-                            href="{{ $ctaHref }}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            data-electrik-checkout="{{ $tier['id'] }}"
-                            data-electrik-value="{{ (int) preg_replace('/\D/', '', $tier['price'] ?? '0') }}"
-                            data-electrik-currency="USD"
-                            onclick="window.electrikAnalytics && window.electrikAnalytics.beginCheckout(this.dataset.electrikCheckout, this.dataset.electrikValue, this.dataset.electrikCurrency)"
-                        >
-                            {{ $ctaLabel }}
-                        </x-slate::button>
-                    @else
-                        <x-slate::button
-                            as="a"
-                            variant="{{ ! empty($tier['highlight']) ? 'default' : 'outline' }}"
-                            class="w-full"
-                            href="{{ $ctaHref }}"
-                        >
-                            {{ $ctaLabel }}
-                        </x-slate::button>
-                    @endif
-                </x-slate::card-footer>
-            </x-slate::card>
-        @endforeach
-
-        <x-slate::card id="grant" class="lg:col-span-1 border-border/60 scroll-mt-24 opacity-95">
+    <div class="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2">
+        <x-slate::card id="oss" class="scroll-mt-24 border-border/80">
             <x-slate::card-header>
-                <x-slate::card-title>Grant</x-slate::card-title>
-                <x-slate::card-description>Personal, OSS, pre-revenue indie</x-slate::card-description>
+                <x-slate::badge class="mb-2 w-fit">Open source</x-slate::badge>
+                <x-slate::card-title>Electrik</x-slate::card-title>
+                <x-slate::card-description>Composer package — MIT</x-slate::card-description>
             </x-slate::card-header>
             <x-slate::card-content class="space-y-4">
                 <p class="text-4xl font-bold tracking-tight">$0</p>
                 <ul class="space-y-2 text-sm text-muted-foreground">
-                    <li>Full source and features</li>
-                    <li>Auth, teams, Stripe billing</li>
+                    <li>Auth, teams, Stripe on the team, Slate UI</li>
+                    <li>Personal or commercial use</li>
                     <li>Community support via GitHub</li>
+                    <li>Prefer <code class="text-xs">^5.5</code> for MIT (older tags may be BSL)</li>
                 </ul>
             </x-slate::card-content>
             <x-slate::card-footer>
                 <x-slate::button as="a" variant="outline" class="w-full" href="{{ route('install') }}">Install</x-slate::button>
             </x-slate::card-footer>
         </x-slate::card>
+
+        <x-slate::card id="launch" class="scroll-mt-24 ring-2 ring-foreground/15">
+            <x-slate::card-header>
+                <x-slate::badge class="mb-2 w-fit">Paid delivery</x-slate::badge>
+                <x-slate::card-title>Electrik Launch</x-slate::card-title>
+                <x-slate::card-description>We ship your multi-tenant SaaS shell</x-slate::card-description>
+            </x-slate::card-header>
+            <x-slate::card-content class="space-y-4">
+                <p class="text-4xl font-bold tracking-tight">
+                    $6,900
+                    <span class="text-sm font-normal text-muted-foreground">/ 14 days</span>
+                </p>
+                <ul class="space-y-2 text-sm text-muted-foreground">
+                    <li>Auth, teams, Stripe, branding, one core feature</li>
+                    <li>Deploy + handoff — you own the code</li>
+                    <li>Built on Electrik so plumbing is not reinvented</li>
+                </ul>
+            </x-slate::card-content>
+            <x-slate::card-footer>
+                <x-slate::button as="a" class="w-full" href="{{ route('launch') }}">See Launch</x-slate::button>
+            </x-slate::card-footer>
+        </x-slate::card>
     </div>
 
     <div class="prose-site mx-auto mt-16 max-w-3xl">
-        <h2>Which lane am I on?</h2>
+        <h2>What about Solo / Studio licenses?</h2>
         <p>
-            Same codebase either way. The Additional Use Grant covers personal, educational, open-source, and pre-revenue indie use.
-            Companies, client work, and paid employment need a commercial license.
-            Read the full rules on the <a href="{{ route('license') }}">license page</a>.
+            Retired. No more paid kit licenses. The package is MIT.
+            If you previously bought a commercial license, email
+            <a href="mailto:{{ config('site.commercial_email') }}">{{ config('site.commercial_email') }}</a>
+            and we will honor it.
         </p>
 
-        <h2>Which major version am I licensed for?</h2>
+        <h2>License details</h2>
         <p>
-            Solo and Studio cover commercial use of the <strong>major line current at purchase</strong> (today: <strong>5.x</strong>),
-            including minors and patches on that line. The next major (for example 6.x) needs a new commercial grant or a published upgrade —
-            not silent lifetime rights to every future major. Details on the
-            <a href="{{ route('license') }}">license page</a>.
-        </p>
-
-        <h2>Slate and blocks</h2>
-        <p>
-            <a href="{{ config('site.slate_url') }}" target="_blank" rel="noopener noreferrer">Electrik Slate</a>
-            and <code>electrik/slate-blocks</code> are separate <strong>MIT</strong> packages. This page prices Electrik (the SaaS kit), not the UI kit.
-        </p>
-
-        <h2>How this compares</h2>
-        <p>
-            Spark charges per project for billing alone. SaaSykit and Larafast typically charge about $199–$299 once for the whole kit, with no free commercial lane.
-            Jetstream is MIT but has no billing. Electrik undercuts that band at Solo $99 / Studio $149 (unlimited projects), and keeps indies at $0 under the grant — with Spark-class billing and team scope in the base package.
-        </p>
-        <p>
-            Full feature matrices and “choose them if…” guidance:
-            <a href="{{ route('compare.index') }}">Electrik vs alternatives</a>
-            — Jetstream, Spark, Wave, SaaSykit, Larafast, and Filament alternatives compared side by side.
-        </p>
-        <p>
-            Stripe subscription pricing for <em>your</em> product is separate. Electrik helps you bill your customers; the license above is for using Electrik itself.
-        </p>
-        <h2>What happens after you buy?</h2>
-        <p>
-            Checkout is handled by Dodo Payments. You land on a thanks page, then we email your commercial license details to the address used at checkout.
-            Nothing in the package unlocks later — you already have full source. The license is permission for commercial use.
-            Next step is the same as the grant lane:
-            <a href="{{ route('install') }}">install Electrik</a>.
-        </p>
-        <p class="text-sm text-muted-foreground">
-            Prefer an invoice? Email
-            <a href="mailto:{{ config('site.commercial_email') }}">{{ config('site.commercial_email') }}</a>.
+            Full MIT text and notes on older BSL tags:
+            <a href="{{ route('license') }}">License</a>.
         </p>
     </div>
 </section>

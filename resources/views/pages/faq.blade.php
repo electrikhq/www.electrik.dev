@@ -15,7 +15,7 @@
                 ],
                 [
                     'question' => 'Does Electrik lock billing behind a paid tier?',
-                    'answer' => 'No. Billing, teams, and permissions ship in the same source for grant and commercial users. The license gate is who may use the code commercially, not which features exist.',
+                    'answer' => 'No. Billing, teams, and permissions ship in the same source for everyone. Electrik 5.5+ is MIT — no paid feature unlock.',
                 ],
             ],
         ],
@@ -28,7 +28,7 @@
                 ],
                 [
                     'question' => 'How do I install Electrik?',
-                    'answer' => 'Run composer require electrik/electrik:^5.0 on a Laravel app, then php artisan electrik:install. See the install guide on electrik.dev for migrations, assets, and Stripe sync.',
+                    'answer' => 'Run composer require electrik/electrik:^5.5 on a Laravel app, then php artisan electrik:install. See the install guide on electrik.dev for migrations, assets, and Stripe sync.',
                 ],
                 [
                     'question' => 'Where is the UI documented?',
@@ -41,15 +41,15 @@
             'items' => [
                 [
                     'question' => 'Is Electrik open source?',
-                    'answer' => 'Source is public under BSL 1.1 with a free Additional Use Grant for personal, educational, open-source, and pre-revenue indie use. Commercial use by companies requires a paid license.',
+                    'answer' => 'Yes. Electrik 5.5.0+ is MIT. Use it for personal or commercial projects without a paid kit license. Prefer composer require electrik/electrik:^5.5.',
                 ],
                 [
-                    'question' => 'Can my startup use the free grant?',
-                    'answer' => 'Pre-revenue indie experimentation by individuals or small informal teams qualifies. Once you are a company shipping a commercial product, raising as a legal entity, or doing client work, you need a commercial license.',
+                    'question' => 'What about older BSL tags?',
+                    'answer' => 'Tags that shipped under Business Source License 1.1 (for example v5.0.0) remain BSL for those releases. Upgrade to 5.5+ for MIT.',
                 ],
                 [
-                    'question' => 'When does it become Apache 2.0?',
-                    'answer' => 'Four years after first public release, Electrik relicenses to Apache 2.0 automatically per the BSL change date in LICENSE.',
+                    'question' => 'How do you make money?',
+                    'answer' => 'Electrik Launch — fixed-price delivery ($6,900 / 14 days) where we ship your multi-tenant SaaS shell on Electrik. Solo/Studio kit licenses are retired.',
                 ],
             ],
         ],
@@ -75,7 +75,7 @@
     $flatFaqs = collect($faqs)->flatMap(fn ($group) => $group['items'])->values()->all();
 
     $seoTitle = 'FAQ';
-    $seoDescription = 'Frequently asked questions about Electrik 5.x install, BSL licensing, teams, Stripe billing, and Slate 3.';
+    $seoDescription = 'Frequently asked questions about Electrik 5.x install, MIT licensing, teams, Stripe billing, and Slate 3.';
     $seoUrl = siteCanonicalUrl('/faq');
     $seoGraph = \App\Support\Seo::graph(
         \App\Support\Seo::organizationGraph(),

@@ -1,14 +1,20 @@
 ---
-title: "Commercial license"
-description: "When you need a commercial grant and how to buy."
+title: "Commercial / Launch"
+description: "Kit licenses retired. Electrik Launch is paid delivery on the MIT kit."
 sidebar_order: 2
-sidebar_section: "License & commercial"
+sidebar_section: "License"
 ---
 
-# Commercial license
+# Commercial / Launch
 
-You need a commercial license when the Additional Use Grant does not cover your use (for example company products, client deliverables, or revenue-bearing SaaS past the grant).
+Solo and Studio **kit licenses are retired**. Electrik 5.5+ is MIT — no commercial permission purchase required to ship a product on the kit.
 
-Tiers and contact: [/pricing](/pricing). Questions: see contact email on the pricing/license pages.
+## Electrik Launch
 
-The commercial grant does not unlock extra features — source is already complete. It unlocks **rights**.
+If you want us to build and hand off a multi-tenant Laravel SaaS shell in 14 days, see [Electrik Launch](/launch) ($6,900). That is paid **delivery**, not a license unlock.
+
+## Prior purchases
+
+If you previously bought a Solo/Studio commercial license, email [hello@electrik.dev](mailto:hello@electrik.dev) — we will honor it.
+
+Marketing: [/pricing](/pricing) · [/license](/license).

@@ -245,10 +245,18 @@ class Seo
             'offers' => [
                 [
                     '@type' => 'Offer',
-                    'name' => 'Additional Use Grant',
+                    'name' => 'MIT open source',
                     'price' => '0',
                     'priceCurrency' => 'USD',
-                    'description' => 'Personal, educational, open-source, and pre-revenue indie use.',
+                    'description' => 'Electrik 5.5+ under MIT. Personal or commercial use without a kit license.',
+                ],
+                [
+                    '@type' => 'Offer',
+                    'name' => 'Electrik Launch',
+                    'price' => '6900',
+                    'priceCurrency' => 'USD',
+                    'description' => 'Fixed-price delivery: multi-tenant Laravel SaaS shell in 14 days.',
+                    'url' => self::absoluteUrl('/launch'),
                 ],
             ],
             'codeRepository' => self::GITHUB_URL,
@@ -363,11 +371,11 @@ class Seo
         return [
             [
                 'question' => 'Is Electrik free?',
-                'answer' => 'Electrik includes a free Additional Use Grant for personal, educational, open-source, and pre-revenue indie use. Companies, client work, and commercial products require a commercial license. All features ship in source for both lanes.',
+                'answer' => 'Yes. Electrik 5.5+ is MIT open source — personal or commercial use without a paid kit license. Prefer composer require electrik/electrik:^5.5. Paid path is Electrik Launch delivery, not kit licenses.',
             ],
             [
-                'question' => 'What’s the difference between Solo $99 and Studio $149?',
-                'answer' => 'Solo covers one commercial product. Studio covers unlimited commercial projects. Both are one-time for the major line current at purchase (today 5.x + minors). Agency is custom for org / white-label needs.',
+                'question' => 'What is Electrik Launch?',
+                'answer' => 'A fixed-price productized build: we ship your multi-tenant Laravel SaaS shell (auth, teams, Stripe, branding, one core feature) in 14 days for $6,900. You own the code.',
             ],
             [
                 'question' => 'If the shell is in vendor, can I customize views?',
@@ -375,7 +383,7 @@ class Seo
             ],
             [
                 'question' => 'How do I install Electrik 5.x?',
-                'answer' => 'Require the package with Composer, then run php artisan electrik:install on a fresh Laravel 12 app. See the install guide on electrik.dev for requirements and Stripe setup.',
+                'answer' => 'Require electrik/electrik:^5.5 with Composer, then run php artisan electrik:install on a fresh Laravel 12 app. See the install guide on electrik.dev for requirements and Stripe setup.',
             ],
             [
                 'question' => 'Is this a Jetstream-style scaffold dump?',

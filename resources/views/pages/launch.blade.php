@@ -24,7 +24,7 @@
             Live multi-tenant Laravel SaaS in 14 days. Auth, teams, Stripe on the team, Slate UI, branding, one core feature, deploy, handoff. You own the code.
         </p>
         <p class="mt-6 text-4xl font-bold tracking-tight text-[var(--home-ink)]">$6,900</p>
-        <p class="mt-2 text-sm text-muted-foreground">14 calendar days · 50% deposit · Studio license included</p>
+        <p class="mt-2 text-sm text-muted-foreground">14 calendar days · 50% deposit · you own the code (MIT kit)</p>
         <div class="mt-8 flex flex-wrap justify-center gap-3">
             <x-slate::button as="a" href="mailto:{{ $studio['email'] }}?subject=Electrik%20Launch%20inquiry">
                 Start Electrik Launch
@@ -70,8 +70,8 @@
         </p>
         <p class="mt-4 text-sm leading-relaxed text-muted-foreground">
             Sold by <a href="{{ $studio['url'] }}" class="font-medium text-foreground underline underline-offset-4" target="_blank" rel="noopener noreferrer">{{ $studio['name'] }}</a>
-            (studio behind Electrik). Prefer a kit only?
-            <a href="{{ route('pricing') }}" class="font-medium text-foreground underline underline-offset-4">Solo $99 / Studio $149</a>.
+            (studio behind Electrik). Prefer to build yourself?
+            <a href="{{ route('install') }}" class="font-medium text-foreground underline underline-offset-4">Install the MIT kit free</a>.
         </p>
         <div class="mt-6">
             <x-slate::button as="a" href="mailto:{{ $studio['email'] }}?subject=Electrik%20Launch%20inquiry">

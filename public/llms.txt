@@ -41,8 +41,6 @@
 - [Permissions catalog](https://electrik.dev/docs/reference/permissions-catalog): Default permission keys shipped in config/electrik.php.
 - [Changelog](https://electrik.dev/docs/reference/changelog): Electrik release notes and where to find full history.
 - [Roadmap](https://electrik.dev/docs/reference/roadmap): What Electrik is building next, and what we are not chasing.
-- [BSL Additional Use Grant](https://electrik.dev/docs/license/bsl): What the free BSL grant covers.
-- [Commercial license](https://electrik.dev/docs/license/commercial): When you need a commercial grant and how to buy.
 - [Slate UI](https://electrik.dev/docs/ecosystem/slate-ui): Electrik is built on Slate — UI docs live on slate.electrik.dev.
 - [Teamwork](https://electrik.dev/docs/ecosystem/teamwork): Electrik's teams engine is a Teamwork fork.
 - [Agent / llms.txt](https://electrik.dev/docs/ecosystem/agent-llms): Machine-readable docs for coding agents — see AI & agents.
@@ -54,8 +52,8 @@
 - [SaaS boilerplate](https://electrik.dev/resources/saas-boilerplate): Zip dump vs Composer package.
 - [Build a Laravel SaaS](https://electrik.dev/resources/build-laravel-saas): Package-first build path.
 - [Slate UI docs](https://slate.electrik.dev): Blade components and tokens (do not re-host here).
-- [License](https://electrik.dev/license): BSL Additional Use Grant.
-- [Pricing](https://electrik.dev/pricing): Commercial tiers.
+- [License](https://electrik.dev/license): MIT (5.5+); older tags may be BSL.
+- [Pricing](https://electrik.dev/pricing): Free MIT kit + Electrik Launch delivery.
 - [GitHub](https://github.com/electrikhq/electrik)
 
 ## Machine-readable
